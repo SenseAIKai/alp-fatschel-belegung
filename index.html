@@ -92,6 +92,7 @@ textarea{min-height:64px;resize:vertical}
   <button class="primary" id="add">Buchung eintragen</button>
   <span class="spacer"></span>
   <span class="sync" id="sync"></span>
+  <button id="syncNow">Jetzt abgleichen</button>
   <span class="ro" id="roBadge" hidden>nur ansehen</span>
   <button id="logout">Abmelden</button>
 </header>
@@ -162,7 +163,7 @@ async function boot(){
   const {data:prof}=await sb.from('profiles').select('role,name').maybeSingle();
   if(!prof){$('#login').hidden=false;$('#app').hidden=true;$('#lerr').textContent='Dieses Konto ist noch nicht freigeschaltet.';return}
   admin=prof.role==='admin';
-  $('#login').hidden=true;$('#app').hidden=false;$('#add').hidden=!admin;$('#roBadge').hidden=admin;
+  $('#login').hidden=true;$('#app').hidden=false;$('#add').hidden=!admin;$('#roBadge').hidden=admin;$('#syncNow').hidden=!admin;
   const r=await sb.from('rooms').select('*').order('sort');rooms=r.data||[];
   $('#selRoom').innerHTML=rooms.map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join('');
   $('#legend').innerHTML=Object.entries(QUELLE).map(([k,v])=>`<span><i style="background:var(--${k})"></i>${v}</span>`).join('')+'<span><i style="background:#ffd24a;border-radius:50%"></i>noch nicht in Deskline</span><span><i style="background:var(--closed)"></i>Hotel geschlossen</span>';
@@ -177,7 +178,8 @@ async function load(){
   bookings=b.data||[];
   const s=await sb.from('sync_log').select('ran_at,ok,note').order('ran_at',{ascending:false}).limit(1);
   const l=s.data&&s.data[0];
-  $('#sync').innerHTML=l?`Deskline-Abgleich: <b>${new Date(l.ran_at).toLocaleString('de-CH',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b>${l.ok?'':' (Fehler)'}`:'Deskline-Abgleich: noch nie';
+  $('#sync').innerHTML=l?`Deskline-Abgleich: <b>${new Date(l.ran_at).toLocaleString('de-CH',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b>${l.ok?'':' <span style="color:#b3261e">Fehler: '+esc(l.note||'')+'</span>'}`:'Deskline-Abgleich: noch nie';
+  $('#sync').title=l&&l.note?l.note:'';
   render();
 }
 function render(){
@@ -204,6 +206,13 @@ function render(){
   $('#tAb').innerHTML=ab.length?ab.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Abreisen.</td></tr>';
   const op=bookings.filter(b=>b.sync_state!='erledigt');
   $('#tSync').innerHTML=op.length?'<tr><th>Gast</th><th>Zimmer</th><th>Zeitraum</th><th>Stand</th></tr>'+op.map(b=>`<tr><td>${esc(b.gast)}${b.status=='storniert'?' (storniert)':''}</td><td>${b.room_id}</td><td>${fmt(b.anreise)} bis ${fmt(b.abreise)}</td><td>${b.sync_state=='fehler'?'Fehler: '+esc(b.sync_note||''):'wartet auf Abgleich'}</td></tr>`).join(''):'<tr><td style="color:var(--mute)">Alles abgeglichen.</td></tr>';
+}
+// Abgleich mit Deskline auf dem Server anstossen (läuft sonst stündlich von selbst)
+let syncing=false;
+async function syncNow(){
+  if(!admin||syncing)return;syncing=true;$('#syncNow').disabled=true;$('#syncNow').textContent='Abgleich läuft …';
+  try{await sb.functions.invoke('deskline-sync',{body:{}})}catch(e){}
+  syncing=false;$('#syncNow').disabled=false;$('#syncNow').textContent='Jetzt abgleichen';load();
 }
 function openDlg(b,preset){
   editing=b||null;const f=$('#frm');f.reset();$('#derr').textContent='';
@@ -233,7 +242,7 @@ $('#frm').addEventListener('submit',async e=>{
   const q=editing?sb.from('bookings').update(row).eq('id',editing.id):sb.from('bookings').insert(row);
   const {error}=await q;$('#dSave').disabled=false;
   if(error){$('#derr').textContent=/keine_doppelbelegung/.test(error.message)?'Dieses Zimmer ist in diesem Zeitraum schon belegt.':'Speichern fehlgeschlagen: '+error.message;return}
-  $('#dlg').close();load();
+  $('#dlg').close();await load();syncNow();
 });
 $('#dDelete').onclick=async()=>{
   if(!editing)return;
@@ -244,8 +253,9 @@ $('#dDelete').onclick=async()=>{
     if(!confirm('Buchung von '+editing.gast+' endgültig löschen?'))return;
     const {error}=await sb.from('bookings').delete().eq('id',editing.id);if(error){$('#derr').textContent=error.message;return}
   }
-  $('#dlg').close();load();
+  $('#dlg').close();await load();syncNow();
 };
+$('#syncNow').onclick=syncNow;
 $('#prev').onclick=()=>{start=add(start,-28);load()};
 $('#next').onclick=()=>{start=add(start,28);load()};
 $('#today').onclick=()=>{start=add(todayStr(),-3);load()};
