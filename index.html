@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Belegungsplan Alp Fatschél</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#22201c;--mute:#7a756c;--line:#e3dfd6;--brand:#b15539;--cw:38px;--rh:44px;
+ --manuell:#b15539;--deskline:#2f6f8f;--booking:#1f4fa3;--hrs:#a3221f;--homepage:#3f7d4e;--telefon:#8a6a2f;--closed:#ece8df;--we:#faf7f0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+header h1{font-size:17px;margin:0 8px 0 0}
+button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 12px;cursor:pointer}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button:disabled{opacity:.5;cursor:default}
+.spacer{flex:1}
+.sync{font-size:12.5px;color:var(--mute)}
+.sync b{color:var(--ink)}
+main{padding:14px 16px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px}
+.calwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cal{position:relative;min-width:max-content}
+.row{display:flex;height:var(--rh);border-top:1px solid var(--line);position:relative}
+.row.head{height:48px;border-top:0}
+.rname{position:sticky;left:0;z-index:20;width:128px;min-width:128px;background:var(--card);border-right:1px solid var(--line);display:flex;align-items:center;padding:0 10px;font-weight:600;font-size:13.5px}
+.rname small{font-weight:400;color:var(--mute);margin-left:6px}
+.cell{width:var(--cw);min-width:var(--cw);border-right:1px solid var(--line);font-size:11px;color:var(--mute);text-align:center}
+.cell.we{background:var(--we)}
+.cell.closed{background:var(--closed)}
+.cell.today{box-shadow:inset 0 0 0 2px var(--brand)}
+.head .cell{display:flex;flex-direction:column;justify-content:center;line-height:1.25}
+.head .cell b{font-size:13px;color:var(--ink)}
+.head .cell.m1{border-left:2px solid var(--ink)}
+.row:not(.head) .cell.free{cursor:pointer}
+.row:not(.head) .cell.free:hover{background:#f1e4dc}
+.bar{position:absolute;top:6px;height:calc(var(--rh) - 12px);border-radius:8px;color:#fff;font-size:12.5px;padding:0 8px;display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;cursor:pointer;z-index:10;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.bar.option{opacity:.6;border:2px dashed rgba(255,255,255,.9)}
+.bar .dot{width:8px;height:8px;border-radius:50%;background:#ffd24a;flex:none}
+.bar .dot.fehler{background:#ff5a4a}
+.legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 14px;font-size:12.5px;color:var(--mute)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+h2{font-size:15px;margin:22px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td,th{padding:8px 10px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+th{border-top:0;color:var(--mute);font-weight:600;font-size:12px}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+dialog{border:0;border-radius:14px;padding:0;width:min(520px,94vw);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(20,18,15,.45)}
+form{padding:18px}
+form h3{margin:0 0 12px;font-size:17px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:12px;color:var(--mute)}
+input,select,textarea{width:100%;font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);margin-top:3px}
+textarea{min-height:64px;resize:vertical}
+.full{grid-column:1/-1}
+.actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.err{color:#b3261e;font-size:13px;margin-top:10px;min-height:18px}
+#login{max-width:360px;margin:9vh auto;padding:22px}
+#login h1{font-size:20px;margin:0 0 4px}
+#login p{color:var(--mute);margin:0 0 14px;font-size:13.5px}
+#login label{margin-top:10px}
+.hint{font-size:12.5px;color:var(--mute);margin-top:12px}
+.ro{font-size:12px;background:#eee7da;border-radius:6px;padding:2px 7px;color:var(--mute)}
+@media (max-width:640px){:root{--cw:34px}.rname{width:92px;min-width:92px;font-size:12px}.rname small{display:none}header h1{width:100%}}
+</style>
+</head>
+<body>
+
+<div id="login" class="card" hidden>
+  <h1>Alp Fatschél</h1>
+  <p>Belegungsplan. Bitte anmelden.</p>
+  <label>E-Mail<input id="lmail" type="email" autocomplete="username"></label>
+  <label>Passwort<input id="lpass" type="password" autocomplete="current-password"></label>
+  <div class="actions">
+    <button class="primary" id="btnLogin">Anmelden</button>
+    <button id="btnSignup">Konto anlegen</button>
+  </div>
+  <div class="err" id="lerr"></div>
+  <div class="hint">Neue Konten sehen den Plan erst, nachdem sie freigeschaltet wurden.</div>
+</div>
+
+<div id="app" hidden>
+<header>
+  <h1>Belegungsplan Alp Fatschél</h1>
+  <button id="prev" aria-label="Zurück">‹</button>
+  <button id="today">Heute</button>
+  <button id="next" aria-label="Weiter">›</button>
+  <input id="jump" type="month" style="width:auto;margin:0" aria-label="Monat wählen">
+  <button class="primary" id="add">Buchung eintragen</button>
+  <span class="spacer"></span>
+  <span class="sync" id="sync"></span>
+  <span class="ro" id="roBadge" hidden>nur ansehen</span>
+  <button id="logout">Abmelden</button>
+</header>
+<main>
+  <div class="card">
+    <div class="calwrap"><div class="cal" id="cal"></div></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="lists">
+    <div><h2>Anreisen (nächste 14 Tage)</h2><div class="card"><table id="tAn"></table></div></div>
+    <div><h2>Abreisen (nächste 14 Tage)</h2><div class="card"><table id="tAb"></table></div></div>
+  </div>
+  <h2>Noch nicht mit Deskline abgeglichen</h2>
+  <div class="card"><table id="tSync"></table></div>
+</main>
+</div>
+
+<dialog id="dlg">
+<form id="frm" method="dialog">
+  <h3 id="dTitle">Buchung</h3>
+  <div class="grid">
+    <label class="full">Gast<input name="gast" required></label>
+    <label>Zimmer<select name="room_id" id="selRoom"></select></label>
+    <label>Status<select name="status"><option value="bestaetigt">Bestätigt</option><option value="option">Option (provisorisch)</option><option value="storniert">Storniert</option></select></label>
+    <label>Anreise<input name="anreise" type="date" required></label>
+    <label>Abreise<input name="abreise" type="date" required></label>
+    <label>Erwachsene<input name="erwachsene" type="number" min="1" max="4" value="2"></label>
+    <label>Kinder<input name="kinder" type="number" min="0" max="3" value="0"></label>
+    <label>Telefon<input name="telefon"></label>
+    <label>E-Mail<input name="email" type="email"></label>
+    <label>Herkunft<select name="quelle"><option value="manuell">Direkt eingetragen</option><option value="telefon">Telefon</option><option value="homepage">Homepage / E-Mail</option><option value="deskline">Arosa / Feratel</option><option value="booking">Booking.com</option><option value="hrs">HRS</option></select></label>
+    <label>Preis total (CHF)<input name="preis" type="number" step="0.05" min="0"></label>
+    <label class="full">Notiz<textarea name="notiz"></textarea></label>
+  </div>
+  <div class="hint" id="dInfo"></div>
+  <div class="err" id="derr"></div>
+  <div class="actions">
+    <button class="primary" id="dSave" value="save">Speichern</button>
+    <button type="button" id="dCancel">Schliessen</button>
+    <span class="spacer"></span>
+    <button type="button" id="dDelete" hidden>Löschen</button>
+  </div>
+</form>
+</dialog>
+
+<script>
+const SB_URL='https://lujchdresoppqkydnrmw.supabase.co';
+const SB_KEY='sb_publishable_XnSg7pDpJdW_ZwO3iubCRg_gP5Xvisk';
+const sb=supabase.createClient(SB_URL,SB_KEY);
+// Offene Zeiten des Hotels (Anreise ab, letzte Nacht vor Enddatum)
+const SAISON=[['2026-12-11','2027-04-25'],['2027-06-04','2027-10-24']];
+const QUELLE={manuell:'Direkt',telefon:'Telefon',homepage:'Homepage',deskline:'Arosa / Feratel',booking:'Booking.com',hrs:'HRS'};
+const WD=['So','Mo','Di','Mi','Do','Fr','Sa'],MON=['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+const $=s=>document.querySelector(s);
+const iso=d=>d.toISOString().slice(0,10);
+const D=s=>new Date(s+'T00:00:00Z');
+const add=(s,n)=>{const d=D(s);d.setUTCDate(d.getUTCDate()+n);return iso(d)};
+const diff=(a,b)=>Math.round((D(b)-D(a))/864e5);
+const todayStr=()=>{const n=new Date();return iso(new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())))};
+const fmt=s=>{const d=D(s);return WD[d.getUTCDay()]+' '+String(d.getUTCDate()).padStart(2,'0')+'.'+String(d.getUTCMonth()+1).padStart(2,'0')+'.'};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const offen=d=>SAISON.some(([a,b])=>d>=a&&d<b);
+let rooms=[],bookings=[],admin=false,start=add(todayStr(),-3),DAYS=62,editing=null;
+
+async function boot(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(!session){$('#login').hidden=false;$('#app').hidden=true;return}
+  const {data:prof}=await sb.from('profiles').select('role,name').maybeSingle();
+  if(!prof){$('#login').hidden=false;$('#app').hidden=true;$('#lerr').textContent='Dieses Konto ist noch nicht freigeschaltet.';return}
+  admin=prof.role==='admin';
+  $('#login').hidden=true;$('#app').hidden=false;$('#add').hidden=!admin;$('#roBadge').hidden=admin;
+  const r=await sb.from('rooms').select('*').order('sort');rooms=r.data||[];
+  $('#selRoom').innerHTML=rooms.map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join('');
+  $('#legend').innerHTML=Object.entries(QUELLE).map(([k,v])=>`<span><i style="background:var(--${k})"></i>${v}</span>`).join('')+'<span><i style="background:#ffd24a;border-radius:50%"></i>noch nicht in Deskline</span><span><i style="background:var(--closed)"></i>Hotel geschlossen</span>';
+  await load();
+  sb.channel('b').on('postgres_changes',{event:'*',schema:'public',table:'bookings'},load).on('postgres_changes',{event:'*',schema:'public',table:'sync_log'},load).subscribe();
+  setInterval(load,120000);
+}
+async function load(){
+  const end=add(start,DAYS);
+  const from=start<todayStr()?start:todayStr();
+  const b=await sb.from('bookings').select('*').lt('anreise',end>add(todayStr(),15)?end:add(todayStr(),15)).gt('abreise',add(from,-1)).order('anreise');
+  bookings=b.data||[];
+  const s=await sb.from('sync_log').select('ran_at,ok,note').order('ran_at',{ascending:false}).limit(1);
+  const l=s.data&&s.data[0];
+  $('#sync').innerHTML=l?`Deskline-Abgleich: <b>${new Date(l.ran_at).toLocaleString('de-CH',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b>${l.ok?'':' (Fehler)'}`:'Deskline-Abgleich: noch nie';
+  render();
+}
+function render(){
+  const cw=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cw'));
+  const nameW=$('.rname')?$('.rname').offsetWidth:(innerWidth<=640?92:128);
+  const days=[...Array(DAYS)].map((_,i)=>add(start,i)),t=todayStr();
+  let h='<div class="row head"><div class="rname"></div>'+days.map(d=>{const x=D(d),w=x.getUTCDay();return `<div class="cell${w==0||w==6?' we':''}${d==t?' today':''}${x.getUTCDate()==1?' m1':''}">${x.getUTCDate()==1||d==start?MON[x.getUTCMonth()]:WD[w]}<b>${x.getUTCDate()}</b></div>`}).join('')+'</div>';
+  for(const r of rooms){
+    h+=`<div class="row" data-room="${r.id}"><div class="rname">${r.typ=='FZ'?'Fam. ':'Zimmer '}${r.id}<small>${r.typ}</small></div>`+days.map(d=>{const w=D(d).getUTCDay(),o=offen(d);return `<div class="cell${w==0||w==6?' we':''}${o?(admin?' free':''):' closed'}${d==t?' today':''}" data-d="${d}"></div>`}).join('');
+    for(const b of bookings.filter(b=>b.room_id==r.id&&b.status!='storniert'&&b.anreise<add(start,DAYS)&&b.abreise>start)){
+      const off=diff(start,b.anreise),n=diff(b.anreise,b.abreise);
+      const left=Math.max(off*cw+cw/2,0),right=Math.min((off+n)*cw+cw/2,DAYS*cw);
+      h+=`<div class="bar${b.status=='option'?' option':''}" data-id="${b.id}" style="left:${nameW+left}px;width:${right-left-2}px;background:var(--${b.quelle})" title="${esc(b.gast)} · ${fmt(b.anreise)} bis ${fmt(b.abreise)} · ${n} Nächte">${b.sync_state!='erledigt'?`<span class="dot ${b.sync_state=='fehler'?'fehler':''}"></span>`:''}${esc(b.gast)}</div>`;
+    }
+    h+='</div>';
+  }
+  $('#cal').innerHTML=h;
+  $('#jump').value=start.slice(0,7);
+  const soon=add(t,14),row=b=>`<tr><td>${fmt(b._d)}</td><td><b>${esc(b.gast)}</b><br><span style="color:var(--mute)">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Ki.':''}${b.telefon?' · '+esc(b.telefon):''}</span></td><td>Zi. ${b.room_id}</td></tr>`;
+  const act=bookings.filter(b=>b.status!='storniert');
+  const an=act.filter(b=>b.anreise>=t&&b.anreise<=soon).map(b=>({...b,_d:b.anreise}));
+  const ab=act.filter(b=>b.abreise>=t&&b.abreise<=soon).map(b=>({...b,_d:b.abreise})).sort((a,b)=>a._d<b._d?-1:1);
+  $('#tAn').innerHTML=an.length?an.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Anreisen.</td></tr>';
+  $('#tAb').innerHTML=ab.length?ab.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Abreisen.</td></tr>';
+  const op=bookings.filter(b=>b.sync_state!='erledigt');
+  $('#tSync').innerHTML=op.length?'<tr><th>Gast</th><th>Zimmer</th><th>Zeitraum</th><th>Stand</th></tr>'+op.map(b=>`<tr><td>${esc(b.gast)}${b.status=='storniert'?' (storniert)':''}</td><td>${b.room_id}</td><td>${fmt(b.anreise)} bis ${fmt(b.abreise)}</td><td>${b.sync_state=='fehler'?'Fehler: '+esc(b.sync_note||''):'wartet auf Abgleich'}</td></tr>`).join(''):'<tr><td style="color:var(--mute)">Alles abgeglichen.</td></tr>';
+}
+function openDlg(b,preset){
+  editing=b||null;const f=$('#frm');f.reset();$('#derr').textContent='';
+  $('#dTitle').textContent=b?'Buchung bearbeiten':'Buchung eintragen';
+  const v=b||{room_id:preset?.room||rooms[0].id,anreise:preset?.d||todayStr(),abreise:add(preset?.d||todayStr(),1),erwachsene:2,kinder:0,status:'bestaetigt',quelle:'manuell'};
+  for(const k of ['gast','room_id','status','anreise','abreise','erwachsene','kinder','telefon','email','quelle','preis','notiz'])f.elements[k].value=v[k]??'';
+  $('#dDelete').hidden=!(b&&admin);$('#dSave').hidden=!admin;
+  [...f.elements].forEach(e=>{if(e.name)e.disabled=!admin});
+  $('#dInfo').textContent=b?(b.sync_state=='erledigt'?'In Deskline abgeglichen.':b.sync_state=='fehler'?'Abgleich mit Deskline fehlgeschlagen: '+(b.sync_note||''):'Noch nicht in Deskline eingetragen.')+(b.deskline_ref?' Deskline-Nr. '+b.deskline_ref:''):'';
+  $('#dlg').showModal();
+}
+$('#cal').addEventListener('click',e=>{
+  const bar=e.target.closest('.bar');if(bar)return openDlg(bookings.find(b=>b.id==bar.dataset.id));
+  const c=e.target.closest('.cell.free');if(c&&admin)openDlg(null,{room:+c.parentElement.dataset.room,d:c.dataset.d});
+});
+$('#add').onclick=()=>openDlg(null);
+$('#dCancel').onclick=()=>$('#dlg').close();
+$('#frm').addEventListener('submit',async e=>{
+  e.preventDefault();if(!admin)return;
+  const f=e.target.elements,row={};
+  for(const k of ['gast','status','anreise','abreise','telefon','email','quelle','notiz'])row[k]=f[k].value.trim()||null;
+  row.room_id=+f.room_id.value;row.erwachsene=+f.erwachsene.value||1;row.kinder=+f.kinder.value||0;row.preis=f.preis.value===''?null:+f.preis.value;
+  if(row.abreise<=row.anreise){$('#derr').textContent='Die Abreise muss nach der Anreise liegen.';return}
+  const room=rooms.find(r=>r.id==row.room_id);
+  if(row.erwachsene+row.kinder>room.max_personen){$('#derr').textContent=`${room.name} hat höchstens ${room.max_personen} Plätze.`;return}
+  $('#dSave').disabled=true;
+  const q=editing?sb.from('bookings').update(row).eq('id',editing.id):sb.from('bookings').insert(row);
+  const {error}=await q;$('#dSave').disabled=false;
+  if(error){$('#derr').textContent=/keine_doppelbelegung/.test(error.message)?'Dieses Zimmer ist in diesem Zeitraum schon belegt.':'Speichern fehlgeschlagen: '+error.message;return}
+  $('#dlg').close();load();
+});
+$('#dDelete').onclick=async()=>{
+  if(!editing)return;
+  if(editing.sync_state=='erledigt'||editing.deskline_ref){
+    if(!confirm('Diese Buchung steht schon in Deskline. Sie wird als storniert markiert, damit das Zimmer beim nächsten Abgleich wieder freigegeben wird. Fortfahren?'))return;
+    const {error}=await sb.from('bookings').update({status:'storniert'}).eq('id',editing.id);if(error){$('#derr').textContent=error.message;return}
+  }else{
+    if(!confirm('Buchung von '+editing.gast+' endgültig löschen?'))return;
+    const {error}=await sb.from('bookings').delete().eq('id',editing.id);if(error){$('#derr').textContent=error.message;return}
+  }
+  $('#dlg').close();load();
+};
+$('#prev').onclick=()=>{start=add(start,-28);load()};
+$('#next').onclick=()=>{start=add(start,28);load()};
+$('#today').onclick=()=>{start=add(todayStr(),-3);load()};
+$('#jump').onchange=e=>{if(e.target.value){start=e.target.value+'-01';load()}};
+$('#btnLogin').onclick=async()=>{
+  $('#lerr').textContent='';
+  const {error}=await sb.auth.signInWithPassword({email:$('#lmail').value.trim(),password:$('#lpass').value});
+  if(error){$('#lerr').textContent='Anmeldung fehlgeschlagen. E-Mail oder Passwort stimmt nicht, oder die E-Mail ist noch nicht bestätigt.';return}
+  boot();
+};
+$('#btnSignup').onclick=async()=>{
+  $('#lerr').textContent='';
+  if($('#lpass').value.length<10){$('#lerr').textContent='Bitte ein Passwort mit mindestens 10 Zeichen wählen.';return}
+  const {error}=await sb.auth.signUp({email:$('#lmail').value.trim(),password:$('#lpass').value,options:{emailRedirectTo:location.origin+location.pathname}});
+  $('#lerr').textContent=error?'Konto konnte nicht angelegt werden: '+error.message:'Konto angelegt. Bitte den Link in der Bestätigungs-E-Mail anklicken und danach hier anmelden.';
+};
+$('#logout').onclick=async()=>{await sb.auth.signOut();location.reload()};
+addEventListener('resize',()=>{if(!$('#app').hidden)render()});
+boot();
+</script>
+</body>
+</html>
