@@ -1,6 +1,6 @@
 // Alp Fatschel Service Worker (Windows Desktop PWA + Offline-Fallback)
-const CACHE_NAME = 'alp-fatschel-pms-v3-3';
-const ASSETS = ['./', './index.html', './manifest.json', './Alp-Fatschel.ico', './icon-192.png', './icon-512.png'];
+const CACHE_NAME = 'alp-fatschel-pms-v3-4';
+const ASSETS = ['./', './index.html', './manifest.json', './Alp-Fatschel.ico', './icon-192.png', './icon-192.png'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
