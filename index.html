@@ -44,9 +44,9 @@
   --warn: #f59e0b;
   --warn-soft: rgba(245, 158, 11, 0.16);
 
-  --cw: 46px;
-  --rh: 56px;
-  --radius: 18px;
+  --cw: 45px;
+  --rh: 50px;
+  --radius: 16px;
   --shadow: 0 12px 32px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   --shadow-lg: 0 28px 68px rgba(15, 23, 42, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.95);
 
@@ -138,7 +138,7 @@ html[data-theme="dark"] .logo-dark-only { display: block !important; }
 
 #app[hidden], #loginWrap[hidden] { display: none !important; }
 
-/* TOP COMMAND HUD HEADER (Logo NUR 1x links oben ohne Zusatztext) */
+/* TOP COMMAND HUD HEADER (Kompakt & Einzeilig wie im Office-Modus, nichts wird unten abgeschnitten!) */
 header.hud-header {
   position: sticky;
   top: 0;
@@ -146,23 +146,23 @@ header.hud-header {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 14px;
-  padding: 10px 20px;
+  gap: 10px;
+  padding: 6px 16px;
   background: var(--glass);
   backdrop-filter: blur(26px) saturate(190%);
   -webkit-backdrop-filter: blur(26px) saturate(190%);
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
 }
 
 /* 1. LINKS OBEN: NUR DAS ALP FATSCHÉL LOGO */
 .brand-corner {
   display: flex;
   align-items: center;
-  padding-right: 6px;
+  padding-right: 4px;
 }
 .brand-corner img {
-  height: 46px;
+  height: 38px;
   width: auto;
   object-fit: contain;
 }
@@ -172,10 +172,10 @@ nav.hud-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 3px;
   background: var(--glass-soft);
   border: 1px solid var(--glass-border);
-  padding: 5px;
+  padding: 4px;
   border-radius: 999px;
   box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 18px rgba(14, 165, 233, 0.08);
   width: max-content;
@@ -186,14 +186,14 @@ nav.hud-nav {
 .nav-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 13px;
+  gap: 5px;
+  padding: 5px 10px;
   border-radius: 999px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--ink-soft);
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: 11.8px;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -211,8 +211,8 @@ nav.hud-nav {
   box-shadow: 0 6px 20px rgba(14, 165, 233, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 .nav-badge {
-  font-size: 10.5px;
-  padding: 1px 6px;
+  font-size: 10px;
+  padding: 1px 5px;
   border-radius: 99px;
   background: rgba(15, 23, 42, 0.08);
   color: inherit;
@@ -223,12 +223,12 @@ nav.hud-nav {
   color: #fff;
 }
 
-/* 3. RECHTS OBEN: BELEUCHTETE MILCHGLAS-BUTTONS, ROLLEN-LOGIN & SPRACHE */
+/* 3. RECHTS OBEN: EINZEILIGE KOMPAKTE AKTIONEN */
 .hud-actions {
   display: flex;
   align-items: center;
-  gap: 7px;
-  flex-wrap: wrap;
+  gap: 5px;
+  flex-wrap: nowrap;
 }
 
 /* BELEUCHTETE MILCHGLAS-BUTTONS */
@@ -312,25 +312,25 @@ input:focus, select:focus, textarea:focus {
 }
 .search-pill input {
   margin: 0;
-  width: 185px;
-  padding: 7px 12px;
+  width: 145px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: var(--glass-strong);
   border: 1px solid var(--glass-border);
-  font-size: 12px;
+  font-size: 11.5px;
 }
 .lang-select {
   width: auto !important;
   margin: 0 !important;
-  padding: 6px 9px !important;
-  border-radius: 11px !important;
-  font-size: 12px !important;
+  padding: 5px 7px !important;
+  border-radius: 10px !important;
+  font-size: 11.5px !important;
   font-weight: 700 !important;
   cursor: pointer;
 }
 
 main.content {
-  padding: 16px 22px 60px;
+  padding: 10px 18px 40px;
   max-width: 1860px;
   width: 100%;
   margin: 0 auto;
@@ -346,13 +346,13 @@ main.content {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.card-pad { padding: 16px 18px; }
+.card-pad { padding: 14px 16px; }
 
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 .kpi-card {
   position: relative;
@@ -362,11 +362,11 @@ main.content {
   -webkit-backdrop-filter: blur(22px) saturate(180%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  padding: 14px 16px;
+  padding: 10px 14px;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 .kpi-card::before {
   content: "";
@@ -383,7 +383,7 @@ main.content {
   font-weight: 700;
 }
 .kpi-val {
-  font-size: 23px;
+  font-size: 21px;
   font-weight: 800;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
@@ -392,14 +392,32 @@ main.content {
   font-size: 11.5px;
   color: var(--ink-soft);
 }
+.head .cell.day-clickable {
+  cursor: pointer;
+  transition: background 0.14s ease;
+}
+.head .cell.day-clickable:hover {
+  background: rgba(14, 165, 233, 0.18);
+}
+.head .cell.selected-day {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.96), rgba(99, 102, 241, 0.96)) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 10px rgba(14, 165, 233, 0.35);
+}
+.head .cell.selected-day b {
+  color: #fff !important;
+}
+.cell.selected-col {
+  background: rgba(14, 165, 233, 0.075);
+}
 
 /* KALENDER / TAPE-CHART MIT DRAG & RESIZE */
 .cal-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 9px;
-  padding: 12px 16px;
+  gap: 8px;
+  padding: 9px 14px;
   border-bottom: 1px solid var(--line);
 }
 .month-nav-pill {
@@ -1174,25 +1192,38 @@ textarea { min-height: 54px; resize: vertical; }
 
         <div class="legend">
           <div class="legend-items" id="legend"></div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-            <div class="sync-pill" id="syncBox">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <div class="sync-pill" id="syncBox" title="Der Abgleich mit Feratel Deskline läuft jede Stunde sowie bei jeder Buchungsänderung vollautomatisch im Hintergrund.">
               <span class="sync-dot" id="syncDot"></span>
-              <span id="sync">Deskline bereit</span>
+              <span id="sync">Auto-Sync aktiv</span>
             </div>
-            <button id="syncNow" data-i18n="btnSync">Mit Deskline abgleichen</button>
-            <button type="button" onclick="window.open('https://webclient4.deskline.net/ARO/de/accommodation/overview','_blank','noopener,noreferrer')" title="Öffnet den Feratel Deskline WebClient (Arosa Tourismus)">Feratel WebClient ↗</button>
-            <button id="logout" data-i18n="btnLogout">Rolle / Abmelden</button>
+            <button id="syncNow" title="Manuellen Sofort-Abgleich mit Feratel Deskline anstossen" style="padding:5px 10px;font-size:11.5px">↻ Jetzt prüfen</button>
+            <button id="logout" data-i18n="btnLogout" style="padding:5px 10px;font-size:11.5px">Rolle / Abmelden</button>
           </div>
+        </div>
+      </div>
+
+      <!-- DATUMS-BANNER FÜR DEN AKTUELL AUSGEWÄHLTEN TAG -->
+      <div class="card card-pad" style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span class="badge" style="background:var(--brand);color:#fff;font-size:12px;padding:5px 11px">Ausgewählter Tag im Fokus</span>
+          <b id="selectedDayBannerTitle" style="font-size:15px">Heute</b>
+          <span style="font-size:12px;color:var(--mute)">(Klicke oben im Kalender auf eine beliebige Tageszahl 1–31, um Belegung, Briefing, Dienst-Team und Housekeeping für diesen Tag zu sehen)</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <button type="button" onclick="shiftSelectedDate(-1)">‹ Tag zurück</button>
+          <button type="button" onclick="setSelectedDate(todayStr())">Heute</button>
+          <button type="button" onclick="shiftSelectedDate(1)">Tag später ›</button>
         </div>
       </div>
 
       <div class="lists-grid">
         <div>
-          <h2 class="sec-title"><span data-i18n="arrivals14">Anreisen (nächste 14 Tage)</span></h2>
+          <h2 class="sec-title"><span data-i18n="arrivals14">Anreisen (ab gewähltem Tag · 14 Tage)</span></h2>
           <div class="card"><table id="tAn"></table></div>
         </div>
         <div>
-          <h2 class="sec-title"><span data-i18n="departures14">Abreisen (nächste 14 Tage)</span></h2>
+          <h2 class="sec-title"><span data-i18n="departures14">Abreisen (ab gewähltem Tag · 14 Tage)</span></h2>
           <div class="card"><table id="tAb"></table></div>
         </div>
       </div>
@@ -1201,14 +1232,32 @@ textarea { min-height: 54px; resize: vertical; }
       <div class="card"><table id="tSync"></table></div>
     </section>
 
-    <!-- 2. ANSICHT: MORGEN-BRIEFING FÜR KÜCHE, SERVICE & MITARBEITER (INKL. VORLAUF-BESORGUNGEN) -->
+    <!-- 2. ANSICHT: MORGEN-BRIEFING FÜR KÜCHE, SERVICE & MITARBEITER (GILT IMMER FÜR DEN AUSGEWÄHLTEN TAG + FOLGETAG) -->
     <section class="view-section" id="view-briefing" hidden>
+      <div class="card card-pad" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:var(--brand-soft);border-color:var(--brand)">
+        <div>
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--brand)">Tages-Briefing, Frühstücks-Vorschau & Eingeteiltes Dienst-Team</div>
+          <div id="briefingDayHeader" style="font-size:18px;font-weight:800;color:var(--ink)">Briefing für Heute</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <button type="button" onclick="shiftSelectedDate(-1)">‹ Vorheriger Tag</button>
+          <button type="button" onclick="setSelectedDate(todayStr())">Heute</button>
+          <button type="button" class="primary" onclick="shiftSelectedDate(1)">Tag später ›</button>
+        </div>
+      </div>
+
+      <!-- WER IST AN DIESEM TAG IM DIENST (KÜCHE, SERVICE, REINIGUNG, OFFICE) -->
+      <div class="card card-pad" style="margin-bottom:14px">
+        <h2 class="sec-title" style="margin:0 0 8px 0">Dienst-Team am gewählten Tag (Küche · Service · Reinigung · Office)</h2>
+        <div id="briefingDutyStaffBox"></div>
+      </div>
+
       <!-- VORLAUF-ALARM FÜR SONDERWÜNSCHE (z. B. spezieller Champagner X Tage vor Anreise) -->
-      <div class="card card-pad" style="margin-bottom:16px;border-left:4px solid var(--gold)">
+      <div class="card card-pad" style="margin-bottom:14px;border-left:4px solid var(--gold)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
           <div>
-            <h2 class="sec-title" style="margin:0" data-i18n="briefingAdvanceTitle">Vorab-Besorgungen & Sonderwünsche (Rechtzeitige Erinnerung vor Anreise)</h2>
-            <p class="hint" style="margin:3px 0 0" data-i18n="briefingAdvanceSub">Zeigt spezielle Gästewünsche (z. B. besondere Champagnerflasche, Geburtstagstorte, Allergiker-Produkte) frei wählbar mehrere Tage vor der Anreise an, damit genug Zeit zum Besorgen bleibt.</p>
+            <h2 class="sec-title" style="margin:0" data-i18n="briefingAdvanceTitle">Wichtige Vorab-Besorgungen & Aufgaben pro Zimmer</h2>
+            <p class="hint" style="margin:3px 0 0" data-i18n="briefingAdvanceSub">Zeigt spezielle Gästewünsche (z. B. Zimmer 3: Champagnerflasche besorgen, Zimmer 4: Zusatzbett, Zimmer 7: Allergikerbettwäsche) rechtzeitig vor der Anreise an.</p>
           </div>
           <button type="button" class="gold" onclick="openDlg(null)">+ Sonderwunsch zu Buchung eintragen</button>
         </div>
@@ -1217,13 +1266,13 @@ textarea { min-height: 54px; resize: vertical; }
 
       <div class="lists-grid" style="margin-top:0">
         <div class="card card-pad">
-          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingBreakfastTitle">Frühstücks- & Küchen-Planung (HEUTE & MORGEN FRÜH 07:00 – 10:00 Uhr)</h2>
-          <p class="hint" style="margin-top:0">Zeigt sowohl das heutige Frühstück als auch die Vorschau für morgen früh, damit die Küche rechtzeitig Brötchen, Eier und Kinder-Wünsche einplanen kann.</p>
+          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingBreakfastTitle">Frühstücks- & Küchen-Planung (Gewählter Tag & Folgetag 07:00 – 10:00 Uhr)</h2>
+          <p class="hint" style="margin-top:0">Links/Oben das Frühstück am gewählten Tag, darunter die Vorschau für den nächsten Morgen (damit die Küche weiß, wie viel Frühstück sie für morgen früh einplanen muss).</p>
           <div id="briefingBreakfast"></div>
         </div>
         <div class="card card-pad">
-          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingWelcomeTitle">Gäste-Briefing: Anreisen Heute & Morgen + Vorlieben</h2>
-          <p class="hint" style="margin-top:0">Alle Informationen für Mitarbeiter zu heute und morgen anreisenden Gästen, Kindern und Lieblingsgetränken.</p>
+          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingWelcomeTitle">Gäste-Briefing: Anreisen, Vorlieben & Wer hat gebucht</h2>
+          <p class="hint" style="margin-top:0">Alle Informationen für Mitarbeiter zu Gästen, Kindern, Hunden, Vorlieben und welcher Mitarbeiter die Buchung eingetragen hat.</p>
           <div id="briefingWelcome"></div>
         </div>
       </div>
@@ -1285,45 +1334,79 @@ textarea { min-height: 54px; resize: vertical; }
 
     <!-- 5. ANSICHT: ZIMMER, REINIGUNGSPLÄNE & REINIGUNGSKRAFT HANDY-CHECKLISTE -->
     <section class="view-section" id="view-zimmer" hidden>
-      <div class="card card-pad" style="margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <div class="card card-pad" style="margin-bottom:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
         <div>
-          <h2 class="sec-title" style="margin:0" data-i18n="hkTitle">Reinigungspläne, Zimmer-Checklisten & Housekeeping (Check-out bis 10:00 · Check-in ab 15:00)</h2>
-          <p class="hint" style="margin:4px 0 0">Jedes Zimmer zeigt die zuständige Reinigungskraft, den heutigen Belegungsstatus und die interaktive Checkliste zum Bestätigen.</p>
+          <h2 class="sec-title" style="margin:0"><span data-i18n="hkTitle">Reinigungspläne, Zimmer-Checklisten & Housekeeping</span> · <span id="hkTitleDateLabel" style="color:var(--brand)">Heute</span></h2>
+          <p class="hint" style="margin:3px 0 0">Der Button „Zimmer als gereinigt bestätigen“ wird erst freigeschaltet, wenn alle 6 Checklisten-Punkte abgehakt sind (inkl. Uhrzeit-Stempel).</p>
         </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <button type="button" onclick="shiftSelectedDate(-1)" style="padding:5px 10px;font-size:12px">‹ Tag zurück</button>
+          <button type="button" class="gold" onclick="setSelectedDate(todayStr())" style="padding:5px 10px;font-size:12px">Heute</button>
+          <button type="button" onclick="shiftSelectedDate(1)" style="padding:5px 10px;font-size:12px">Tag später ›</button>
           <button type="button" id="btnToggleCleanerApp" class="emerald-btn">Checklisten-Ansicht ein-/ausblenden</button>
         </div>
       </div>
 
-      <!-- HEUTIGER ZIMMER-REINIGUNGSPLAN (ÜBERSICHTSTABELLE FÜR REINIGUNGSKRAFT & OFFICE) -->
-      <div class="card card-pad" style="margin-bottom:16px">
-        <h2 class="sec-title" style="margin-top:0">Heutiger Zimmer-Reinigungsplan & Zuteilung</h2>
+      <!-- ZIMMER-REINIGUNGSPLAN AM GEWÄHLTEN TAG (ÜBERSICHTSTABELLE FÜR REINIGUNGSKRAFT & OFFICE) -->
+      <div class="card card-pad" style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+          <h2 class="sec-title" style="margin:0" id="hkPlanTableTitle">Zimmer-Reinigungsplan & Zuteilung am gewählten Tag</h2>
+          <div id="hkDutyCleanerNotice" style="font-size:12.5px;font-weight:700;color:var(--emerald)"></div>
+        </div>
         <div id="hkCleaningPlanWrap"></div>
       </div>
 
       <!-- HANDY-CHECKLISTEN-MODUS FÜR DIE REINIGUNGSKRAFT (DIREKT SICHTBAR!) -->
-      <div id="cleanerMobileContainer" class="cleaner-mobile-wrap" style="margin-bottom:18px;max-width:100%"></div>
+      <div id="cleanerMobileContainer" class="cleaner-mobile-wrap" style="margin-bottom:16px;max-width:100%"></div>
 
       <!-- OFFICE- & MANAGER-ÜBERSICHT ALLER 8 ZIMMER -->
       <div class="crm-grid" id="hkGrid"></div>
     </section>
 
-    <!-- 6. ANSICHT: DIENSTPLÄNE & REINIGUNGSPLÄNE (NUR MANAGER / ADMIN) -->
+    <!-- 6. ANSICHT: MITARBEITER-KARTEI, WOCHEN-DIENSTPLAN & REINIGUNGSPLÄNE (NUR MANAGER / ADMIN) -->
     <section class="view-section" id="view-dienstplan" hidden>
+      <!-- MITARBEITER-KARTEI (KÜCHE, SERVICE, REINIGUNG, OFFICE) -->
+      <div class="card card-pad" style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+          <div>
+            <h2 class="sec-title" style="margin:0">1. Mitarbeiter-Kartei (Küche, Service, Reinigung, Office)</h2>
+            <p class="hint" style="margin:3px 0 0">Hier verwaltest du dein gesamtes Team (z. B. Reinigung: Maria & Silvia). Diese Mitarbeiter stehen automatisch im Wochen-Dienstplan, im Housekeeping und beim Feld „Buchung eingetragen von“ zur Auswahl.</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <input id="newStaffName" placeholder="Name (z. B. Maria)" style="width:150px;margin:0;padding:6px 10px">
+            <select id="newStaffDept" style="width:auto;margin:0;padding:6px 10px">
+              <option value="Reinigung">Reinigung / Housekeeping</option>
+              <option value="Küche">Küche / Frühstück</option>
+              <option value="Service">Service / Restaurant</option>
+              <option value="Office">Office / Rezeption</option>
+            </select>
+            <input id="newStaffPhone" placeholder="Telefon / Notiz" style="width:150px;margin:0;padding:6px 10px">
+            <button type="button" class="primary" onclick="addNewStaffMember()">+ Mitarbeiter anlegen</button>
+          </div>
+        </div>
+        <div id="staffDirectoryWrap"></div>
+      </div>
+
+      <!-- WOCHEN-DIENSTPLAN (MO - SO MIT FRÜHSCHICHT / SPÄTSCHICHT / FREI) & ZIMMER-ZUTEILUNG -->
       <div class="lists-grid" style="margin-top:0">
         <div class="card card-pad">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
             <div>
-              <h2 class="sec-title" style="margin:0">Mitarbeiter-Dienstplan (Geschützter Manager-Bereich)</h2>
-              <p class="hint" style="margin:3px 0 0">Schicht-Einteilung für Office/Rezeption, Küche, Service und Housekeeping. Direkt anklicken zum Bearbeiten.</p>
+              <h2 class="sec-title" style="margin:0">2. Wochen-Dienstplan (Montag – Sonntag · Früh- & Spätschicht)</h2>
+              <p class="hint" style="margin:3px 0 0">Lege für jeden Wochentag (Mo–So) fest, wer in Küche, Service, Reinigung und Office eingeteilt ist. Im Kalender & Office-Briefing sieht jeder beim Klick auf einen Tag sofort, wer Dienst hat.</p>
             </div>
           </div>
-          <div id="shiftPlanTableWrap"></div>
+          <div id="shiftPlanTableWrap" style="overflow-x:auto"></div>
         </div>
 
         <div class="card card-pad">
-          <h2 class="sec-title" style="margin-top:0">Zimmer-Reinigungsplan & Zuteilung der Reinigungskräfte</h2>
-          <p class="hint" style="margin-top:0">Lege fest, welche Reinigungskraft für welches Zimmer verantwortlich ist, und prüfe den Bestätigungs-Status.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+            <div>
+              <h2 class="sec-title" style="margin:0">3. Zimmer-Reinigungsplan am <span id="adminCleanDateLabel" style="color:var(--brand)">gewählten Tag</span></h2>
+              <p class="hint" style="margin:3px 0 0">Normalerweise übernimmt 1 Reinigungskraft im Dienst alle anfallenden Zimmer des Tages. Für grössere Hotels kann jedes Zimmer einzeln zugeteilt werden.</p>
+            </div>
+            <button type="button" class="emerald-btn" onclick="assignDutyCleanerToAllActiveRooms()" style="font-size:11.5px;padding:6px 10px">Tages-Reinigungskraft für alle Aufgaben übernehmen</button>
+          </div>
           <div id="cleaningPlanTableWrap"></div>
         </div>
       </div>
@@ -1371,9 +1454,22 @@ textarea { min-height: 54px; resize: vertical; }
         </div>
       </div>
 
-      <label>Gastname (Tippe für Vorschläge aus deiner Gästekartei) *
-        <input name="gast" id="inpGast" list="guestSuggestions" required placeholder="z. B. Familie Berger / Thomas Meier">
+      <label>Gastname (Familien- / Nachname & Vorname) *
+        <input name="gast" id="inpGast" list="guestSuggestions" required placeholder="z. B. Samuel Hägglin">
         <datalist id="guestSuggestions"></datalist>
+      </label>
+      <label>Buchung eingetragen von (Mitarbeiter) *
+        <select name="created_by_staff" id="inpCreatedByStaff" required></select>
+      </label>
+
+      <label>Erwachsene (ab 13 J.)
+        <input name="erwachsene" id="inpErw" type="number" min="1" max="4" value="2">
+      </label>
+      <label>Kinder (2–12 J. · CHF 35/Nacht · zählt als Person)
+        <input name="kinder" id="inpKnd" type="number" min="0" max="3" value="0">
+      </label>
+      <label>Kleinkinder 0–1 J. (gratis · zählt als Accessoire wie Hund)
+        <input name="kleinkinder" id="inpInfant" type="number" min="0" max="2" value="0">
       </label>
       <label>Status
         <select name="status">
@@ -1381,13 +1477,6 @@ textarea { min-height: 54px; resize: vertical; }
           <option value="option">Option / Provisorisch</option>
           <option value="storniert">Storniert (gibt Zimmer frei)</option>
         </select>
-      </label>
-
-      <label>Erwachsene
-        <input name="erwachsene" id="inpErw" type="number" min="1" max="4" value="2">
-      </label>
-      <label>Kinder (2–12 J. CHF 35, 0–1 J. gratis)
-        <input name="kinder" id="inpKnd" type="number" min="0" max="3" value="0">
       </label>
 
       <!-- MEHRFACHAUSWAHL FÜR EXTRAS (PARKPLATZ, BABYBETT, EXTRABETT GLEICHZEITIG WÄHLBAR) -->
@@ -1653,15 +1742,13 @@ const sb=supabase.createClient(SB_URL,SB_KEY);
 const DEFAULT_ROOMS=[
   {id:2,name:'Zimmer 2',typ:'DZ',max_personen:2,sort:2,default_cleaner:'Maria'},
   {id:3,name:'Zimmer 3',typ:'DZ',max_personen:2,sort:3,default_cleaner:'Maria'},
-  {id:4,name:'Zimmer 4',typ:'DZ',max_personen:2,sort:4,default_cleaner:'Eleni'},
-  {id:5,name:'Zimmer 5',typ:'FZ',max_personen:4,sort:5,default_cleaner:'Eleni'},
-  {id:7,name:'Zimmer 7',typ:'DZ',max_personen:2,sort:7,default_cleaner:'Sofia'},
-  {id:8,name:'Zimmer 8',typ:'DZ',max_personen:2,sort:8,default_cleaner:'Sofia'},
-  {id:9,name:'Zimmer 9',typ:'DZ',max_personen:2,sort:9,default_cleaner:'Maria'},
-  {id:10,name:'Zimmer 10',typ:'FZ',max_personen:4,sort:10,default_cleaner:'Eleni'}
+  {id:4,name:'Zimmer 4',typ:'DZ',max_personen:2,sort:4,default_cleaner:'Maria'},
+  {id:5,name:'Zimmer 5',typ:'FZ',max_personen:4,sort:5,default_cleaner:'Maria'},
+  {id:7,name:'Zimmer 7',typ:'DZ',max_personen:2,sort:7,default_cleaner:'Silvia'},
+  {id:8,name:'Zimmer 8',typ:'DZ',max_personen:2,sort:8,default_cleaner:'Silvia'},
+  {id:9,name:'Zimmer 9',typ:'DZ',max_personen:2,sort:9,default_cleaner:'Silvia'},
+  {id:10,name:'Zimmer 10',typ:'FZ',max_personen:4,sort:10,default_cleaner:'Silvia'}
 ];
-
-const CLEANER_STAFF=['Maria','Eleni','Sofia','Anna'];
 
 const SAISON=[['2026-11-01','2027-04-25'],['2027-06-04','2027-10-24']];
 const QUELLE={
@@ -1701,7 +1788,7 @@ const I18N={
     btnSync:'Mit Deskline abgleichen',
     btnLogout:'Rolle / Abmelden',
     searchPh:'Gast, Kind, Hund suchen…',
-    calHint:'Tipp: Balken ziehen zum Verschieben · Ränder ziehen zum Verlängern · Freie Felder ziehen für neue Buchung',
+    calHint:'Klicke oben auf einen Tag (1–31) für Tages-Kennzahlen & Dienstplan · Balken ziehen zum Verschieben',
     allChannels:'Alle Kanäle',
     testOn:'Testmodus: AN',
     testOff:'Testmodus: AUS',
@@ -1724,7 +1811,7 @@ const I18N={
       'Fenster gelüftet, Heizung & Beleuchtung geprüft',
       'Sonderwunsch (Babybett / Hundewassernapf / Extras) bereitgestellt'
     ],
-    btnConfirmClean:'Zimmer als gereinigt bestätigen ✓'
+    btnConfirmClean:'Bestätigen: Zimmer ist gereinigt ✓'
   },
   en:{
     weekdays:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
@@ -1744,7 +1831,7 @@ const I18N={
     btnSync:'Sync with Deskline',
     btnLogout:'Role / Logout',
     searchPh:'Search guest, child, dog…',
-    calHint:'Tip: Drag bar to move · Drag edges to resize · Drag across free days to create booking',
+    calHint:'Click any day number (1–31) to inspect daily metrics & staff on duty · Drag bars to move/resize',
     allChannels:'All Channels',
     testOn:'Test Mode: ON',
     testOff:'Test Mode: OFF',
@@ -1767,7 +1854,7 @@ const I18N={
       'Room aired, heating & lights checked',
       'Special requests (baby cot / dog bowl / extras) prepared'
     ],
-    btnConfirmClean:'Confirm Room Cleaned ✓'
+    btnConfirmClean:'Confirm: Room is Cleaned ✓'
   },
   it:{
     weekdays:['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],
@@ -1787,7 +1874,7 @@ const I18N={
     btnSync:'Sincronizza Deskline',
     btnLogout:'Ruolo / Esci',
     searchPh:'Cerca ospite, bambino, cane…',
-    calHint:'Suggerimento: Trascina barra per spostare · Trascina bordi per estendere',
+    calHint:'Clicca su un giorno (1–31) per vedere dati giornalieri e turni · Trascina barre per spostare',
     allChannels:'Tutti i canali',
     testOn:'Modalità Test: ON',
     testOff:'Modalità Test: OFF',
@@ -1830,7 +1917,7 @@ const I18N={
     btnSync:'Συγχρονισμός Deskline',
     btnLogout:'Ρόλος / Έξοδος',
     searchPh:'Αναζήτηση πελάτη, παιδιού…',
-    calHint:'Συμβουλή: Σύρετε τις μπάρες για μετακίνηση ή αλλαγή διάρκειας',
+    calHint:'Κάντε κλικ σε μια ημέρα (1–31) για στοιχεία ημέρας & βάρδιες',
     allChannels:'Όλα τα κανάλια',
     testOn:'Δοκιμή: ΕΝΕΡΓΗ',
     testOff:'Δοκιμή: ΑΝΕΝΕΡΓΗ',
@@ -1883,23 +1970,46 @@ const fmt=s=>{
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const offen=d=>SAISON.some(([a,b])=>d>=a&&d<b);
 
-let rooms=[...DEFAULT_ROOMS],dbBookings=[],demoBookings=[],guests=[],hkState={},shiftPlan=[];
+let rooms=[...DEFAULT_ROOMS],dbBookings=[],demoBookings=[],guests=[],hkState={},shiftPlan=[],staffDirectory=[],bookingMetaMap={};
+let selectedDate=todayStr();
 let currentRole=localStorage.getItem('af_pms_role_v3')||'manager'; // 'office' | 'manager' | 'cleaner'
 let activeCleanerFilter='Alle';
 let showCleanerMobileInHK=true;
-let start=add(todayStr(),-2),DAYS=35,editing=null,editingGuest=null,currentIdPhotoData='';
+let start=add(todayStr(),-2),DAYS=35,editing=null,editingGuest=null,currentIdPhotoData='',lastMatchedReturningGuest=null;
 let activeView='kalender',channelFilter='all',searchQuery='';
-let showDemoBars=localStorage.getItem('af_show_demo_bars')!=='0';
+let showDemoBars=localStorage.getItem('af_show_demo_bars')==='1';
+
+window.setSelectedDate=d=>{
+  if(!d)return;
+  selectedDate=d;
+  renderAll();
+};
+window.shiftSelectedDate=delta=>{
+  selectedDate=add(selectedDate||todayStr(),delta);
+  renderAll();
+};
+
+function getCleanerStaffNames(){
+  const list=staffDirectory.filter(s=>s.dept==='Reinigung').map(s=>s.name).filter(Boolean);
+  return list.length?list:['Maria','Silvia'];
+}
+function getAllStaffNames(){
+  const list=staffDirectory.map(s=>`${s.name} (${s.dept})`).filter(Boolean);
+  return list.length?['Arthur (Geschäftsführung)',...list]:['Arthur (Geschäftsführung)','Maria (Reinigung)','Silvia (Reinigung)'];
+}
 
 function normalizeRoomsList(list){
-  return (list||DEFAULT_ROOMS).map(r=>{
+  const cleaners=getCleanerStaffNames();
+  return (list||DEFAULT_ROOMS).map((r,idx)=>{
     const def=DEFAULT_ROOMS.find(x=>Number(x.id)===Number(r.id))||{};
+    let dc=r.default_cleaner||def.default_cleaner||cleaners[idx%cleaners.length]||'Maria';
+    if(!cleaners.includes(dc))dc=cleaners[idx%cleaners.length]||'Maria';
     return {
       ...def,
       ...r,
       name:`Zimmer ${r.id}`,
       typ:r.typ||def.typ||((r.id==5||r.id==10)?'FZ':'DZ'),
-      default_cleaner:r.default_cleaner||def.default_cleaner||'Maria'
+      default_cleaner:dc
     };
   });
 }
@@ -1972,7 +2082,6 @@ window.selectLoginRoleTab=role=>{
   const roleTitle=getRoleDisplayName(role);
 
   if(!savedPw){
-    // BEIM ERSTEN MAL: KEIN LOGIN, SONDERN PASSWORT GENERIEREN / FESTLEGEN
     $('#firstTimeSetupBox').hidden=false;
     $('#regularLoginBox').hidden=true;
     $('#setupRoleTitle').textContent=`Ersteinrichtung: Passwort für ${roleTitle}`;
@@ -1982,7 +2091,6 @@ window.selectLoginRoleTab=role=>{
     $('#setupPass1').value='';
     $('#setupPass2').value='';
   }else{
-    // AB DANN IMMER REGULÄRER LOGIN
     $('#firstTimeSetupBox').hidden=true;
     $('#regularLoginBox').hidden=false;
     $('#loginRoleTitle').textContent=`Login: ${roleTitle}`;
@@ -2073,7 +2181,6 @@ window.saveChangedRolePassword=()=>{
 
 window.openRoleModal=()=>{
   if(currentRole==='manager')return;
-  // Wenn Manager noch kein Passwort hat oder sich einloggen will -> direkt zum Login-Screen auf den Manager-Tab wechseln
   $('#loginWrap').hidden=false;
   $('#app').hidden=true;
   selectLoginRoleTab('manager');
@@ -2090,7 +2197,7 @@ function applyRoleAccess(role){
     showCleanerMobileInHK=true;
     switchView('zimmer');
   }else if(role==='office'){
-    if(activeView==='statistik'||activeView==='dienstplan'||activeView==='zimmer'){
+    if(activeView==='statistik'||activeView==='dienstplan'){
       switchView('kalender');
     }
   }else if(role==='manager'){
@@ -2101,7 +2208,6 @@ function applyRoleAccess(role){
 }
 
 window.switchUserRole=role=>{
-  // Wechsel auf Manager erfordert immer das Manager-Login!
   if(role==='manager'&&currentRole!=='manager'){
     openRoleModal();
     return;
@@ -2111,7 +2217,6 @@ window.switchUserRole=role=>{
 
 function updateRoleUI(){
   const isMgr=currentRole==='manager';
-  const isCleaner=currentRole==='cleaner';
   $('#navBtnStatistik').hidden=!isMgr;
   $('#navBtnDienstplan').hidden=!isMgr;
   $('#btnRoleOffice')?.classList.toggle('active',currentRole==='office');
@@ -2130,10 +2235,44 @@ function switchView(viewName){
 }
 
 // ---- SANDBOX TESTMODUS-BALKEN ----
-const DEMO_STORAGE_KEY='alp_fatschel_demo_bars_v3_2';
+const DEMO_STORAGE_KEY='alp_fatschel_demo_bars_v4';
+const BOOKING_META_KEY='alp_fatschel_booking_meta_v4';
+
+function loadBookingMeta(){
+  try{
+    bookingMetaMap=JSON.parse(localStorage.getItem(BOOKING_META_KEY)||'{}')||{};
+  }catch(e){bookingMetaMap={};}
+}
+function saveBookingMeta(){
+  try{localStorage.setItem(BOOKING_META_KEY,JSON.stringify(bookingMetaMap));}catch(e){}
+}
+function bookingMetaKey(b){
+  if(!b)return '';
+  if(b.id)return 'id:'+b.id;
+  return `k:${b.room_id}_${b.anreise}_${normName(b.gast)}`;
+}
+function enrichBookingWithMeta(b){
+  if(!b)return b;
+  const m=bookingMetaMap[bookingMetaKey(b)]||bookingMetaMap[`k:${b.room_id}_${b.anreise}_${normName(b.gast)}`]||{};
+  return {
+    ...b,
+    kleinkinder:b.kleinkinder!==undefined?+b.kleinkinder:(m.kleinkinder!==undefined?+m.kleinkinder:0),
+    created_by_staff:b.created_by_staff||m.created_by_staff||'Arthur (Geschäftsführung)',
+    special_wish:b.special_wish!==undefined?b.special_wish:(m.special_wish||''),
+    wish_lead_days:b.wish_lead_days!==undefined?+b.wish_lead_days:(m.wish_lead_days!==undefined?+m.wish_lead_days:3),
+    extras_list:Array.isArray(b.extras_list)?b.extras_list:(Array.isArray(m.extras_list)?m.extras_list:[])
+  };
+}
+function storeBookingMeta(b,metaObj){
+  if(!b)return;
+  if(b.id)bookingMetaMap['id:'+b.id]={...(bookingMetaMap['id:'+b.id]||{}),...metaObj};
+  bookingMetaMap[`k:${b.room_id}_${b.anreise}_${normName(b.gast)}`]={...(bookingMetaMap[`k:${b.room_id}_${b.anreise}_${normName(b.gast)}`]||{}),...metaObj};
+  saveBookingMeta();
+}
+
 function initDemoBookings(){
   try{
-    const raw=localStorage.getItem(DEMO_STORAGE_KEY)||localStorage.getItem('alp_fatschel_demo_bars_v3');
+    const raw=localStorage.getItem(DEMO_STORAGE_KEY);
     if(raw){
       demoBookings=JSON.parse(raw);
       if(Array.isArray(demoBookings)&&demoBookings.length)return;
@@ -2141,11 +2280,11 @@ function initDemoBookings(){
   }catch(e){}
   const t=todayStr();
   demoBookings=[
-    {id:'demo-1',room_id:5,gast:'Familie Berger',anreise:t,abreise:add(t,5),erwachsene:2,kinder:1,quelle:'booking',status:'bestaetigt',preis:975,telefon:'+49 7531 44 55 66',email:'familie.berger@konstanz.de',special_wish:'Frische Erdbeeren & Kinder-Überraschung für Janik',wish_lead_days:3,extras_list:['park'],notiz:'Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes',sync_state:'erledigt',_isDemo:true},
-    {id:'demo-2',room_id:2,gast:'Dr. Markus & Elena Vogt',anreise:add(t,2),abreise:add(t,6),erwachsene:2,kinder:0,quelle:'deskline',status:'bestaetigt',preis:680,telefon:'+41 78 654 11 22',email:'vogt@zuerich-med.ch',special_wish:'1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer',wish_lead_days:5,extras_list:['park'],notiz:'Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück',sync_state:'erledigt',_isDemo:true},
-    {id:'demo-3',room_id:3,gast:'Sophie Laurent',anreise:add(t,3),abreise:add(t,7),erwachsene:1,kinder:0,quelle:'homepage',status:'bestaetigt',preis:440,telefon:'+41 76 800 90 10',email:'sophie@laurent.ch',special_wish:'Hafermilch für den Morgen-Cappuccino besorgen',wish_lead_days:4,extras_list:[],notiz:'Einzelnutzung CHF 110/Nacht',sync_state:'erledigt',_isDemo:true},
-    {id:'demo-4',room_id:7,gast:'Thomas & Karin Keller',anreise:add(t,2),abreise:add(t,8),erwachsene:2,kinder:0,quelle:'hrs',status:'option',preis:960,telefon:'+49 171 445566',email:'keller@muenchen.de',special_wish:'',wish_lead_days:3,extras_list:[],notiz:'Option bis Freitag',sync_state:'offen',_isDemo:true},
-    {id:'demo-5',room_id:10,gast:'Familie Rossi',anreise:add(t,6),abreise:add(t,12),erwachsene:2,kinder:2,quelle:'manuell',status:'bestaetigt',preis:1380,telefon:'+41 91 555 22 11',email:'rossi@lugano.ch',special_wish:'Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen',wish_lead_days:7,extras_list:['park','baby'],notiz:'2 Kinder (9 & 11 J.)',sync_state:'erledigt',_isDemo:true}
+    {id:'demo-1',room_id:5,gast:'Familie Berger',anreise:t,abreise:add(t,5),erwachsene:2,kinder:1,kleinkinder:0,created_by_staff:'Sandra (Office)',quelle:'booking',status:'bestaetigt',preis:975,telefon:'+49 7531 44 55 66',email:'familie.berger@konstanz.de',special_wish:'Frische Erdbeeren & Kinder-Überraschung für Janik',wish_lead_days:3,extras_list:['park'],notiz:'Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes',sync_state:'erledigt',_isDemo:true},
+    {id:'demo-2',room_id:2,gast:'Dr. Markus & Elena Vogt',anreise:add(t,2),abreise:add(t,6),erwachsene:2,kinder:0,kleinkinder:0,created_by_staff:'Arthur (Geschäftsführung)',quelle:'deskline',status:'bestaetigt',preis:680,telefon:'+41 78 654 11 22',email:'vogt@zuerich-med.ch',special_wish:'1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer',wish_lead_days:5,extras_list:['park'],notiz:'Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück',sync_state:'erledigt',_isDemo:true},
+    {id:'demo-3',room_id:3,gast:'Sophie Laurent',anreise:add(t,3),abreise:add(t,7),erwachsene:1,kinder:0,kleinkinder:0,created_by_staff:'Sandra (Office)',quelle:'homepage',status:'bestaetigt',preis:440,telefon:'+41 76 800 90 10',email:'sophie@laurent.ch',special_wish:'Hafermilch für den Morgen-Cappuccino besorgen',wish_lead_days:4,extras_list:[],notiz:'Einzelnutzung CHF 110/Nacht',sync_state:'erledigt',_isDemo:true},
+    {id:'demo-4',room_id:7,gast:'Thomas & Karin Keller',anreise:add(t,2),abreise:add(t,8),erwachsene:2,kinder:0,kleinkinder:0,created_by_staff:'Lukas (Office)',quelle:'hrs',status:'option',preis:960,telefon:'+49 171 445566',email:'keller@muenchen.de',special_wish:'Allergikerbettwäsche bereitstellen',wish_lead_days:3,extras_list:[],notiz:'Option bis Freitag · Allergikerbettwäsche',sync_state:'offen',_isDemo:true},
+    {id:'demo-5',room_id:10,gast:'Familie Rossi',anreise:add(t,6),abreise:add(t,12),erwachsene:2,kinder:2,kleinkinder:0,created_by_staff:'Arthur (Geschäftsführung)',quelle:'manuell',status:'bestaetigt',preis:1380,telefon:'+41 91 555 22 11',email:'rossi@lugano.ch',special_wish:'Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen',wish_lead_days:7,extras_list:['park','baby'],notiz:'2 Kinder (9 & 11 J.)',sync_state:'erledigt',_isDemo:true}
   ];
   saveDemoBookings();
 }
@@ -2153,7 +2292,8 @@ function saveDemoBookings(){
   try{localStorage.setItem(DEMO_STORAGE_KEY,JSON.stringify(demoBookings));}catch(e){}
 }
 function allActiveBookings(){
-  return showDemoBars?[...dbBookings,...demoBookings]:[...dbBookings];
+  const rawList=showDemoBars?[...dbBookings.map(enrichBookingWithMeta),...demoBookings]:[...dbBookings.map(enrichBookingWithMeta)];
+  return rawList;
 }
 function updateDemoButtonLabel(){
   const btn=$('#btnToggleDemo');
@@ -2168,12 +2308,25 @@ $('#btnToggleDemo').onclick=()=>{
   renderAll();
 };
 
-// ---- GÄSTEKARTEI (CRM), HOUSEKEEPING & DIENSTPLAN ----
+// ---- GÄSTEKARTEI (CRM), MITARBEITER-KARTEI, WOCHEN-DIENSTPLAN & HOUSEKEEPING ----
 const CRM_STORAGE_KEY='alp_fatschel_crm_guests_v3';
-const HK_STORAGE_KEY='alp_fatschel_hk_state_v4';
-const SHIFT_STORAGE_KEY='alp_fatschel_shift_plan_v1';
+const HK_STORAGE_KEY='alp_fatschel_hk_state_v5';
+const STAFF_DIR_KEY='alp_fatschel_staff_dir_v4';
+const SHIFT_STORAGE_KEY='alp_fatschel_weekly_shifts_v4';
+
+function isDemoGuest(g){
+  if(!g)return false;
+  if(g._isDemo||String(g.id||'').startsWith('demo-'))return true;
+  const n=normName(g.name);
+  if((n==='familie berger'&&normName(g.city)==='konstanz')||(n==='dr. markus & elena vogt')||(n==='familie rossi'&&normName(g.city)==='lugano'))return true;
+  return false;
+}
+function visibleGuests(){
+  return showDemoBars?guests:guests.filter(g=>!isDemoGuest(g));
+}
 
 function loadLocalCRM(){
+  loadBookingMeta();
   try{
     const raw=localStorage.getItem(CRM_STORAGE_KEY)||localStorage.getItem('alp_fatschel_crm_guests_v2')||localStorage.getItem('alp_fatschel_crm_guests_v1');
     guests=raw?JSON.parse(raw):[];
@@ -2196,7 +2349,8 @@ function loadLocalCRM(){
         food_notes:'Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.',
         general_notes:'Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick.',
         id_number:'DE-ID L8849201 · Deutschland',
-        id_photo:''
+        id_photo:'',
+        _isDemo:true
       },
       {
         id:'demo-vogt-zuerich',
@@ -2213,7 +2367,8 @@ function loadLocalCRM(){
         food_notes:'Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.',
         general_notes:'Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.',
         id_number:'CH-Pass P992104 · Schweiz',
-        id_photo:''
+        id_photo:'',
+        _isDemo:true
       },
       {
         id:'demo-rossi-lugano',
@@ -2230,13 +2385,14 @@ function loadLocalCRM(){
         food_notes:'Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.',
         general_notes:'Bevorzugen Zimmer 10 (FZ) im oberen Stockwerk.',
         id_number:'CH-ID S441092 · Schweiz',
-        id_photo:''
+        id_photo:'',
+        _isDemo:true
       }
     ];
     saveLocalCRM();
   }
-  // Stelle sicher, dass bestehende Gäste einen Ort (city) für die Kompakt-Karte haben
   for(const g of guests){
+    if(isDemoGuest(g))g._isDemo=true;
     if(!g.city){
       if(g.name&&g.name.includes('Berger'))g.city='Konstanz';
       else if(g.address){
@@ -2248,20 +2404,96 @@ function loadLocalCRM(){
     }
   }
 
+  // MITARBEITER-KARTEI LADEN (Reinigung: NUR Maria & Silvia! Keine Eleni/Sofia/Anna!)
   try{
-    hkState=JSON.parse(localStorage.getItem(HK_STORAGE_KEY)||localStorage.getItem('alp_fatschel_hk_state_v1')||'{}')||{};
-  }catch(e){hkState={};}
+    staffDirectory=JSON.parse(localStorage.getItem(STAFF_DIR_KEY)||'[]')||[];
+  }catch(e){staffDirectory=[];}
+  // Entferne evtl. alte Demo-Namen Eleni, Sofia, Anna aus der Mitarbeiter-Kartei
+  staffDirectory=staffDirectory.filter(s=>!['Eleni','Sofia','Anna'].includes(s.name));
+  if(!staffDirectory.length){
+    staffDirectory=[
+      {id:'st-1',name:'Maria',dept:'Reinigung',phone:'Haupt-Reinigungskraft (Zimmer 2–10)'},
+      {id:'st-2',name:'Silvia',dept:'Reinigung',phone:'Reinigungskraft & Vertretung'},
+      {id:'st-3',name:'Arthur',dept:'Office',phone:'Geschäftsführung & Gastgeber'},
+      {id:'st-4',name:'Sandra',dept:'Office',phone:'Rezeption & Buchungen'},
+      {id:'st-5',name:'Reto',dept:'Küche',phone:'Frühstücks- & Abendküche'},
+      {id:'st-6',name:'Giulia',dept:'Service',phone:'Frühstücks- & Restaurant-Service'}
+    ];
+    saveStaffDirectory();
+  }
 
+  // HOUSEKEEPING STATE LADEN & ALTE NAMEN (ELENI/SOFIA/ANNA) BEREINIGEN
+  try{
+    hkState=JSON.parse(localStorage.getItem(HK_STORAGE_KEY)||'{}')||{};
+  }catch(e){hkState={};}
+  for(const k of Object.keys(hkState)){
+    if(['Eleni','Sofia','Anna'].includes(hkState[k]?.cleaner)){
+      hkState[k].cleaner='Name zuordnen';
+    }
+  }
+
+  // WOCHEN-DIENSTPLAN (MO - SO) LADEN
   try{
     shiftPlan=JSON.parse(localStorage.getItem(SHIFT_STORAGE_KEY)||'[]')||[];
   }catch(e){shiftPlan=[];}
-  if(!shiftPlan.length){
+  if(!shiftPlan.length||!shiftPlan[0]?.days){
     shiftPlan=[
-      {id:'sh-1',area:'Rezeption & Office',staff:'Sandra / Lukas',mon_fri:'07:30 – 17:00',weekend:'08:00 – 18:00',notes:'Check-in, Telefon & Deskline-Abgleich'},
-      {id:'sh-2',area:'Frühstück & Küche',staff:'Chefkoch Reto & Giulia',mon_fri:'06:15 – 14:30',weekend:'06:15 – 15:00',notes:'Frühstücksbuffet 07–10 Uhr & Abendservice'},
-      {id:'sh-3',area:'Housekeeping (Zimmer 2, 3, 9)',staff:'Maria',mon_fri:'09:00 – 14:30',weekend:'09:30 – 15:00',notes:'Hauptverantwortlich für DZ 2, 3, 9'},
-      {id:'sh-4',area:'Housekeeping (Zimmer 4, 5, 10)',staff:'Eleni',mon_fri:'09:00 – 14:30',weekend:'09:30 – 15:00',notes:'Hauptverantwortlich für DZ 4 & FZ 5, 10'},
-      {id:'sh-5',area:'Housekeeping (Zimmer 7, 8)',staff:'Sofia',mon_fri:'09:30 – 14:00',weekend:'10:00 – 14:30',notes:'Hauptverantwortlich für DZ 7, 8 & Wäsche'}
+      {
+        id:'wsh-clean',
+        dept:'Reinigung',
+        label:'Housekeeping & Zimmerreinigung (09:00 – 14:30)',
+        days:{
+          1:{staff:'Maria',shift:'Frühschicht (09:00–14:30)'},
+          2:{staff:'Maria',shift:'Frühschicht (09:00–14:30)'},
+          3:{staff:'Maria',shift:'Frühschicht (09:00–14:30)'},
+          4:{staff:'Silvia',shift:'Frühschicht (09:00–14:30)'},
+          5:{staff:'Silvia',shift:'Frühschicht (09:00–14:30)'},
+          6:{staff:'Maria',shift:'Wochenend-Dienst (09:30–15:00)'},
+          0:{staff:'Silvia',shift:'Wochenend-Dienst (09:30–15:00)'}
+        }
+      },
+      {
+        id:'wsh-kitchen',
+        dept:'Küche',
+        label:'Frühstück (06:15–10:30) & Abendküche',
+        days:{
+          1:{staff:'Reto',shift:'Früh- & Abenddienst'},
+          2:{staff:'Reto',shift:'Früh- & Abenddienst'},
+          3:{staff:'Reto',shift:'Frühschicht (Abend Ruhetag)'},
+          4:{staff:'Reto',shift:'Früh- & Abenddienst'},
+          5:{staff:'Reto',shift:'Früh- & Spätschicht'},
+          6:{staff:'Reto',shift:'Ganztags (Sa)'},
+          0:{staff:'Reto',shift:'Ganztags (So)'}
+        }
+      },
+      {
+        id:'wsh-service',
+        dept:'Service',
+        label:'Frühstücks- & Restaurant-Service',
+        days:{
+          1:{staff:'Giulia',shift:'Früh- & Spätschicht'},
+          2:{staff:'Giulia',shift:'Früh- & Spätschicht'},
+          3:{staff:'Giulia',shift:'Frühschicht'},
+          4:{staff:'Giulia',shift:'Früh- & Spätschicht'},
+          5:{staff:'Giulia',shift:'Früh- & Spätschicht'},
+          6:{staff:'Giulia',shift:'Wochenend-Dienst'},
+          0:{staff:'Giulia',shift:'Wochenend-Dienst'}
+        }
+      },
+      {
+        id:'wsh-office',
+        dept:'Office',
+        label:'Rezeption, Telefon & Check-in',
+        days:{
+          1:{staff:'Arthur / Sandra',shift:'08:00–18:00'},
+          2:{staff:'Arthur / Sandra',shift:'08:00–18:00'},
+          3:{staff:'Arthur',shift:'08:00–18:00'},
+          4:{staff:'Arthur / Sandra',shift:'08:00–18:00'},
+          5:{staff:'Arthur / Sandra',shift:'08:00–20:00'},
+          6:{staff:'Arthur',shift:'08:00–20:00'},
+          0:{staff:'Arthur',shift:'08:00–18:00'}
+        }
+      }
     ];
     saveLocalShiftPlan();
   }
@@ -2273,43 +2505,125 @@ function saveLocalCRM(){
 function saveLocalHK(){
   try{localStorage.setItem(HK_STORAGE_KEY,JSON.stringify(hkState));}catch(e){}
 }
+function saveStaffDirectory(){
+  try{localStorage.setItem(STAFF_DIR_KEY,JSON.stringify(staffDirectory));}catch(e){}
+}
 function saveLocalShiftPlan(){
   try{localStorage.setItem(SHIFT_STORAGE_KEY,JSON.stringify(shiftPlan));}catch(e){}
 }
+
+// Liefert für ein beliebiges Datum (YYYY-MM-DD), wer laut Wochen-Dienstplan in Reinigung, Küche, Service und Office Dienst hat
+function getDutyStaffForDate(dateStr){
+  const d=D(dateStr||selectedDate||todayStr());
+  const wd=d.getUTCDay(); // 0=So, 1=Mo, ... 6=Sa
+  const res={cleaner:'',cleanerShift:'',kitchen:'',kitchenShift:'',service:'',serviceShift:'',office:'',officeShift:''};
+  for(const row of shiftPlan){
+    const cell=(row.days&&row.days[wd])||{staff:'—',shift:''};
+    if(row.dept==='Reinigung'){res.cleaner=cell.staff||'';res.cleanerShift=cell.shift||'';}
+    if(row.dept==='Küche'){res.kitchen=cell.staff||'';res.kitchenShift=cell.shift||'';}
+    if(row.dept==='Service'){res.service=cell.staff||'';res.serviceShift=cell.shift||'';}
+    if(row.dept==='Office'){res.office=cell.staff||'';res.officeShift=cell.shift||'';}
+  }
+  return res;
+}
+
 function normName(s){return String(s||'').trim().toLowerCase();}
+function normDigits(s){return String(s||'').replace(/\D+/g,'');}
+
 function findGuestByName(name){
   const n=normName(name);
   if(!n)return null;
-  return guests.find(g=>normName(g.name)===n)||guests.find(g=>normName(g.name).includes(n)||n.includes(normName(g.name)))||null;
+  const pool=visibleGuests();
+  return pool.find(g=>normName(g.name)===n)||pool.find(g=>normName(g.name).includes(n)||n.includes(normName(g.name)))||null;
+}
+
+// INTELLIGENTE STAMMGAST- & DOPPEL-ERKENNUNG (Vorname+Nachname, Telefon, E-Mail oder Hundename)
+function findMatchingExistingGuest({gast='',telefon='',email='',notiz='',special_wish=''}){
+  const pool=visibleGuests();
+  const nGast=normName(gast);
+  const nMail=normName(email);
+  const dTel=normDigits(telefon);
+  const fullNotes=normName(notiz+' '+special_wish+' '+gast);
+
+  const gastTokens=nGast.replace(/^(familie|herr|frau|dr\.?)\s+/i,'').split(/\s+/).filter(t=>t.length>=2);
+
+  for(const g of pool){
+    const reasons=[];
+    const gName=normName(g.name);
+    const gMail=normName(g.email);
+    const gTel=normDigits(g.phone);
+
+    // 1. E-Mail-Treffer
+    if(nMail&&nMail.length>=5&&gMail&&nMail===gMail){
+      reasons.push(`E-Mail (${g.email})`);
+    }
+    // 2. Telefon-Treffer (letzte 7 Ziffern identisch)
+    if(dTel&&dTel.length>=7&&gTel&&gTel.length>=7&&dTel.slice(-7)===gTel.slice(-7)){
+      reasons.push(`Telefonnummer (${g.phone})`);
+    }
+    // 3. Name-Treffer (Exakter Name oder Vor- & Nachname bzw. bekannte Familie)
+    if(nGast&&nGast.length>=3&&gName){
+      if(nGast===gName){
+        reasons.push(`Name (${g.name})`);
+      }else if(gastTokens.length>=2){
+        const matchedTokens=gastTokens.filter(tok=>gName.includes(tok)||normName(g.kids_notes).includes(tok));
+        if(matchedTokens.length>=2){
+          reasons.push(`Vor- & Nachname (${g.name})`);
+        }
+      }
+    }
+    // 4. Hundename-Treffer
+    if(g.dog_notes){
+      const dogWords=normName(g.dog_notes).replace(/[„“"']/g,' ').split(/\s+/).filter(w=>w.length>=3&&!['hund','golden','retriever','sehr','brav','grossen','wassernapf','zimmer','mit'].includes(w));
+      const hitDog=dogWords.find(dw=>fullNotes.includes(dw));
+      if(hitDog){
+        reasons.push(`Hundename („${hitDog}“)`);
+      }
+    }
+    if(reasons.length>0){
+      return {guest:g,reasons};
+    }
+  }
+  return null;
 }
 
 function syncGuestsFromBookings(){
   let changed=false;
   for(const b of dbBookings){
     if(!b.gast||b.gast==='Buchung über Arosa / Feratel')continue;
-    let ex=findGuestByName(b.gast);
+    const n=normName(b.gast);
+    let ex=guests.find(g=>normName(g.name)===n);
     if(!ex){
       guests.push({
         id:'g-'+Date.now()+'-'+Math.random().toString(36).slice(2,6),
         name:b.gast,
-        city:'Gast',
+        city:'Alp-Gast',
         tier:'normal',
         rating:'5',
         birthday:'',
         phone:b.telefon||'',
         email:b.email||'',
         address:'',
-        kids_notes:'',
+        kids_notes:(+b.kinder>0)?`${b.kinder} Kind(er) (2–12 J.)`:'',
         dog_notes:'',
-        food_notes:'',
-        general_notes:'',
+        food_notes:b.special_wish||'',
+        general_notes:b.notiz||'',
         id_number:'',
-        id_photo:''
+        id_photo:'',
+        _isDemo:false
       });
       changed=true;
     }
   }
   if(changed)saveLocalCRM();
+}
+
+function populateStaffSelectInBookingDialog(selectedVal){
+  const sel=$('#inpCreatedByStaff');
+  if(!sel)return;
+  const names=getAllStaffNames();
+  const cur=selectedVal||sel.value||names[0];
+  sel.innerHTML=names.map(n=>`<option value="${esc(n)}" ${n===cur?'selected':''}>${esc(n)}</option>`).join('');
 }
 
 // ---- BOOT & SUPABASE ----
@@ -2318,6 +2632,7 @@ async function boot(){
   initDemoBookings();
   updateDemoButtonLabel();
   updateRoleUI();
+  populateStaffSelectInBookingDialog();
 
   try{
     const {data:{session}}=await sb.auth.getSession();
@@ -2328,7 +2643,6 @@ async function boot(){
   }catch(e){}
   rooms=normalizeRoomsList(rooms);
 
-  // Beim Starten der App IMMER den Login- bzw. Ersteinrichtungs-Bildschirm zeigen!
   if(!isSessionAuthenticated){
     $('#loginWrap').hidden=false;
     $('#app').hidden=true;
@@ -2338,8 +2652,8 @@ async function boot(){
     $('#app').hidden=false;
   }
   $('#legend').innerHTML=Object.entries(QUELLE).map(([k,v])=>`<span><i style="background:var(--${k}-solid)"></i>${v}</span>`).join('')
-    +'<span><i style="background:var(--danger);border-radius:50%"></i>Heute belegt (Rot)</span>'
-    +'<span><i style="background:var(--emerald);border-radius:50%"></i>Heute frei (Grün)</span>'
+    +'<span><i style="background:var(--danger);border-radius:50%"></i>Am gewählten Tag belegt (Rot)</span>'
+    +'<span><i style="background:var(--emerald);border-radius:50%"></i>Am gewählten Tag frei (Grün)</span>'
     +'<span><i style="background:var(--gold);border-radius:50%"></i>Super-VIP</span>';
 
   if(currentRole==='cleaner'){
@@ -2373,6 +2687,7 @@ async function load(){
 }
 
 function renderAll(){
+  populateStaffSelectInBookingDialog();
   updateGuestDatalist();
   renderTopKPIs();
   renderCalendar();
@@ -2384,70 +2699,147 @@ function renderAll(){
 }
 
 function updateGuestDatalist(){
-  $('#guestSuggestions').innerHTML=guests.map(g=>{
+  const vis=visibleGuests();
+  $('#guestSuggestions').innerHTML=vis.map(g=>{
     const tag=g.tier==='vip'?'★ SUPER-VIP':g.tier==='stammgast'?'♥ Stammgast':g.tier==='blacklist'?'⛔ SCHWARZE LISTE':'';
     const kid=g.kids_notes?` · ${g.kids_notes.slice(0,45)}`:'';
     return `<option value="${esc(g.name)}">${esc(tag+kid)}</option>`;
   }).join('');
-  $('#navCountGuests').textContent=guests.length;
+  $('#navCountGuests').textContent=vis.length;
 }
 
-// ---- TOP KPIS (IM OFFICE-MODUS OHNE INNERBETRIEBLICHEN UMSATZ!) ----
+// Sammelt alle wichtigen Zimmer-Aufgaben & Meldungen für den gewählten Tag d (aus Buchungen, Extras & Vorlauf-Wünschen)
+function getRoomTasksForDate(d){
+  const act=allActiveBookings().filter(b=>b.status!=='storniert');
+  const tasks=[];
+  for(const b of act){
+    const isStaying=(b.anreise<=d&&b.abreise>d);
+    const isArriving=(b.anreise===d);
+    const lead=Number(b.wish_lead_days??3);
+    const daysUntil=diff(d,b.anreise);
+    const isLeadWish=(b.special_wish&&daysUntil>=0&&daysUntil<=lead);
+
+    if(!isStaying&&!isArriving&&!isLeadWish)continue;
+
+    const items=[];
+    if(b.special_wish){
+      items.push(daysUntil>0?`${b.special_wish} (Anreise in ${daysUntil}T)`:b.special_wish);
+    }
+    const ex=Array.isArray(b.extras_list)?b.extras_list:[];
+    if(ex.includes('baby')||(+b.kleinkinder>0))items.push('Babybett');
+    if(ex.includes('zustell'))items.push('Extrabett / Zustellbett');
+    if(ex.includes('park'))items.push('Überdachter Parkplatz');
+    if(b.notiz)items.push(b.notiz);
+
+    const g=findGuestByName(b.gast);
+    if(g?.food_notes&&isStaying)items.push(g.food_notes);
+    if(g?.dog_notes&&isStaying)items.push(`Hund: ${g.dog_notes}`);
+
+    if(items.length){
+      tasks.push({
+        room_id:b.room_id,
+        gast:b.gast,
+        booking_id:b.id,
+        created_by:b.created_by_staff||'Arthur',
+        text:items.join(' · ')
+      });
+    }
+  }
+  return tasks.sort((a,b)=>Number(a.room_id)-Number(b.room_id));
+}
+
+// ---- TOP 4 KPIS (REAGIEREN LIVE AUF JEDEN ANGEKLICKTEN TAG selectedDate!) ----
 function renderTopKPIs(){
-  const t=todayStr();
+  const d=selectedDate||todayStr();
+  const isToday=(d===todayStr());
+  const dayLabel=isToday?`HEUTE (${fmt(d)})`:fmt(d);
   const act=allActiveBookings().filter(b=>b.status!=='storniert');
   $('#navCountBookings').textContent=act.length;
 
-  const inHouse=act.filter(b=>b.anreise<=t&&b.abreise>t);
-  const arrivalsToday=act.filter(b=>b.anreise===t);
-  const departuresToday=act.filter(b=>b.abreise===t);
+  const inHouse=act.filter(b=>b.anreise<=d&&b.abreise>d);
+  const arrivalsOnDay=act.filter(b=>b.anreise===d);
+  const departuresOnDay=act.filter(b=>b.abreise===d);
   $('#navCountToday').textContent=`${inHouse.length}/${rooms.length||8}`;
 
-  const cleanRoomsCount=rooms.filter(r=>getRoomHKStatus(r.id)==='clean').length;
-  $('#navCountClean').textContent=`${cleanRoomsCount}/${rooms.length} ✓`;
+  // Personen-Berechnung: Kleinkinder (0-1 J.) zählen NICHT als Person (sondern als Accessoire wie Hund!)
+  const erwCount=inHouse.reduce((s,b)=>s+(+b.erwachsene||0),0);
+  const kidsCount=inHouse.reduce((s,b)=>s+(+b.kinder||0),0);
+  const totalPersons=erwCount+kidsCount;
+  const infantsCount=inHouse.reduce((s,b)=>s+(+b.kleinkinder||0),0);
+  const dogsCount=inHouse.filter(b=>{
+    const g=findGuestByName(b.gast);
+    return (g&&g.dog_notes)||/hund/i.test(b.notiz||'');
+  }).length;
 
-  const curMonth=t.slice(0,7);
-  const monthBookings=act.filter(b=>b.anreise.startsWith(curMonth)||b.abreise.startsWith(curMonth));
-  const monthRev=monthBookings.reduce((sum,b)=>sum+(+b.preis||0),0);
-  const vipCount=guests.filter(g=>g.tier==='vip'||g.tier==='stammgast').length;
+  // Frühstück morgen früh (Folgetag von d)
+  const nextDay=add(d,1);
+  const bfNext=act.filter(b=>b.anreise<nextDay&&b.abreise>=nextDay);
+  const bfNextPersons=bfNext.reduce((s,b)=>s+(+b.erwachsene||0)+(+b.kinder||0),0);
+
+  // Dienstplan am gewählten Tag d
+  const duty=getDutyStaffForDate(d);
+
+  // Housekeeping-Aufgaben am gewählten Tag d (NUR Zimmer mit Belegung oder Check-out am Tag d!)
+  const hkEntries=rooms.map(r=>getRoomHKEntry(r.id,d));
+  const taskEntries=hkEntries.filter(e=>e.needsCleaning);
+  const totalTasks=taskEntries.length;
+  const doneTasks=taskEntries.filter(e=>e.status==='clean').length;
+  $('#navCountClean').textContent=totalTasks===0?'0 Aufg.':`${doneTasks}/${totalTasks} ✓`;
+
+  // Tagesumsatz am gewählten Tag d (statt Monatsumsatz!)
+  const dayRevenue=inHouse.reduce((sum,b)=>{
+    const nights=Math.max(1,diff(b.anreise,b.abreise));
+    const perNight=(+b.preis||calcAutoNightRate(b)*nights)/nights;
+    return sum+perNight;
+  },0);
 
   const thirdCard = currentRole==='manager'
     ? `<div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#8b5cf6,#6366f1)">
-        <span class="kpi-label">Monatsumsatz (${curMonth} · Admin)</span>
-        <span class="kpi-val num">CHF ${monthRev.toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2})}</span>
-        <span class="kpi-sub">${monthBookings.length} aktive Reservierungen</span>
+        <span class="kpi-label">Tagesumsatz · ${esc(dayLabel)}</span>
+        <span class="kpi-val num">CHF ${dayRevenue.toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2})}</span>
+        <span class="kpi-sub">${inHouse.length} belegte Zimmer · Reinigungsaufgaben: ${doneTasks}/${totalTasks}</span>
       </div>`
     : `<div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#8b5cf6,#6366f1)">
-        <span class="kpi-label">Housekeeping-Status heute</span>
-        <span class="kpi-val num">${cleanRoomsCount} <span style="font-size:15px;color:var(--mute);font-weight:600">/ ${rooms.length} gereinigt</span></span>
-        <span class="kpi-sub">${rooms.length-cleanRoomsCount} Zimmer noch in Reinigung / offen</span>
+        <span class="kpi-label">Housekeeping · ${esc(dayLabel)}</span>
+        <span class="kpi-val num">${totalTasks===0?'0 Aufgaben':`${doneTasks} <span style="font-size:14px;color:var(--mute);font-weight:600">/ ${totalTasks} erledigt</span>`}</span>
+        <span class="kpi-sub">${totalTasks===0?'Keine Zimmerreinigung an diesem Tag nötig':`Dienst: ${esc(duty.cleaner||'Name zuordnen')} · ${totalTasks-doneTasks} offen`}</span>
       </div>`;
+
+  // Karte 4: Wichtige Meldungen & Aufgaben pro Zimmer (aus dem Briefing übernommen!)
+  const roomTasks=getRoomTasksForDate(d);
+  const tasksHtml=roomTasks.length
+    ?roomTasks.slice(0,3).map(t=>`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer" onclick="openBookingById('${t.booking_id}')" title="Zimmer ${t.room_id} (${esc(t.gast)}): ${esc(t.text)}"><b>Zi. ${t.room_id}:</b> ${esc(t.text)}</div>`).join('')
+    :'<div style="color:var(--mute)">Keine speziellen Zimmer-Aufgaben für diesen Tag</div>';
+
+  const accessoriesParts=[];
+  if(infantsCount>0)accessoriesParts.push(`${infantsCount} Baby (0–1J.)`);
+  if(dogsCount>0)accessoriesParts.push(`${dogsCount} Hund`);
+  const accText=accessoriesParts.length?` · + ${accessoriesParts.join(', ')}`:'';
 
   $('#topKpis').innerHTML=`
     <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#0ea5e9,#38bdf8)">
-      <span class="kpi-label">Heute belegte Zimmer</span>
-      <span class="kpi-val num">${inHouse.length} <span style="font-size:15px;color:var(--mute);font-weight:600">/ ${rooms.length||8}</span></span>
-      <span class="kpi-sub">${arrivalsToday.length} Anreisen · ${departuresToday.length} Abreisen heute</span>
+      <span class="kpi-label">Belegung · ${esc(dayLabel)}</span>
+      <span class="kpi-val num">${inHouse.length}<span style="font-size:14px;color:var(--mute);font-weight:600">/${rooms.length||8} Zi.</span> · ${totalPersons} Pers.</span>
+      <span class="kpi-sub">${arrivalsOnDay.length} Anreise · ${departuresOnDay.length} Abreise · ${erwCount} Erw., ${kidsCount} Ki. (2–12J.)${esc(accText)}</span>
     </div>
     <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#10b981,#34d399)">
-      <span class="kpi-label">Frühstück & Küche (07–10 Uhr)</span>
-      <span class="kpi-val num">${inHouse.reduce((s,b)=>s+(+b.erwachsene||0)+(+b.kinder||0),0)} Gäste</span>
-      <span class="kpi-sub">${inHouse.reduce((s,b)=>s+(+b.erwachsene||0),0)} Erw. · ${inHouse.reduce((s,b)=>s+(+b.kinder||0),0)} Kinder im Haus</span>
+      <span class="kpi-label">Frühstück & Dienst-Team · ${esc(dayLabel)}</span>
+      <span class="kpi-val num">${totalPersons} Pers. <span style="font-size:12.5px;color:var(--emerald);font-weight:700">(Morgen früh: ${bfNextPersons} P.)</span></span>
+      <span class="kpi-sub">Küche: <b>${esc(duty.kitchen||'—')}</b> · Service: <b>${esc(duty.service||'—')}</b> · Reinig.: <b>${esc(duty.cleaner||'—')}</b></span>
     </div>
     ${thirdCard}
-    <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#f59e0b,#fbbf24)">
-      <span class="kpi-label">Gastgeber-Gedächtnis</span>
-      <span class="kpi-val num">${guests.length} Profile</span>
-      <span class="kpi-sub">${vipCount} VIPs & Stammgäste mit Vorlieben</span>
+    <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#f59e0b,#fbbf24);cursor:pointer" onclick="switchView('briefing')" title="Klicken, um das komplette Briefing mit allen Zimmer-Aufgaben zu öffnen">
+      <span class="kpi-label">Wichtige Aufgaben pro Zimmer (${roomTasks.length})</span>
+      <div style="font-size:11.5px;line-height:1.35;color:var(--ink);margin-top:1px">${tasksHtml}</div>
     </div>
   `;
 }
 
-// ---- 1. INTERAKTIVES TAPE-CHART (MIT VOLLEN MONATSNAMEN & "ZIMMER 5 / ZIMMER 10") ----
+// ---- 1. INTERAKTIVES TAPE-CHART (KLICKBARE TAGE 1-31 & PERSONENANZAHL "3P" AUF BALKEN) ----
 function renderCalendar(){
   const cw=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cw'));
   const nameW=$('.rname')?$('.rname').offsetWidth:(innerWidth<=1180?130:176);
-  const days=[...Array(DAYS)].map((_,i)=>add(start,i)),t=todayStr();
+  const days=[...Array(DAYS)].map((_,i)=>add(start,i)),t=todayStr(),selD=selectedDate||t;
   const qLow=searchQuery.trim().toLowerCase();
   const allB=allActiveBookings();
   const wds=tr('weekdays');
@@ -2455,24 +2847,28 @@ function renderCalendar(){
   const mFull=tr('monthsFull');
   const roomWord=tr('roomWord');
 
-  // Monats-Label mit vollem Monatsnamen aktualisieren (z. B. "November 2026")
+  // Monats-Label & Fokus-Banner aktualisieren
   const focusDate=D(add(start,4));
   $('#currentMonthLabel').textContent=`${mFull[focusDate.getUTCMonth()]} ${focusDate.getUTCFullYear()}`;
+  const duty=getDutyStaffForDate(selD);
+  if($('#selectedDateBannerLabel')){
+    $('#selectedDateBannerLabel').textContent=`${selD===t?'HEUTE · ':''}${fmtLongDate(selD)} (Reinigung: ${duty.cleaner||'—'} · Küche: ${duty.kitchen||'—'})`;
+  }
 
   let h=`<div class="row head"><div class="rname">${roomWord} · Status</div>`+days.map(d=>{
     const x=D(d),w=x.getUTCDay();
-    return `<div class="cell${w==0||w==6?' we':''}${d==t?' today':''}${x.getUTCDate()==1?' m1':''}">${x.getUTCDate()==1||d==start?mShort[x.getUTCMonth()]:wds[w]}<b>${x.getUTCDate()}</b></div>`;
+    const isSel=(d===selD);
+    return `<div class="cell day-clickable${w==0||w==6?' we':''}${d==t?' today':''}${isSel?' selected-day':''}${x.getUTCDate()==1?' m1':''}" onclick="setSelectedDate('${d}')" title="Klicken für Tages-Kennzahlen, Dienstplan & Aufgaben am ${fmt(d)}">${x.getUTCDate()==1||d==start?mShort[x.getUTCMonth()]:wds[w]}<b>${x.getUTCDate()}</b></div>`;
   }).join('')+'</div>';
 
   for(const r of rooms){
-    const inHouseToday=allB.find(b=>b.room_id==r.id&&b.status!='storniert'&&b.anreise<=t&&b.abreise>t);
-    const hk=getRoomHKStatus(r.id);
-    // ROTER PUNKT im Belegungsplan NUR wenn das Zimmer HEUTE wirklich belegt ist! Sonst GRÜN!
-    const dotCls=inHouseToday?'hk-dirty':'hk-clean';
-    const cleaner=getRoomCleaner(r.id);
-    const dotTitle=inHouseToday
-      ?`Heute belegt: ${inHouseToday.gast} (Reinigungskraft: ${cleaner})`
-      :`Heute frei & bezugsbereit (Reinigungskraft: ${cleaner})`;
+    const inHouseOnSelected=allB.find(b=>b.room_id==r.id&&b.status!='storniert'&&b.anreise<=selD&&b.abreise>selD);
+    // ROTER PUNKT im Belegungsplan, wenn das Zimmer am gewählten Tag (Standard: Heute) belegt ist, sonst GRÜN!
+    const dotCls=inHouseOnSelected?'hk-dirty':'hk-clean';
+    const cleaner=getRoomCleaner(r.id,selD);
+    const dotTitle=inHouseOnSelected
+      ?`Am ${fmt(selD)} belegt: ${inHouseOnSelected.gast} (Reinigung: ${cleaner})`
+      :`Am ${fmt(selD)} frei & bezugsbereit`;
     h+=`<div class="row" data-room="${r.id}">
       <div class="rname">
         <span>${roomWord} ${r.id}</span>
@@ -2480,7 +2876,7 @@ function renderCalendar(){
       </div>`
       +days.map(d=>{
         const w=D(d).getUTCDay(),o=offen(d);
-        return `<div class="cell${w==0||w==6?' we':''}${o?' free':' closed'}${d==t?' today':''}" data-d="${d}" data-room="${r.id}"></div>`;
+        return `<div class="cell${w==0||w==6?' we':''}${o?' free':' closed'}${d==t?' today':''}${d==selD?' selected-col':''}" data-d="${d}" data-room="${r.id}"></div>`;
       }).join('');
 
     const rBookings=allB.filter(b=>{
@@ -2501,13 +2897,17 @@ function renderCalendar(){
       const g=findGuestByName(b.gast);
       const isVip=g&&(g.tier==='vip'||g.tier==='stammgast');
       const isBlk=g&&g.tier==='blacklist';
-      const hasKid=(+b.kinder>0)||(g&&g.kids_notes);
-      const hasDog=g&&g.dog_notes;
-      const badgeTxt=QUELLE_BADGE[b.quelle]||'AF';
-      const extraTags=(b._isDemo?'<span class="bar-tag">TEST</span>':'')+(isVip?'<span class="bar-tag">★ VIP</span>':'')+(isBlk?'<span class="bar-tag" style="background:#b71c1c">SPERRE</span>':'')+(hasKid?'<span class="bar-tag">Kind</span>':'')+(hasDog?'<span class="bar-tag">Hund</span>':'');
+      const erwCount=+(b.erwachsene||1);
+      const kndCount=+(b.kinder||0);
+      const infantCount=+(b.kleinkinder||0);
+      // Personenanzahl auf dem Balken: Erwachsene + Kinder (2-12 J.). Kleinkinder (0-1 J.) zählen NICHT als Person!
+      const personCount=erwCount+kndCount;
+      const badgeTxt=`${personCount}P`;
+      const hasDog=(g&&g.dog_notes)||/hund/i.test(b.notiz||'');
+      const extraTags=(b._isDemo?'<span class="bar-tag">TEST</span>':'')+(isVip?'<span class="bar-tag">★ VIP</span>':'')+(isBlk?'<span class="bar-tag" style="background:#b71c1c">SPERRE</span>':'')+(infantCount>0?'<span class="bar-tag">+Baby</span>':'')+(hasDog?'<span class="bar-tag">+Hund</span>':'');
       h+=`<div class="bar${b.status=='option'?' option':''}${b._isDemo?' demo-bar':''}${isVip?' vip-bar':''}${isBlk?' blacklist-bar':''}" data-id="${b.id}" style="left:${nameW+left}px;width:${Math.max(right-left-2,32)}px;background:var(--${b.quelle})">
         <div class="bar-handle left" data-handle="left" title="Anreise vorziehen / verkürzen"></div>
-        <span class="ch-badge">${badgeTxt}</span>
+        <span class="ch-badge" title="${personCount} Personen (${erwCount} Erw.${kndCount?', '+kndCount+' Ki. 2–12J.':''}${infantCount?', +'+infantCount+' Kleinkind 0–1J. gratis':''}) · Kanal: ${esc(QUELLE[b.quelle]||b.quelle)}">${badgeTxt}</span>
         ${b.sync_state!='erledigt'?`<span class="dot ${b.sync_state=='fehler'?'fehler':''}"></span>`:''}
         <span>${esc(b.gast)} (${n}N)</span>
         ${extraTags}
@@ -2518,8 +2918,8 @@ function renderCalendar(){
   }
   $('#cal').innerHTML=h;
 
-  // An- und Abreiselisten (Im Office-Modus ohne CHF-Umsatzanzeige)
-  const soon=add(t,14);
+  // An- und Abreiselisten ab dem gewählten Tag (Im Office-Modus ohne CHF-Umsatzanzeige)
+  const soon=add(selD,14);
   const showPrice=currentRole==='manager';
   const row=b=>{
     const g=findGuestByName(b.gast);
@@ -2530,20 +2930,21 @@ function renderCalendar(){
     if(b.special_wish)memBadges.push(`<span class="badge badge-vip" title="${esc(b.special_wish)}">Wunsch: ${esc(b.special_wish.slice(0,28))}</span>`);
     if(g?.kids_notes)memBadges.push(`<span class="badge badge-kid" title="${esc(g.kids_notes)}">${esc(g.kids_notes.slice(0,32))}</span>`);
     if(g?.dog_notes)memBadges.push(`<span class="badge badge-dog">${esc(g.dog_notes.slice(0,24))}</span>`);
+    const pCount=(+b.erwachsene||1)+(+b.kinder||0);
     return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
       <td class="num"><b>${fmt(b._d)}</b></td>
       <td>
-        <b>${esc(b.gast)}</b> ${memBadges.join(' ')}<br>
-        <span style="color:var(--mute);font-size:12px">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Ki.':''}${b.telefon?' · '+esc(b.telefon):''}${showPrice&&b.preis?' · CHF '+Number(b.preis).toFixed(2):''}</span>
+        <b>${esc(b.gast)}</b> <span class="badge badge-stamm">${pCount}P</span> ${memBadges.join(' ')}<br>
+        <span style="color:var(--mute);font-size:12px">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Ki.':''}${b.kleinkinder?', +'+b.kleinkinder+' Baby (0-1J.)':''}${b.created_by_staff?' · Eingetr.: '+esc(b.created_by_staff):''}${showPrice&&b.preis?' · CHF '+Number(b.preis).toFixed(2):''}</span>
       </td>
       <td><b>Zimmer ${b.room_id}</b><br><span style="font-size:11.5px;color:var(--mute)">${QUELLE[b.quelle]||b.quelle}</span></td>
     </tr>`;
   };
   const act=allB.filter(b=>b.status!='storniert');
-  const an=act.filter(b=>b.anreise>=t&&b.anreise<=soon).map(b=>({...b,_d:b.anreise}));
-  const ab=act.filter(b=>b.abreise>=t&&b.abreise<=soon).map(b=>({...b,_d:b.abreise})).sort((a,b)=>a._d<b._d?-1:1);
-  $('#tAn').innerHTML=an.length?an.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Anreisen in den nächsten 14 Tagen.</td></tr>';
-  $('#tAb').innerHTML=ab.length?ab.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Abreisen in den nächsten 14 Tagen.</td></tr>';
+  const an=act.filter(b=>b.anreise>=selD&&b.anreise<=soon).map(b=>({...b,_d:b.anreise}));
+  const ab=act.filter(b=>b.abreise>=selD&&b.abreise<=soon).map(b=>({...b,_d:b.abreise})).sort((a,b)=>a._d<b._d?-1:1);
+  $('#tAn').innerHTML=an.length?an.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Anreisen in den nächsten 14 Tagen ab gewähltem Datum.</td></tr>';
+  $('#tAb').innerHTML=ab.length?ab.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Abreisen in den nächsten 14 Tagen ab gewähltem Datum.</td></tr>';
 
   const op=dbBookings.filter(b=>b.sync_state!='erledigt');
   $('#tSync').innerHTML=op.length?'<tr><th>Gast</th><th>Zimmer</th><th>Zeitraum</th><th>Deskline-Status</th></tr>'+op.map(b=>`<tr><td><b>${esc(b.gast)}</b>${b.status=='storniert'?' (storniert)':''}</td><td>Zimmer ${b.room_id}</td><td>${fmt(b.anreise)} bis ${fmt(b.abreise)}</td><td>${b.sync_state=='fehler'?'<span style="color:var(--danger)">Fehler: '+esc(b.sync_note||'')+'</span>':'<span style="color:var(--warn)">wartet auf Abgleich</span>'}</td></tr>`).join(''):'<tr><td style="color:var(--emerald);font-weight:700">✓ Alle echten Buchungen sind zu 100 % mit Feratel Deskline synchronisiert.</td></tr>';
@@ -2820,18 +3221,53 @@ window.addEventListener('mouseup',async()=>{
   syncNow();
 });
 
-// ---- 2. MORGEN-BRIEFING & VORLAUF-SONDERWÜNSCHE (z. B. SPEZIELLER CHAMPAGNER X TAGE VORHER) ----
+// ---- 2. MORGEN-BRIEFING, DIENST-TEAM & ZIMMER-AUFGABEN AM GEWÄHLTEN TAG ----
 function renderBriefing(){
-  const t=todayStr();
+  const d=selectedDate||todayStr();
+  const isToday=(d===todayStr());
   const act=allActiveBookings().filter(b=>b.status!=='storniert');
-  const inHouse=act.filter(b=>b.anreise<=t&&b.abreise>t);
-  const upcoming=act.filter(b=>b.anreise>=t&&b.anreise<=add(t,14));
+  const inHouse=act.filter(b=>b.anreise<=d&&b.abreise>d);
+  const upcoming=act.filter(b=>b.anreise>=d&&b.anreise<=add(d,14));
 
-  // 2a. Vorlauf-Erinnerungen für Sonderwünsche (frei wählbare Tage vor Anreise)
+  if($('#briefingDateLabel')){
+    $('#briefingDateLabel').textContent=isToday?`HEUTE · ${fmtLongDate(d)}`:fmtLongDate(d);
+  }
+
+  // Dienst-Team & Wichtige Aufgaben pro Zimmer am gewählten Tag
+  const duty=getDutyStaffForDate(d);
+  const roomTasks=getRoomTasksForDate(d);
+  if($('#briefingDutyStaffBox')){
+    const tasksListHtml=roomTasks.length
+      ?`<div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--line)">
+          <div style="font-weight:800;font-size:12.5px;color:var(--ink);margin-bottom:4px">Wichtige Meldungen & Aufgaben pro Zimmer am ${fmt(d)} (direkt aus den Buchungen):</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px">
+            ${roomTasks.map(t=>`<div style="background:var(--glass-strong);padding:6px 10px;border-radius:8px;border-left:3px solid var(--gold);cursor:pointer;font-size:12.5px" onclick="openBookingById('${t.booking_id}')">
+              <b>Zimmer ${t.room_id} (${esc(t.gast)}):</b> ${esc(t.text)}
+              <div style="font-size:11px;color:var(--mute);margin-top:2px">Buchung eingetragen von: <b>${esc(t.created_by)}</b></div>
+            </div>`).join('')}
+          </div>
+        </div>`
+      :`<div style="margin-top:6px;font-size:12px;color:var(--mute)">Für den ${fmt(d)} liegen keine speziellen Zimmer-Sonderaufgaben vor.</div>`;
+
+    $('#briefingDutyStaffBox').innerHTML=`
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <div style="font-weight:800;color:var(--emerald);font-size:13.5px">Eingeteiltes Team am ${fmt(d)} (laut Wochen-Dienstplan):</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;font-size:12.5px">
+          <span class="badge badge-stamm">Küche: ${esc(duty.kitchen||'—')} (${esc(duty.kitchenShift||'Dienst')})</span>
+          <span class="badge badge-kid">Service: ${esc(duty.service||'—')} (${esc(duty.serviceShift||'Dienst')})</span>
+          <span class="badge badge-vip">Reinigung: ${esc(duty.cleaner||'—')} (${esc(duty.cleanerShift||'Dienst')})</span>
+          <span class="badge" style="background:var(--glass-strong)">Office: ${esc(duty.office||'—')}</span>
+        </div>
+      </div>
+      ${tasksListHtml}
+    `;
+  }
+
+  // 2a. Vorlauf-Erinnerungen für Sonderwünsche (frei wählbare Tage vor Anreise, bezogen auf gewähltes Datum d)
   const advanceList=act.filter(b=>{
     if(!b.special_wish)return false;
     const lead=Number(b.wish_lead_days??3);
-    const daysUntil=diff(t,b.anreise);
+    const daysUntil=diff(d,b.anreise);
     return daysUntil>=0 && daysUntil<=Math.max(lead,14);
   }).sort((a,b)=>a.anreise<b.anreise?-1:1);
 
@@ -2839,11 +3275,11 @@ function renderBriefing(){
     $('#briefingAdvanceWishes').innerHTML='<p style="color:var(--mute);margin:0">Aktuell stehen keine Vorab-Besorgungen an. Trage bei einer Buchung einen Sonderwunsch mit Vorlaufzeit (z. B. 5 Tage vorher) ein.</p>';
   }else{
     $('#briefingAdvanceWishes').innerHTML=advanceList.map(b=>{
-      const daysUntil=diff(t,b.anreise);
+      const daysUntil=diff(d,b.anreise);
       const lead=Number(b.wish_lead_days??3);
       const isUrgent=daysUntil<=lead;
       const urgencyBadge=daysUntil===0
-        ?'<span class="badge badge-blacklist">HEUTE ANREISE — Sofort bereitstellen!</span>'
+        ?'<span class="badge badge-blacklist">ANREISE AM GEWÄHLTEN TAG — Bereitstellen!</span>'
         :isUrgent
         ?`<span class="badge badge-vip">Vorlauf-Alarm aktiv: Noch ${daysUntil} ${daysUntil===1?'Tag':'Tage'} bis Anreise (Vorlauf: ${lead} Tage)</span>`
         :`<span class="badge badge-stamm">In ${daysUntil} Tagen (Erinnerung ab ${lead} Tagen vorher)</span>`;
@@ -2853,29 +3289,31 @@ function renderBriefing(){
           ${urgencyBadge}
         </div>
         <div style="margin-top:4px;font-size:13.5px;color:var(--ink)"><b>Zu besorgen / Sonderwunsch:</b> ${esc(b.special_wish)}</div>
+        <div style="margin-top:2px;font-size:11.5px;color:var(--mute)">Buchung eingetragen von: <b>${esc(b.created_by_staff||'Arthur')}</b> (bei Rückfragen ansprechen)</div>
       </div>`;
     }).join('');
   }
 
-  // 2b. Frühstücks- & Küchenliste für HEUTE MORGEN und MORGEN FRÜH
-  const tmr=add(t,1);
-  // Heute Morgen beim Frühstück sitzt, wer gestern Nacht im Haus war (anreise < t && abreise >= t) oder heute im Haus ist (anreise <= t && abreise > t)
-  const breakfastToday=act.filter(b=>b.anreise<=t&&b.abreise>t);
-  // Morgen Früh beim Frühstück sitzt, wer heute Nacht im Haus schläft (inkl. heutiger Anreisen!) oder morgen im Haus ist (anreise <= t && abreise >= tmr)
+  // 2b. Frühstücks- & Küchenliste für GEWÄHLTEN TAG und FOLGETAG (MORGEN FRÜH)
+  const tmr=add(d,1);
+  const breakfastToday=act.filter(b=>b.anreise<=d&&b.abreise>d);
   const breakfastTomorrow=act.filter(b=>b.anreise<tmr&&b.abreise>=tmr);
 
   const renderBfTable=(list,emptyMsg)=>{
     if(!list.length)return `<p style="color:var(--mute);margin:6px 0 14px">${emptyMsg}</p>`;
     const totalErw=list.reduce((s,b)=>s+(+b.erwachsene||0),0);
     const totalKi=list.reduce((s,b)=>s+(+b.kinder||0),0);
-    return `<div style="margin-bottom:6px;font-weight:700;color:var(--emerald)">Gesamt: ${totalErw+totalKi} Personen (${totalErw} Erwachsene · ${totalKi} Kinder)</div>`
+    const totalBabies=list.reduce((s,b)=>s+(+b.kleinkinder||0),0);
+    return `<div style="margin-bottom:6px;font-weight:700;color:var(--emerald)">Gesamt: ${totalErw+totalKi} Personen (${totalErw} Erwachsene · ${totalKi} Kinder 2–12 J.${totalBabies?` · + ${totalBabies} Kleinkind 0–1 J.`:''})</div>`
       +'<table style="margin-bottom:16px"><tr><th>Zimmer</th><th>Gast</th><th>Personen</th><th>Kinder / Lieblingsessen / Allergien & Wünsche</th></tr>'+list.map(b=>{
       const g=findGuestByName(b.gast);
-      const notes=[b.special_wish,g?.kids_notes,g?.food_notes,g?.dog_notes,b.notiz].filter(Boolean).join(' · ')||'Keine besonderen Vermerke';
+      const ex=Array.isArray(b.extras_list)?b.extras_list:[];
+      const exTxt=[ex.includes('baby')?'Babybett':'',ex.includes('zustell')?'Extrabett':'',ex.includes('park')?'Parkplatz':''].filter(Boolean).join(', ');
+      const notes=[b.special_wish,exTxt,g?.kids_notes,g?.food_notes,g?.dog_notes,b.notiz].filter(Boolean).join(' · ')||'Keine besonderen Vermerke';
       return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
         <td><b>Zimmer ${b.room_id}</b></td>
-        <td><b>${esc(b.gast)}</b></td>
-        <td class="num">${b.erwachsene} Erw. / ${b.kinder||0} Ki.</td>
+        <td><b>${esc(b.gast)}</b><br><span style="font-size:11px;color:var(--mute)">Eingetr.: ${esc(b.created_by_staff||'Arthur')}</span></td>
+        <td class="num"><b>${(+b.erwachsene||1)+(+b.kinder||0)}P</b> (${b.erwachsene} Erw. / ${b.kinder||0} Ki.${b.kleinkinder?` / +${b.kleinkinder} Baby`:''})</td>
         <td>${esc(notes)}</td>
       </tr>`;
     }).join('')+'</table>';
@@ -2883,31 +3321,37 @@ function renderBriefing(){
 
   $('#briefingBreakfast').innerHTML=`
     <div style="padding:10px 12px;border-radius:12px;background:var(--brand-soft);border:1px solid rgba(14,165,233,0.3);margin-bottom:12px">
-      <div style="font-weight:800;font-size:13.5px;color:var(--brand);margin-bottom:4px">1. FRÜHSTÜCK HEUTE (${fmt(t)} · 07:00 – 10:00 Uhr)</div>
-      ${renderBfTable(breakfastToday,'Heute sind keine Frühstücksgäste im Haus.')}
+      <div style="font-weight:800;font-size:13.5px;color:var(--brand);margin-bottom:4px">1. FRÜHSTÜCK AM ${fmt(d).toUpperCase()} (07:00 – 10:00 Uhr · Küche: ${esc(duty.kitchen||'—')})</div>
+      ${renderBfTable(breakfastToday,'An diesem Tag sind keine Frühstücksgäste im Haus.')}
     </div>
     <div style="padding:10px 12px;border-radius:12px;background:var(--emerald-soft);border:1px solid rgba(16,185,129,0.35)">
-      <div style="font-weight:800;font-size:13.5px;color:var(--emerald);margin-bottom:4px">2. VORSCHAU FÜR MORGEN FRÜH (${fmt(tmr)} · Einkaufs- & Küchenplanung)</div>
-      ${renderBfTable(breakfastTomorrow,'Für morgen früh sind noch keine Übernachtungsgäste eingetragen.')}
+      <div style="font-weight:800;font-size:13.5px;color:var(--emerald);margin-bottom:4px">2. VORSCHAU FÜR FOLGETAG FRÜH (${fmt(tmr)} · Einkaufs- & Küchenplanung)</div>
+      ${renderBfTable(breakfastTomorrow,'Für den Folgetag früh sind noch keine Übernachtungsgäste eingetragen.')}
     </div>
   `;
 
-  // 2c. Persönlicher Gäste-Spickzettel für alle Mitarbeiter
-  const welcomeList=upcoming.length?upcoming:guests.slice(0,5).map(g=>({gast:g.name,room_id:'—',anreise:'',_demo:true}));
-  $('#briefingWelcome').innerHTML=welcomeList.map(b=>{
-    const g=findGuestByName(b.gast);
-    return `<div class="memory-callout" style="margin-bottom:10px">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <b>${esc(b.gast)} ${b.anreise?'(Anreise '+fmt(b.anreise)+' · Zimmer '+b.room_id+')':'(Gespeicherte Gästekartei)'}</b>
-        ${g?.tier==='vip'?'<span class="badge badge-vip">Super-VIP</span>':g?.tier==='stammgast'?'<span class="badge badge-stamm">Stammgast</span>':''}
-      </div>
-      ${b.special_wish?`<div style="margin-top:4px;color:var(--brand)"><b>Sonderwunsch zur Anreise (${b.wish_lead_days||3} Tage Vorlauf):</b> ${esc(b.special_wish)}</div>`:''}
-      ${g?.kids_notes?`<div style="margin-top:4px"><b>Familie & Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
-      ${g?.food_notes?`<div style="margin-top:3px"><b>Lieblingsessen / Wein:</b> ${esc(g.food_notes)}</div>`:''}
-      ${g?.dog_notes?`<div style="margin-top:3px"><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
-      ${g?.general_notes?`<div style="margin-top:3px;color:var(--ink-soft)">${esc(g.general_notes)}</div>`:''}
-    </div>`;
-  }).join('');
+  // 2c. Persönlicher Gäste-Spickzettel für alle Mitarbeiter (nur echte Gäste wenn Testmodus AUS!)
+  const visGuests=visibleGuests();
+  const welcomeList=upcoming.length?upcoming:visGuests.slice(0,5).map(g=>({gast:g.name,room_id:'—',anreise:'',_demo:true}));
+  if(!welcomeList.length){
+    $('#briefingWelcome').innerHTML='<p style="color:var(--mute);margin:0">Noch keine anreisenden Gäste im Zeitraum.</p>';
+  }else{
+    $('#briefingWelcome').innerHTML=welcomeList.map(b=>{
+      const g=findGuestByName(b.gast);
+      return `<div class="memory-callout" style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <b>${esc(b.gast)} ${b.anreise?'(Anreise '+fmt(b.anreise)+' · Zimmer '+b.room_id+')':'(Gespeicherte Gästekartei)'}</b>
+          ${g?.tier==='vip'?'<span class="badge badge-vip">Super-VIP</span>':g?.tier==='stammgast'?'<span class="badge badge-stamm">Stammgast</span>':''}
+        </div>
+        ${b.special_wish?`<div style="margin-top:4px;color:var(--brand)"><b>Sonderwunsch zur Anreise (${b.wish_lead_days||3} Tage Vorlauf):</b> ${esc(b.special_wish)}</div>`:''}
+        ${b.created_by_staff?`<div style="margin-top:3px;font-size:11.5px;color:var(--mute)"><b>Eingetragen von:</b> ${esc(b.created_by_staff)}</div>`:''}
+        ${g?.kids_notes?`<div style="margin-top:4px"><b>Familie & Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
+        ${g?.food_notes?`<div style="margin-top:3px"><b>Lieblingsessen / Wein:</b> ${esc(g.food_notes)}</div>`:''}
+        ${g?.dog_notes?`<div style="margin-top:3px"><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
+        ${g?.general_notes?`<div style="margin-top:3px;color:var(--ink-soft)">${esc(g.general_notes)}</div>`:''}
+      </div>`;
+    }).join('');
+  }
 }
 
 $('#restBillInput').addEventListener('input',()=>{
@@ -2918,11 +3362,12 @@ $('#restBillInput').addEventListener('input',()=>{
   $('#restFinalVal').textContent='CHF '+fin.toFixed(2);
 });
 
-// ---- 3. KOMPAKTE GÄSTEKARTEI (NUR "FAMILIE BERGER · KONSTANZ", KLICK ÖFFNET DETAIL-FENSTER) ----
+// ---- 3. KOMPAKTE GÄSTEKARTEI (TEST-FAMILIEN NUR BEI TESTMODUS AN SICHTBAR!) ----
 function renderCRM(){
   const flt=$('#crmFilter').value;
   const qLow=searchQuery.trim().toLowerCase();
-  const list=guests.filter(g=>{
+  const pool=visibleGuests();
+  const list=pool.filter(g=>{
     if(flt==='vip'&&g.tier!=='vip')return false;
     if(flt==='stammgast'&&g.tier!=='stammgast')return false;
     if(flt==='blacklist'&&g.tier!=='blacklist')return false;
@@ -2936,7 +3381,7 @@ function renderCRM(){
   });
 
   if(!list.length){
-    $('#crmGrid').innerHTML='<div class="card card-pad" style="grid-column:1/-1;color:var(--mute)">Keine passenden Gäste gefunden. Lege oben rechts über „+ Gast-Kartei“ einen neuen Gast an.</div>';
+    $('#crmGrid').innerHTML='<div class="card card-pad" style="grid-column:1/-1;color:var(--mute)">Keine passenden Gäste gefunden. Hinweis: Test-Familien sind bei „Testmodus: AUS“ ausgeblendet.</div>';
     return;
   }
 
@@ -2954,7 +3399,7 @@ function renderCRM(){
         ${tierBadge}
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--mute)">
-        <span>${g.kids_notes?'Familie / Kinder':''}${g.kids_notes&&g.dog_notes?' · ':''}${g.dog_notes?'Hund':''}${!g.kids_notes&&!g.dog_notes?'Vorlieben gespeichert':''}</span>
+        <span>${g._isDemo?'[Test-Profil] · ':''}${g.kids_notes?'Familie / Kinder':''}${g.kids_notes&&g.dog_notes?' · ':''}${g.dog_notes?'Hund':''}${!g.kids_notes&&!g.dog_notes?'Gast-Profil gespeichert':''}</span>
         <span style="color:var(--brand);font-weight:700">Details öffnen ›</span>
       </div>
     </div>`;
@@ -2963,7 +3408,6 @@ function renderCRM(){
 
 $('#crmFilter').onchange=renderCRM;
 
-// Großes Detail-Fenster beim Klick auf die kompakte Gästekarte
 window.openGuestDetail=guestId=>{
   const g=guests.find(x=>x.id===guestId);
   if(!g)return;
@@ -3075,73 +3519,132 @@ function renderStats(){
   $('#statRooms').innerHTML=rmHtml;
 }
 
-// ---- 5. ZIMMER, HOUSEKEEPING (MIT NAME DER REINIGUNGSKRAFT) & HANDY-CHECKLISTE ----
-function getRoomHKEntry(roomId){
-  const t=todayStr();
-  const r=rooms.find(x=>Number(x.id)===Number(roomId));
-  const defCleaner=r?.default_cleaner||'Maria';
+// ---- 5. ZIMMER, HOUSEKEEPING (MARIA & SILVIA / NAME ZUORDNEN) & 6/6 CHECKLISTEN-SPERRE ----
+function getRoomHKEntry(roomId,dateStr){
+  const d=dateStr||selectedDate||todayStr();
+  const key=`${d}_${roomId}`;
+  const duty=getDutyStaffForDate(d);
+  const dutyCleaner=duty.cleaner&&!['—','Frei'].includes(duty.cleaner)?duty.cleaner:'Name zuordnen';
   const act=allActiveBookings().filter(b=>b.status!=='storniert');
-  const inH=act.some(b=>b.room_id==roomId&&b.anreise<=t&&b.abreise>t);
-  const depToday=act.some(b=>b.room_id==roomId&&b.abreise===t);
-  const needsCleaning=inH||depToday;
-  if(!hkState[roomId]||hkState[roomId].date!==t){
-    hkState[roomId]={
-      date:t,
-      status:needsCleaning?'dirty':'clean',
-      cleaner:hkState[roomId]?.cleaner||defCleaner,
-      checks:needsCleaning?[false,false,false,false,false,false]:[true,true,true,true,true,true],
-      confirmedAt:needsCleaning?'':'09:15',
+  const inH=act.some(b=>b.room_id==roomId&&b.anreise<=d&&b.abreise>d);
+  const depOnDay=act.some(b=>b.room_id==roomId&&b.abreise===d);
+  const needsCleaning=Boolean(inH||depOnDay);
+
+  const validCleaners=['Name zuordnen',...getCleanerStaffNames()];
+
+  if(!hkState[key]){
+    hkState[key]={
+      date:d,
+      roomId,
+      needsCleaning,
+      status:needsCleaning?'dirty':'no_task',
+      cleaner:needsCleaning?dutyCleaner:'Name zuordnen',
+      checks:[false,false,false,false,false,false],
+      confirmedAt:'',
       manualOverride:false
     };
-  }else if(!hkState[roomId].manualOverride){
-    // Wenn Testmodus ein-/ausgeschaltet wird, synchronisiere automatisch den Status
-    hkState[roomId].status=needsCleaning?'dirty':'clean';
+  }else{
+    hkState[key].needsCleaning=needsCleaning;
+    if(!validCleaners.includes(hkState[key].cleaner)){
+      hkState[key].cleaner=needsCleaning?dutyCleaner:'Name zuordnen';
+    }
+    if(!hkState[key].manualOverride){
+      if(!needsCleaning){
+        hkState[key].status='no_task';
+        hkState[key].cleaner='Name zuordnen';
+        hkState[key].confirmedAt='';
+      }else if(hkState[key].status==='no_task'){
+        hkState[key].status='dirty';
+        if(hkState[key].cleaner==='Name zuordnen')hkState[key].cleaner=dutyCleaner;
+      }
+    }
   }
-  return hkState[roomId];
+  return hkState[key];
 }
 
-function getRoomHKStatus(roomId){
-  return getRoomHKEntry(roomId).status;
+function getRoomHKStatus(roomId,dateStr){
+  return getRoomHKEntry(roomId,dateStr).status;
 }
 
-function getRoomCleaner(roomId){
-  return getRoomHKEntry(roomId).cleaner||'Maria';
+function getRoomCleaner(roomId,dateStr){
+  return getRoomHKEntry(roomId,dateStr).cleaner||'Name zuordnen';
 }
 
 window.setRoomCleaner=(roomId,cleanerName)=>{
-  const entry=getRoomHKEntry(roomId);
+  const entry=getRoomHKEntry(roomId,selectedDate);
   entry.cleaner=cleanerName;
+  entry.manualOverride=true;
+  saveLocalHK();
+  renderAll();
+};
+
+window.assignDutyCleanerToAllActiveRooms=()=>{
+  const d=selectedDate||todayStr();
+  const duty=getDutyStaffForDate(d);
+  const cleaner=duty.cleaner&&!['—','Frei'].includes(duty.cleaner)?duty.cleaner:(getCleanerStaffNames()[0]||'Maria');
+  for(const r of rooms){
+    const entry=getRoomHKEntry(r.id,d);
+    if(entry.needsCleaning){
+      entry.cleaner=cleaner;
+      entry.manualOverride=true;
+    }else{
+      entry.cleaner='Name zuordnen';
+    }
+  }
   saveLocalHK();
   renderAll();
 };
 
 window.cycleRoomHK=roomId=>{
-  const entry=getRoomHKEntry(roomId);
+  const entry=getRoomHKEntry(roomId,selectedDate);
+  entry.manualOverride=true;
   const cur=entry.status;
-  const next=cur==='clean'?'dirty':cur==='dirty'?'prog':'clean';
-  entry.status=next;
-  if(next==='clean'){
+  if(cur==='no_task'||cur==='clean'){
+    entry.status='dirty';
+    entry.checks=[false,false,false,false,false,false];
+    entry.confirmedAt='';
+  }else if(cur==='dirty'){
+    entry.status='prog';
+  }else{
+    entry.status='clean';
     entry.checks=[true,true,true,true,true,true];
-    entry.confirmedAt=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+    entry.confirmedAt=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})+' Uhr';
   }
   saveLocalHK();
   renderAll();
 };
 
 window.toggleCleanerCheck=(roomId,idx,checked)=>{
-  const entry=getRoomHKEntry(roomId);
-  if(!Array.isArray(entry.checks))entry.checks=[false,false,false,false,false,false];
-  entry.checks[idx]=checked;
-  if(entry.checks.some(Boolean)&&entry.status==='dirty')entry.status='prog';
+  const entry=getRoomHKEntry(roomId,selectedDate);
+  entry.manualOverride=true;
+  if(!Array.isArray(entry.checks)||entry.checks.length<6)entry.checks=[false,false,false,false,false,false];
+  entry.checks[idx]=Boolean(checked);
+  const doneCount=entry.checks.filter(Boolean).length;
+  if(doneCount>0&&doneCount<6){
+    entry.status='prog';
+  }else if(doneCount===0&&entry.needsCleaning){
+    entry.status='dirty';
+  }
   saveLocalHK();
   renderHousekeeping();
+  renderTopKPIs();
 };
 
 window.confirmRoomCleanedFromMobile=roomId=>{
-  const entry=getRoomHKEntry(roomId);
+  const entry=getRoomHKEntry(roomId,selectedDate);
+  const doneCount=(entry.checks||[]).filter(Boolean).length;
+  if(doneCount<6){
+    alert('Bitte zuerst alle 6 Punkte der Checkliste abhaken, bevor das Zimmer als gereinigt bestätigt werden kann!');
+    return;
+  }
+  entry.manualOverride=true;
   entry.checks=[true,true,true,true,true,true];
   entry.status='clean';
-  entry.confirmedAt=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+  if(!entry.cleaner||entry.cleaner==='Name zuordnen'){
+    const duty=getDutyStaffForDate(selectedDate);
+    entry.cleaner=duty.cleaner||(getCleanerStaffNames()[0]||'Maria');
+  }
+  entry.confirmedAt=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})+' Uhr';
   saveLocalHK();
   renderAll();
 };
@@ -3152,77 +3655,100 @@ $('#btnToggleCleanerApp').onclick=()=>{
 };
 
 function renderHousekeeping(){
-  const t=todayStr();
+  const d=selectedDate||todayStr();
+  const isToday=(d===todayStr());
   const act=allActiveBookings().filter(b=>b.status!=='storniert');
   const chkLabels=tr('chkItems');
+  const duty=getDutyStaffForDate(d);
+  const cleanerOptions=['Name zuordnen',...getCleanerStaffNames()];
 
-  // 1. Oben in Housekeeping / Reinigung: Heutiger Zimmer-Reinigungsplan als übersichtliche Tabelle
+  if($('#hkTitleDateLabel')){
+    $('#hkTitleDateLabel').textContent=isToday?`HEUTE · ${fmtLongDate(d)}`:fmtLongDate(d);
+  }
+  if($('#hkDutyCleanerNotice')){
+    const taskCount=rooms.filter(r=>getRoomHKEntry(r.id,d).needsCleaning).length;
+    $('#hkDutyCleanerNotice').textContent=`Dienst laut Wochenplan am ${fmt(d)}: ${duty.cleaner||'Nicht eingeteilt'} (${duty.cleanerShift||'—'}) · ${taskCount} ${taskCount===1?'Reinigungsaufgabe':'Reinigungsaufgaben'}`;
+  }
+
+  // 1. Oben in Housekeeping / Reinigung: Zimmer-Reinigungsplan am gewählten Tag d
   const planWrap=$('#hkCleaningPlanWrap');
   if(planWrap){
     planWrap.innerHTML=`<table>
-      <tr><th>Zimmer</th><th>Typ</th><th>Belegung heute</th><th>Zuständige Reinigungskraft</th><th>Reinigungs-Status</th><th>Bestätigt um</th></tr>
+      <tr><th>Zimmer</th><th>Typ</th><th>Belegung am ${fmt(d)}</th><th>Zuständige Reinigungskraft</th><th>Reinigungs-Status</th><th>Bestätigt um</th></tr>
       ${rooms.map(r=>{
-        const entry=getRoomHKEntry(r.id);
+        const entry=getRoomHKEntry(r.id,d);
         const st=entry.status;
-        const inH=act.find(b=>b.room_id==r.id&&b.anreise<=t&&b.abreise>t);
-        const dep=act.find(b=>b.room_id==r.id&&b.abreise===t);
+        const inH=act.find(b=>b.room_id==r.id&&b.anreise<=d&&b.abreise>d);
+        const dep=act.find(b=>b.room_id==r.id&&b.abreise===d);
         const occText=inH
-          ?`<span style="color:var(--danger);font-weight:700">● Heute belegt: ${esc(inH.gast)}</span>`
+          ?`<span style="color:var(--danger);font-weight:700">● Belegt: ${esc(inH.gast)} (${(+inH.erwachsene||1)+(+inH.kinder||0)}P)</span>`
           :dep
-          ?`<span style="color:var(--warn);font-weight:700">Check-out heute: ${esc(dep.gast)}</span>`
-          :'<span style="color:var(--emerald);font-weight:700">● Heute frei</span>';
+          ?`<span style="color:var(--warn);font-weight:700">Check-out bis 10:00: ${esc(dep.gast)}</span>`
+          :'<span style="color:var(--emerald);font-weight:700">● Frei (keine Reinigung nötig)</span>';
+        const statusBadge=st==='clean'
+          ?'<span class="badge badge-stamm">✓ Gereinigt & bestätigt</span>'
+          :st==='dirty'
+          ?'<span class="badge badge-blacklist">! Reinigung offen</span>'
+          :st==='prog'
+          ?`<span class="badge badge-vip">⟳ In Arbeit (${(entry.checks||[]).filter(Boolean).length}/6)</span>`
+          :'<span class="badge" style="background:var(--glass-soft);color:var(--mute)">Keine Aufgabe</span>';
         return `<tr>
           <td><b>Zimmer ${r.id}</b></td>
           <td><span class="badge" style="background:var(--brand-soft);color:var(--brand)">${r.typ}</span></td>
           <td>${occText}</td>
           <td>
             <select onchange="setRoomCleaner(${r.id},this.value)" style="width:auto;margin:0;padding:4px 9px;font-weight:700">
-              ${CLEANER_STAFF.map(c=>`<option value="${c}" ${entry.cleaner===c?'selected':''}>${c}</option>`).join('')}
+              ${cleanerOptions.map(c=>`<option value="${esc(c)}" ${entry.cleaner===c?'selected':''}>${esc(c)}</option>`).join('')}
             </select>
           </td>
-          <td>${st==='clean'?'<span class="badge badge-stamm">✓ Gereinigt & bestätigt</span>':st==='dirty'?'<span class="badge badge-blacklist">! Reinigung offen</span>':'<span class="badge badge-vip">⟳ In Reinigung</span>'}</td>
-          <td class="num">${st==='clean'?(entry.confirmedAt||'Heute'):'—'}</td>
+          <td>${statusBadge}</td>
+          <td class="num">${st==='clean'?(entry.confirmedAt||'Bestätigt'):'—'}</td>
         </tr>`;
       }).join('')}
     </table>`;
   }
 
-  // 2. Handy-Checklisten-Ansicht für die Reinigungskraft (standardmäßig direkt sichtbar!)
+  // 2. Handy-Checklisten-Ansicht für die Reinigungskraft (Button erst aktiv wenn 6/6 abgehakt!)
   const mobWrap=$('#cleanerMobileContainer');
   const toggleBtn=$('#btnToggleCleanerApp');
   if(showCleanerMobileInHK||currentRole==='cleaner'){
     mobWrap.hidden=false;
     toggleBtn.textContent='Checklisten-Ansicht ausblenden';
-    const filteredRooms=rooms.filter(r=>activeCleanerFilter==='Alle'||getRoomCleaner(r.id)===activeCleanerFilter);
+    const filteredRooms=rooms.filter(r=>activeCleanerFilter==='Alle'||getRoomCleaner(r.id,d)===activeCleanerFilter);
     mobWrap.innerHTML=`
       <div class="card card-pad" style="border:2px solid var(--emerald)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
           <div>
-            <div style="font-size:15px;font-weight:800;color:var(--emerald)">Reinigungskraft Handy-App · Zimmer-Checklisten zum Bestätigen</div>
-            <div style="font-size:12px;color:var(--mute)">Hake die Punkte für das Zimmer ab und klicke auf „Bestätigen“ — im Office erscheint das Zimmer sofort grün als gereinigt.</div>
+            <div style="font-size:15px;font-weight:800;color:var(--emerald)">Reinigungskraft Handy-App · Zimmer-Checklisten (${fmt(d)})</div>
+            <div style="font-size:12px;color:var(--mute)">Alle 6 Punkte müssen einzeln abgehakt werden — erst dann schaltet sich der grüne Bestätigungs-Button frei und speichert die genaue Uhrzeit.</div>
           </div>
           <select onchange="activeCleanerFilter=this.value;renderHousekeeping()" style="width:auto;margin:0;font-weight:700">
             <option value="Alle" ${activeCleanerFilter==='Alle'?'selected':''}>Alle Reinigungskräfte (Alle 8 Zimmer)</option>
-            ${CLEANER_STAFF.map(c=>`<option value="${c}" ${activeCleanerFilter===c?'selected':''}>Nur Zimmer von: ${c}</option>`).join('')}
+            ${getCleanerStaffNames().map(c=>`<option value="${esc(c)}" ${activeCleanerFilter===c?'selected':''}>Nur Zimmer von: ${esc(c)}</option>`).join('')}
           </select>
         </div>
         <div class="crm-grid" style="margin-top:0">
         ${filteredRooms.map(r=>{
-          const entry=getRoomHKEntry(r.id);
+          const entry=getRoomHKEntry(r.id,d);
           const st=entry.status;
-          const inH=act.find(b=>b.room_id==r.id&&b.anreise<=t&&b.abreise>t);
+          const inH=act.find(b=>b.room_id==r.id&&b.anreise<=d&&b.abreise>d);
+          const dep=act.find(b=>b.room_id==r.id&&b.abreise===d);
+          const checkedCount=(entry.checks||[]).filter(Boolean).length;
+          const allSixChecked=(checkedCount===6);
           const stBadge=st==='clean'
-            ?`<span class="badge badge-stamm">✓ Bestätigt (${entry.confirmedAt||'Heute'} · ${esc(entry.cleaner)})</span>`
+            ?`<span class="badge badge-stamm">✓ Bestätigt um ${esc(entry.confirmedAt||'Heute')} (${esc(entry.cleaner)})</span>`
             :st==='dirty'
-            ?'<span class="badge badge-blacklist">! Reinigung offen</span>'
-            :'<span class="badge badge-vip">⟳ In Arbeit</span>';
+            ?'<span class="badge badge-blacklist">! Reinigung offen (0/6)</span>'
+            :st==='prog'
+            ?`<span class="badge badge-vip">⟳ In Arbeit (${checkedCount}/6)</span>`
+            :'<span class="badge" style="background:var(--glass-soft);color:var(--mute)">Frei · Keine Aufgabe</span>';
           return `<div class="card card-pad" style="background:var(--glass-strong);display:flex;flex-direction:column">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-              <div style="font-size:16px;font-weight:800">Zimmer ${r.id} (${r.typ}) · <span style="color:var(--brand)">${esc(entry.cleaner)}</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:6px">
+              <div style="font-size:15.5px;font-weight:800">Zimmer ${r.id} (${r.typ}) · <span style="color:var(--brand)">${esc(entry.cleaner)}</span></div>
               ${stBadge}
             </div>
-            <div style="font-size:12px;margin-bottom:6px;color:${inH?'var(--danger)':'var(--emerald)'};font-weight:700">
-              ${inH?`● Heute belegt (${esc(inH.gast)})`:'● Heute frei'}
+            <div style="font-size:12px;margin-bottom:6px;color:${inH?'var(--danger)':dep?'var(--warn)':'var(--emerald)'};font-weight:700">
+              ${inH?`● Belegt (${esc(inH.gast)})`:dep?`Check-out (${esc(dep.gast)})`:'● Frei (Keine Pflicht-Reinigung)'}
             </div>
             <div>
               ${chkLabels.map((lbl,idx)=>`
@@ -3232,8 +3758,8 @@ function renderHousekeeping(){
                 </label>
               `).join('')}
             </div>
-            <button type="button" class="emerald-btn" style="width:100%;margin-top:10px;padding:10px" onclick="confirmRoomCleanedFromMobile(${r.id})">
-              ${esc(tr('btnConfirmClean'))} (Zimmer ${r.id} · ${esc(entry.cleaner)})
+            <button type="button" class="emerald-btn" style="width:100%;margin-top:10px;padding:10px;opacity:${allSixChecked?'1':'0.45'};cursor:${allSixChecked?'pointer':'not-allowed'}" ${allSixChecked?'':'disabled'} onclick="confirmRoomCleanedFromMobile(${r.id})">
+              ${st==='clean'?`✓ Gereinigt bestätigt um ${esc(entry.confirmedAt)}`:allSixChecked?`${esc(tr('btnConfirmClean'))} (Zimmer ${r.id})`:`🔒 Erst alle 6 Punkte abhaken (${checkedCount}/6 erledigt)`}
             </button>
           </div>`;
         }).join('')}
@@ -3245,87 +3771,166 @@ function renderHousekeeping(){
     toggleBtn.textContent='Checklisten-Ansicht für Reinigungskraft einblenden';
   }
 
-  // Office- & Manager-Übersicht der 8 Zimmer (immer mit Name der Reinigungskraft!)
+  // Office- & Manager-Übersicht der 8 Zimmer
   $('#hkGrid').innerHTML=rooms.map(r=>{
-    const entry=getRoomHKEntry(r.id);
+    const entry=getRoomHKEntry(r.id,d);
     const st=entry.status;
-    const inH=act.find(b=>b.room_id==r.id&&b.anreise<=t&&b.abreise>t);
-    const dep=act.find(b=>b.room_id==r.id&&b.abreise===t);
-    const arr=act.find(b=>b.room_id==r.id&&b.anreise===t);
+    const inH=act.find(b=>b.room_id==r.id&&b.anreise<=d&&b.abreise>d);
+    const dep=act.find(b=>b.room_id==r.id&&b.abreise===d);
+    const arr=act.find(b=>b.room_id==r.id&&b.anreise===d);
     const doneChecks=(entry.checks||[]).filter(Boolean).length;
     const stBadge=st==='clean'
-      ?`<span class="badge badge-stamm">✓ Gereinigt (${entry.confirmedAt||'bereit'})</span>`
+      ?`<span class="badge badge-stamm">✓ Gereinigt (${esc(entry.confirmedAt||'bereit')})</span>`
       :st==='dirty'
       ?'<span class="badge badge-blacklist">! Reinigung nötig</span>'
-      :`<span class="badge badge-vip">⟳ In Reinigung (${doneChecks}/6)</span>`;
+      :st==='prog'
+      ?`<span class="badge badge-vip">⟳ In Reinigung (${doneChecks}/6)</span>`
+      :'<span class="badge" style="background:var(--glass-soft);color:var(--mute)">Frei · Keine Aufgabe</span>';
 
     return `<div class="guest-card">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div style="font-size:16.5px;font-weight:800">Zimmer ${r.id} <small style="font-size:11px;padding:2px 7px;border-radius:99px;background:var(--brand-soft);color:var(--brand)">${r.typ}</small></div>
+        <div style="font-size:16px;font-weight:800">Zimmer ${r.id} <small style="font-size:11px;padding:2px 7px;border-radius:99px;background:var(--brand-soft);color:var(--brand)">${r.typ}</small></div>
         ${stBadge}
       </div>
 
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--glass-soft);padding:7px 10px;border-radius:10px">
-        <span style="font-size:12px;font-weight:700;color:var(--ink-soft)">Reinigungskraft: <b style="color:var(--brand)">${esc(entry.cleaner)}</b></span>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--glass-soft);padding:6px 10px;border-radius:10px">
+        <span style="font-size:12px;font-weight:700;color:var(--ink-soft)">Zuteilung: <b style="color:var(--brand)">${esc(entry.cleaner)}</b></span>
         <select onchange="setRoomCleaner(${r.id},this.value)" style="width:auto;margin:0;padding:3px 8px;font-size:11.5px;font-weight:700">
-          ${CLEANER_STAFF.map(c=>`<option value="${c}" ${entry.cleaner===c?'selected':''}>${c}</option>`).join('')}
+          ${cleanerOptions.map(c=>`<option value="${esc(c)}" ${entry.cleaner===c?'selected':''}>${esc(c)}</option>`).join('')}
         </select>
       </div>
 
       <div class="memory-callout">
-        ${inH?`<b>Aktuell belegt:</b> ${esc(inH.gast)} (bis ${fmt(inH.abreise)})`:'<b>Aktuell frei</b>'}
-        ${dep?`<br><span style="color:var(--danger)">Heute Check-out bis 10:00: ${esc(dep.gast)}</span>`:''}
-        ${arr?`<br><span style="color:var(--emerald)">Heute Check-in ab 15:00: ${esc(arr.gast)}</span>`:''}
+        ${inH?`<b>Am ${fmt(d)} belegt:</b> ${esc(inH.gast)} (bis ${fmt(inH.abreise)})`:'<b>Am gewählten Tag frei</b>'}
+        ${dep?`<br><span style="color:var(--danger)">Check-out bis 10:00: ${esc(dep.gast)}</span>`:''}
+        ${arr?`<br><span style="color:var(--emerald)">Check-in ab 15:00: ${esc(arr.gast)}</span>`:''}
       </div>
 
       <div style="display:flex;gap:6px;margin-top:auto">
         <button type="button" style="flex:1" onclick="cycleRoomHK(${r.id})">Status umschalten</button>
-        <button type="button" class="emerald-btn" onclick="activeCleanerFilter='${esc(entry.cleaner)}';showCleanerMobileInHK=true;renderHousekeeping()">Checkliste</button>
+        <button type="button" class="emerald-btn" onclick="showCleanerMobileInHK=true;renderHousekeeping()">Checkliste (${doneChecks}/6)</button>
       </div>
     </div>`;
   }).join('');
 }
 
-// ---- 6. DIENSTPLÄNE & REINIGUNGSPLÄNE (MANAGER-ADMIN) ----
-window.updateShiftCell=(idx,field,val)=>{
-  if(shiftPlan[idx]){
-    shiftPlan[idx][field]=val;
+// ---- 6. MITARBEITER-KARTEI, WOCHEN-DIENSTPLAN (MO-SO) & REINIGUNGSPLAN (MANAGER-ADMIN) ----
+window.addNewStaffMember=()=>{
+  const name=($('#newStaffName').value||'').trim();
+  const dept=$('#newStaffDept').value||'Reinigung';
+  const phone=($('#newStaffPhone').value||'').trim();
+  if(!name){alert('Bitte den Namen des Mitarbeiters eingeben.');return;}
+  staffDirectory.push({
+    id:'st-'+Date.now(),
+    name,
+    dept,
+    phone
+  });
+  $('#newStaffName').value='';
+  $('#newStaffPhone').value='';
+  saveStaffDirectory();
+  renderAll();
+};
+
+window.updateStaffMember=(id,field,val)=>{
+  const s=staffDirectory.find(x=>x.id===id);
+  if(s){
+    s[field]=val.trim();
+    saveStaffDirectory();
+    renderAll();
+  }
+};
+
+window.deleteStaffMember=id=>{
+  const s=staffDirectory.find(x=>x.id===id);
+  if(!s)return;
+  if(!confirm(`Mitarbeiter „${s.name} (${s.dept})“ wirklich aus der Kartei entfernen?`))return;
+  staffDirectory=staffDirectory.filter(x=>x.id!==id);
+  saveStaffDirectory();
+  renderAll();
+};
+
+window.updateWeeklyShiftCell=(rowIdx,dayNum,field,val)=>{
+  if(shiftPlan[rowIdx]&&shiftPlan[rowIdx].days&&shiftPlan[rowIdx].days[dayNum]){
+    shiftPlan[rowIdx].days[dayNum][field]=val;
     saveLocalShiftPlan();
+    renderTopKPIs();
+    renderCalendar();
+    renderBriefing();
+    renderHousekeeping();
   }
 };
 
 function renderShiftAndCleaningPlans(){
   if(currentRole!=='manager')return;
+  const dirWrap=$('#staffDirectoryWrap');
   const spWrap=$('#shiftPlanTableWrap');
   const cpWrap=$('#cleaningPlanTableWrap');
+  const d=selectedDate||todayStr();
+  if($('#adminCleanDateLabel'))$('#adminCleanDateLabel').textContent=fmt(d);
   if(!spWrap||!cpWrap)return;
 
+  // 1. Mitarbeiter-Kartei Tabelle
+  if(dirWrap){
+    dirWrap.innerHTML=`<table>
+      <tr><th>Name</th><th>Abteilung / Bereich</th><th>Rolle / Telefon / Notiz</th><th style="width:90px">Aktion</th></tr>
+      ${staffDirectory.map(s=>`<tr>
+        <td><input value="${esc(s.name)}" onchange="updateStaffMember('${s.id}','name',this.value)" style="margin:0;padding:4px 8px;font-weight:700"></td>
+        <td>
+          <select onchange="updateStaffMember('${s.id}','dept',this.value)" style="margin:0;padding:4px 8px;width:auto;font-weight:700">
+            ${['Reinigung','Küche','Service','Office'].map(dep=>`<option value="${dep}" ${s.dept===dep?'selected':''}>${dep}</option>`).join('')}
+          </select>
+        </td>
+        <td><input value="${esc(s.phone||'')}" onchange="updateStaffMember('${s.id}','phone',this.value)" style="margin:0;padding:4px 8px"></td>
+        <td><button type="button" class="danger" style="padding:4px 8px;font-size:11px" onclick="deleteStaffMember('${s.id}')">Löschen</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // 2. Wochen-Dienstplan (Montag bis Sonntag)
+  const dayOrder=[1,2,3,4,5,6,0];
+  const dayNames={1:'Montag',2:'Dienstag',3:'Mittwoch',4:'Donnerstag',5:'Freitag',6:'Samstag',0:'Sonntag'};
+  const selWd=D(d).getUTCDay();
+
   spWrap.innerHTML=`<table>
-    <tr><th>Bereich</th><th>Mitarbeiter</th><th>Mo – Fr</th><th>Sa – So</th><th>Aufgaben / Notiz</th></tr>
-    ${shiftPlan.map((s,idx)=>`<tr>
-      <td><b>${esc(s.area)}</b></td>
-      <td><input value="${esc(s.staff)}" onchange="updateShiftCell(${idx},'staff',this.value)" style="margin:0;padding:5px 8px;font-weight:700"></td>
-      <td><input value="${esc(s.mon_fri)}" onchange="updateShiftCell(${idx},'mon_fri',this.value)" style="margin:0;padding:5px 8px"></td>
-      <td><input value="${esc(s.weekend)}" onchange="updateShiftCell(${idx},'weekend',this.value)" style="margin:0;padding:5px 8px"></td>
-      <td><input value="${esc(s.notes)}" onchange="updateShiftCell(${idx},'notes',this.value)" style="margin:0;padding:5px 8px"></td>
-    </tr>`).join('')}
+    <tr>
+      <th>Abteilung</th>
+      ${dayOrder.map(wd=>`<th style="${wd===selWd?'color:var(--brand);text-decoration:underline':''}">${dayNames[wd]}</th>`).join('')}
+    </tr>
+    ${shiftPlan.map((row,rIdx)=>{
+      const deptStaff=staffDirectory.filter(s=>s.dept===row.dept).map(s=>s.name);
+      const staffChoices=[...new Set([...deptStaff,'Arthur','Sandra','Maria','Silvia','Reto','Giulia','Frei / Ruhetag'])];
+      return `<tr>
+        <td><b>${esc(row.dept)}</b><br><span style="font-size:11px;color:var(--mute)">${esc(row.label||'')}</span></td>
+        ${dayOrder.map(wd=>{
+          const cell=(row.days&&row.days[wd])||{staff:'',shift:''};
+          return `<td style="min-width:125px;background:${wd===selWd?'var(--brand-soft)':'transparent'};border-radius:8px">
+            <input list="staffList_${rIdx}" value="${esc(cell.staff)}" onchange="updateWeeklyShiftCell(${rIdx},${wd},'staff',this.value)" placeholder="Mitarbeiter" style="margin:0 0 4px 0;padding:4px 6px;font-weight:700;font-size:12px">
+            <datalist id="staffList_${rIdx}">${staffChoices.map(sc=>`<option value="${esc(sc)}"></option>`).join('')}</datalist>
+            <input value="${esc(cell.shift)}" onchange="updateWeeklyShiftCell(${rIdx},${wd},'shift',this.value)" placeholder="Schicht (Früh/Spät)" style="margin:0;padding:3px 6px;font-size:11px;color:var(--ink-soft)">
+          </td>`;
+        }).join('')}
+      </tr>`;
+    }).join('')}
   </table>`;
 
+  // 3. Zimmer-Reinigungsplan am gewählten Tag d
+  const cleanerOptions=['Name zuordnen',...getCleanerStaffNames()];
   cpWrap.innerHTML=`<table>
-    <tr><th>Zimmer</th><th>Typ</th><th>Zugewiesene Reinigungskraft</th><th>Heutiger Status</th><th>Bestätigt um</th></tr>
+    <tr><th>Zimmer</th><th>Typ</th><th>Zugewiesene Reinigungskraft (${fmt(d)})</th><th>Status am ${fmt(d)}</th><th>Bestätigt um</th></tr>
     ${rooms.map(r=>{
-      const entry=getRoomHKEntry(r.id);
+      const entry=getRoomHKEntry(r.id,d);
       const st=entry.status;
       return `<tr>
         <td><b>Zimmer ${r.id}</b></td>
         <td><span class="badge" style="background:var(--brand-soft);color:var(--brand)">${r.typ}</span></td>
         <td>
           <select onchange="setRoomCleaner(${r.id},this.value)" style="width:auto;margin:0;padding:4px 9px;font-weight:700">
-            ${CLEANER_STAFF.map(c=>`<option value="${c}" ${entry.cleaner===c?'selected':''}>${c}</option>`).join('')}
+            ${cleanerOptions.map(c=>`<option value="${esc(c)}" ${entry.cleaner===c?'selected':''}>${esc(c)}</option>`).join('')}
           </select>
         </td>
-        <td>${st==='clean'?'<span class="badge badge-stamm">✓ Gereinigt</span>':st==='dirty'?'<span class="badge badge-blacklist">! Offen</span>':'<span class="badge badge-vip">⟳ In Reinigung</span>'}</td>
-        <td class="num">${st==='clean'?(entry.confirmedAt||'Heute'):'—'}</td>
+        <td>${st==='clean'?'<span class="badge badge-stamm">✓ Gereinigt</span>':st==='dirty'?'<span class="badge badge-blacklist">! Aufgabe offen</span>':st==='prog'?'<span class="badge badge-vip">⟳ In Reinigung</span>':'<span class="badge" style="background:var(--glass-soft);color:var(--mute)">Frei (Keine Aufg.)</span>'}</td>
+        <td class="num">${st==='clean'?(entry.confirmedAt||'Bestätigt'):'—'}</td>
       </tr>`;
     }).join('')}
   </table>`;
@@ -3388,40 +3993,56 @@ $('#inpPreis').addEventListener('input',()=>{$('#inpPreis').dataset.auto='0';});
     updatePriceCalculator();
   });
 });
-['inpErw','inpKnd','chkExtraPark','chkExtraBaby','chkExtraZustell'].forEach(id=>{
-  $('#'+id).addEventListener('change',updatePriceCalculator);
-  $('#'+id).addEventListener('input',updatePriceCalculator);
+['inpErw','inpKnd','inpInfant','chkExtraPark','chkExtraBaby','chkExtraZustell'].forEach(id=>{
+  $('#'+id)?.addEventListener('change',updatePriceCalculator);
+  $('#'+id)?.addEventListener('input',updatePriceCalculator);
 });
 $('#btnApplyCalc').onclick=()=>{
   updatePriceCalculator();
   $('#inpPreis').value=lastCalculatedPrice.toFixed(2);
 };
 
-// ---- LIVE GAST-GEDÄCHTNIS BEIM EINGEBEN DES NAMENS ----
-function checkGuestMemoryInDialog(nameStr){
-  const g=findGuestByName(nameStr);
+// ---- INTELLIGENTE STAMMGAST- & DOPPEL-WARNUNG BEIM TIPPEN (NAME, TELEFON, E-MAIL, HUND) ----
+function checkGuestMemoryInDialog(){
+  const match=findMatchingExistingGuest({
+    gast:$('#inpGast')?.value||'',
+    telefon:$('#inpTel')?.value||'',
+    email:$('#inpEmail')?.value||'',
+    notiz:$('#inpNotiz')?.value||'',
+    special_wish:$('#inpSpecialWish')?.value||''
+  });
   const box=$('#bookingGuestMemory');
-  if(!g){box.hidden=true;return;}
+  if(!match){
+    lastMatchedReturningGuest=null;
+    box.hidden=true;
+    return;
+  }
+  const g=match.guest;
+  lastMatchedReturningGuest=g;
   box.hidden=false;
   box.className='guest-memory-banner'+(g.tier==='blacklist'?' blacklist':'');
   const title=g.tier==='blacklist'
     ?'⛔ ACHTUNG SCHWARZE LISTE — DIESEN GAST NICHT MEHR BUCHEN!'
-    :g.tier==='vip'
-    ?'★ SUPER-VIP ERKANNT — Gastgeber-Gedächtnis geladen:'
-    :'♥ Bekannter Gast aus deiner Kartei:';
+    :`⚠ STAMMGAST-WARNUNG: Dieser Kunde existiert bereits in deiner Gästekartei! (Erkannt über: ${match.reasons.join(', ')})`;
+  const wishHint=g.food_notes||g.general_notes||g.kids_notes||'Vorlieben aus dem letzten Aufenthalt';
   box.innerHTML=`
-    <div style="font-weight:800;margin-bottom:4px">${title} ${esc(g.name)} (${'★'.repeat(+g.rating||5)})</div>
+    <div style="font-weight:800;margin-bottom:4px">${esc(title)} — ${esc(g.name)} (${'★'.repeat(+g.rating||5)})</div>
+    <div style="font-size:12px;color:var(--emerald);font-weight:700;margin-bottom:4px">
+      Tipp für deine Bestätigungs-Mail: „Schön, dass du wieder bei uns anfragst! Sollen wir dir wieder (${esc(wishHint.slice(0,55))}) bereitstellen?“ (Wird automatisch im E-Mail-Generator eingefügt!)
+    </div>
     ${g.kids_notes?`<div><b>Familie & Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
     ${g.dog_notes?`<div><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
-    ${g.food_notes?`<div><b>Kulinarik / Wein:</b> ${esc(g.food_notes)}</div>`:''}
-    ${g.general_notes?`<div><b>Wunsch / Notiz:</b> ${esc(g.general_notes)}</div>`:''}
+    ${g.food_notes?`<div><b>Kulinarik / Wein / Flasche:</b> ${esc(g.food_notes)}</div>`:''}
+    ${g.general_notes?`<div><b>Zimmer-Wunsch / Notiz:</b> ${esc(g.general_notes)}</div>`:''}
   `;
   if(!editing){
     if(g.phone&&!$('#inpTel').value)$('#inpTel').value=g.phone;
     if(g.email&&!$('#inpEmail').value)$('#inpEmail').value=g.email;
   }
 }
-$('#inpGast').addEventListener('input',e=>checkGuestMemoryInDialog(e.target.value));
+['inpGast','inpTel','inpEmail','inpNotiz','inpSpecialWish'].forEach(id=>{
+  $('#'+id)?.addEventListener('input',checkGuestMemoryInDialog);
+});
 
 // ---- HOVER-TOOLTIP AUF KALENDER-BALKEN ----
 $('#cal').addEventListener('mousemove',e=>{
@@ -3434,16 +4055,18 @@ $('#cal').addEventListener('mousemove',e=>{
   const g=findGuestByName(b.gast);
   const n=diff(b.anreise,b.abreise);
   const showPrice=currentRole==='manager';
+  const pCount=(+b.erwachsene||1)+(+b.kinder||0);
   hc.hidden=false;
   hc.style.left=Math.min(e.clientX+16,innerWidth-350)+'px';
   hc.style.top=Math.min(e.clientY+16,innerHeight-240)+'px';
   hc.innerHTML=`
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <b style="font-size:14px">${esc(b.gast)}</b>
+      <b style="font-size:14px">${esc(b.gast)} (${pCount}P)</b>
       <span class="badge" style="background:var(--${b.quelle});color:#fff">${QUELLE[b.quelle]||b.quelle}</span>
     </div>
     <div class="num" style="color:var(--ink-soft)">Zimmer ${b.room_id} · ${fmt(b.anreise)} bis ${fmt(b.abreise)} (${n} ${n===1?'Nacht':'Nächte'})</div>
-    <div style="margin-top:4px">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Kinder':''} ${showPrice&&b.preis?'· <b>CHF '+Number(b.preis).toFixed(2)+'</b>':''}</div>
+    <div style="margin-top:4px">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Kinder (2–12J.)':''}${b.kleinkinder?', +'+b.kleinkinder+' Kleinkind (0–1J. gratis)':''} ${showPrice&&b.preis?'· <b>CHF '+Number(b.preis).toFixed(2)+'</b>':''}</div>
+    <div style="margin-top:3px;font-size:11.5px;color:var(--mute)">Buchung eingetragen von: <b>${esc(b.created_by_staff||'Arthur')}</b></div>
     ${b.special_wish?`<div style="margin-top:5px;color:var(--gold)"><b>Sonderwunsch (${b.wish_lead_days||3}T Vorlauf):</b> ${esc(b.special_wish)}</div>`:''}
     ${g?.kids_notes?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--line);color:var(--brand)"><b>Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
     ${g?.dog_notes?`<div style="margin-top:3px"><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
@@ -3463,30 +4086,34 @@ async function syncNow(){
 // ---- BUCHUNGS-DIALOG ÖFFNEN / SPEICHERN ----
 function openDlg(b,preset){
   editing=b||null;const f=$('#frm');f.reset();$('#derr').textContent='';
+  populateStaffSelectInBookingDialog(b?.created_by_staff);
   $('#dTitle').textContent=b?(b._isDemo?'Test-Buchung bearbeiten':'Buchung bearbeiten'):'Neue Buchung eintragen';
-  const defAn=preset?.d||todayStr();
+  const defAn=preset?.d||selectedDate||todayStr();
   const defAb=preset?.abreise||add(defAn,1);
-  const v=b||{
+  const v=b?enrichBookingWithMeta(b):{
     room_id:preset?.room||rooms[0]?.id||2,
     gast:preset?.gast||'',
     anreise:defAn,
     abreise:defAb,
     erwachsene:2,
     kinder:0,
+    kleinkinder:0,
+    created_by_staff:getAllStaffNames()[0],
     status:'bestaetigt',
     quelle:'manuell',
     special_wish:'',
     wish_lead_days:3,
     extras_list:[]
   };
-  for(const k of ['gast','status','anreise','abreise','erwachsene','kinder','telefon','email','quelle','preis','notiz','special_wish','wish_lead_days']){
+  for(const k of ['gast','status','anreise','abreise','erwachsene','kinder','kleinkinder','created_by_staff','telefon','email','quelle','preis','notiz','special_wish','wish_lead_days']){
     if(f.elements[k])f.elements[k].value=v[k]??'';
   }
+  if($('#mailInfantSelect'))$('#mailInfantSelect').value=String(+(v.kleinkinder||0)>0?1:0);
   setSelectedExtrasList(v.extras_list||[]);
   refreshFreeRoomsDropdown(v.room_id);
   $('#inpPreis').dataset.auto=b?'0':'1';
   updatePriceCalculator();
-  checkGuestMemoryInDialog(v.gast||'');
+  checkGuestMemoryInDialog();
   $('#dDelete').hidden=!b;
   $('#dInfo').textContent=b?(b._isDemo?'Interaktiver Test-Balken (blockiert kein Zimmer in Feratel Deskline).':b.sync_state=='erledigt'?'✓ In Feratel Deskline abgeglichen.':'Wird beim Speichern mit Feratel Deskline synchronisiert.'):'Es werden im Dropdown nur Zimmer freigegeben, die im gewählten Zeitraum frei sind.';
   $('#dlg').showModal();
@@ -3502,7 +4129,7 @@ $('#dOpenGuestBtn').onclick=()=>{
   openGuestModal(g?g.id:null,gName);
 };
 
-// ---- AUTOMATISCHER BESTÄTIGUNGS-E-MAIL-GENERATOR (ARTHURS VORLAGE) ----
+// ---- AUTOMATISCHER BESTÄTIGUNGS-E-MAIL-GENERATOR (INKL. STAMMGAST-ÜBERRASCHUNGSSATZ) ----
 const LONG_WD=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
 const LONG_MON=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 function fmtLongDate(isoStr){
@@ -3522,7 +4149,7 @@ function buildConfirmationEmail(){
   const nights=Math.max(1,diff(an,ab));
   const erw=+($('#inpErw').value||2);
   const knd=+($('#inpKnd').value||0);
-  const infant=+($('#mailInfantSelect').value||0);
+  const infant=+($('#mailInfantSelect').value||$('#inpInfant')?.value||0);
   const tone=$('#mailToneSelect').value||'du';
   const total=parseFloat($('#inpPreis').value)||lastCalculatedPrice||160;
 
@@ -3531,21 +4158,31 @@ function buildConfirmationEmail(){
   const kidsSum=nights*knd*35;
   const hasPark=$('#chkExtraPark').checked;
 
+  // Prüfe, ob für diesen Gast bereits Vorlieben in der Gästekartei hinterlegt sind (Stammgast-Wow-Effekt!)
+  const knownGuest=lastMatchedReturningGuest||findGuestByName(gast);
+  const knownPreference=knownGuest?(knownGuest.food_notes||knownGuest.general_notes||$('#inpSpecialWish').value||''):'';
+
   let persParts=[`${erw} ${erw===1?'Erwachsener':'Erwachsene'}`];
   if(knd>0)persParts.push(`${knd} ${knd===1?'Kind':'Kinder'} (CHF 35.– / Nacht)`);
-  if(infant>0)persParts.push(`1 Kleinkind (0–1 Jahr, kostenlos)`);
+  if(infant>0)persParts.push(`${infant} Kleinkind (0–1 Jahr, kostenlos)`);
 
   let priceLines=[`${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} (${erw} ${erw===1?'Erwachsener':'Erwachsene'}, ${nights} ${nights===1?'Nacht':'Nächte'} à CHF ${baseRate.toFixed(2)}): CHF ${baseSum.toFixed(2)}`];
   if(knd>0)priceLines.push(`${knd} ${knd===1?'Kind':'Kinder'} (${nights} ${nights===1?'Nacht':'Nächte'} à CHF ${(knd*35).toFixed(2)}): CHF ${kidsSum.toFixed(2)}`);
-  if(infant>0)priceLines.push(`1 Kleinkind (0–1 Jahr): kostenlos`);
+  if(infant>0)priceLines.push(`${infant} Kleinkind (0–1 Jahr): kostenlos`);
   if(hasPark)priceLines.push(`Überdachter Parkplatz (${nights} ${nights===1?'Nacht':'Nächte'} à CHF 10.00): CHF ${(nights*10).toFixed(2)}`);
+
+  const returningLineDu=knownPreference
+    ?`\nSchön, dass du wieder bei uns im Berggasthof Alp Fatschél buchst! Sollen wir für euch wie beim letzten Mal wieder (${knownPreference}) bereitstellen?\n`
+    :'';
+  const returningLineSie=knownPreference
+    ?`\nWie schön, dass Sie wieder bei uns im Berggasthof Alp Fatschél buchen! Dürfen wir für Sie wie bei Ihrem letzten Aufenthalt wieder (${knownPreference}) vorbereiten?\n`
+    :'';
 
   if(tone==='du'){
     $('#mailSubjectInput').value=`Deine Buchungsbestätigung – Berggasthof Alp Fatschél (${fmt(an)} – ${fmt(ab)})`;
     $('#mailBodyInput').value=`Lieber ${firstName},
 
-vielen Dank für unser nettes Telefonat und deine Buchung bei uns im Berggasthof Alp Fatschél. Ich habe euer ${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} fest für euch eingetragen und wir freuen uns riesig, dich und deine Familie bei uns begrüssen zu dürfen.
-
+vielen Dank für unser nettes Telefonat und deine Buchung bei uns im Berggasthof Alp Fatschél. Ich habe euer ${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} fest für euch eingetragen und wir freuen uns riesig, dich und deine Familie bei uns begrüssen zu dürfen.${returningLineDu}
 Hier ist deine offizielle Buchungsbestätigung im Überblick:
 
 DEINE RESERVIERUNG
@@ -3583,8 +4220,7 @@ www.alpfatschel.ch`;
     $('#mailSubjectInput').value=`Ihre Buchungsbestätigung – Berggasthof Alp Fatschél (${fmt(an)} – ${fmt(ab)})`;
     $('#mailBodyInput').value=`Guten Tag ${gast},
 
-herzlichen Dank für Ihre Buchung bei uns im Berggasthof Alp Fatschél. Wir haben Ihr ${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} fest für Sie eingetragen und freuen uns sehr, Sie bei uns begrüssen zu dürfen.
-
+herzlichen Dank für Ihre Buchung bei uns im Berggasthof Alp Fatschél. Wir haben Ihr ${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} fest für Sie eingetragen und freuen uns sehr, Sie bei uns begrüssen zu dürfen.${returningLineSie}
 Hier ist Ihre offizielle Buchungsbestätigung im Überblick:
 
 IHRE RESERVIERUNG
@@ -3623,6 +4259,7 @@ www.alpfatschel.ch`;
 
 $('#btnGenConfirmMail').onclick=()=>{
   $('#mailToInput').value=$('#inpEmail').value.trim();
+  if($('#inpInfant'))$('#mailInfantSelect').value=String(+($('#inpInfant').value||0)>0?1:0);
   $('#mailCopyNotice').hidden=true;
   buildConfirmationEmail();
   $('#dlgConfirmMail').showModal();
@@ -3651,6 +4288,8 @@ $('#frm').addEventListener('submit',async e=>{
   row.erwachsene=+f.erwachsene.value||1;
   row.kinder=+f.kinder.value||0;
   row.preis=f.preis.value===''?null:+f.preis.value;
+  const localInfant=+(f.kleinkinder?.value||0);
+  const localStaff=f.created_by_staff?.value||'Arthur (Geschäftsführung)';
   const localExtras=getSelectedExtrasList();
   const localWish=f.special_wish.value.trim();
   const localLeadDays=+(f.wish_lead_days.value||3);
@@ -3663,53 +4302,67 @@ $('#frm').addEventListener('submit',async e=>{
     return;
   }
 
+  // Kleinkinder (0-1 J.) zählen NICHT zur maximalen Personenanzahl des Zimmers!
   const room=rooms.find(r=>r.id==row.room_id);
   if(room&&row.erwachsene+row.kinder>room.max_personen){
-    $('#derr').textContent=`Zimmer ${room.id} hat höchstens ${room.max_personen} Plätze.`;
+    $('#derr').textContent=`Zimmer ${room.id} hat höchstens ${room.max_personen} Plätze (Kleinkinder 0–1 J. zählen nicht als Platz).`;
     return;
   }
 
+  const metaPayload={
+    kleinkinder:localInfant,
+    created_by_staff:localStaff,
+    extras_list:localExtras,
+    special_wish:localWish,
+    wish_lead_days:localLeadDays
+  };
+
   if(row.gast){
-    let ex=findGuestByName(row.gast);
+    const match=findMatchingExistingGuest({gast:row.gast,telefon:row.telefon||'',email:row.email||'',notiz:row.notiz||'',special_wish:localWish});
+    let ex=match?match.guest:guests.find(g=>normName(g.name)===normName(row.gast));
     if(!ex){
       guests.push({
         id:'g-'+Date.now(),
         name:row.gast,
-        city:'Gast',
+        city:'Alp-Gast',
         tier:'normal',
         rating:'5',
         birthday:'',
         phone:row.telefon||'',
         email:row.email||'',
         address:'',
-        kids_notes:'',
+        kids_notes:(row.kinder>0||localInfant>0)?`${row.kinder} Kind(er)${localInfant?`, +${localInfant} Kleinkind (0–1J.)`:''}`:'',
         dog_notes:'',
         food_notes:localWish||'',
         general_notes:row.notiz||'',
         id_number:'',
-        id_photo:''
+        id_photo:'',
+        _isDemo:Boolean(editing?._isDemo)
       });
     }else{
       if(row.telefon)ex.phone=row.telefon;
       if(row.email)ex.email=row.email;
+      if(localWish&&!ex.food_notes)ex.food_notes=localWish;
     }
     saveLocalCRM();
   }
 
   if(editing&&editing._isDemo){
-    Object.assign(editing,row,{extras_list:localExtras,special_wish:localWish,wish_lead_days:localLeadDays});
+    Object.assign(editing,row,metaPayload);
     saveDemoBookings();
     $('#dlg').close();
     renderAll();
     return;
   }
 
+  storeBookingMeta({id:editing?.id,room_id:row.room_id,anreise:row.anreise,gast:row.gast},metaPayload);
+
   $('#dSave').disabled=true;
-  const q=editing?sb.from('bookings').update(row).eq('id',editing.id):sb.from('bookings').insert(row);
-  const {error}=await q;$('#dSave').disabled=false;
+  const q=editing?sb.from('bookings').update(row).eq('id',editing.id).select():sb.from('bookings').insert(row).select();
+  const {data:savedRows,error}=await q;$('#dSave').disabled=false;
   if(error){
     if(!editing){
-      demoBookings.push({...row,extras_list:localExtras,special_wish:localWish,wish_lead_days:localLeadDays,id:'demo-'+Date.now(),sync_state:'erledigt',_isDemo:true});
+      demoBookings.push({...row,...metaPayload,id:'demo-'+Date.now(),sync_state:'erledigt',_isDemo:true});
       showDemoBars=true;
       saveDemoBookings();
       updateDemoButtonLabel();
@@ -3719,6 +4372,9 @@ $('#frm').addEventListener('submit',async e=>{
     }
     $('#derr').textContent=/keine_doppelbelegung/.test(error.message)?'Dieses Zimmer ist in diesem Zeitraum schon belegt.':'Speichern fehlgeschlagen: '+error.message;
     return;
+  }
+  if(savedRows&&savedRows[0]){
+    storeBookingMeta(savedRows[0],metaPayload);
   }
   $('#dlg').close();await load();syncNow();
 });
@@ -3813,7 +4469,8 @@ $('#frmGuest').addEventListener('submit',e=>{
     food_notes:f.food_notes.value.trim(),
     general_notes:f.general_notes.value.trim(),
     id_number:f.id_number.value.trim(),
-    id_photo:currentIdPhotoData
+    id_photo:currentIdPhotoData,
+    _isDemo:false
   };
   if(editingGuest){
     const idx=guests.findIndex(x=>x.id===editingGuest.id);
@@ -3858,7 +4515,7 @@ $('#globalSearch').addEventListener('input',e=>{
 $('#syncNow').onclick=syncNow;
 $('#prev').onclick=()=>{start=add(start,-14);load()};
 $('#next').onclick=()=>{start=add(start,14);load()};
-$('#today').onclick=()=>{start=add(todayStr(),-2);load()};
+$('#today').onclick=()=>{selectedDate=todayStr();start=add(todayStr(),-2);load()};
 $('#prevMonth').onclick=()=>{start=addMonths(add(start,4),-1);load()};
 $('#nextMonth').onclick=()=>{start=addMonths(add(start,4),1);load()};
 
