@@ -1217,13 +1217,13 @@ textarea { min-height: 54px; resize: vertical; }
 
       <div class="lists-grid" style="margin-top:0">
         <div class="card card-pad">
-          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingBreakfastTitle">Frühstücks- & Küchen-Liste (07:00 – 10:00 Uhr)</h2>
-          <p class="hint" style="margin-top:0">Alle heute im Haus schlafenden Gäste inklusive Kinder-Lieblingsessen, Allergien, Vorlieben und Hunde-Hinweisen.</p>
+          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingBreakfastTitle">Frühstücks- & Küchen-Planung (HEUTE & MORGEN FRÜH 07:00 – 10:00 Uhr)</h2>
+          <p class="hint" style="margin-top:0">Zeigt sowohl das heutige Frühstück als auch die Vorschau für morgen früh, damit die Küche rechtzeitig Brötchen, Eier und Kinder-Wünsche einplanen kann.</p>
           <div id="briefingBreakfast"></div>
         </div>
         <div class="card card-pad">
-          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingWelcomeTitle">Gäste-Briefing: Anreisen, Vorlieben & Wünsche</h2>
-          <p class="hint" style="margin-top:0">Alle Informationen für Mitarbeiter zu anreisenden und im Haus befindlichen Gästen, Kindern und Lieblingsgetränken.</p>
+          <h2 class="sec-title" style="margin-top:0" data-i18n="briefingWelcomeTitle">Gäste-Briefing: Anreisen Heute & Morgen + Vorlieben</h2>
+          <p class="hint" style="margin-top:0">Alle Informationen für Mitarbeiter zu heute und morgen anreisenden Gästen, Kindern und Lieblingsgetränken.</p>
           <div id="briefingWelcome"></div>
         </div>
       </div>
@@ -1456,11 +1456,54 @@ textarea { min-height: 54px; resize: vertical; }
 
   <div class="actions">
     <button class="primary" id="dSave" value="save">Buchung speichern</button>
+    <button type="button" class="gold" id="btnGenConfirmMail">Bestätigungs-E-Mail erzeugen</button>
     <button type="button" id="dCancel">Schliessen</button>
     <span class="spacer"></span>
     <button type="button" class="danger" id="dDelete" hidden>Buchung löschen / stornieren</button>
   </div>
 </form>
+</dialog>
+
+<!-- DIALOG 1b: AUTOMATISCHER BESTÄTIGUNGS-E-MAIL-GENERATOR (ARTHURS VORLAGE info@alpfatschel.ch) -->
+<dialog id="dlgConfirmMail" style="width:min(720px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>Offizielle Buchungsbestätigung (Absender: info@alpfatschel.ch)</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgConfirmMail').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+        <label style="margin:0;display:flex;align-items:center;gap:6px">Anrede-Stil:
+          <select id="mailToneSelect" style="width:auto;margin:0;padding:5px 10px">
+            <option value="du">Persönlich per Du („Lieber Samuel…“ – Arthurs Vorlage)</option>
+            <option value="sie">Höflich per Sie („Guten Tag Herr/Frau…“)</option>
+          </select>
+        </label>
+        <label style="margin:0;display:flex;align-items:center;gap:6px">Kleinkind 0–1 J. (kostenlos):
+          <select id="mailInfantSelect" style="width:auto;margin:0;padding:5px 10px">
+            <option value="0">Kein Kleinkind (0–1 J.)</option>
+            <option value="1">+ 1 Kleinkind (0–1 Jahr, kostenlos)</option>
+          </select>
+        </label>
+      </div>
+      <label>Empfänger E-Mail-Adresse
+        <input id="mailToInput" type="email" placeholder="gast@beispiel.ch">
+      </label>
+      <label style="margin-top:8px">Betreff
+        <input id="mailSubjectInput">
+      </label>
+      <label style="margin-top:8px">Fertiger E-Mail-Text (direkt editierbar)
+        <textarea id="mailBodyInput" style="min-height:310px;font-family:inherit;line-height:1.45"></textarea>
+      </label>
+      <div id="mailCopyNotice" style="color:var(--emerald);font-weight:700;font-size:12.5px;margin-top:6px" hidden>✓ Text und Betreff in die Zwischenablage kopiert!</div>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" id="btnOpenAppleMail">In E-Mail-Programm öffnen (info@alpfatschel.ch)</button>
+      <button type="button" class="gold" id="btnCopyMailText">Text kopieren</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgConfirmMail').close()">Schliessen</button>
+    </div>
+  </div>
 </dialog>
 
 <!-- DIALOG 2: GROSSES DETAIL-FENSTER BEIM KLICK AUF EINE KOMPAKTE GÄSTEKARTE -->
@@ -2424,12 +2467,12 @@ function renderCalendar(){
   for(const r of rooms){
     const inHouseToday=allB.find(b=>b.room_id==r.id&&b.status!='storniert'&&b.anreise<=t&&b.abreise>t);
     const hk=getRoomHKStatus(r.id);
-    // ROTER PUNKT wenn das Zimmer heute belegt ist (oder Reinigung offen ist), GRÜNER PUNKT wenn heute frei & bereit!
-    const dotCls=inHouseToday?'hk-dirty':(hk==='clean'?'hk-clean':hk==='dirty'?'hk-dirty':'hk-prog');
+    // ROTER PUNKT im Belegungsplan NUR wenn das Zimmer HEUTE wirklich belegt ist! Sonst GRÜN!
+    const dotCls=inHouseToday?'hk-dirty':'hk-clean';
     const cleaner=getRoomCleaner(r.id);
     const dotTitle=inHouseToday
       ?`Heute belegt: ${inHouseToday.gast} (Reinigungskraft: ${cleaner})`
-      :(hk==='clean'?`Heute frei & bezugsbereit (${cleaner})`:hk==='dirty'?`Reinigung nötig (${cleaner})`:`In Reinigung (${cleaner})`);
+      :`Heute frei & bezugsbereit (Reinigungskraft: ${cleaner})`;
     h+=`<div class="row" data-room="${r.id}">
       <div class="rname">
         <span>${roomWord} ${r.id}</span>
@@ -2814,11 +2857,19 @@ function renderBriefing(){
     }).join('');
   }
 
-  // 2b. Frühstücks- & Küchenliste
-  if(!inHouse.length){
-    $('#briefingBreakfast').innerHTML='<p style="color:var(--mute)">Heute Nacht sind keine Zimmer belegt.</p>';
-  }else{
-    $('#briefingBreakfast').innerHTML='<table><tr><th>Zimmer</th><th>Gast</th><th>Personen</th><th>Kinder / Lieblingsessen / Allergien & Wünsche</th></tr>'+inHouse.map(b=>{
+  // 2b. Frühstücks- & Küchenliste für HEUTE MORGEN und MORGEN FRÜH
+  const tmr=add(t,1);
+  // Heute Morgen beim Frühstück sitzt, wer gestern Nacht im Haus war (anreise < t && abreise >= t) oder heute im Haus ist (anreise <= t && abreise > t)
+  const breakfastToday=act.filter(b=>b.anreise<=t&&b.abreise>t);
+  // Morgen Früh beim Frühstück sitzt, wer heute Nacht im Haus schläft (inkl. heutiger Anreisen!) oder morgen im Haus ist (anreise <= t && abreise >= tmr)
+  const breakfastTomorrow=act.filter(b=>b.anreise<tmr&&b.abreise>=tmr);
+
+  const renderBfTable=(list,emptyMsg)=>{
+    if(!list.length)return `<p style="color:var(--mute);margin:6px 0 14px">${emptyMsg}</p>`;
+    const totalErw=list.reduce((s,b)=>s+(+b.erwachsene||0),0);
+    const totalKi=list.reduce((s,b)=>s+(+b.kinder||0),0);
+    return `<div style="margin-bottom:6px;font-weight:700;color:var(--emerald)">Gesamt: ${totalErw+totalKi} Personen (${totalErw} Erwachsene · ${totalKi} Kinder)</div>`
+      +'<table style="margin-bottom:16px"><tr><th>Zimmer</th><th>Gast</th><th>Personen</th><th>Kinder / Lieblingsessen / Allergien & Wünsche</th></tr>'+list.map(b=>{
       const g=findGuestByName(b.gast);
       const notes=[b.special_wish,g?.kids_notes,g?.food_notes,g?.dog_notes,b.notiz].filter(Boolean).join(' · ')||'Keine besonderen Vermerke';
       return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
@@ -2828,7 +2879,18 @@ function renderBriefing(){
         <td>${esc(notes)}</td>
       </tr>`;
     }).join('')+'</table>';
-  }
+  };
+
+  $('#briefingBreakfast').innerHTML=`
+    <div style="padding:10px 12px;border-radius:12px;background:var(--brand-soft);border:1px solid rgba(14,165,233,0.3);margin-bottom:12px">
+      <div style="font-weight:800;font-size:13.5px;color:var(--brand);margin-bottom:4px">1. FRÜHSTÜCK HEUTE (${fmt(t)} · 07:00 – 10:00 Uhr)</div>
+      ${renderBfTable(breakfastToday,'Heute sind keine Frühstücksgäste im Haus.')}
+    </div>
+    <div style="padding:10px 12px;border-radius:12px;background:var(--emerald-soft);border:1px solid rgba(16,185,129,0.35)">
+      <div style="font-weight:800;font-size:13.5px;color:var(--emerald);margin-bottom:4px">2. VORSCHAU FÜR MORGEN FRÜH (${fmt(tmr)} · Einkaufs- & Küchenplanung)</div>
+      ${renderBfTable(breakfastTomorrow,'Für morgen früh sind noch keine Übernachtungsgäste eingetragen.')}
+    </div>
+  `;
 
   // 2c. Persönlicher Gäste-Spickzettel für alle Mitarbeiter
   const welcomeList=upcoming.length?upcoming:guests.slice(0,5).map(g=>({gast:g.name,room_id:'—',anreise:'',_demo:true}));
@@ -3018,18 +3080,22 @@ function getRoomHKEntry(roomId){
   const t=todayStr();
   const r=rooms.find(x=>Number(x.id)===Number(roomId));
   const defCleaner=r?.default_cleaner||'Maria';
+  const act=allActiveBookings().filter(b=>b.status!=='storniert');
+  const inH=act.some(b=>b.room_id==roomId&&b.anreise<=t&&b.abreise>t);
+  const depToday=act.some(b=>b.room_id==roomId&&b.abreise===t);
+  const needsCleaning=inH||depToday;
   if(!hkState[roomId]||hkState[roomId].date!==t){
-    const act=allActiveBookings().filter(b=>b.status!=='storniert');
-    const inH=act.some(b=>b.room_id==roomId&&b.anreise<=t&&b.abreise>t);
-    const depToday=act.some(b=>b.room_id==roomId&&b.abreise===t);
-    const needsCleaning=inH||depToday;
     hkState[roomId]={
       date:t,
       status:needsCleaning?'dirty':'clean',
       cleaner:hkState[roomId]?.cleaner||defCleaner,
       checks:needsCleaning?[false,false,false,false,false,false]:[true,true,true,true,true,true],
-      confirmedAt:needsCleaning?'':'09:15'
+      confirmedAt:needsCleaning?'':'09:15',
+      manualOverride:false
     };
+  }else if(!hkState[roomId].manualOverride){
+    // Wenn Testmodus ein-/ausgeschaltet wird, synchronisiere automatisch den Status
+    hkState[roomId].status=needsCleaning?'dirty':'clean';
   }
   return hkState[roomId];
 }
@@ -3434,6 +3500,147 @@ $('#dOpenGuestBtn').onclick=()=>{
   const g=findGuestByName(gName);
   $('#dlg').close();
   openGuestModal(g?g.id:null,gName);
+};
+
+// ---- AUTOMATISCHER BESTÄTIGUNGS-E-MAIL-GENERATOR (ARTHURS VORLAGE) ----
+const LONG_WD=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+const LONG_MON=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+function fmtLongDate(isoStr){
+  if(!isoStr)return '';
+  const d=D(isoStr);
+  return `${LONG_WD[d.getUTCDay()]}, ${d.getUTCDate()}. ${LONG_MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+function buildConfirmationEmail(){
+  const gast=($('#inpGast').value||'Gast').trim();
+  const firstName=gast.replace(/^(Familie|Herr|Frau|Dr\.)\s+/i,'').split(/\s+/)[0]||gast;
+  const roomId=+$('#selRoom').value||5;
+  const rObj=rooms.find(r=>r.id===roomId)||{id:roomId,typ:roomId===5||roomId===10?'FZ':'DZ'};
+  const roomLabel=rObj.typ==='FZ'?`Familienzimmer (Zimmer ${rObj.id})`:`Doppelzimmer (Zimmer ${rObj.id})`;
+  const an=$('#inpAnreise').value||todayStr();
+  const ab=$('#inpAbreise').value||add(an,1);
+  const nights=Math.max(1,diff(an,ab));
+  const erw=+($('#inpErw').value||2);
+  const knd=+($('#inpKnd').value||0);
+  const infant=+($('#mailInfantSelect').value||0);
+  const tone=$('#mailToneSelect').value||'du';
+  const total=parseFloat($('#inpPreis').value)||lastCalculatedPrice||160;
+
+  const baseRate=erw===1?110:160+(erw>2?(erw-2)*70:0);
+  const baseSum=nights*baseRate;
+  const kidsSum=nights*knd*35;
+  const hasPark=$('#chkExtraPark').checked;
+
+  let persParts=[`${erw} ${erw===1?'Erwachsener':'Erwachsene'}`];
+  if(knd>0)persParts.push(`${knd} ${knd===1?'Kind':'Kinder'} (CHF 35.– / Nacht)`);
+  if(infant>0)persParts.push(`1 Kleinkind (0–1 Jahr, kostenlos)`);
+
+  let priceLines=[`${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} (${erw} ${erw===1?'Erwachsener':'Erwachsene'}, ${nights} ${nights===1?'Nacht':'Nächte'} à CHF ${baseRate.toFixed(2)}): CHF ${baseSum.toFixed(2)}`];
+  if(knd>0)priceLines.push(`${knd} ${knd===1?'Kind':'Kinder'} (${nights} ${nights===1?'Nacht':'Nächte'} à CHF ${(knd*35).toFixed(2)}): CHF ${kidsSum.toFixed(2)}`);
+  if(infant>0)priceLines.push(`1 Kleinkind (0–1 Jahr): kostenlos`);
+  if(hasPark)priceLines.push(`Überdachter Parkplatz (${nights} ${nights===1?'Nacht':'Nächte'} à CHF 10.00): CHF ${(nights*10).toFixed(2)}`);
+
+  if(tone==='du'){
+    $('#mailSubjectInput').value=`Deine Buchungsbestätigung – Berggasthof Alp Fatschél (${fmt(an)} – ${fmt(ab)})`;
+    $('#mailBodyInput').value=`Lieber ${firstName},
+
+vielen Dank für unser nettes Telefonat und deine Buchung bei uns im Berggasthof Alp Fatschél. Ich habe euer ${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} fest für euch eingetragen und wir freuen uns riesig, dich und deine Familie bei uns begrüssen zu dürfen.
+
+Hier ist deine offizielle Buchungsbestätigung im Überblick:
+
+DEINE RESERVIERUNG
+Gast: ${gast}
+Zimmer: ${roomLabel}
+Anreise: ${fmtLongDate(an)} (Check-in ab 15:00 Uhr)
+Abreise: ${fmtLongDate(ab)} (Check-out bis 10:00 Uhr)
+Dauer: ${nights} ${nights===1?'Nacht':'Nächte'}
+Personen: ${persParts.join(' sowie ')}
+
+PREISÜBERSICHT (INKL. FRÜHSTÜCK & KURTAXE)
+${priceLines.join('\n')}
+Gesamtbetrag Unterkunft: CHF ${total.toFixed(2)} (zahlbar ganz unkompliziert bei uns vor Ort per Karte, Twint oder bar)
+
+IM PREIS INBEGRIFFEN:
+Reichhaltiges Frühstück jeden Morgen von 07:00 bis 10:00 Uhr
+Sämtliche Kurtaxen und Abgaben sowie kostenloses WLAN
+Euer Hotelgast-Bonus: Als unsere Hausgäste bekommt ihr während eures gesamten Aufenthalts 20 % Rabatt auf unsere gesamte Restaurantkarte.
+
+KURZE FRAGEN FÜR UNSERE VORBEREITUNG:
+Damit bei eurer Anreise alles perfekt bereitsteht, schick mir bitte bei Gelegenheit noch kurz per Antwort:
+${!hasPark?'- Überdachter Parkplatz: Brauchst du einen unserer überdachten Parkplätze direkt am Haus? (CHF 10.00 pro Nacht).\n':''}${(knd>0||infant>0)?'- Kannst du mir die Namen deiner Kinder schicken?\n':''}- Adresse für den Meldeschein: Deine Postadresse (Strasse, PLZ, Ort), damit wir den Meldeschein schon vorab für dich ausfüllen können und ihr beim Check-in keine Wartezeit habt.
+- Tisch im Restaurant: Sollen wir euch für abends einen schönen Tisch bei uns im Restaurant reservieren? Schwebt dir eine Uhrzeit vor?
+
+Wir freuen uns sehr auf eure Anreise!
+
+Herzliche Grüsse aus den Bergen
+
+Arthur & das Team vom Berggasthof Alp Fatschél
+Berggasthof Alp Fatschél · Fatschél 192 · 7028 St. Peter GR
+Telefon: +41 81 377 17 17
+E-Mail: info@alpfatschel.ch
+www.alpfatschel.ch`;
+  }else{
+    $('#mailSubjectInput').value=`Ihre Buchungsbestätigung – Berggasthof Alp Fatschél (${fmt(an)} – ${fmt(ab)})`;
+    $('#mailBodyInput').value=`Guten Tag ${gast},
+
+herzlichen Dank für Ihre Buchung bei uns im Berggasthof Alp Fatschél. Wir haben Ihr ${rObj.typ==='FZ'?'Familienzimmer':'Zimmer'} fest für Sie eingetragen und freuen uns sehr, Sie bei uns begrüssen zu dürfen.
+
+Hier ist Ihre offizielle Buchungsbestätigung im Überblick:
+
+IHRE RESERVIERUNG
+Gast: ${gast}
+Zimmer: ${roomLabel}
+Anreise: ${fmtLongDate(an)} (Check-in ab 15:00 Uhr)
+Abreise: ${fmtLongDate(ab)} (Check-out bis 10:00 Uhr)
+Dauer: ${nights} ${nights===1?'Nacht':'Nächte'}
+Personen: ${persParts.join(' sowie ')}
+
+PREISÜBERSICHT (INKL. FRÜHSTÜCK & KURTAXE)
+${priceLines.join('\n')}
+Gesamtbetrag Unterkunft: CHF ${total.toFixed(2)} (zahlbar ganz unkompliziert bei uns vor Ort per Karte, Twint oder bar)
+
+IM PREIS INBEGRIFFEN:
+Reichhaltiges Frühstück jeden Morgen von 07:00 bis 10:00 Uhr
+Sämtliche Kurtaxen und Abgaben sowie kostenloses WLAN
+Ihr Hotelgast-Bonus: Als unsere Hausgäste erhalten Sie während Ihres gesamten Aufenthalts 20 % Rabatt auf unsere gesamte Restaurantkarte.
+
+KURZE FRAGEN FÜR UNSERE VORBEREITUNG:
+Damit bei Ihrer Anreise alles perfekt bereitsteht, senden Sie uns bitte bei Gelegenheit noch kurz per Antwort:
+${!hasPark?'- Überdachter Parkplatz: Benötigen Sie einen unserer überdachten Parkplätze direkt am Haus? (CHF 10.00 pro Nacht).\n':''}${(knd>0||infant>0)?'- Dürfen wir Sie nach den Namen und dem Alter Ihrer Kinder fragen?\n':''}- Adresse für den Meldeschein: Ihre Postadresse (Strasse, PLZ, Ort), damit wir den Meldeschein schon vorab für Sie vorbereiten können.
+- Tisch im Restaurant: Dürfen wir Ihnen für abends einen schönen Tisch bei uns im Restaurant reservieren? Schwebt Ihnen eine Uhrzeit vor?
+
+Wir freuen uns sehr auf Ihre Anreise!
+
+Herzliche Grüsse aus den Bergen
+
+Arthur Wichary & das Team vom Berggasthof Alp Fatschél
+Berggasthof Alp Fatschél · Fatschél 192 · 7028 St. Peter GR
+Telefon: +41 81 377 17 17
+E-Mail: info@alpfatschel.ch
+www.alpfatschel.ch`;
+  }
+}
+
+$('#btnGenConfirmMail').onclick=()=>{
+  $('#mailToInput').value=$('#inpEmail').value.trim();
+  $('#mailCopyNotice').hidden=true;
+  buildConfirmationEmail();
+  $('#dlgConfirmMail').showModal();
+};
+$('#mailToneSelect').onchange=buildConfirmationEmail;
+$('#mailInfantSelect').onchange=buildConfirmationEmail;
+
+$('#btnCopyMailText').onclick=async()=>{
+  const txt=$('#mailBodyInput').value;
+  try{await navigator.clipboard.writeText(txt);}catch(e){}
+  $('#mailCopyNotice').hidden=false;
+};
+
+$('#btnOpenAppleMail').onclick=()=>{
+  const to=encodeURIComponent($('#mailToInput').value.trim());
+  const subj=encodeURIComponent($('#mailSubjectInput').value.trim());
+  const body=encodeURIComponent($('#mailBodyInput').value);
+  location.href=`mailto:${to}?subject=${subj}&body=${body}`;
 };
 
 $('#frm').addEventListener('submit',async e=>{
