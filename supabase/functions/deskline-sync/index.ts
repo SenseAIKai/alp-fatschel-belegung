@@ -146,12 +146,20 @@ Deno.serve(async (req) => {
     jar.clear();
     await login(user, pass);
     const from = add(today, -45), to = add(today, 420);
-    const [{ data: rooms }, { data: bookings }, { data: blocks }, { data: saison }] = await Promise.all([
+    const snapshot = await Promise.all([
       sb.from("rooms").select("*").order("sort"),
       sb.from("bookings").select("*").gt("abreise", from),
       sb.from("deskline_blocks").select("*"),
       sb.from("saison").select("*"),
     ]);
+    // Fail closed: Ein Ladefehler ist kein leerer Belegungsplan.
+    const sources = ["Zimmer", "Buchungen", "Deskline-Sperren", "Saison"];
+    for (let i = 0; i < snapshot.length; i++) {
+      if (snapshot[i].error || !Array.isArray(snapshot[i].data)) {
+        throw new Fail(`Abgleich sicher abgebrochen: ${sources[i]} konnten nicht geladen werden. Keine Verfügbarkeiten geändert.`);
+      }
+    }
+    const [{ data: rooms }, { data: bookings }, { data: blocks }, { data: saison }] = snapshot;
     const inSeason = (d: string) => (saison || []).some((s) => d >= s.von && d < s.bis);
     await sb.from("deskline_blocks").delete().lt("nacht", today);
 

@@ -133,3 +133,8 @@ Noch nicht geprüft:
 - Nach wichtigen Änderungen diese Datei aktualisieren (Abschnitte 6 und 7) und im Senseai Dojo melden.
 
 Verwandte Unterlagen auf Arthurs Mac: `~/Documents/Claude Code/ALP-FATSCHEL-DOMAIN.md` (Homepage alpfatschel.ch) und das Senseai Dojo unter `~/Desktop/Gemini`.
+
+---
+<!-- OBSIDIAN_SCHIFFSVERKEHR_BRUECKE -->
+**Obsidian-Schiffsverkehr:** [[05_Swiss_Bull_und_Betriebe]] · [[00_GEHIRN_LANDKARTE]]
+<!-- /OBSIDIAN_SCHIFFSVERKEHR_BRUECKE -->
