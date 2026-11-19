@@ -1288,6 +1288,246 @@ html[data-theme="dark"] .fp-res-label {
   background: var(--glass-strong);
 }
 
+/* ============================================================================
+   ALP FATSCHÉL POS & iPAD-QUERFORMAT KASSENSYSTEM (FUTURISTIC FROSTED-GLASS HUD)
+   ============================================================================ */
+.pos-ipad-shell {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 12px;
+  min-height: 675px;
+  align-items: stretch;
+}
+@media (max-width: 1020px) {
+  .pos-ipad-shell {
+    grid-template-columns: 1fr 320px;
+  }
+}
+.pos-left-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+.pos-right-bon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--glass-strong);
+  border: 1.5px solid var(--line-strong);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+}
+.pos-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 7px;
+}
+.pos-cat-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 52px;
+  padding: 7px 9px;
+  border-radius: 13px;
+  font-weight: 800;
+  font-size: 12.2px;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: transform 0.13s ease, box-shadow 0.13s ease, outline 0.13s ease;
+}
+.pos-cat-tile:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.22);
+}
+.pos-cat-tile.active {
+  outline: 3px solid var(--ink);
+  transform: scale(1.02);
+  box-shadow: 0 10px 26px rgba(14, 165, 233, 0.35);
+}
+.pos-cat-station-tag {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.86;
+  margin-top: 2px;
+  padding: 1px 5px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.18);
+}
+.pos-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  gap: 8px;
+  max-height: 390px;
+  overflow-y: auto;
+  padding: 3px;
+}
+.pos-prod-grid.size-sm {
+  grid-template-columns: repeat(auto-fill, minmax(114px, 1fr));
+}
+.pos-prod-grid.size-lg {
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+}
+.pos-prod-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  min-height: 74px;
+  padding: 9px 10px;
+  border-radius: 13px;
+  cursor: pointer;
+  user-select: none;
+  border: 1.5px solid rgba(148, 163, 184, 0.32);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+.pos-prod-grid.size-sm .pos-prod-tile {
+  min-height: 58px;
+  padding: 6px 8px;
+  font-size: 11.5px;
+}
+.pos-prod-grid.size-lg .pos-prod-tile {
+  min-height: 92px;
+  padding: 11px 13px;
+  font-size: 14px;
+}
+.pos-prod-tile:hover {
+  transform: translateY(-1.5px);
+  border-color: var(--brand);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.22);
+}
+.pos-prod-tile:active {
+  transform: scale(0.96);
+}
+.pos-prod-name {
+  font-weight: 800;
+  font-size: 12.6px;
+  line-height: 1.22;
+  word-break: break-word;
+}
+.pos-prod-meta {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.pos-plu-pill {
+  font-size: 9.5px;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: rgba(15, 23, 42, 0.13);
+  font-weight: 800;
+}
+.pos-action-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.pos-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 7px;
+  min-height: 46px;
+  border-radius: 11px;
+  font-size: 11.5px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.pos-bon-list {
+  flex: 1;
+  min-height: 195px;
+  max-height: 270px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--glass-soft);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.pos-bon-item {
+  padding: 7px 9px;
+  border-radius: 10px;
+  background: var(--glass-strong);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.pos-bon-item:hover {
+  border-color: rgba(14, 165, 233, 0.45);
+}
+.pos-bon-item.selected {
+  border-color: var(--brand);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), var(--glass-strong));
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.18);
+}
+.pos-numpad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+.pos-num-btn {
+  padding: 9px 4px;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 10px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.pos-paper-ticket {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px dashed #94a3b8;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 12.2px;
+  line-height: 1.45;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+.pos-training-strip {
+  background: linear-gradient(90deg, #f59e0b, #ea580c);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 1180px) {
   .grid, .grid-3 { grid-template-columns: 1fr; }
   :root { --cw: 36px; }
@@ -1396,6 +1636,10 @@ html[data-theme="dark"] .fp-res-label {
         <button class="nav-btn" data-view="tischplan" id="navBtnTischplan">
           <span id="navLabelTischplan" data-i18n="navTischplan">Tischplan & Service</span>
           <span class="nav-badge" id="navCountTables">31 Ti.</span>
+        </button>
+        <button class="nav-btn" data-view="pos" id="navBtnPos">
+          <span id="navLabelPos" data-i18n="navPos">POS & Kasse</span>
+          <span class="nav-badge" id="navCountPosOpen">iPad</span>
         </button>
         <button class="nav-btn" data-view="gaeste" id="navBtnGaeste">
           <span data-i18n="navGaeste">Gästekartei</span>
@@ -1941,6 +2185,339 @@ html[data-theme="dark"] .fp-res-label {
         </div>
       </div>
     </section>
+
+    <!-- 9. ANSICHT: ALP FATSCHÉL POS & iPAD-KASSENSYSTEM (INKL. MANAGER-LIVE-EDITOR & 3 BERICHTE VON/BIS) -->
+    <section class="view-section" id="view-pos" hidden>
+      <!-- TOP-BAR: SCHALTER ZWISCHEN iPAD-KASSE, MANAGER-EDITOR, BERICHTE & EINSTELLUNGEN (PIN 7050) -->
+      <div class="card card-pad" style="margin-bottom:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div>
+            <h2 class="sec-title" style="margin:0">Alp Fatschél POS · <span id="posActiveTableTopTitle" style="color:var(--brand)">Tisch 1</span></h2>
+            <p class="hint" style="margin:2px 0 0" id="posTopModeHint">iPad-Querformat Bonier-Oberfläche · 5 + Produkt = 5x · P + PLU-Nr. = Wein-Direktwahl · Küchendrucker & Bardrucker getrennt</p>
+          </div>
+          <span id="posTrainingBadgeTop" class="badge badge-vip" style="background:#f59e0b;color:#fff;font-size:11.5px;padding:4px 10px" hidden>TRAININGSMODUS AKTIV (Übung — zählt nicht zum Umsatz)</span>
+        </div>
+
+        <!-- SUB-TABS: NUR IM MANAGER-MODUS SIND EDITOR, BERICHTE & PIN-EINSTELLUNGEN SICHTBAR! AUF DEM iPAD (SERVICE) NUR DIE KASSE! -->
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div class="seg-group" id="posManagerSubTabs" hidden>
+            <button type="button" id="btnPosSubPad" class="active" onclick="switchPosSubTab('ipad')">iPad-Kasse (Querformat)</button>
+            <button type="button" id="btnPosSubEditor" onclick="switchPosSubTab('editor')">POS-Editor (Computer)</button>
+            <button type="button" id="btnPosSubReports" onclick="switchPosSubTab('reports')">Berichte (Von / Bis)</button>
+            <button type="button" id="btnPosSubSettings" onclick="switchPosSubTab('settings')">PIN & Einstellungen</button>
+          </div>
+          <button type="button" class="gold" onclick="openPosTablePickerModal()" style="padding:6px 11px;font-size:12px">Tisch wechseln (<span id="posBtnTableNum">Tisch 1</span>)</button>
+          <button type="button" onclick="openPosReceiptSearchModal()" style="padding:6px 11px;font-size:12px">Suche Rechnung</button>
+          <button type="button" onclick="openPosLastReceiptModal()" style="padding:6px 11px;font-size:12px">Letzte Rechnung</button>
+          <button type="button" class="cyber-violet" onclick="openPosAdminPinModal()" style="padding:6px 11px;font-size:12px">Admin (PIN)</button>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW A: iPAD QUERFORMAT BONIER-OBERFLÄCHE -->
+      <div id="posSubViewIpad">
+        <div id="posTrainingStripBanner" class="pos-training-strip" style="margin-bottom:10px" hidden>
+          <span>TRAININGSMODUS EIN: Alle Bestellungen und Abrechnungen sind reine Übungs-Buchungen für Mitarbeiter und werden nicht in den echten Finanzbericht gerechnet.</span>
+          <button type="button" onclick="togglePosTrainingMode(false)" style="background:#fff;color:#9a3412;border:none;padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px">Trainingsmodus ausschalten</button>
+        </div>
+
+        <div class="pos-ipad-shell">
+          <!-- LINKS: KATEGORIEN, PRODUKT-KACHELN & FUNKTIONS-LEISTE -->
+          <div class="pos-left-workspace">
+            <!-- 1. FARBLICHE KATEGORIEN -->
+            <div class="pos-cat-grid" id="posCategoriesGrid"></div>
+
+            <!-- 2. ARTIKEL-KACHELN DER GEWÄHLTEN KATEGORIE -->
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:2px 4px">
+              <div style="font-size:12.5px;font-weight:800;color:var(--ink)" id="posActiveCategoryTitle">Kategorie</div>
+              <div style="display:flex;gap:6px;align-items:center">
+                <input id="posQuickSearchInput" type="search" placeholder="Artikel oder PLU suchen…" oninput="renderPosProductsGrid()" style="width:190px;margin:0;padding:4px 9px;font-size:12px">
+              </div>
+            </div>
+            <div class="pos-prod-grid" id="posProductsGrid"></div>
+
+            <!-- 3. UNTERE SCHNELL-AKTIONEN (GANG, TEXT, RABATTE 20%/50%, SPLITTEN, OFFENER PREIS, GUTSCHEIN) -->
+            <div class="pos-action-bar">
+              <button type="button" class="pos-action-btn" onclick="openPosCourseCallModal()" style="background:linear-gradient(135deg,rgba(245,158,11,0.22),rgba(251,191,36,0.32));border-color:rgba(245,158,11,0.55)">
+                <span>Gang 1 / 2 / 3</span>
+                <small style="font-size:10px;opacity:0.8">Zuweisen & Abrufen</small>
+              </button>
+              <button type="button" class="pos-action-btn" onclick="openPosItemTextModal()" style="background:linear-gradient(135deg,rgba(14,165,233,0.18),rgba(56,189,248,0.28));border-color:rgba(14,165,233,0.45)">
+                <span>Text schreiben</span>
+                <small style="font-size:10px;opacity:0.8">z. B. ohne Käse</small>
+              </button>
+              <button type="button" class="pos-action-btn" onclick="openPosSplitTableModal()" style="background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(99,102,241,0.25));border-color:rgba(139,92,246,0.45)">
+                <span>Tisch splitten</span>
+                <small style="font-size:10px;opacity:0.8">Artikel verschieben</small>
+              </button>
+              <button type="button" class="pos-action-btn" id="btnPosDisc20" onclick="applyPosDiscount(20,'20% Hotelgast')" style="background:linear-gradient(135deg,rgba(16,185,129,0.20),rgba(5,150,105,0.28));border-color:rgba(16,185,129,0.5)">
+                <span>20 % Hotelgast</span>
+                <small style="font-size:10px;opacity:0.8">Hausgast-Rabatt</small>
+              </button>
+              <button type="button" class="pos-action-btn" id="btnPosDisc50" onclick="applyPosDiscount(50,'50% Personal')" style="background:linear-gradient(135deg,rgba(236,72,153,0.18),rgba(219,39,119,0.25));border-color:rgba(236,72,153,0.45)">
+                <span>50 % Personal</span>
+                <small style="font-size:10px;opacity:0.8">Mitarbeiter-Rabatt</small>
+              </button>
+              <button type="button" class="pos-action-btn" onclick="openPosOpenPriceModal()">
+                <span>Offene Preise</span>
+                <small style="font-size:10px;opacity:0.75">Küche oder Bar</small>
+              </button>
+              <button type="button" class="pos-action-btn" onclick="openPosVoucherSaleModal()">
+                <span>Gutscheinverkauf</span>
+                <small style="font-size:10px;opacity:0.75">z. B. CHF 100.–</small>
+              </button>
+              <button type="button" class="pos-action-btn" onclick="showPosZwischenrechnung()">
+                <span>Zw.-Rechnung</span>
+                <small style="font-size:10px;opacity:0.75">Prüfbon drucken</small>
+              </button>
+            </div>
+          </div>
+
+          <!-- RECHTS: BON-ANZEIGE, ZAHLENTASTATUR (MULTIPLIKATOR & PLU) UND TOTAL / BONIEREN -->
+          <div class="pos-right-bon">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;padding-bottom:6px;border-bottom:1px solid var(--line)">
+              <div>
+                <div style="font-size:14.5px;font-weight:800;color:var(--ink)" id="posBonHeaderTable">Tisch 1 · Alp Fatschél</div>
+                <div style="font-size:11px;color:var(--mute)" id="posBonHeaderSub">Bediener: Service · Standardpreis</div>
+              </div>
+              <div style="display:flex;gap:4px">
+                <button type="button" onclick="setPosActiveCourseFilter(1)" id="btnCoursePreset1" class="active" style="padding:4px 7px;font-size:11px">G1</button>
+                <button type="button" onclick="setPosActiveCourseFilter(2)" id="btnCoursePreset2" style="padding:4px 7px;font-size:11px">G2</button>
+                <button type="button" onclick="setPosActiveCourseFilter(3)" id="btnCoursePreset3" style="padding:4px 7px;font-size:11px">G3</button>
+              </div>
+            </div>
+
+            <!-- AKTUELLE BON-POSITIONEN -->
+            <div class="pos-bon-list" id="posBonItemsList"></div>
+
+            <!-- MENGEN- & POSITIONS-STEUERUNG FÜR AUSGEWÄHLTE POSITION -->
+            <div style="display:flex;gap:5px;align-items:center;justify-content:space-between">
+              <button type="button" onclick="adjustSelectedPosItemQty(-1)" style="flex:1;padding:5px;font-size:12px">− Menge</button>
+              <button type="button" onclick="adjustSelectedPosItemQty(1)" style="flex:1;padding:5px;font-size:12px">+ Menge</button>
+              <button type="button" onclick="cycleSelectedPosItemCourse()" style="flex:1;padding:5px;font-size:12px">Gang 1/2/3</button>
+              <button type="button" class="danger" onclick="removeSelectedPosItem()" style="padding:5px 9px;font-size:12px" title="Position löschen">Löschen</button>
+            </div>
+
+            <!-- NUMPAD DISPLAY (Z. B. "5 ×" ODER "PLU: 601") -->
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-radius:10px;background:var(--glass-soft);border:1px solid var(--line)">
+              <span style="font-size:11px;font-weight:800;color:var(--mute);text-transform:uppercase" id="posKeypadModeLabel">Eingabe / Multiplikator</span>
+              <span style="font-size:15px;font-weight:800;color:var(--brand);font-variant-numeric:tabular-nums" id="posKeypadBufferDisplay">1 ×</span>
+            </div>
+
+            <!-- ZAHLENTASTATUR (7-8-9 / 4-5-6 / 1-2-3 / C-0-.-P(PLU)) -->
+            <div class="pos-numpad-grid">
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('7')">7</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('8')">8</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('9')">9</button>
+              <button type="button" class="pos-num-btn gold" onclick="pressPosNumpad('PLU')" title="P drücken + PLU-Nummer für direkte Wein-/Artikelwahl">P (PLU)</button>
+
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('4')">4</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('5')">5</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('6')">6</button>
+              <button type="button" class="pos-num-btn" onclick="openPosItemTextModal()" style="font-size:11.5px">Text</button>
+
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('1')">1</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('2')">2</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('3')">3</button>
+              <button type="button" class="pos-num-btn" onclick="executePosPluLookup()" style="font-size:11.5px;background:var(--brand-soft);color:var(--brand)">PLU OK</button>
+
+              <button type="button" class="pos-num-btn danger" onclick="pressPosNumpad('C')">C</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('0')">0</button>
+              <button type="button" class="pos-num-btn" onclick="pressPosNumpad('.')">.</button>
+              <button type="button" class="pos-num-btn" onclick="applyPosDiscount(0,'Standardpreis')" style="font-size:10.5px">0% Reset</button>
+            </div>
+
+            <!-- SUMMEN & HAUPT-BUTTONS: BONIEREN (KÜCHE/BAR GETRENNT) & TOTAL (ABRECHNEN / AUFS ZIMMER) -->
+            <div style="margin-top:auto;padding-top:8px;border-top:1.5px solid var(--line)">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft)" id="posBonDiscountRow" hidden>
+                <span id="posBonDiscountLabel">Rabatt (20 % Hotelgast)</span>
+                <b id="posBonDiscountAmount" style="color:var(--emerald)">- CHF 0.00</b>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 0 8px">
+                <span style="font-size:12.5px;font-weight:800;text-transform:uppercase;color:var(--mute)">Total inkl. 8,1 % MwSt.</span>
+                <span style="font-size:24px;font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums" id="posBonGrandTotal">CHF 0.00</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:8px">
+                <button type="button" class="emerald-btn" onclick="sendPosOrderToKitchenAndBar()" style="padding:12px 10px;font-size:13px;font-weight:800">
+                  Bonieren (Küche / Bar)
+                </button>
+                <button type="button" class="primary" onclick="openPosTotalCheckoutModal()" style="padding:12px 10px;font-size:14.5px;font-weight:900">
+                  TOTAL / Abrechnen ›
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW B: POS-EDITOR AUF DEM COMPUTER (NUR IM MANAGER-BEREICH — MIT LIVE iPAD-MASKE, FARBEN, GRÖSSE, PLU & BON-TRENNUNG) -->
+      <div id="posSubViewEditor" hidden>
+        <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:14px;align-items:start">
+          <!-- LINKS: EINFACHER KATEGORIEN-, PRODUKT-, PLU- & DRUCKER-EDITOR (OHNE KOMPLIZIERTE GRUPPE A/B/C/D!) -->
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <!-- 1. KATEGORIEN & TASTEN-DESIGN BEARBEITEN -->
+            <div class="card card-pad">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+                <div>
+                  <h3 style="margin:0;font-size:15px;font-weight:800">1. Kategorien, Bon-Drucker (Küche vs. Bar) & Tasten-Design</h3>
+                  <p class="hint" style="margin:2px 0 0">Wähle für jede Gruppe ganz einfach den Namen, die Tastenfarbe, die Schriftfarbe und ob der Bon an den <b>Küchendrucker (Essen)</b> oder <b>Bardrucker (Getränke)</b> getrennt & gecuttet wird.</p>
+                </div>
+                <div style="display:flex;gap:6px;align-items:center">
+                  <label style="margin:0;font-size:11.5px;font-weight:800">Tastengrösse auf iPad:
+                    <select id="posEdGlobalTileSize" onchange="updatePosGlobalTileSize(this.value)" style="width:auto;margin:0 0 0 4px;padding:4px 8px;font-weight:700">
+                      <option value="sm">Kompakt (Klein)</option>
+                      <option value="md" selected>Standard (Mittel)</option>
+                      <option value="lg">Gross (Maxi-Touch)</option>
+                    </select>
+                  </label>
+                  <button type="button" class="primary" onclick="addNewPosCategoryPrompt()" style="padding:6px 10px;font-size:11.5px">+ Neue Kategorie</button>
+                </div>
+              </div>
+              <div id="posEditorCategoriesTableWrap" style="max-height:250px;overflow-y:auto;border:1px solid var(--line);border-radius:10px"></div>
+            </div>
+
+            <!-- 2. PRODUKTE, PREISE, PLU-NUMMERN & TASTENFARBEN BEARBEITEN -->
+            <div class="card card-pad">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+                <div>
+                  <h3 style="margin:0;font-size:15px;font-weight:800">2. Produkte, Preise (CHF), PLU-Nummern & Tastenfarben</h3>
+                  <p class="hint" style="margin:2px 0 0">Alle Artikel aus deinen 9 Speise- & Getränkekarten sind hier hinterlegt. Jede Änderung ist sofort live auf dem iPad sichtbar.</p>
+                </div>
+                <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+                  <select id="posEdFilterCat" onchange="renderPosEditorView()" style="width:auto;margin:0;padding:5px 9px;font-weight:700"></select>
+                  <button type="button" class="emerald-btn" onclick="openPosProductEditModal(null)" style="padding:6px 11px;font-size:12px">+ Neues Produkt / Wein (PLU)</button>
+                </div>
+              </div>
+              <div id="posEditorProductsTableWrap" style="max-height:390px;overflow-y:auto;border:1px solid var(--line);border-radius:10px"></div>
+            </div>
+
+            <!-- 3. TISCHNUMMERN SCHNELL HINZUFÜGEN -->
+            <div class="card card-pad">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+                <div>
+                  <h3 style="margin:0;font-size:14.5px;font-weight:800">3. Tischnummern für Kasse & Tischplan verwalten</h3>
+                  <p class="hint" style="margin:2px 0 0">Aktuelle Tische im Alp Fatschél: <span id="posEdTableNumbersList" style="font-weight:700;color:var(--ink)"></span></p>
+                </div>
+                <div style="display:flex;gap:6px;align-items:center">
+                  <input id="posEdNewTableNum" placeholder="Neue Tisch-Nr. (z. B. 33)" style="width:155px;margin:0;padding:6px 9px">
+                  <button type="button" class="gold" onclick="addPosTableNumberFromEditor()">+ Tisch hinzufügen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECHTS: LIVE iPAD-MASKE & BON-DRUCKER-KONFIGURATION -->
+          <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:90px">
+            <div class="card card-pad" style="border:2px solid var(--brand)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                <div>
+                  <div style="font-size:14px;font-weight:800;color:var(--brand)">Live-Vorschau: iPad-Querformat Tastenmaske</div>
+                  <div class="hint" style="margin:2px 0 0">Klicke in der Vorschau auf eine Kategorie oder Taste, um sie direkt zu testen oder zu bearbeiten.</div>
+                </div>
+                <span class="badge badge-stamm">iPad Landscape 1:1</span>
+              </div>
+              <div id="posEditorLivePreviewBox" style="background:var(--bg-base);padding:10px;border-radius:14px;border:1px solid var(--line)"></div>
+            </div>
+
+            <div class="card card-pad">
+              <h3 style="margin:0 0 6px 0;font-size:14.5px;font-weight:800">Automatische Bon-Trennung & Auto-Cut (Küche vs. Bar)</h3>
+              <p class="hint" style="margin:0 0 10px 0">Beim Druck auf „Bonieren“ teilt die Software jede Bestellung automatisch in zwei separate Bons mit eigenem Papier-Cut:</p>
+              <div class="grid">
+                <label>Küchendrucker (Speisen, Pizza, Fleisch, Fondue, Dessert)
+                  <input id="posPrinterKitchenName" value="Epson TM-T20III · Küche (Auto-Cut aktiv)" onchange="savePosSettingsFromUI()">
+                </label>
+                <label>Bardrucker / Buffet (Softdrinks, Bier, Kaffee, Wein, Spirituosen)
+                  <input id="posPrinterBarName" value="Epson TM-T20III · Bar & Buffet (Auto-Cut aktiv)" onchange="savePosSettingsFromUI()">
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW C: 3 CHEF-BERICHTE MIT ZEITRAUM (VON / BIS): FINANZBERICHT, ARTIKEL-BESTSELLER & TISCHBERICHT -->
+      <div id="posSubViewReports" hidden>
+        <div class="card card-pad" style="margin-bottom:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between">
+          <div>
+            <h3 style="margin:0;font-size:16px;font-weight:800">Kassen- & Gastro-Berichte (Freier Zeitraum Von / Bis)</h3>
+            <p class="hint" style="margin:3px 0 0">Wähle den gewünschten Zeitraum (z. B. Heute, dieser Monat oder beliebige Tage Von/Bis) für Tages-/Finanzumsatz, meistverkaufte Artikel und Umsatz pro Tisch.</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:end;flex-wrap:wrap">
+            <label style="margin:0;font-size:11.5px;font-weight:800">Datum Von
+              <input type="date" id="posRepDateFrom" style="width:auto;margin:3px 0 0;padding:5px 9px;font-weight:800" onchange="renderPosReportsView()">
+            </label>
+            <label style="margin:0;font-size:11.5px;font-weight:800">Datum Bis
+              <input type="date" id="posRepDateTo" style="width:auto;margin:3px 0 0;padding:5px 9px;font-weight:800" onchange="renderPosReportsView()">
+            </label>
+            <button type="button" class="gold" onclick="setPosReportPresetRange('today')" style="padding:6px 10px;font-size:11.5px">Heute</button>
+            <button type="button" onclick="setPosReportPresetRange('month')" style="padding:6px 10px;font-size:11.5px">Aktueller Monat</button>
+            <button type="button" onclick="setPosReportPresetRange('year')" style="padding:6px 10px;font-size:11.5px">Ganzes Jahr</button>
+            <button type="button" class="primary" onclick="window.print()" style="padding:6px 12px;font-size:11.5px">Bericht drucken / PDF</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid" id="posReportKpiGrid" style="margin-bottom:14px"></div>
+
+        <div class="lists-grid" style="margin-top:0">
+          <!-- BERICHT 1: FINANZ- & ZAHLUNGSARTEN-BERICHT (VON / BIS) -->
+          <div class="card card-pad">
+            <h3 style="margin:0 0 8px 0;font-size:15px;font-weight:800">1. Tages- & Finanzbericht nach Zahlungsarten (Von / Bis)</h3>
+            <div id="posReportPaymentsWrap"></div>
+          </div>
+
+          <!-- BERICHT 2: ARTIKELBERICHT (SORTIERT NACH MEISTVERKAUFTEN PRODUKTEN) -->
+          <div class="card card-pad">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <h3 style="margin:0;font-size:15px;font-weight:800">2. Artikelbericht Von / Bis (Sortiert nach Meistverkauft)</h3>
+              <span class="badge badge-stamm">Top-Seller Rangliste</span>
+            </div>
+            <div id="posReportArticlesWrap" style="max-height:360px;overflow-y:auto"></div>
+          </div>
+        </div>
+
+        <!-- BERICHT 3: TISCHBERICHT PRO TISCH (VON / BIS) -->
+        <div class="card card-pad" style="margin-top:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="margin:0;font-size:15px;font-weight:800">3. Tischbericht pro Tisch (Welcher Tisch hatte welchen Umsatz Von / Bis)</h3>
+            <span class="badge badge-kid">Alle Tische im Zeitraum</span>
+          </div>
+          <div id="posReportTablesWrap"></div>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW D: PIN-CODES & EINSTELLUNGEN (ADMIN-PIN 7050 & MANAGER-PIN JEDERZEIT ÄNDERBAR!) -->
+      <div id="posSubViewSettings" hidden>
+        <div class="lists-grid" style="margin-top:0">
+          <div class="card card-pad">
+            <h3 style="margin:0 0 6px 0;font-size:15.5px;font-weight:800">Sicherheits-PINs & Zugangs-Codes verwalten</h3>
+            <p class="hint" style="margin:0 0 12px 0">Hier kannst du den Kassen-Admin-PIN (Standard: <b>7050</b> für Storno, Offeriert, Bruch, Trainingsmodus & Rechnung zurückrufen) sowie den Manager-PIN jederzeit ändern.</p>
+            <div class="grid">
+              <label>POS Admin-PIN (für Storno, Offeriert, Bruch, Training & Rückruf)
+                <input id="posSetAdminPin" type="text" value="7050" style="font-weight:800;font-size:15px">
+              </label>
+              <label>Manager-Freischalt-PIN (für Manager-Bereich)
+                <input id="posSetManagerPin" type="text" value="7050" style="font-weight:800;font-size:15px">
+              </label>
+              <label>Standard-MwSt.-Satz Schweiz (%)
+                <input id="posSetVatRate" type="number" step="0.1" value="8.1">
+              </label>
+              <label>Nächste fortlaufende Rechnungsnummer
+                <input id="posSetNextReceiptNo" type="number" min="1" value="1001">
+              </label>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+              <button type="button" class="primary" onclick="savePosPinAndSettings()">PIN-Codes & Einstellungen speichern</button>
+              <span id="posPinSavedNotice" style="color:var(--emerald);font-weight:800;font-size:12.5px" hidden>✓ Neue PIN-Codes gespeichert!</span>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 6px 0;font-size:15.5px;font-weight:800">Offene Restaurant-Rechnungen auf Hotelzimmern (Checkout-Kontrolle)</h3>
+            <p class="hint" style="margin:0 0 10px 0">Alle Tische, die über „Total → Aufs Zimmer“ gebucht wurden, erscheinen automatisch hier, beim Zimmer im Belegungsplan und als Warnung im Morgen-Briefing beim Checkout.</p>
+            <div id="posOpenRoomChargesSettingsWrap"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </div>
 
@@ -2346,7 +2923,7 @@ html[data-theme="dark"] .fp-res-label {
           <div style="font-weight:800;font-size:14.5px">2. Manager / Geschäftsführung (Geschützter Adminbereich)</div>
           <div style="font-size:12px;color:var(--ink-soft);margin-top:3px">Voller Zugriff inklusive Monats- & Kanal-Umsätzen, ADR-Statistik, Mitarbeiter-Dienstplänen und Reinigungsplan-Zuteilung.</div>
           <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
-            <input type="password" id="inpManagerPin" placeholder="Manager-PIN (Standard: 1544)" value="1544" style="margin:0;max-width:210px">
+            <input type="password" id="inpManagerPin" placeholder="Manager-PIN (Standard: 7050)" value="7050" style="margin:0;max-width:210px">
             <button type="button" class="cyber-violet" onclick="unlockManagerRole()">Als Manager freischalten</button>
           </div>
           <div id="rolePinErr" class="err" style="min-height:0;margin-top:4px"></div>
@@ -2360,6 +2937,391 @@ html[data-theme="dark"] .fp-res-label {
     </div>
     <div class="actions">
       <button type="button" onclick="$('#dlgRoleLogin').close()">Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============================================================================
+     POS-DIALOGE (TISCH-WAHL, GANG ABRUFEN, TEXT SCHREIBEN, TISCH SPLITTEN,
+     OFFENER PREIS, GUTSCHEINVERKAUF, TOTAL/ZIMMERBUCHUNG, ADMIN PIN 7050,
+     RECHNUNGSSUCHE, BON-DRUCK & PRODUKT-EDITOR)
+     ============================================================================ -->
+
+<!-- POS DIALOG A: TISCH WÄHLEN -->
+<dialog id="dlgPosTablePicker" style="width:min(760px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>Tisch auswählen (Alp Fatschél · Offene Tische sind farbig markiert)</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosTablePicker').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div id="posTablePickerGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px"></div>
+    </div>
+    <div class="actions">
+      <button type="button" onclick="$('#dlgPosTablePicker').close()">Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG B: GANG 1 / 2 / 3 ZUWEISEN & GANG ABRUFEN -->
+<dialog id="dlgPosCourse" style="width:min(560px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>Gang zuweisen & Gang in der Küche abrufen</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosCourse').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div style="margin-bottom:12px">
+        <div style="font-weight:800;font-size:13px;margin-bottom:6px">1. Ausgewählte Bon-Position auf Gang setzen:</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <button type="button" class="primary" onclick="assignSelectedPosItemToCourse(1)">Auf Gang 1 setzen</button>
+          <button type="button" class="cyber-violet" onclick="assignSelectedPosItemToCourse(2)">Auf Gang 2 setzen</button>
+          <button type="button" class="gold" onclick="assignSelectedPosItemToCourse(3)">Auf Gang 3 setzen</button>
+        </div>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid var(--line)">
+        <div style="font-weight:800;font-size:13px;color:var(--emerald);margin-bottom:6px">2. Gang jetzt in der Küche abrufen (schickt sofort Abruf-Bon an Küchendrucker):</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <button type="button" class="emerald-btn" onclick="triggerPosCourseCall(1)" style="padding:12px">Gang 1 ABRUFEN !</button>
+          <button type="button" class="emerald-btn" onclick="triggerPosCourseCall(2)" style="padding:12px">Gang 2 ABRUFEN !</button>
+          <button type="button" class="emerald-btn" onclick="triggerPosCourseCall(3)" style="padding:12px">Gang 3 ABRUFEN !</button>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" onclick="$('#dlgPosCourse').close()">Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG C: TEXT SCHREIBEN AUF DEN BON (Z. B. OHNE KÄSE) -->
+<dialog id="dlgPosItemText" style="width:min(560px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3 id="posItemTextModalTitle">Text auf den Bon schreiben</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosItemText').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <label>Freier Zusatztext für Küche / Bar (z. B. ohne Käse, glutenfrei, extra scharf)
+        <input id="posItemCustomTextInput" placeholder="z. B. ohne Käse, Sauce separat…" onkeydown="if(event.key==='Enter'){event.preventDefault();savePosItemCustomText();}">
+      </label>
+      <div style="margin-top:10px">
+        <div style="font-size:11.5px;font-weight:800;color:var(--mute);margin-bottom:6px">Schnell-Auswahl (1 Klick fügt Text hinzu):</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <button type="button" onclick="appendPosQuickModifier('ohne Käse')">ohne Käse</button>
+          <button type="button" onclick="appendPosQuickModifier('ohne Zwiebeln')">ohne Zwiebeln</button>
+          <button type="button" onclick="appendPosQuickModifier('ohne Knoblauch')">ohne Knoblauch</button>
+          <button type="button" onclick="appendPosQuickModifier('glutenfrei')">glutenfrei</button>
+          <button type="button" onclick="appendPosQuickModifier('laktosefrei')">laktosefrei</button>
+          <button type="button" onclick="appendPosQuickModifier('extra scharf')">extra scharf</button>
+          <button type="button" onclick="appendPosQuickModifier('Sauce separat')">Sauce separat</button>
+          <button type="button" onclick="appendPosQuickModifier('gut durch (well done)')">gut durch</button>
+          <button type="button" onclick="appendPosQuickModifier('medium rare')">medium rare</button>
+          <button type="button" onclick="appendPosQuickModifier('mit Eis & Zitrone')">mit Eis & Zitrone</button>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" onclick="savePosItemCustomText()">Text auf Bon übernehmen</button>
+      <button type="button" class="danger" onclick="$('#posItemCustomTextInput').value='';savePosItemCustomText()">Text löschen</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosItemText').close()">Abbrechen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG D: TISCH SPLITTEN (PRODUKTE AUF ZIEL-TISCH VERSCHIEBEN ODER SEPARAT ABRECHNEN) -->
+<dialog id="dlgPosSplitTable" style="width:min(760px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3 id="posSplitModalTitle">Tisch splitten & Produkte verschieben</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosSplitTable').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;padding:10px 12px;border-radius:12px;background:var(--brand-soft)">
+        <div>
+          <b id="posSplitSourceLabel">Aktueller Tisch: Tisch 1</b>
+          <div class="hint" style="margin:2px 0 0">Tippe links auf ein Gericht/Getränk, um jeweils 1 Stück sofort auf den gewählten Ziel-Tisch rechts zu schieben.</div>
+        </div>
+        <label style="margin:0;font-weight:800;font-size:12.5px">Ziel-Tisch wählen:
+          <select id="posSplitTargetTableSelect" onchange="renderPosSplitModalLists()" style="width:auto;margin:0 0 0 6px;padding:6px 10px;font-weight:800"></select>
+        </label>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="card card-pad">
+          <div style="font-weight:800;font-size:13.5px;margin-bottom:8px" id="posSplitLeftColHeader">Aktueller Tisch</div>
+          <div id="posSplitLeftItems" style="display:flex;flex-direction:column;gap:6px;max-height:310px;overflow-y:auto"></div>
+        </div>
+        <div class="card card-pad" style="border:2px solid var(--brand)">
+          <div style="font-weight:800;font-size:13.5px;color:var(--brand);margin-bottom:8px" id="posSplitRightColHeader">Ziel-Tisch</div>
+          <div id="posSplitRightItems" style="display:flex;flex-direction:column;gap:6px;max-height:310px;overflow-y:auto"></div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" onclick="switchToSplitTargetTableAndClose()">Direkt zum Ziel-Tisch wechseln & abrechnen ›</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosSplitTable').close()">Fertig / Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG E: OFFENE PREISE (FREIER BETRAG + AUSWAHL KÜCHE ODER BAR) -->
+<dialog id="dlgPosOpenPrice" style="width:min(480px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>Offener Preis / Extrawunsch buchen</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosOpenPrice').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div class="grid">
+        <label>Betrag in CHF *
+          <input id="posOpenPriceAmount" type="number" step="0.05" min="0.05" value="2.00" style="font-weight:800;font-size:16px">
+        </label>
+        <label>Bon-Ziel (Wo soll es gedruckt werden?) *
+          <select id="posOpenPriceStation" style="font-weight:800">
+            <option value="kitchen">Küche (Speisen / Extrawunsch Essen)</option>
+            <option value="bar">Bar (Getränke / Extrawunsch Bar)</option>
+          </select>
+        </label>
+        <label class="full">Bezeichnung auf dem Bon
+          <input id="posOpenPriceName" placeholder="z. B. Extrawunsch Hähnchen / Spezial-Beilage" value="Extrawunsch">
+        </label>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" onclick="confirmPosOpenPriceItem()">Auf Bon buchen</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosOpenPrice').close()">Abbrechen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG F: GUTSCHEINVERKAUF (Z. B. CHF 100.-) -->
+<dialog id="dlgPosVoucherSale" style="width:min(460px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>Alp Fatschél Gutschein verkaufen</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosVoucherSale').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <p class="hint" style="margin-top:0">Der verkaufte Gutschein wird als eigene Position auf die Rechnung gesetzt und im Tages-/Finanzbericht sauber unter Gutscheinverkauf ausgewiesen.</p>
+      <label>Gutschein-Betrag in CHF *
+        <input id="posVoucherAmountInput" type="number" step="5" min="5" value="100.00" style="font-weight:800;font-size:17px">
+      </label>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+        <button type="button" class="gold" onclick="$('#posVoucherAmountInput').value='50.00'">CHF 50.–</button>
+        <button type="button" class="gold" onclick="$('#posVoucherAmountInput').value='100.00'">CHF 100.–</button>
+        <button type="button" class="gold" onclick="$('#posVoucherAmountInput').value='150.00'">CHF 150.–</button>
+        <button type="button" class="gold" onclick="$('#posVoucherAmountInput').value='200.00'">CHF 200.–</button>
+      </div>
+      <label style="margin-top:10px">Notiz / Gutschein-Nr. (optional)
+        <input id="posVoucherNoteInput" placeholder="z. B. Geschenk für Familie...">
+      </label>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" onclick="confirmPosVoucherSaleItem()">Gutschein auf Bon setzen</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosVoucherSale').close()">Abbrechen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG G: TOTAL & ZAHLUNG (BAR, KREDITKARTE, GUTSCHEIN, RECHNUNG ODER AUFS ZIMMER!) -->
+<dialog id="dlgPosTotalCheckout" style="width:min(650px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3 id="posCheckoutModalTitle">TOTAL · Tisch abrechnen</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosTotalCheckout').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:14px;background:var(--brand-soft);border:1.5px solid var(--brand);margin-bottom:12px">
+        <div>
+          <div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--brand)" id="posCheckoutSubInfo">Tisch 1 · Inkl. 8,1 % MwSt.</div>
+          <div style="font-size:28px;font-weight:900;color:var(--ink)" id="posCheckoutBigTotal">CHF 0.00</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end">
+          <button type="button" class="emerald-btn" onclick="applyPosDiscount(20,'20% Hotelgast');refreshPosCheckoutModalTotals()" style="padding:5px 10px;font-size:11.5px">20 % Hotelgast-Rabatt anwenden</button>
+          <button type="button" onclick="applyPosDiscount(50,'50% Personal');refreshPosCheckoutModalTotals()" style="padding:4px 10px;font-size:11px">50 % Mitarbeiter-Rabatt</button>
+        </div>
+      </div>
+
+      <div style="font-weight:800;font-size:13px;margin-bottom:8px">1. Zahlungsart wählen (Sofort-Abschluss):</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px">
+        <button type="button" class="emerald-btn" onclick="finalizePosCheckout('Bar')" style="padding:14px;font-size:15px;font-weight:800">
+          BAR bezahlen
+        </button>
+        <button type="button" class="primary" onclick="finalizePosCheckout('Kreditkarte')" style="padding:14px;font-size:15px;font-weight:800">
+          KREDITKARTE / TWINT
+        </button>
+        <button type="button" class="gold" onclick="finalizePosCheckout('Gutschein')" style="padding:12px;font-size:14px;font-weight:800">
+          GUTSCHEIN einlösen
+        </button>
+        <button type="button" onclick="finalizePosCheckout('Rechnung')" style="padding:12px;font-size:14px;font-weight:800">
+          Auf RECHNUNG (Firma/Gast)
+        </button>
+      </div>
+
+      <!-- AUFS ZIMMER BUCHEN (MIT ZIMMERNUMMER-AUSWAHL 2 BIS 10 & AUTOMATISCHER BRIEFING-/CHECKOUT-WARNUNG!) -->
+      <div style="padding:14px;border-radius:14px;background:linear-gradient(135deg,rgba(16,185,129,0.14),rgba(14,165,233,0.14));border:2px solid #10b981">
+        <div style="font-weight:900;font-size:14.5px;color:var(--ink);margin-bottom:4px">2. AUFS HOTELZIMMER BUCHEN (Erscheint im Morgen-Briefing & beim Checkout!)</div>
+        <p class="hint" style="margin:0 0 10px 0">Wähle das Zimmer des Gastes. Die Rechnung wird direkt auf das Zimmer gebucht und beim Checkout im Belegungsplan sowie im Morgen-Briefing als offene Position gemeldet.</p>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:8px;align-items:end">
+          <label style="margin:0;font-weight:800">Zimmernummer wählen *
+            <select id="posCheckoutRoomSelect" style="margin:4px 0 0;font-weight:800;font-size:14px"></select>
+          </label>
+          <button type="button" class="emerald-btn" onclick="finalizePosCheckout('Aufs Zimmer')" style="padding:11px;font-size:14px;font-weight:900">
+            Aufs Zimmer bestätigen ✓
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" onclick="showPosZwischenrechnung()">Nur Zwischenrechnung drucken</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosTotalCheckout').close()">Abbrechen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG H: GESCHÜTZTER ADMIN-BEREICH (PIN 7050 -> STORNO, OFFERIERT, BRUCH/KORK, TRAININGSMODUS, TRANSAKTION ZURÜCKRUFEN) -->
+<dialog id="dlgPosAdmin" style="width:min(620px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>POS Admin-Bereich (Geschützt mit PIN)</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosAdmin').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <!-- SCHRITT 1: PIN EINGABE -->
+      <div id="posAdminPinGateBox">
+        <p class="hint" style="margin-top:0">Bitte Admin-PIN eingeben (Standard: <b>7050</b> · jederzeit änderbar unter „PIN & Einstellungen“), um Storno, Offeriert, Bruch, Trainingsmodus oder Rechnungs-Rückruf freizuschalten.</p>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input id="posAdminPinInput" type="password" placeholder="Admin-PIN (z. B. 7050)" style="margin:0;font-size:18px;font-weight:900;letter-spacing:0.15em;max-width:220px" onkeydown="if(event.key==='Enter'){event.preventDefault();verifyPosAdminPin();}">
+          <button type="button" class="primary" onclick="verifyPosAdminPin()" style="padding:10px 16px">Freischalten</button>
+        </div>
+        <div id="posAdminPinErr" class="err" style="margin-top:6px"></div>
+      </div>
+
+      <!-- SCHRITT 2: ADMIN-AKTIONEN NACH ERFOLGREICHEM PIN -->
+      <div id="posAdminUnlockedBox" hidden>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding:8px 12px;border-radius:10px;background:var(--emerald-soft)">
+          <b style="color:var(--emerald)">✓ Admin-Berechtigung aktiv</b>
+          <button type="button" onclick="switchPosSubTab('settings');$('#dlgPosAdmin').close()" style="font-size:11.5px;padding:4px 9px">PIN-Code ändern ›</button>
+        </div>
+
+        <div style="font-weight:800;font-size:13px;margin-bottom:6px">1. Aktuellen Tisch (<span id="posAdminCurrentTableLabel">Tisch 1</span>) verbuchen als:</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+          <button type="button" class="danger" onclick="executePosAdminTableAction('storno')" style="padding:11px;font-weight:800">
+            Tisch / Position STORNIEREN
+          </button>
+          <button type="button" class="cyber-violet" onclick="executePosAdminTableAction('offeriert')" style="padding:11px;font-weight:800">
+            OFFERIERT (100 % Einladung)
+          </button>
+          <button type="button" class="gold" onclick="executePosAdminTableAction('bruch')" style="padding:11px;font-weight:800">
+            Als BRUCH / KORK buchen
+          </button>
+        </div>
+
+        <div style="font-weight:800;font-size:13px;margin-bottom:6px;padding-top:10px;border-top:1px solid var(--line)">2. Trainingsmodus für Mitarbeiter-Schulung:</div>
+        <div style="display:flex;gap:8px;margin-bottom:14px">
+          <button type="button" class="gold" onclick="togglePosTrainingMode(true);$('#dlgPosAdmin').close()" style="flex:1;padding:10px;font-weight:800">
+            Training EIN (Übungsmodus starten)
+          </button>
+          <button type="button" class="emerald-btn" onclick="togglePosTrainingMode(false);$('#dlgPosAdmin').close()" style="flex:1;padding:10px;font-weight:800">
+            Training AUS (Scharfer Betrieb)
+          </button>
+        </div>
+
+        <div style="font-weight:800;font-size:13px;margin-bottom:6px;padding-top:10px;border-top:1px solid var(--line)">3. Abgeschlossene Transaktion zurückrufen / Zahlungsart ändern / Stornieren:</div>
+        <div id="posAdminRecentTransactionsWrap" style="max-height:220px;overflow-y:auto;border:1px solid var(--line);border-radius:10px"></div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" onclick="$('#dlgPosAdmin').close()">Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG I: RECHNUNGSSUCHE (FORTLAUFENDE NUMMER ODER CHRONOLOGISCH PRO TAG MIT TAG-SWITCHER) -->
+<dialog id="dlgPosReceiptSearch" style="width:min(760px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3>Suche Rechnung (Fortlaufende Nr. & Chronologisch pro Tag)</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosReceiptSearch').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+        <div style="display:flex;gap:6px;align-items:center">
+          <button type="button" onclick="shiftPosSearchDate(-1)">‹ Tag zurück</button>
+          <input type="date" id="posSearchDateInput" onchange="renderPosReceiptSearchList()" style="width:auto;margin:0;padding:5px 9px;font-weight:800">
+          <button type="button" onclick="shiftPosSearchDate(1)">Tag weiter ›</button>
+          <button type="button" class="gold" onclick="setPosSearchDateToday()">Heute</button>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <input id="posSearchReceiptNoInput" type="search" placeholder="Rechnungs-Nr. (z. B. 1001) oder Tisch…" oninput="renderPosReceiptSearchList()" style="width:240px;margin:0;padding:6px 10px">
+        </div>
+      </div>
+      <div id="posReceiptSearchTableWrap" style="max-height:380px;overflow-y:auto;border:1px solid var(--line);border-radius:10px"></div>
+    </div>
+    <div class="actions">
+      <button type="button" onclick="$('#dlgPosReceiptSearch').close()">Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG J: BON-VORSCHAU & AUTO-CUT DRUCK (GETRENNTER KÜCHEN-BON & BAR-BON ODER GAST-QUITTUNG) -->
+<dialog id="dlgPosPrintPreview" style="width:min(720px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3 id="posPrintPreviewTitle">Bon-Ausgabe & Auto-Cut</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosPrintPreview').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <div id="posPrintPreviewContainer" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px"></div>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" onclick="window.print()">Jetzt drucken</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosPrintPreview').close()">Schliessen</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- POS DIALOG K: PRODUKT IM COMPUTER-EDITOR ANLEGEN / BEARBEITEN -->
+<dialog id="dlgPosProductEdit" style="width:min(540px,95vw)">
+  <div class="dlg-form">
+    <div class="dlg-head">
+      <h3 id="posProdEditModalTitle">Produkt bearbeiten</h3>
+      <button type="button" class="icon-btn" onclick="$('#dlgPosProductEdit').close()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <input type="hidden" id="posProdEditId">
+      <div class="grid">
+        <label>Produktname *
+          <input id="posProdEditName" placeholder="z. B. Pizza Grigiona / Clio 2022 1dl">
+        </label>
+        <label>Kategorie *
+          <select id="posProdEditCat"></select>
+        </label>
+        <label>Preis in CHF *
+          <input id="posProdEditPrice" type="number" step="0.05" value="18.90">
+        </label>
+        <label>PLU-Nummer (für P + Nummer Direktwahl, bes. Weine)
+          <input id="posProdEditPlu" placeholder="z. B. 601">
+        </label>
+        <label>Tastenfarbe (Hintergrund)
+          <input id="posProdEditBg" type="color" value="#ffffff" style="height:36px;padding:2px">
+        </label>
+        <label>Schriftfarbe
+          <input id="posProdEditFg" type="color" value="#0f172a" style="height:36px;padding:2px">
+        </label>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="primary" onclick="savePosProductFromModal()">Speichern</button>
+      <button type="button" class="danger" id="btnPosProdDelete" onclick="deletePosProductFromModal()" hidden>Produkt löschen</button>
+      <span class="spacer"></span>
+      <button type="button" onclick="$('#dlgPosProductEdit').close()">Abbrechen</button>
     </div>
   </div>
 </dialog>
@@ -2420,6 +3382,7 @@ const I18N={
     navKueche:'Küche',
     navTischplan:'Tischplan & Service',
     navTischplanMgr:'Tischplan-Editor',
+    navPos:'POS & Kasse',
     navGaeste:'Gästekartei',
     navZimmer:'Housekeeping',
     navStatistik:'Finanzen & Statistik',
@@ -2520,6 +3483,7 @@ const I18N={
     navKueche:'Kitchen',
     navTischplan:'Table Plan & Service',
     navTischplanMgr:'Table Plan Editor',
+    navPos:'POS & Register',
     navGaeste:'Guest Directory',
     navZimmer:'Housekeeping',
     navStatistik:'Finance & Analytics',
@@ -2620,6 +3584,7 @@ const I18N={
     navKueche:'Cucina',
     navTischplan:'Piano Tavoli & Sala',
     navTischplanMgr:'Editor Piano Tavoli',
+    navPos:'POS & Cassa',
     navGaeste:'Schede Ospiti',
     navZimmer:'Housekeeping',
     navStatistik:'Finanze & Statistiche',
@@ -2720,6 +3685,7 @@ const I18N={
     navKueche:'Κουζίνα',
     navTischplan:'Πλάνο Τραπεζιών',
     navTischplanMgr:'Επεξεργαστής Τραπεζιών',
+    navPos:'POS & Ταμείο',
     navGaeste:'Πελατολόγιο',
     navZimmer:'Καθαριότητα',
     navStatistik:'Οικονομικά',
@@ -3453,11 +4419,11 @@ window.unlockManagerRole=()=>{
 };
 
 function getAllowedViewsForRole(role){
-  if(role==='manager')return ['kalender','briefing','tischplan','gaeste','zimmer','statistik','dienstplan']; // Küche im Manager ausgeblendet!
-  if(role==='office')return ['kalender','briefing','tischplan','gaeste'];
+  if(role==='manager')return ['kalender','briefing','tischplan','pos','gaeste','zimmer','statistik','dienstplan']; // Küche im Manager ausgeblendet!
+  if(role==='office')return ['kalender','briefing','tischplan','pos','gaeste'];
   if(role==='cleaner')return ['zimmer'];
   if(role==='kitchen')return ['kueche'];
-  if(role==='service')return ['tischplan','gaeste'];
+  if(role==='service')return ['tischplan','pos','gaeste'];
   return ['kalender'];
 }
 
@@ -3500,6 +4466,9 @@ function updateRoleUI(){
     const lbl=$('#navLabelTischplan')||$('#navTischplanLabel');
     if(lbl)lbl.textContent=isMgr?tr('navTischplanMgr'):tr('navTischplan');
   }
+  if($('#navBtnPos'))$('#navBtnPos').hidden=!allowed.includes('pos');
+  if($('#posManagerSubTabs'))$('#posManagerSubTabs').hidden=!isMgr;
+  if(!isMgr&&typeof switchPosSubTab==='function')switchPosSubTab('ipad');
   if($('#navBtnGaeste'))$('#navBtnGaeste').hidden=!allowed.includes('gaeste');
   if($('#navBtnZimmer'))$('#navBtnZimmer').hidden=!allowed.includes('zimmer');
   if($('#navBtnStatistik'))$('#navBtnStatistik').hidden=!allowed.includes('statistik');
@@ -4102,6 +5071,7 @@ function renderAll(){
   renderShiftAndCleaningPlans();
   renderKitchenCockpit();
   renderTablePlanView();
+  if(typeof renderPosView==='function')renderPosView();
 }
 
 function updateGuestDatalist(){
@@ -4434,6 +5404,12 @@ function renderCalendar(){
       const trDog=translateFreeText(g.dog_notes);
       memBadges.push(`<span class="badge badge-dog" title="${esc(trDog)}">${esc(trDog.slice(0,26))}</span>`);
     }
+    if(typeof getOpenRoomChargeTotalForRoom==='function'){
+      const openPosSum=getOpenRoomChargeTotalForRoom(b.room_id);
+      if(openPosSum>0){
+        memBadges.push(`<span class="badge badge-blacklist" style="background:#f43f5e;color:#fff" title="Offene Restaurant-Rechnung auf Zimmer ${b.room_id} beim Checkout einkassieren!">POS offen: CHF ${openPosSum.toFixed(2)}</span>`);
+      }
+    }
     const pCount=(+b.erwachsene||1)+(+b.kinder||0);
     const trStaff=b.created_by_staff?translateFreeText(b.created_by_staff):'';
     return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
@@ -4742,10 +5718,12 @@ function renderBriefing(){
     $('#briefingDateInput').value=d;
   }
 
-  // Wichtige Tages-Infos & Events (Hochzeit, Geburtstag, Weihnachtsfeier, Ruhetag) oben im Briefing
+  // Wichtige Tages-Infos & Events (Hochzeit, Geburtstag, Weihnachtsfeier, Ruhetag) + OFFENE ZIMMER-RECHNUNGEN AUS POS BEIM CHECKOUT!
   if($('#briefingDailyEventBox')){
     const evTxt=dailyImportantInfos[d]||'';
+    const openRoomBillsHtml=typeof getPosOpenRoomChargesBriefingHtml==='function'?getPosOpenRoomChargesBriefingHtml(d):'';
     $('#briefingDailyEventBox').innerHTML=`
+      ${openRoomBillsHtml}
       <div style="padding:10px 14px;border-radius:12px;background:var(--gold-soft);border:1.5px solid rgba(245,158,11,0.45);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px" onclick="openDailyImportantInfoEditor()" title="Klicken, um Tages-Events oder Zimmer-Aufgaben für den ${fmt(d)} zu bearbeiten">
         <div>
           <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:#b45309">Wichtige Tages-Infos & Events am ${fmt(d)} (Hochzeit, Geburtstag, Feier, Ruhetag)</div>
@@ -7466,6 +8444,1850 @@ $('#logout').onclick=()=>{
   performLogoutToLoginScreen();
 };
 addEventListener('resize',()=>{if(!$('#app').hidden)renderCalendar()});
+
+// ============================================================================
+// 9. ALP FATSCHÉL POS & iPAD-KASSENSYSTEM (KOMPLETTER ARTIKEL-STAMM AUS ALLEN
+//    9 PDF-KARTEN, BON-TRENNUNG KÜCHE/BAR, ZIMMERBUCHUNG -> BRIEFING/CHECKOUT,
+//    COMPUTER-EDITOR MIT LIVE-iPAD-VORSCHAU, 3 VON/BIS-BERICHTE & PIN 7050)
+// ============================================================================
+const POS_CATALOG_KEY='alp_fatschel_pos_catalog_v2';
+const POS_OPEN_TABS_KEY='alp_fatschel_pos_open_tabs_v2';
+const POS_TRANSACTIONS_KEY='alp_fatschel_pos_transactions_v2';
+const POS_ROOM_CHARGES_KEY='alp_fatschel_pos_room_charges_v2';
+const POS_SETTINGS_KEY='alp_fatschel_pos_settings_v2';
+
+const DEFAULT_POS_CATEGORIES=[
+  {id:'cat_suppen_salate',name:'Suppen & Salate',bg:'#0284c7',fg:'#ffffff',station:'kitchen',sort:1},
+  {id:'cat_pasta_risotto',name:'Pasta & Risotto',bg:'#d97706',fg:'#ffffff',station:'kitchen',sort:2},
+  {id:'cat_pizza',name:'Pizze della Casa',bg:'#e11d48',fg:'#ffffff',station:'kitchen',sort:3},
+  {id:'cat_fleisch',name:'Fleisch & Hot Stone',bg:'#991b1b',fg:'#ffffff',station:'kitchen',sort:4},
+  {id:'cat_fondue',name:'Fondue & Extras',bg:'#b45309',fg:'#ffffff',station:'kitchen',sort:5},
+  {id:'cat_terrasse',name:'Kleine Karte / Alp',bg:'#059669',fg:'#ffffff',station:'kitchen',sort:6},
+  {id:'cat_kinder',name:'Kinderkarte',bg:'#16a34a',fg:'#ffffff',station:'kitchen',sort:7},
+  {id:'cat_dessert',name:'Dessert & Glace',bg:'#db2777',fg:'#ffffff',station:'kitchen',sort:8},
+  {id:'cat_softdrinks',name:'Softdrinks & Wasser',bg:'#2563eb',fg:'#ffffff',station:'bar',sort:9},
+  {id:'cat_bier',name:'Biere',bg:'#ca8a04',fg:'#ffffff',station:'bar',sort:10},
+  {id:'cat_kaffee',name:'Kaffee & Tee',bg:'#78350f',fg:'#ffffff',station:'bar',sort:11},
+  {id:'cat_apero_spirits',name:'Apero, Spritz & Spirits',bg:'#7c3aed',fg:'#ffffff',station:'bar',sort:12},
+  {id:'cat_wein_weiss_rose',name:'Weisswein & Rosé',bg:'#0d9488',fg:'#ffffff',station:'bar',sort:13},
+  {id:'cat_wein_rot',name:'Rotwein (PLU)',bg:'#881337',fg:'#ffffff',station:'bar',sort:14}
+];
+
+const DEFAULT_POS_PRODUCTS=[
+  // 1. SUPPEN, SALATE & VORSPEISEN (Seite 1)
+  {id:'p_101',catId:'cat_suppen_salate',name:'Bouillon 2.5dl',price:6.90,plu:'101',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_102',catId:'cat_suppen_salate',name:'Bouillon 4dl',price:9.90,plu:'102',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_103',catId:'cat_suppen_salate',name:'Bouillon mit Ei 2.5dl',price:7.90,plu:'103',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_104',catId:'cat_suppen_salate',name:'Bouillon mit Ei 4dl',price:10.90,plu:'104',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_105',catId:'cat_suppen_salate',name:'Tomatencremesuppe 2.5dl',price:8.90,plu:'105',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_106',catId:'cat_suppen_salate',name:'Tomatencremesuppe 4dl',price:11.90,plu:'106',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_107',catId:'cat_suppen_salate',name:'Gemischter Salat',price:9.90,plu:'107',bg:'#e0f2fe',fg:'#0f172a'},
+  {id:'p_108',catId:'cat_suppen_salate',name:'Bruschetta Italiana',price:12.90,plu:'108',bg:'#e0f2fe',fg:'#0f172a'},
+  {id:'p_109',catId:'cat_suppen_salate',name:'Caprese Büffelmozzarella',price:15.90,plu:'109',bg:'#e0f2fe',fg:'#0f172a'},
+  {id:'p_110',catId:'cat_suppen_salate',name:'Fatschéler Plättli',price:15.90,plu:'110',bg:'#e0f2fe',fg:'#0f172a'},
+  {id:'p_111',catId:'cat_suppen_salate',name:'Flammkuchen Original Gratinée',price:20.90,plu:'111',bg:'#e0f2fe',fg:'#0f172a'},
+
+  // 2. PASTA, SPEZIALITÄTEN, RAVIOLI, GNOCCHI & RISOTTO (Seite 1)
+  {id:'p_201',catId:'cat_pasta_risotto',name:'Lasagne della Casa',price:24.90,plu:'201',bg:'#fef3c7',fg:'#0f172a'},
+  {id:'p_202',catId:'cat_pasta_risotto',name:'Melanzane alla Parmigiana',price:20.90,plu:'202',bg:'#fef3c7',fg:'#0f172a'},
+  {id:'p_203',catId:'cat_pasta_risotto',name:'Spaghetti Napoli',price:18.90,plu:'203',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_204',catId:'cat_pasta_risotto',name:'Spaghetti Pesto',price:20.90,plu:'204',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_205',catId:'cat_pasta_risotto',name:'Spaghetti all’Amatriciana',price:20.90,plu:'205',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_206',catId:'cat_pasta_risotto',name:'Spaghetti Aglio Olio',price:19.90,plu:'206',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_207',catId:'cat_pasta_risotto',name:'Spaghetti Carbonara',price:21.90,plu:'207',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_208',catId:'cat_pasta_risotto',name:'Penne all’Arrabbiata',price:19.90,plu:'208',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_209',catId:'cat_pasta_risotto',name:'Tagliatelle Bolognese',price:21.90,plu:'209',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_210',catId:'cat_pasta_risotto',name:'Ravioli Verdure e Spinaci',price:20.90,plu:'210',bg:'#fde68a',fg:'#0f172a'},
+  {id:'p_211',catId:'cat_pasta_risotto',name:'Ravioli di Carne',price:20.90,plu:'211',bg:'#fde68a',fg:'#0f172a'},
+  {id:'p_212',catId:'cat_pasta_risotto',name:'Gnocchi alla Montagna',price:23.90,plu:'212',bg:'#fde68a',fg:'#0f172a'},
+  {id:'p_213',catId:'cat_pasta_risotto',name:'Risotto ai Funghi',price:20.90,plu:'213',bg:'#fde68a',fg:'#0f172a'},
+  {id:'p_214',catId:'cat_pasta_risotto',name:'Kleine Portion Pasta (-2.00)',price:-2.00,plu:'214',bg:'#fee2e2',fg:'#991b1b'},
+
+  // 3. PIZZE DELLA CASA & ZUTATEN EXTRA (Seite 2)
+  {id:'p_301',catId:'cat_pizza',name:'Pizza Margherita',price:16.90,plu:'301',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_302',catId:'cat_pizza',name:'Pizza Funghi',price:18.90,plu:'302',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_303',catId:'cat_pizza',name:'Pizza Prosciutto',price:19.90,plu:'303',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_304',catId:'cat_pizza',name:'Pizza Salami',price:19.90,plu:'304',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_305',catId:'cat_pizza',name:'Pizza Gorgonzola',price:19.90,plu:'305',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_306',catId:'cat_pizza',name:'Pizza Diavola',price:21.90,plu:'306',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_307',catId:'cat_pizza',name:'Pizza Fiorentina',price:20.90,plu:'307',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_308',catId:'cat_pizza',name:'Pizza Hawaii',price:20.90,plu:'308',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_309',catId:'cat_pizza',name:'Pizza Prosciutto e Funghi',price:20.90,plu:'309',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_310',catId:'cat_pizza',name:'Pizza Padrone',price:21.90,plu:'310',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_311',catId:'cat_pizza',name:'Calzone Ripieno',price:20.90,plu:'311',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_312',catId:'cat_pizza',name:'Pizza Al Tonno',price:20.90,plu:'312',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_313',catId:'cat_pizza',name:'Pizza Mascarpone',price:21.90,plu:'313',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_314',catId:'cat_pizza',name:'Pizza Piccante',price:22.90,plu:'314',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_315',catId:'cat_pizza',name:'Pizza Al Bufala',price:22.90,plu:'315',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_316',catId:'cat_pizza',name:'Pizza Grigiona',price:23.90,plu:'316',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_317',catId:'cat_pizza',name:'Pizza Fatschélla',price:24.90,plu:'317',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_318',catId:'cat_pizza',name:'Pizza Rustica',price:21.90,plu:'318',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_319',catId:'cat_pizza',name:'Extra Zutat (+2.00)',price:2.00,plu:'319',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_320',catId:'cat_pizza',name:'Extra Schinken/Salami/Gorg. (+3.00)',price:3.00,plu:'320',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_321',catId:'cat_pizza',name:'Extra Rohschinken/Steinpilze (+5.00)',price:5.00,plu:'321',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_322',catId:'cat_pizza',name:'Kleine Portion Pizza (-2.00)',price:-2.00,plu:'322',bg:'#fee2e2',fg:'#991b1b'},
+
+  // 4. FLEISCH, HOT STONE & CAFÉ DE PARIS (Seite 3)
+  {id:'p_401',catId:'cat_fleisch',name:'Hot Stone Entrecôte 200g',price:47.00,plu:'401',bg:'#fee2e2',fg:'#0f172a'},
+  {id:'p_402',catId:'cat_fleisch',name:'Hot Stone Entrecôte +50g',price:8.00,plu:'402',bg:'#fef2f2',fg:'#0f172a'},
+  {id:'p_403',catId:'cat_fleisch',name:'Hot Stone Rib Eye 200g',price:49.00,plu:'403',bg:'#fee2e2',fg:'#0f172a'},
+  {id:'p_404',catId:'cat_fleisch',name:'Hot Stone Rib Eye +50g',price:9.00,plu:'404',bg:'#fef2f2',fg:'#0f172a'},
+  {id:'p_405',catId:'cat_fleisch',name:'Hot Stone Beef Filet 150g',price:45.00,plu:'405',bg:'#fee2e2',fg:'#0f172a'},
+  {id:'p_406',catId:'cat_fleisch',name:'Hot Stone Beef Filet 200g',price:56.00,plu:'406',bg:'#fee2e2',fg:'#0f172a'},
+  {id:'p_407',catId:'cat_fleisch',name:'Hot Stone Beef Filet +50g',price:11.00,plu:'407',bg:'#fef2f2',fg:'#0f172a'},
+  {id:'p_408',catId:'cat_fleisch',name:'Café de Paris Entrecôte 200g',price:54.00,plu:'408',bg:'#fecaca',fg:'#0f172a'},
+  {id:'p_409',catId:'cat_fleisch',name:'Café de Paris Rib Eye 200g',price:56.00,plu:'409',bg:'#fecaca',fg:'#0f172a'},
+  {id:'p_410',catId:'cat_fleisch',name:'Café de Paris Filet 200g',price:60.00,plu:'410',bg:'#fecaca',fg:'#0f172a'},
+  {id:'p_411',catId:'cat_fleisch',name:'Fleischplatte à la Arthur (p.P.)',price:58.00,plu:'411',bg:'#fca5a5',fg:'#0f172a'},
+  {id:'p_412',catId:'cat_fleisch',name:'Beilage Belgische Pommes',price:5.00,plu:'412',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_413',catId:'cat_fleisch',name:'Beilage Butternudeln',price:5.00,plu:'413',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_414',catId:'cat_fleisch',name:'Beilage Kartoffelgratin',price:5.00,plu:'414',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_415',catId:'cat_fleisch',name:'Beilage Bohnen im Speckmantel',price:5.00,plu:'415',bg:'#f1f5f9',fg:'#0f172a'},
+
+  // 5. FONDUE & ZUM FONDUE (Seite 7)
+  {id:'p_501',catId:'cat_fondue',name:'Klassisches Fondue (p.P.)',price:32.00,plu:'501',bg:'#fef3c7',fg:'#0f172a'},
+  {id:'p_502',catId:'cat_fondue',name:'Chrüter Fondue (p.P.)',price:33.00,plu:'502',bg:'#fef3c7',fg:'#0f172a'},
+  {id:'p_503',catId:'cat_fondue',name:'Chili Fondue (p.P.)',price:33.00,plu:'503',bg:'#fef3c7',fg:'#0f172a'},
+  {id:'p_504',catId:'cat_fondue',name:'Trüffel Fondue (p.P.)',price:34.00,plu:'504',bg:'#fde68a',fg:'#0f172a'},
+  {id:'p_505',catId:'cat_fondue',name:'Portion Cornichons',price:2.00,plu:'505',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_506',catId:'cat_fondue',name:'Portion Silberzwiebeln',price:2.00,plu:'506',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_507',catId:'cat_fondue',name:'Portion Birnenschnitze',price:2.00,plu:'507',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_508',catId:'cat_fondue',name:'Portion Maiskölbchen',price:2.00,plu:'508',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_509',catId:'cat_fondue',name:'Portion Pellkartoffeln',price:4.00,plu:'509',bg:'#fffbeb',fg:'#0f172a'},
+  {id:'p_510',catId:'cat_fondue',name:'Kirschwasser zum Fondue 2cl',price:5.00,plu:'510',bg:'#fffbeb',fg:'#0f172a'},
+
+  // 6. KLEINE KARTE / TAGSÜBER / AUS DER ALP (Panoramakarte Terrasse)
+  {id:'p_601',catId:'cat_terrasse',name:'Tagessuppe',price:8.90,plu:'651',bg:'#d1fae5',fg:'#0f172a'},
+  {id:'p_602',catId:'cat_terrasse',name:'Gemischter Salat (Tagsüber)',price:9.90,plu:'652',bg:'#d1fae5',fg:'#0f172a'},
+  {id:'p_603',catId:'cat_terrasse',name:'Fatschéler Plättli (Alp)',price:15.90,plu:'653',bg:'#a7f3d0',fg:'#0f172a'},
+  {id:'p_604',catId:'cat_terrasse',name:'Salsiz am Stück mit Brot',price:11.90,plu:'654',bg:'#a7f3d0',fg:'#0f172a'},
+  {id:'p_605',catId:'cat_terrasse',name:'Alpkäse auf dem Brettli 100g',price:9.90,plu:'655',bg:'#a7f3d0',fg:'#0f172a'},
+  {id:'p_606',catId:'cat_terrasse',name:'Flammkuchen Original Gratinée',price:20.90,plu:'656',bg:'#ecfdf5',fg:'#0f172a'},
+  {id:'p_607',catId:'cat_terrasse',name:'Hausgemachte Belgische Pommes',price:8.90,plu:'657',bg:'#ecfdf5',fg:'#0f172a'},
+  {id:'p_608',catId:'cat_terrasse',name:'Apfelstrudel (Kleine Karte)',price:9.90,plu:'658',bg:'#ecfdf5',fg:'#0f172a'},
+
+  // 7. KINDERKARTE (Kinderkarte PDF)
+  {id:'p_701',catId:'cat_kinder',name:'Kinder Pizza Margherita',price:10.00,plu:'701',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_702',catId:'cat_kinder',name:'Kinder Pizza Salami',price:10.00,plu:'702',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_703',catId:'cat_kinder',name:'Kinder Pizza Prosciutto',price:10.00,plu:'703',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_704',catId:'cat_kinder',name:'Kinder Pizza Funghi',price:10.00,plu:'704',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_705',catId:'cat_kinder',name:'Kinder Pizza Hawaii',price:10.00,plu:'705',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_706',catId:'cat_kinder',name:'Kinder Pommes frites',price:7.00,plu:'706',bg:'#bbf7d0',fg:'#0f172a'},
+  {id:'p_707',catId:'cat_kinder',name:'Kinder Spaghetti Napoli',price:10.00,plu:'707',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_708',catId:'cat_kinder',name:'Kinder Spaghetti Pesto',price:10.00,plu:'708',bg:'#dcfce7',fg:'#0f172a'},
+  {id:'p_709',catId:'cat_kinder',name:'Kinder Spaghetti Bolognese',price:10.00,plu:'709',bg:'#dcfce7',fg:'#0f172a'},
+
+  // 8. DESSERT & GLACE (Seite 7)
+  {id:'p_801',catId:'cat_dessert',name:'Tiramisu Hausgemacht',price:10.00,plu:'801',bg:'#fce7f3',fg:'#0f172a'},
+  {id:'p_802',catId:'cat_dessert',name:'Panna Cotta',price:10.00,plu:'802',bg:'#fce7f3',fg:'#0f172a'},
+  {id:'p_803',catId:'cat_dessert',name:'Lavakuchen',price:8.00,plu:'803',bg:'#fce7f3',fg:'#0f172a'},
+  {id:'p_804',catId:'cat_dessert',name:'Apfelstrudel mit Vanillesauce',price:10.00,plu:'804',bg:'#fce7f3',fg:'#0f172a'},
+  {id:'p_805',catId:'cat_dessert',name:'Kugel Glace',price:4.00,plu:'805',bg:'#fbcfe8',fg:'#0f172a'},
+  {id:'p_806',catId:'cat_dessert',name:'Portion Rahm',price:1.00,plu:'806',bg:'#fdf2f8',fg:'#0f172a'},
+
+  // 9. SOFTDRINKS & AUS DER FLASCHE (Seite 4)
+  {id:'p_901',catId:'cat_softdrinks',name:'Cola 3dl',price:5.00,plu:'901',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_902',catId:'cat_softdrinks',name:'Cola 5dl',price:6.00,plu:'902',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_903',catId:'cat_softdrinks',name:'Cola Zero 3dl',price:5.00,plu:'903',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_904',catId:'cat_softdrinks',name:'Cola Zero 5dl',price:6.00,plu:'904',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_905',catId:'cat_softdrinks',name:'Citro 3dl',price:5.00,plu:'905',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_906',catId:'cat_softdrinks',name:'Citro 5dl',price:6.00,plu:'906',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_907',catId:'cat_softdrinks',name:'Orange 3dl',price:5.00,plu:'907',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_908',catId:'cat_softdrinks',name:'Orange 5dl',price:6.00,plu:'908',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_909',catId:'cat_softdrinks',name:'Ice Tea 3dl',price:5.00,plu:'909',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_910',catId:'cat_softdrinks',name:'Ice Tea 5dl',price:6.00,plu:'910',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_911',catId:'cat_softdrinks',name:'Rivella Rot 3dl',price:5.00,plu:'911',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_912',catId:'cat_softdrinks',name:'Rivella Rot 5dl',price:6.00,plu:'912',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_913',catId:'cat_softdrinks',name:'Spezi 3dl',price:5.00,plu:'913',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_914',catId:'cat_softdrinks',name:'Spezi 5dl',price:6.00,plu:'914',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_915',catId:'cat_softdrinks',name:'Apfelschorle 3dl',price:5.00,plu:'915',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_916',catId:'cat_softdrinks',name:'Apfelschorle 5dl',price:6.00,plu:'916',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_917',catId:'cat_softdrinks',name:'Orangensaft 3dl',price:5.00,plu:'917',bg:'#dbeafe',fg:'#0f172a'},
+  {id:'p_918',catId:'cat_softdrinks',name:'Orangensaft 5dl',price:6.00,plu:'918',bg:'#bfdbfe',fg:'#0f172a'},
+  {id:'p_919',catId:'cat_softdrinks',name:'Mineral mit Kohlensäure 3dl',price:5.00,plu:'919',bg:'#e0f2fe',fg:'#0f172a'},
+  {id:'p_920',catId:'cat_softdrinks',name:'Mineral mit Kohlensäure 5dl',price:6.00,plu:'920',bg:'#bae6fd',fg:'#0f172a'},
+  {id:'p_921',catId:'cat_softdrinks',name:'Hahnenwasser 3dl',price:2.00,plu:'921',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_922',catId:'cat_softdrinks',name:'Hahnenwasser 5dl',price:3.00,plu:'922',bg:'#f0f9ff',fg:'#0f172a'},
+  {id:'p_923',catId:'cat_softdrinks',name:'Rivella Blau Fl. 3dl',price:5.00,plu:'923',bg:'#eff6ff',fg:'#0f172a'},
+  {id:'p_924',catId:'cat_softdrinks',name:'Bitter Lemon Fl. 2dl',price:6.00,plu:'924',bg:'#eff6ff',fg:'#0f172a'},
+  {id:'p_925',catId:'cat_softdrinks',name:'Tonic Fl. 2dl',price:6.00,plu:'925',bg:'#eff6ff',fg:'#0f172a'},
+  {id:'p_926',catId:'cat_softdrinks',name:'San Bitter Fl. 2dl',price:5.00,plu:'926',bg:'#eff6ff',fg:'#0f172a'},
+
+  // 10. BIERE (Seite 4)
+  {id:'p_1001',catId:'cat_bier',name:'Bier vom Fass 3dl',price:5.00,plu:'1001',bg:'#fef9c3',fg:'#0f172a'},
+  {id:'p_1002',catId:'cat_bier',name:'Panaché süss 3dl',price:5.00,plu:'1002',bg:'#fef9c3',fg:'#0f172a'},
+  {id:'p_1003',catId:'cat_bier',name:'Panaché sauer 3dl',price:5.00,plu:'1003',bg:'#fef9c3',fg:'#0f172a'},
+  {id:'p_1004',catId:'cat_bier',name:'Moretti 3dl',price:6.00,plu:'1004',bg:'#fef08a',fg:'#0f172a'},
+  {id:'p_1005',catId:'cat_bier',name:'Arosa Sunna 3dl',price:7.00,plu:'1005',bg:'#fef08a',fg:'#0f172a'},
+  {id:'p_1006',catId:'cat_bier',name:'Schneider Weisse 5dl',price:8.00,plu:'1006',bg:'#fde047',fg:'#0f172a'},
+  {id:'p_1007',catId:'cat_bier',name:'Alkoholfreies Bier 3dl',price:5.00,plu:'1007',bg:'#fef9c3',fg:'#0f172a'},
+
+  // 11. KAFFEE & TEE (Seite 4)
+  {id:'p_1101',catId:'cat_kaffee',name:'Espresso',price:4.30,plu:'1101',bg:'#f5f5f4',fg:'#0f172a'},
+  {id:'p_1102',catId:'cat_kaffee',name:'Ristretto',price:4.30,plu:'1102',bg:'#f5f5f4',fg:'#0f172a'},
+  {id:'p_1103',catId:'cat_kaffee',name:'Café Crème',price:4.50,plu:'1103',bg:'#f5f5f4',fg:'#0f172a'},
+  {id:'p_1104',catId:'cat_kaffee',name:'Cappuccino',price:5.00,plu:'1104',bg:'#e7e5e4',fg:'#0f172a'},
+  {id:'p_1105',catId:'cat_kaffee',name:'Schale',price:5.00,plu:'1105',bg:'#e7e5e4',fg:'#0f172a'},
+  {id:'p_1106',catId:'cat_kaffee',name:'Latte Macchiato',price:5.00,plu:'1106',bg:'#e7e5e4',fg:'#0f172a'},
+  {id:'p_1107',catId:'cat_kaffee',name:'Caffè Corretto Grappa',price:7.00,plu:'1107',bg:'#d6d3d1',fg:'#0f172a'},
+  {id:'p_1108',catId:'cat_kaffee',name:'Tee Sirocco (div. Sorten)',price:5.00,plu:'1108',bg:'#f5f5f4',fg:'#0f172a'},
+
+  // 12. APERITIFS, SPRITZER, SPIRITUOSEN & DIGESTIFS (Seite 4)
+  {id:'p_1201',catId:'cat_apero_spirits',name:'Martini Bianco 4cl',price:7.00,plu:'1201',bg:'#f3e8ff',fg:'#0f172a'},
+  {id:'p_1202',catId:'cat_apero_spirits',name:'Campari 4cl',price:7.00,plu:'1202',bg:'#f3e8ff',fg:'#0f172a'},
+  {id:'p_1203',catId:'cat_apero_spirits',name:'Cynar 4cl',price:7.00,plu:'1203',bg:'#f3e8ff',fg:'#0f172a'},
+  {id:'p_1204',catId:'cat_apero_spirits',name:'Aperol Spritz',price:11.00,plu:'1204',bg:'#ffedd5',fg:'#0f172a'},
+  {id:'p_1205',catId:'cat_apero_spirits',name:'Campari Spritz',price:11.00,plu:'1205',bg:'#ffedd5',fg:'#0f172a'},
+  {id:'p_1206',catId:'cat_apero_spirits',name:'Limoncello Spritz',price:11.00,plu:'1206',bg:'#ffedd5',fg:'#0f172a'},
+  {id:'p_1207',catId:'cat_apero_spirits',name:'Hugo',price:11.00,plu:'1207',bg:'#ffedd5',fg:'#0f172a'},
+  {id:'p_1208',catId:'cat_apero_spirits',name:'Weisswein gespritzt',price:9.50,plu:'1208',bg:'#ffedd5',fg:'#0f172a'},
+  {id:'p_1209',catId:'cat_apero_spirits',name:'Bacardi 4cl',price:9.00,plu:'1209',bg:'#ede9fe',fg:'#0f172a'},
+  {id:'p_1210',catId:'cat_apero_spirits',name:'Smirnoff 4cl',price:9.00,plu:'1210',bg:'#ede9fe',fg:'#0f172a'},
+  {id:'p_1211',catId:'cat_apero_spirits',name:'Bombay Gin 4cl',price:10.00,plu:'1211',bg:'#ede9fe',fg:'#0f172a'},
+  {id:'p_1212',catId:'cat_apero_spirits',name:'Jack Daniel’s 4cl',price:10.00,plu:'1212',bg:'#ede9fe',fg:'#0f172a'},
+  {id:'p_1213',catId:'cat_apero_spirits',name:'+ Softdrink-Zusatz',price:3.00,plu:'1213',bg:'#f1f5f9',fg:'#0f172a'},
+  {id:'p_1214',catId:'cat_apero_spirits',name:'Fernet Branca 4cl',price:7.00,plu:'1214',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1215',catId:'cat_apero_spirits',name:'Appenzeller 4cl',price:7.00,plu:'1215',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1216',catId:'cat_apero_spirits',name:'Williams 4cl',price:7.00,plu:'1216',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1217',catId:'cat_apero_spirits',name:'Sambuca 4cl',price:7.00,plu:'1217',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1218',catId:'cat_apero_spirits',name:'Röteli 4cl',price:7.00,plu:'1218',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1219',catId:'cat_apero_spirits',name:'Amaretto 4cl',price:7.00,plu:'1219',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1220',catId:'cat_apero_spirits',name:'Averna 4cl',price:7.00,plu:'1220',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1221',catId:'cat_apero_spirits',name:'Braulio 4cl',price:7.00,plu:'1221',bg:'#fae8ff',fg:'#0f172a'},
+  {id:'p_1222',catId:'cat_apero_spirits',name:'Ramazzotti 4cl',price:7.00,plu:'1222',bg:'#fae8ff',fg:'#0f172a'},
+
+  // 13. OFFENE WEINE: WEISSWEIN & ROSÉ (Seite 5 — mit PLU 51..55 & 501..505)
+  {id:'p_1301',catId:'cat_wein_weiss_rose',name:'Joos Sauvignon Blanc 2022',price:8.00,plu:'51',bg:'#ccfbf1',fg:'#0f172a'},
+  {id:'p_1302',catId:'cat_wein_weiss_rose',name:'Juan Gil Blanco 2024',price:8.00,plu:'52',bg:'#ccfbf1',fg:'#0f172a'},
+  {id:'p_1303',catId:'cat_wein_weiss_rose',name:'Vom Schiefer feinherb 2023',price:8.00,plu:'53',bg:'#ccfbf1',fg:'#0f172a'},
+  {id:'p_1304',catId:'cat_wein_weiss_rose',name:'Ca’ dei Frati Lugana DOC 2024',price:8.00,plu:'54',bg:'#ccfbf1',fg:'#0f172a'},
+  {id:'p_1305',catId:'cat_wein_weiss_rose',name:'Mirabeau Pure Rosé 2024',price:8.00,plu:'55',bg:'#ffe4e6',fg:'#0f172a'},
+
+  // 14. OFFENE WEINE: ROTWEIN (Seite 6 — mit PLU 61..66)
+  {id:'p_1401',catId:'cat_wein_rot',name:'Joos Pinot Noir Classic 2023',price:8.00,plu:'61',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_1402',catId:'cat_wein_rot',name:'Juan Gil Blue Label 2021',price:8.00,plu:'62',bg:'#ffe4e6',fg:'#0f172a'},
+  {id:'p_1403',catId:'cat_wein_rot',name:'Acciderba Bolgheri Rosso 2020',price:9.00,plu:'63',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_1404',catId:'cat_wein_rot',name:'Clos d’Agon Black Edition 2019',price:10.00,plu:'64',bg:'#fecdd3',fg:'#0f172a'},
+  {id:'p_1405',catId:'cat_wein_rot',name:'Clio 2022 (Jumilla)',price:13.00,plu:'65',bg:'#fda4af',fg:'#0f172a'},
+  {id:'p_1406',catId:'cat_wein_rot',name:'Tignanello 2021 (Toscana)',price:24.00,plu:'66',bg:'#fb7185',fg:'#ffffff'}
+];
+
+let posCatalog={categories:[],products:[]};
+let posOpenTabs={}; // tableNum -> { items:[], discountPct:0, discountLabel:'Standardpreis' }
+let posTransactions=[]; // Abgeschlossene Rechnungen (inkl. Storno/Offeriert/Bruch/Training)
+let posRoomCharges=[]; // Aufs Zimmer gebuchte Rechnungen { id, receiptNo, roomId, guestName, tableNum, amount, date, time, items, paidAtCheckout:false }
+let posSettings={
+  adminPin:'7050',
+  managerPin:'7050',
+  vatRate:8.1,
+  nextReceiptNo:1001,
+  tileSize:'md',
+  printerKitchen:'Epson TM-T20III · Küche (Auto-Cut aktiv)',
+  printerBar:'Epson TM-T20III · Bar & Buffet (Auto-Cut aktiv)'
+};
+
+let posActiveSubTab='ipad'; // 'ipad' | 'editor' | 'reports' | 'settings'
+let posActiveTableNum='1';
+let posActiveCatId='cat_suppen_salate';
+let posSelectedBonItemId=null;
+let posActiveCoursePreset=1;
+let posNumpadBuffer='';
+let posNumpadPluMode=false;
+let posIsTrainingMode=false;
+let posAdminPinVerifiedSession=false;
+
+function loadPosStore(){
+  try{
+    const rawCat=localStorage.getItem(POS_CATALOG_KEY);
+    if(rawCat)posCatalog=JSON.parse(rawCat);
+  }catch(e){}
+  if(!posCatalog||!Array.isArray(posCatalog.categories)||!posCatalog.categories.length){
+    posCatalog={
+      categories:JSON.parse(JSON.stringify(DEFAULT_POS_CATEGORIES)),
+      products:JSON.parse(JSON.stringify(DEFAULT_POS_PRODUCTS))
+    };
+  }
+  if(!posCatalog.categories.some(c=>c.id===posActiveCatId)){
+    posActiveCatId=posCatalog.categories[0]?.id||'cat_suppen_salate';
+  }
+
+  try{
+    posOpenTabs=JSON.parse(localStorage.getItem(POS_OPEN_TABS_KEY)||'{}')||{};
+  }catch(e){posOpenTabs={};}
+
+  try{
+    posTransactions=JSON.parse(localStorage.getItem(POS_TRANSACTIONS_KEY)||'[]')||[];
+  }catch(e){posTransactions=[];}
+
+  try{
+    posRoomCharges=JSON.parse(localStorage.getItem(POS_ROOM_CHARGES_KEY)||'[]')||[];
+  }catch(e){posRoomCharges=[];}
+
+  try{
+    const rawSet=JSON.parse(localStorage.getItem(POS_SETTINGS_KEY)||'{}')||{};
+    posSettings={...posSettings,...rawSet};
+    if(!posSettings.adminPin)posSettings.adminPin='7050';
+    if(!posSettings.managerPin)posSettings.managerPin='7050';
+  }catch(e){}
+}
+
+function savePosCatalog(){
+  if(isSimulationMode)return;
+  try{localStorage.setItem(POS_CATALOG_KEY,JSON.stringify(posCatalog));}catch(e){}
+}
+function savePosOpenTabs(){
+  if(isSimulationMode)return;
+  try{localStorage.setItem(POS_OPEN_TABS_KEY,JSON.stringify(posOpenTabs));}catch(e){}
+}
+function savePosTransactions(){
+  if(isSimulationMode)return;
+  try{localStorage.setItem(POS_TRANSACTIONS_KEY,JSON.stringify(posTransactions));}catch(e){}
+}
+function savePosRoomCharges(){
+  if(isSimulationMode)return;
+  try{localStorage.setItem(POS_ROOM_CHARGES_KEY,JSON.stringify(posRoomCharges));}catch(e){}
+}
+function savePosSettingsStore(){
+  if(isSimulationMode)return;
+  try{localStorage.setItem(POS_SETTINGS_KEY,JSON.stringify(posSettings));}catch(e){}
+}
+
+function getAlpFatschelTableNumbers(){
+  if(!hallLayouts)loadHallLayoutsAndReservations();
+  const tables=(hallLayouts?.alp_fatschel?.tables)||DEFAULT_HALL_LAYOUTS.alp_fatschel.tables;
+  const nums=[...new Set(tables.map(t=>String(t.num||'').trim()).filter(Boolean))];
+  return nums.sort((a,b)=>(parseInt(a,10)||999)-(parseInt(b,10)||999));
+}
+
+function getCurrentTableTab(tableNum){
+  const tNum=String(tableNum||posActiveTableNum||'1');
+  if(!posOpenTabs[tNum]){
+    posOpenTabs[tNum]={items:[],discountPct:0,discountLabel:'Standardpreis'};
+  }
+  return posOpenTabs[tNum];
+}
+
+function getPosCategoryById(catId){
+  return (posCatalog.categories||[]).find(c=>c.id===catId)||posCatalog.categories[0];
+}
+
+function calcPosTabTotals(tab){
+  const items=(tab&&Array.isArray(tab.items))?tab.items:[];
+  const rawSub=items.reduce((s,it)=>s+(Number(it.price||0)*Number(it.qty||1)),0);
+  const pct=Number(tab?.discountPct||0);
+  const discAmt=rawSub>0?Math.round((rawSub*(pct/100))*20)/20:0;
+  const finalTotal=Math.round(Math.max(0,rawSub-discAmt)*20)/20;
+  const vatRate=Number(posSettings.vatRate||8.1);
+  const vatAmt=finalTotal-(finalTotal/(1+(vatRate/100)));
+  return {rawSub,pct,discAmt,finalTotal,vatRate,vatAmt};
+}
+
+// Liefert offene Zimmer-Rechnungen für ein Zimmer (für Morgen-Briefing & Abreise-Warnung beim Checkout!)
+window.getOpenRoomChargeTotalForRoom=roomId=>{
+  return (posRoomCharges||[])
+    .filter(rc=>!rc.paidAtCheckout&&!rc.isTraining&&Number(rc.roomId)===Number(roomId))
+    .reduce((s,rc)=>s+Number(rc.amount||0),0);
+};
+
+window.getPosOpenRoomChargesBriefingHtml=dateStr=>{
+  const d=dateStr||selectedDate||todayStr();
+  const openCharges=(posRoomCharges||[]).filter(rc=>!rc.paidAtCheckout&&!rc.isTraining);
+  if(!openCharges.length)return '';
+  const act=allActiveBookings().filter(b=>b.status!=='storniert');
+
+  const groupedByRoom={};
+  for(const rc of openCharges){
+    if(!groupedByRoom[rc.roomId])groupedByRoom[rc.roomId]=[];
+    groupedByRoom[rc.roomId].push(rc);
+  }
+
+  const cardsHtml=Object.entries(groupedByRoom).map(([rId,list])=>{
+    const sum=list.reduce((s,x)=>s+Number(x.amount||0),0);
+    const stayBooking=act.find(b=>Number(b.room_id)===Number(rId)&&(b.abreise===d||(b.anreise<=d&&b.abreise>=d)));
+    const isCheckoutToday=Boolean(stayBooking&&stayBooking.abreise===d);
+    const guestLabel=stayBooking?stayBooking.gast:(list[0]?.guestName||'Hotelgast');
+    return `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 12px;border-radius:10px;background:var(--glass-strong);border-left:4px solid ${isCheckoutToday?'#f43f5e':'#10b981'}">
+      <div>
+        <div style="font-weight:900;font-size:13.5px;color:${isCheckoutToday?'var(--danger)':'var(--ink)'}">
+          ${isCheckoutToday?'CHECKOUT HEUTE — OFFENE RESTAURANT-RECHNUNG: ':'Offene Restaurant-Rechnung auf '}Zimmer ${esc(rId)} (${esc(guestLabel)})
+        </div>
+        <div style="font-size:12px;color:var(--ink-soft);margin-top:2px">
+          ${list.map(x=>`Beleg #${x.receiptNo} (Tisch ${esc(x.tableNum)}, ${fmt(x.date)}): <b>CHF ${Number(x.amount).toFixed(2)}</b>`).join(' · ')}
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span style="font-size:16px;font-weight:900;color:var(--danger)">Offen: CHF ${sum.toFixed(2)}</span>
+        <button type="button" class="emerald-btn" onclick="markRoomPosChargesPaidAtCheckout(${Number(rId)})" style="padding:5px 10px;font-size:11.5px">Beim Checkout bezahlt ✓</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div style="margin-bottom:10px;padding:12px 14px;border-radius:12px;background:var(--danger-soft);border:2px solid var(--danger)">
+    <div style="font-size:12px;font-weight:900;text-transform:uppercase;color:var(--danger);margin-bottom:6px">
+      WICHTIG FÜR CHECKOUT & REZEPTION: OFFENE RESTAURANT-RECHNUNGEN AUF HOTELZIMMERN (POS)
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">${cardsHtml}</div>
+  </div>`;
+};
+
+window.markRoomPosChargesPaidAtCheckout=roomId=>{
+  const list=(posRoomCharges||[]).filter(rc=>!rc.paidAtCheckout&&Number(rc.roomId)===Number(roomId));
+  if(!list.length)return;
+  const sum=list.reduce((s,x)=>s+Number(x.amount||0),0);
+  if(!confirm(`Offene Restaurant-Rechnung(en) für Zimmer ${roomId} über total CHF ${sum.toFixed(2)} jetzt beim Checkout als bezahlt markieren?`))return;
+  list.forEach(rc=>{
+    rc.paidAtCheckout=true;
+    rc.paidAt=new Date().toISOString();
+  });
+  savePosRoomCharges();
+  renderAll();
+};
+
+window.switchPosSubTab=sub=>{
+  if(currentRole!=='manager'&&sub!=='ipad')sub='ipad';
+  posActiveSubTab=sub;
+  $('#btnPosSubPad')?.classList.toggle('active',sub==='ipad');
+  $('#btnPosSubEditor')?.classList.toggle('active',sub==='editor');
+  $('#btnPosSubReports')?.classList.toggle('active',sub==='reports');
+  $('#btnPosSubSettings')?.classList.toggle('active',sub==='settings');
+
+  if($('#posSubViewIpad'))$('#posSubViewIpad').hidden=(sub!=='ipad');
+  if($('#posSubViewEditor'))$('#posSubViewEditor').hidden=(sub!=='editor');
+  if($('#posSubViewReports'))$('#posSubViewReports').hidden=(sub!=='reports');
+  if($('#posSubViewSettings'))$('#posSubViewSettings').hidden=(sub!=='settings');
+  renderPosView();
+};
+
+function renderPosView(){
+  if(!posCatalog.categories.length)loadPosStore();
+  const isMgr=(currentRole==='manager');
+  if($('#posManagerSubTabs'))$('#posManagerSubTabs').hidden=!isMgr;
+
+  // Offene Tische Zähler im Hauptmenü-Badge aktualisieren
+  const openTablesCount=Object.values(posOpenTabs).filter(t=>Array.isArray(t.items)&&t.items.length>0).length;
+  if($('#navCountPosOpen')){
+    $('#navCountPosOpen').textContent=openTablesCount>0?`${openTablesCount} offen`:'iPad';
+  }
+
+  if($('#posActiveTableTopTitle'))$('#posActiveTableTopTitle').textContent=`Tisch ${posActiveTableNum}`;
+  if($('#posBtnTableNum'))$('#posBtnTableNum').textContent=`Tisch ${posActiveTableNum}`;
+  if($('#posTrainingBadgeTop'))$('#posTrainingBadgeTop').hidden=!posIsTrainingMode;
+  if($('#posTrainingStripBanner'))$('#posTrainingStripBanner').hidden=!posIsTrainingMode;
+
+  renderPosCategoriesGrid();
+  renderPosProductsGrid();
+  renderPosBonPanel();
+
+  if(isMgr){
+    if(posActiveSubTab==='editor')renderPosEditorView();
+    if(posActiveSubTab==='reports')renderPosReportsView();
+    if(posActiveSubTab==='settings')renderPosSettingsView();
+  }
+}
+
+function renderPosCategoriesGrid(){
+  const wrap=$('#posCategoriesGrid');
+  if(!wrap)return;
+  const sorted=[...(posCatalog.categories||[])].sort((a,b)=>(a.sort||0)-(b.sort||0));
+  wrap.innerHTML=sorted.map(cat=>{
+    const isAct=(cat.id===posActiveCatId);
+    const stLabel=cat.station==='bar'?'Bar-Bon':'Küchen-Bon';
+    return `<div class="pos-cat-tile ${isAct?'active':''}"
+      style="background:${esc(cat.bg||'#0284c7')};color:${esc(cat.fg||'#ffffff')}"
+      onclick="selectPosCategory('${esc(cat.id)}')">
+      <span>${esc(cat.name)}</span>
+      <span class="pos-cat-station-tag">${stLabel}</span>
+    </div>`;
+  }).join('');
+}
+
+window.selectPosCategory=catId=>{
+  posActiveCatId=catId;
+  if($('#posQuickSearchInput'))$('#posQuickSearchInput').value='';
+  renderPosCategoriesGrid();
+  renderPosProductsGrid();
+};
+
+function renderPosProductsGrid(){
+  const wrap=$('#posProductsGrid');
+  if(!wrap)return;
+  const cat=getPosCategoryById(posActiveCatId);
+  if($('#posActiveCategoryTitle')&&cat){
+    $('#posActiveCategoryTitle').innerHTML=`${esc(cat.name)} <span class="badge" style="margin-left:6px;background:var(--glass-strong)">Bon-Ausgabe: ${cat.station==='bar'?'Bar / Getränkedrucker':'Küche / Speisendrucker'}</span>`;
+  }
+  wrap.className=`pos-prod-grid size-${posSettings.tileSize||'md'}`;
+
+  const q=($('#posQuickSearchInput')?.value||'').trim().toLowerCase();
+  const list=(posCatalog.products||[]).filter(p=>{
+    if(q){
+      return p.name.toLowerCase().includes(q)||String(p.plu||'').toLowerCase()===q||String(p.plu||'').toLowerCase().includes(q);
+    }
+    return p.catId===posActiveCatId;
+  });
+
+  if(!list.length){
+    wrap.innerHTML='<div style="grid-column:1/-1;padding:18px;color:var(--mute);font-weight:700">Keine Artikel in dieser Ansicht gefunden.</div>';
+    return;
+  }
+
+  wrap.innerHTML=list.map(p=>`
+    <div class="pos-prod-tile"
+      style="background:${esc(p.bg||'#ffffff')};color:${esc(p.fg||'#0f172a')}"
+      onclick="tapPosProductTile('${esc(p.id)}')">
+      <div class="pos-prod-name">${esc(p.name)}</div>
+      <div class="pos-prod-meta">
+        <span>CHF ${Number(p.price||0).toFixed(2)}</span>
+        ${p.plu?`<span class="pos-plu-pill">PLU ${esc(p.plu)}</span>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// KLICK AUF PRODUKT-TASTE: BERÜCKSICHTIGT DEN NUMPAD-MULTIPLIKATOR (Z. B. "5" + "Cola" = "5x Cola"!)
+window.tapPosProductTile=prodId=>{
+  const p=(posCatalog.products||[]).find(x=>x.id===prodId);
+  if(!p)return;
+  const cat=getPosCategoryById(p.catId);
+  let qty=1;
+  if(!posNumpadPluMode&&posNumpadBuffer){
+    const parsed=parseInt(posNumpadBuffer,10);
+    if(parsed>0&&parsed<=200)qty=parsed;
+  }
+  posNumpadBuffer='';
+  posNumpadPluMode=false;
+  updatePosNumpadDisplay();
+
+  addPosItemToActiveTable({
+    prodId:p.id,
+    name:p.name,
+    price:Number(p.price||0),
+    qty,
+    plu:p.plu||'',
+    station:cat?.station||'kitchen',
+    course:posActiveCoursePreset||1,
+    note:''
+  });
+};
+
+function addPosItemToActiveTable(newItem){
+  const tab=getCurrentTableTab(posActiveTableNum);
+  // Prüfe, ob derselbe Artikel im selben Gang ohne Sondertext bereits auf dem Bon steht
+  const existing=tab.items.find(it=>it.prodId===newItem.prodId&&it.course===newItem.course&&!it.note&&!newItem.note&&Number(it.price)===Number(newItem.price));
+  if(existing){
+    existing.qty=Number(existing.qty||1)+Number(newItem.qty||1);
+    posSelectedBonItemId=existing.lineId;
+  }else{
+    const lineId='line-'+Date.now()+'-'+Math.random().toString(36).slice(2,6);
+    tab.items.push({...newItem,lineId,printedQty:0});
+    posSelectedBonItemId=lineId;
+  }
+  savePosOpenTabs();
+  renderPosBonPanel();
+}
+
+function renderPosBonPanel(){
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const totals=calcPosTabTotals(tab);
+
+  if($('#posBonHeaderTable')){
+    $('#posBonHeaderTable').textContent=`Tisch ${posActiveTableNum} · Alp Fatschél`;
+  }
+  if($('#posBonHeaderSub')){
+    $('#posBonHeaderSub').textContent=`Tarif: ${tab.discountLabel||'Standardpreis'}${posIsTrainingMode?' · TRAINING':''}`;
+  }
+  [1,2,3].forEach(c=>{
+    $('#btnCoursePreset'+c)?.classList.toggle('active',posActiveCoursePreset===c);
+  });
+
+  const listWrap=$('#posBonItemsList');
+  if(!listWrap)return;
+
+  if(!tab.items.length){
+    listWrap.innerHTML='<div style="padding:26px 12px;text-align:center;color:var(--mute);font-size:12.5px;font-weight:700">Noch keine Artikel auf Tisch '+esc(posActiveTableNum)+' gebucht.<br><small style="font-weight:600">Tipp: Zahl (z. B. 5) + Getränk = 5× · P + PLU-Nr. = Wein</small></div>';
+  }else{
+    if(!posSelectedBonItemId||!tab.items.some(x=>x.lineId===posSelectedBonItemId)){
+      posSelectedBonItemId=tab.items[tab.items.length-1].lineId;
+    }
+    listWrap.innerHTML=tab.items.map(it=>{
+      const isSel=(it.lineId===posSelectedBonItemId);
+      const lineTotal=Number(it.qty||1)*Number(it.price||0);
+      const stBadge=it.station==='bar'
+        ?'<span class="badge" style="background:rgba(37,99,235,0.14);color:#2563eb;font-size:9.5px;padding:1px 5px">Bar</span>'
+        :'<span class="badge" style="background:rgba(16,185,129,0.14);color:#059669;font-size:9.5px;padding:1px 5px">Küche · G'+it.course+'</span>';
+      const printedTag=it.printedQty>=it.qty
+        ?'<span style="color:var(--emerald);font-size:10px;font-weight:800">✓ boniert</span>'
+        :'';
+      return `<div class="pos-bon-item ${isSel?'selected':''}" onclick="selectPosBonLine('${esc(it.lineId)}')">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
+          <div style="font-weight:800;font-size:13px;color:var(--ink)">${Number(it.qty)}× ${esc(it.name)}</div>
+          <div style="font-weight:900;font-size:13px;font-variant-numeric:tabular-nums">CHF ${lineTotal.toFixed(2)}</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px;font-size:11px;color:var(--mute)">
+          <div style="display:flex;gap:5px;align-items:center">${stBadge} ${it.plu?`<span>PLU ${esc(it.plu)}</span>`:''} ${printedTag}</div>
+          <span>à CHF ${Number(it.price).toFixed(2)}</span>
+        </div>
+        ${it.note?`<div style="margin-top:4px;padding:2px 6px;border-radius:6px;background:var(--gold-soft);color:#b45309;font-size:11.5px;font-weight:800">✎ ${esc(it.note)}</div>`:''}
+      </div>`;
+    }).join('');
+  }
+
+  if($('#posBonDiscountRow')){
+    $('#posBonDiscountRow').hidden=(totals.pct<=0);
+    $('#posBonDiscountLabel').textContent=`Rabatt (${tab.discountLabel||totals.pct+'%'})`;
+    $('#posBonDiscountAmount').textContent=`- CHF ${totals.discAmt.toFixed(2)}`;
+  }
+  if($('#posBonGrandTotal')){
+    $('#posBonGrandTotal').textContent=`CHF ${totals.finalTotal.toFixed(2)}`;
+  }
+  updatePosNumpadDisplay();
+}
+
+window.selectPosBonLine=lineId=>{
+  posSelectedBonItemId=lineId;
+  renderPosBonPanel();
+};
+
+window.setPosActiveCourseFilter=courseNum=>{
+  posActiveCoursePreset=courseNum;
+  renderPosBonPanel();
+};
+
+window.adjustSelectedPosItemQty=delta=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const it=tab.items.find(x=>x.lineId===posSelectedBonItemId);
+  if(!it)return;
+  it.qty=Number(it.qty||1)+delta;
+  if(it.qty<=0){
+    tab.items=tab.items.filter(x=>x.lineId!==it.lineId);
+    posSelectedBonItemId=tab.items[tab.items.length-1]?.lineId||null;
+  }
+  savePosOpenTabs();
+  renderPosBonPanel();
+};
+
+window.cycleSelectedPosItemCourse=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const it=tab.items.find(x=>x.lineId===posSelectedBonItemId);
+  if(!it)return;
+  it.course=((Number(it.course||1))%3)+1;
+  savePosOpenTabs();
+  renderPosBonPanel();
+};
+
+window.removeSelectedPosItem=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!posSelectedBonItemId)return;
+  tab.items=tab.items.filter(x=>x.lineId!==posSelectedBonItemId);
+  posSelectedBonItemId=tab.items[tab.items.length-1]?.lineId||null;
+  savePosOpenTabs();
+  renderPosBonPanel();
+};
+
+// NUMPAD & PLU-DIREKTWAHL (P + NUMMER = WEIN / ARTIKEL, ZAHL + ARTIKEL = MULTIPLIKATOR)
+window.pressPosNumpad=key=>{
+  if(key==='C'){
+    posNumpadBuffer='';
+    posNumpadPluMode=false;
+    updatePosNumpadDisplay();
+    return;
+  }
+  if(key==='PLU'){
+    if(posNumpadPluMode&&posNumpadBuffer){
+      executePosPluLookup();
+      return;
+    }
+    posNumpadPluMode=true;
+    posNumpadBuffer='';
+    updatePosNumpadDisplay();
+    return;
+  }
+  posNumpadBuffer+=String(key);
+  updatePosNumpadDisplay();
+};
+
+function updatePosNumpadDisplay(){
+  const modeLbl=$('#posKeypadModeLabel');
+  const bufLbl=$('#posKeypadBufferDisplay');
+  if(!modeLbl||!bufLbl)return;
+  if(posNumpadPluMode){
+    modeLbl.textContent='PLU-Direktwahl (Wein / Artikel)';
+    bufLbl.textContent=`PLU: ${posNumpadBuffer||'...'}`;
+  }else{
+    modeLbl.textContent='Anzahl / Multiplikator';
+    bufLbl.textContent=posNumpadBuffer?`${posNumpadBuffer} ×`:'1 ×';
+  }
+}
+
+window.executePosPluLookup=()=>{
+  const code=String(posNumpadBuffer||'').trim();
+  if(!code){
+    posNumpadPluMode=true;
+    updatePosNumpadDisplay();
+    return;
+  }
+  const prod=(posCatalog.products||[]).find(p=>String(p.plu||'').toLowerCase()===code.toLowerCase());
+  if(!prod){
+    alert(`Kein Artikel oder Wein mit der PLU-Nummer „${code}“ gefunden. Tipp: Offene Weissweine haben PLU 51–55, Rotweine PLU 61–66.`);
+    posNumpadBuffer='';
+    posNumpadPluMode=false;
+    updatePosNumpadDisplay();
+    return;
+  }
+  posNumpadBuffer='';
+  posNumpadPluMode=false;
+  updatePosNumpadDisplay();
+  const cat=getPosCategoryById(prod.catId);
+  addPosItemToActiveTable({
+    prodId:prod.id,
+    name:prod.name,
+    price:Number(prod.price||0),
+    qty:1,
+    plu:prod.plu||'',
+    station:cat?.station||'bar',
+    course:posActiveCoursePreset||1,
+    note:''
+  });
+};
+
+// RABATTE: 20 % HOTELGAST & 50 % PERSONAL
+window.applyPosDiscount=(pct,label)=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(tab.discountPct===pct&&pct>0){
+    tab.discountPct=0;
+    tab.discountLabel='Standardpreis';
+  }else{
+    tab.discountPct=pct;
+    tab.discountLabel=label||(pct>0?`${pct}% Rabatt`:'Standardpreis');
+  }
+  savePosOpenTabs();
+  renderPosBonPanel();
+};
+
+// DIALOG A: TISCH WECHSELN
+window.openPosTablePickerModal=()=>{
+  const grid=$('#posTablePickerGrid');
+  if(!grid)return;
+  const nums=getAlpFatschelTableNumbers();
+  grid.innerHTML=nums.map(num=>{
+    const tab=posOpenTabs[num];
+    const hasItems=Boolean(tab&&Array.isArray(tab.items)&&tab.items.length>0);
+    const totals=hasItems?calcPosTabTotals(tab):{finalTotal:0};
+    const isCur=(String(num)===String(posActiveTableNum));
+    return `<button type="button"
+      class="${hasItems?'emerald-btn':isCur?'primary':''}"
+      style="padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;border-width:2px"
+      onclick="selectPosActiveTable('${esc(num)}')">
+      <span style="font-size:15px;font-weight:900">Tisch ${esc(num)}</span>
+      <span style="font-size:11px;opacity:0.9">${hasItems?'Offen: CHF '+totals.finalTotal.toFixed(2):'Frei'}</span>
+    </button>`;
+  }).join('');
+  $('#dlgPosTablePicker').showModal();
+};
+
+window.selectPosActiveTable=tableNum=>{
+  posActiveTableNum=String(tableNum);
+  posSelectedBonItemId=null;
+  $('#dlgPosTablePicker')?.close();
+  renderPosView();
+};
+
+// DIALOG B: GANG 1 / 2 / 3 ZUWEISEN & GANG IN DER KÜCHE ABRUFEN
+window.openPosCourseCallModal=()=>{
+  $('#dlgPosCourse').showModal();
+};
+
+window.assignSelectedPosItemToCourse=courseNum=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const it=tab.items.find(x=>x.lineId===posSelectedBonItemId);
+  if(it){
+    it.course=courseNum;
+    savePosOpenTabs();
+  }
+  posActiveCoursePreset=courseNum;
+  $('#dlgPosCourse').close();
+  renderPosBonPanel();
+};
+
+window.triggerPosCourseCall=courseNum=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const courseItems=tab.items.filter(x=>x.station!=='bar'&&Number(x.course||1)===Number(courseNum));
+  $('#dlgPosCourse').close();
+  const nowStr=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+  const ticketHtml=`
+    <div class="pos-paper-ticket">
+      <div style="text-align:center;font-weight:900;font-size:15px;border-bottom:2px solid #0f172a;padding-bottom:6px;margin-bottom:8px">
+        *** GANG ${courseNum} ABRUFEN ! ***<br>
+        TISCH ${esc(posActiveTableNum)} · KÜCHE
+      </div>
+      <div style="font-size:11.5px;margin-bottom:8px">Datum: ${fmt(todayStr())} · Uhrzeit: ${nowStr} · Drucker: ${esc(posSettings.printerKitchen)}</div>
+      ${courseItems.length
+        ?courseItems.map(it=>`<div style="font-weight:800;margin-bottom:4px">${it.qty}× ${esc(it.name)}${it.note?`<br><span style="margin-left:14px">→ ${esc(it.note)}</span>`:''}</div>`).join('')
+        :`<div style="font-weight:800">Bitte GANG ${courseNum} für Tisch ${esc(posActiveTableNum)} jetzt schicken!</div>`
+      }
+      <div style="margin-top:12px;padding-top:6px;border-top:1px dashed #64748b;text-align:center;font-size:11px">--- AUTO-CUT (KÜCHENDRUCKER) ---</div>
+    </div>
+  `;
+  $('#posPrintPreviewTitle').textContent=`Küchen-Abruf: Gang ${courseNum} für Tisch ${posActiveTableNum}`;
+  $('#posPrintPreviewContainer').innerHTML=ticketHtml;
+  $('#dlgPosPrintPreview').showModal();
+};
+
+// DIALOG C: TEXT SCHREIBEN AUF DEN BON (Z. B. OHNE KÄSE)
+window.openPosItemTextModal=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const it=tab.items.find(x=>x.lineId===posSelectedBonItemId);
+  if(!it){
+    alert('Bitte wähle oder buche zuerst ein Gericht auf dem Bon, zu dem du einen Text (z. B. „ohne Käse“) schreiben möchtest.');
+    return;
+  }
+  $('#posItemTextModalTitle').textContent=`Text schreiben zu: ${it.qty}× ${it.name}`;
+  $('#posItemCustomTextInput').value=it.note||'';
+  $('#dlgPosItemText').showModal();
+  setTimeout(()=>$('#posItemCustomTextInput')?.focus(),40);
+};
+
+window.appendPosQuickModifier=modText=>{
+  const inp=$('#posItemCustomTextInput');
+  if(!inp)return;
+  const cur=inp.value.trim();
+  inp.value=cur?`${cur}, ${modText}`:modText;
+};
+
+window.savePosItemCustomText=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const it=tab.items.find(x=>x.lineId===posSelectedBonItemId);
+  if(it){
+    it.note=($('#posItemCustomTextInput')?.value||'').trim();
+    savePosOpenTabs();
+  }
+  $('#dlgPosItemText').close();
+  renderPosBonPanel();
+};
+
+// DIALOG D: TISCH SPLITTEN (ARTIKEL PER 1-TAP AUF ZIEL-TISCH VERSCHIEBEN)
+window.openPosSplitTableModal=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!tab.items.length){
+    alert(`Auf Tisch ${posActiveTableNum} befinden sich aktuell keine Artikel zum Splitten.`);
+    return;
+  }
+  const nums=getAlpFatschelTableNumbers().filter(n=>String(n)!==String(posActiveTableNum));
+  const sel=$('#posSplitTargetTableSelect');
+  if(sel){
+    sel.innerHTML=nums.map(n=>`<option value="${esc(n)}">Tisch ${esc(n)}</option>`).join('')
+      +`<option value="${esc(posActiveTableNum)}-B">Tisch ${esc(posActiveTableNum)}-B (Gast Split)</option>`;
+  }
+  renderPosSplitModalLists();
+  $('#dlgPosSplitTable').showModal();
+};
+
+window.renderPosSplitModalLists=()=>{
+  const targetNum=$('#posSplitTargetTableSelect')?.value||'2';
+  const srcTab=getCurrentTableTab(posActiveTableNum);
+  const dstTab=getCurrentTableTab(targetNum);
+  const srcTotals=calcPosTabTotals(srcTab);
+  const dstTotals=calcPosTabTotals(dstTab);
+
+  if($('#posSplitSourceLabel'))$('#posSplitSourceLabel').textContent=`Aktueller Tisch: Tisch ${posActiveTableNum}`;
+  if($('#posSplitLeftColHeader'))$('#posSplitLeftColHeader').textContent=`Tisch ${posActiveTableNum} (CHF ${srcTotals.finalTotal.toFixed(2)}) — Antippen zum Verschieben ›`;
+  if($('#posSplitRightColHeader'))$('#posSplitRightColHeader').textContent=`Ziel: Tisch ${targetNum} (CHF ${dstTotals.finalTotal.toFixed(2)}) — ‹ Antippen zum Zurückholen`;
+
+  const leftEl=$('#posSplitLeftItems');
+  const rightEl=$('#posSplitRightItems');
+  if(leftEl){
+    leftEl.innerHTML=srcTab.items.length
+      ?srcTab.items.map(it=>`<button type="button" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:8px 10px" onclick="moveSinglePosItemBetweenTables('${esc(posActiveTableNum)}','${esc(targetNum)}','${esc(it.lineId)}')">
+        <span><b>${it.qty}×</b> ${esc(it.name)}${it.note?` (${esc(it.note)})`:''}</span>
+        <span style="color:var(--brand);font-weight:800">1× rüber › (CHF ${Number(it.price).toFixed(2)})</span>
+      </button>`).join('')
+      :'<div style="color:var(--mute);padding:12px">Alle Artikel wurden verschoben.</div>';
+  }
+  if(rightEl){
+    rightEl.innerHTML=dstTab.items.length
+      ?dstTab.items.map(it=>`<button type="button" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:8px 10px" onclick="moveSinglePosItemBetweenTables('${esc(targetNum)}','${esc(posActiveTableNum)}','${esc(it.lineId)}')">
+        <span>‹ <b>${it.qty}×</b> ${esc(it.name)}</span>
+        <span style="font-weight:800">CHF ${(it.qty*it.price).toFixed(2)}</span>
+      </button>`).join('')
+      :'<div style="color:var(--mute);padding:12px">Noch keine Artikel auf dem Ziel-Tisch.</div>';
+  }
+};
+
+window.moveSinglePosItemBetweenTables=(fromTable,toTable,lineId)=>{
+  const srcTab=getCurrentTableTab(fromTable);
+  const dstTab=getCurrentTableTab(toTable);
+  const idx=srcTab.items.findIndex(x=>x.lineId===lineId);
+  if(idx<0)return;
+  const srcItem=srcTab.items[idx];
+  const existingDst=dstTab.items.find(x=>x.prodId===srcItem.prodId&&x.course===srcItem.course&&x.note===srcItem.note&&Number(x.price)===Number(srcItem.price));
+  if(existingDst){
+    existingDst.qty+=1;
+  }else{
+    dstTab.items.push({...srcItem,lineId:'line-'+Date.now()+'-'+Math.random().toString(36).slice(2,5),qty:1});
+  }
+  srcItem.qty-=1;
+  if(srcItem.qty<=0)srcTab.items.splice(idx,1);
+  savePosOpenTabs();
+  renderPosSplitModalLists();
+  renderPosView();
+};
+
+window.switchToSplitTargetTableAndClose=()=>{
+  const targetNum=$('#posSplitTargetTableSelect')?.value||'2';
+  posActiveTableNum=String(targetNum);
+  $('#dlgPosSplitTable').close();
+  renderPosView();
+};
+
+// DIALOG E: OFFENE PREISE (KÜCHE ODER BAR)
+window.openPosOpenPriceModal=()=>{
+  if(posNumpadBuffer&&!isNaN(parseFloat(posNumpadBuffer))){
+    $('#posOpenPriceAmount').value=parseFloat(posNumpadBuffer).toFixed(2);
+    posNumpadBuffer='';
+    updatePosNumpadDisplay();
+  }
+  $('#dlgPosOpenPrice').showModal();
+};
+
+window.confirmPosOpenPriceItem=()=>{
+  const amt=parseFloat($('#posOpenPriceAmount')?.value||'0');
+  if(!amt||amt<=0){
+    alert('Bitte einen gültigen Betrag in CHF eingeben.');
+    return;
+  }
+  const st=$('#posOpenPriceStation')?.value||'kitchen';
+  const name=($('#posOpenPriceName')?.value||'').trim()||(st==='bar'?'Offener Preis Bar':'Offener Preis Küche');
+  addPosItemToActiveTable({
+    prodId:'open-'+Date.now(),
+    name:`${name} (${st==='bar'?'Bar':'Küche'})`,
+    price:amt,
+    qty:1,
+    plu:'OPEN',
+    station:st,
+    course:posActiveCoursePreset||1,
+    note:''
+  });
+  $('#dlgPosOpenPrice').close();
+};
+
+// DIALOG F: GUTSCHEINVERKAUF
+window.openPosVoucherSaleModal=()=>{
+  $('#dlgPosVoucherSale').showModal();
+};
+
+window.confirmPosVoucherSaleItem=()=>{
+  const amt=parseFloat($('#posVoucherAmountInput')?.value||'100');
+  if(!amt||amt<=0)return;
+  const note=($('#posVoucherNoteInput')?.value||'').trim();
+  addPosItemToActiveTable({
+    prodId:'voucher-sale',
+    name:`Gutscheinverkauf Alp Fatschél`,
+    price:amt,
+    qty:1,
+    plu:'GUT',
+    station:'bar',
+    course:1,
+    note,
+    isVoucherSale:true
+  });
+  $('#dlgPosVoucherSale').close();
+};
+
+// BONIEREN: AUTOMATISCHE BON-TRENNUNG & SEPARATER AUTO-CUT FÜR KÜCHE UND BAR!
+window.sendPosOrderToKitchenAndBar=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!tab.items.length){
+    alert(`Auf Tisch ${posActiveTableNum} sind noch keine Artikel zum Bonieren ausgewählt.`);
+    return;
+  }
+  const kitchenItems=tab.items.filter(it=>it.station!=='bar'&&!it.isVoucherSale);
+  const barItems=tab.items.filter(it=>it.station==='bar'&&!it.isVoucherSale);
+  const nowStr=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+
+  // Alle Positionen als boniert markieren
+  tab.items.forEach(it=>{it.printedQty=it.qty;});
+  savePosOpenTabs();
+  renderPosBonPanel();
+
+  const buildKitchenBonHtml=()=>{
+    if(!kitchenItems.length)return '<div class="card card-pad" style="color:var(--mute)">Kein Küchen-Bon nötig (Bestellung enthält nur Getränke).</div>';
+    const byCourse={1:[],2:[],3:[]};
+    kitchenItems.forEach(it=>{
+      const c=Number(it.course||1);
+      if(!byCourse[c])byCourse[c]=[];
+      byCourse[c].push(it);
+    });
+    return `<div class="pos-paper-ticket">
+      <div style="text-align:center;font-weight:900;font-size:15px;border-bottom:2px solid #0f172a;padding-bottom:6px;margin-bottom:8px">
+        KÜCHEN-BON (SPEISEN)<br>
+        TISCH ${esc(posActiveTableNum)} · ALP FATSCHÉL
+      </div>
+      <div style="font-size:11px;margin-bottom:8px">${fmt(todayStr())} · ${nowStr} Uhr<br>Drucker: <b>${esc(posSettings.printerKitchen)}</b></div>
+      ${[1,2,3].map(c=>byCourse[c]&&byCourse[c].length?`
+        <div style="margin:8px 0 4px;padding:2px 6px;background:#e2e8f0;font-weight:900;font-size:12px">--- GANG ${c} ---</div>
+        ${byCourse[c].map(it=>`
+          <div style="font-weight:800;font-size:13px;margin-bottom:4px">
+            ${it.qty}× ${esc(it.name)}
+            ${it.note?`<div style="margin-left:14px;color:#b45309;font-weight:900">→ ${esc(it.note)}</div>`:''}
+          </div>
+        `).join('')}
+      `:'').join('')}
+      <div style="margin-top:14px;padding-top:6px;border-top:1px dashed #64748b;text-align:center;font-size:11px;font-weight:800">
+        ✂️ SEPARATER BON & AUTO-CUT (KÜCHE)
+      </div>
+    </div>`;
+  };
+
+  const buildBarBonHtml=()=>{
+    if(!barItems.length)return '<div class="card card-pad" style="color:var(--mute)">Kein Bar-Bon nötig (Bestellung enthält nur Speisen).</div>';
+    return `<div class="pos-paper-ticket">
+      <div style="text-align:center;font-weight:900;font-size:15px;border-bottom:2px solid #0f172a;padding-bottom:6px;margin-bottom:8px">
+        BAR- & GETRÄNKE-BON<br>
+        TISCH ${esc(posActiveTableNum)} · ALP FATSCHÉL
+      </div>
+      <div style="font-size:11px;margin-bottom:8px">${fmt(todayStr())} · ${nowStr} Uhr<br>Drucker: <b>${esc(posSettings.printerBar)}</b></div>
+      ${barItems.map(it=>`
+        <div style="font-weight:800;font-size:13px;margin-bottom:4px">
+          ${it.qty}× ${esc(it.name)} ${it.plu?`<small>(PLU ${esc(it.plu)})</small>`:''}
+          ${it.note?`<div style="margin-left:14px;color:#b45309;font-weight:900">→ ${esc(it.note)}</div>`:''}
+        </div>
+      `).join('')}
+      <div style="margin-top:14px;padding-top:6px;border-top:1px dashed #64748b;text-align:center;font-size:11px;font-weight:800">
+        ✂️ SEPARATER BON & AUTO-CUT (BAR)
+      </div>
+    </div>`;
+  };
+
+  $('#posPrintPreviewTitle').textContent=`Boniert: Tisch ${posActiveTableNum} (Getrennte Ausgabe & Auto-Cut für Küche und Bar)`;
+  $('#posPrintPreviewContainer').innerHTML=buildKitchenBonHtml()+buildBarBonHtml();
+  $('#dlgPosPrintPreview').showModal();
+};
+
+// ZWISCHENRECHNUNG (PRÜFBON FÜR DEN GAST — TISCH BLEIBT OFFEN UND KORRIGIERBAR!)
+window.showPosZwischenrechnung=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!tab.items.length){
+    alert(`Tisch ${posActiveTableNum} hat noch keine Positionen für eine Zwischenrechnung.`);
+    return;
+  }
+  $('#dlgPosTotalCheckout')?.close();
+  const totals=calcPosTabTotals(tab);
+  const nowStr=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+  const html=`
+    <div class="pos-paper-ticket" style="max-width:420px;margin:0 auto">
+      <div style="text-align:center;font-weight:900;font-size:15px;border-bottom:2px solid #0f172a;padding-bottom:6px;margin-bottom:8px">
+        ALP FATSCHÉL · ST. PETER GR<br>
+        *** ZWISCHENRECHNUNG (PRÜFBON) ***
+      </div>
+      <div style="font-size:11.5px;margin-bottom:8px">Tisch: <b>${esc(posActiveTableNum)}</b> · Datum: ${fmt(todayStr())} ${nowStr} Uhr<br><i>Noch nicht abgerechnet — Änderungen jederzeit möglich</i></div>
+      <div style="border-top:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1;padding:6px 0;margin-bottom:8px">
+        ${tab.items.map(it=>`
+          <div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:3px">
+            <span>${it.qty}× ${esc(it.name)}</span>
+            <b>CHF ${(it.qty*it.price).toFixed(2)}</b>
+          </div>
+        `).join('')}
+      </div>
+      ${totals.pct>0?`<div style="display:flex;justify-content:space-between;color:#059669;font-weight:800"><span>${esc(tab.discountLabel)}:</span><span>- CHF ${totals.discAmt.toFixed(2)}</span></div>`:''}
+      <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:900;margin-top:6px">
+        <span>TOTAL (inkl. ${totals.vatRate}% MwSt.):</span>
+        <span>CHF ${totals.finalTotal.toFixed(2)}</span>
+      </div>
+      <div style="font-size:10.5px;color:#475569;margin-top:4px">Davon MwSt. (${totals.vatRate}%): CHF ${totals.vatAmt.toFixed(2)}</div>
+    </div>
+  `;
+  $('#posPrintPreviewTitle').textContent=`Zwischenrechnung Tisch ${posActiveTableNum} (Tisch bleibt offen)`;
+  $('#posPrintPreviewContainer').innerHTML=html;
+  $('#dlgPosPrintPreview').showModal();
+};
+
+// DIALOG G: TOTAL & ZAHLUNG (INKL. AUFS ZIMMER BUCHEN!)
+window.openPosTotalCheckoutModal=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!tab.items.length){
+    alert(`Auf Tisch ${posActiveTableNum} sind keine Positionen zum Abrechnen vorhanden.`);
+    return;
+  }
+  refreshPosCheckoutModalTotals();
+  populatePosCheckoutRoomsDropdown();
+  $('#dlgPosTotalCheckout').showModal();
+};
+
+window.refreshPosCheckoutModalTotals=()=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  const totals=calcPosTabTotals(tab);
+  if($('#posCheckoutModalTitle'))$('#posCheckoutModalTitle').textContent=`TOTAL · Tisch ${posActiveTableNum} abrechnen`;
+  if($('#posCheckoutSubInfo'))$('#posCheckoutSubInfo').textContent=`Tisch ${posActiveTableNum} · Tarif: ${tab.discountLabel||'Standardpreis'} · Inkl. ${totals.vatRate}% MwSt.`;
+  if($('#posCheckoutBigTotal'))$('#posCheckoutBigTotal').textContent=`CHF ${totals.finalTotal.toFixed(2)}`;
+};
+
+function populatePosCheckoutRoomsDropdown(){
+  const sel=$('#posCheckoutRoomSelect');
+  if(!sel)return;
+  const d=selectedDate||todayStr();
+  const act=allActiveBookings().filter(b=>b.status!=='storniert');
+  sel.innerHTML=rooms.map(r=>{
+    const stay=act.find(b=>Number(b.room_id)===Number(r.id)&&b.anreise<=d&&b.abreise>=d);
+    const guestTxt=stay?`Belegt: ${stay.gast} (Abreise ${fmt(stay.abreise)})`:'Zimmer aktuell ohne eingetragenen Gast';
+    return `<option value="${r.id}">Zimmer ${r.id} (${r.typ}) — ${esc(guestTxt)}</option>`;
+  }).join('');
+}
+
+window.finalizePosCheckout=paymentMethod=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!tab.items.length)return;
+  const totals=calcPosTabTotals(tab);
+  const receiptNo=Number(posSettings.nextReceiptNo||1001);
+  posSettings.nextReceiptNo=receiptNo+1;
+  savePosSettingsStore();
+
+  const d=selectedDate||todayStr();
+  const nowStr=new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+  let roomId=null;
+  let roomGuestName='';
+
+  if(paymentMethod==='Aufs Zimmer'){
+    roomId=Number($('#posCheckoutRoomSelect')?.value||2);
+    const act=allActiveBookings().filter(b=>b.status!=='storniert');
+    const stay=act.find(b=>Number(b.room_id)===roomId&&b.anreise<=d&&b.abreise>=d);
+    roomGuestName=stay?stay.gast:`Gast Zimmer ${roomId}`;
+
+    if(!posIsTrainingMode){
+      posRoomCharges.unshift({
+        id:'rc-'+Date.now(),
+        receiptNo,
+        roomId,
+        guestName:roomGuestName,
+        tableNum:posActiveTableNum,
+        amount:totals.finalTotal,
+        date:d,
+        time:nowStr,
+        items:JSON.parse(JSON.stringify(tab.items)),
+        paidAtCheckout:false,
+        isTraining:false
+      });
+      savePosRoomCharges();
+    }
+  }
+
+  const tx={
+    id:'tx-'+Date.now(),
+    receiptNo,
+    date:d,
+    time:nowStr,
+    tableNum:posActiveTableNum,
+    paymentMethod,
+    roomId,
+    roomGuestName,
+    rawSub:totals.rawSub,
+    discountPct:totals.pct,
+    discountLabel:tab.discountLabel||'Standardpreis',
+    discountAmt:totals.discAmt,
+    total:totals.finalTotal,
+    vatRate:totals.vatRate,
+    vatAmt:totals.vatAmt,
+    status:'completed', // 'completed' | 'storno' | 'offeriert' | 'bruch'
+    isTraining:posIsTrainingMode,
+    items:JSON.parse(JSON.stringify(tab.items))
+  };
+
+  posTransactions.unshift(tx);
+  savePosTransactions();
+
+  // Tisch leeren
+  posOpenTabs[posActiveTableNum]={items:[],discountPct:0,discountLabel:'Standardpreis'};
+  posSelectedBonItemId=null;
+  savePosOpenTabs();
+  $('#dlgPosTotalCheckout').close();
+  renderAll();
+
+  showCompletedReceiptTicketModal(tx);
+};
+
+function showCompletedReceiptTicketModal(tx){
+  const html=`
+    <div class="pos-paper-ticket" style="max-width:420px;margin:0 auto">
+      <div style="text-align:center;font-weight:900;font-size:15px;border-bottom:2px solid #0f172a;padding-bottom:6px;margin-bottom:8px">
+        BERGGASTHOF ALP FATSCHÉL<br>
+        7028 ST. PETER GR · QUITTUNG #${tx.receiptNo}
+        ${tx.isTraining?'<div style="color:#d97706;margin-top:4px">*** TRAININGS-BELEG (KEIN ECHTER UMSATZ) ***</div>':''}
+        ${tx.status!=='completed'?`<div style="color:#e11d48;margin-top:4px">*** STATUS: ${esc(tx.status.toUpperCase())} ***</div>`:''}
+      </div>
+      <div style="font-size:11.5px;margin-bottom:8px">
+        Rechnungs-Nr.: <b>#${tx.receiptNo}</b> · Tisch: <b>${esc(tx.tableNum)}</b><br>
+        Datum: ${fmt(tx.date)} · Uhrzeit: ${tx.time} Uhr<br>
+        Zahlungsart: <b>${esc(tx.paymentMethod)}${tx.roomId?` (Zimmer ${tx.roomId} · ${esc(tx.roomGuestName)})`:''}</b>
+      </div>
+      <div style="border-top:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1;padding:6px 0;margin-bottom:8px">
+        ${(tx.items||[]).map(it=>`
+          <div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:3px">
+            <span>${it.qty}× ${esc(it.name)}</span>
+            <b>CHF ${(it.qty*it.price).toFixed(2)}</b>
+          </div>
+        `).join('')}
+      </div>
+      ${tx.discountPct>0?`<div style="display:flex;justify-content:space-between;color:#059669;font-weight:800"><span>${esc(tx.discountLabel)}:</span><span>- CHF ${Number(tx.discountAmt||0).toFixed(2)}</span></div>`:''}
+      <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:900;margin-top:6px">
+        <span>TOTAL CHF:</span>
+        <span>CHF ${Number(tx.total||0).toFixed(2)}</span>
+      </div>
+      <div style="font-size:10.5px;color:#475569;margin-top:4px">Inkl. ${tx.vatRate||8.1}% MwSt. (CHF ${Number(tx.vatAmt||0).toFixed(2)}) · Vielen Dank für Ihren Besuch!</div>
+      ${tx.roomId?'<div style="margin-top:10px;padding-top:8px;border-top:1px dashed #64748b;font-weight:800">Unterschrift Hotelgast (Zimmer '+tx.roomId+'): _______________________</div>':''}
+    </div>
+  `;
+  $('#posPrintPreviewTitle').textContent=`Abgeschlossene Rechnung #${tx.receiptNo} (Tisch ${tx.tableNum})`;
+  $('#posPrintPreviewContainer').innerHTML=html;
+  $('#dlgPosPrintPreview').showModal();
+}
+
+// DIALOG H: GESCHÜTZTER ADMIN-BEREICH (PIN 7050)
+window.openPosAdminPinModal=()=>{
+  if($('#posAdminCurrentTableLabel'))$('#posAdminCurrentTableLabel').textContent=`Tisch ${posActiveTableNum}`;
+  $('#posAdminPinErr').textContent='';
+  $('#posAdminPinInput').value='';
+  if(posAdminPinVerifiedSession){
+    $('#posAdminPinGateBox').hidden=true;
+    $('#posAdminUnlockedBox').hidden=false;
+    renderPosAdminRecentTransactions();
+  }else{
+    $('#posAdminPinGateBox').hidden=false;
+    $('#posAdminUnlockedBox').hidden=true;
+    setTimeout(()=>$('#posAdminPinInput')?.focus(),40);
+  }
+  $('#dlgPosAdmin').showModal();
+};
+
+window.verifyPosAdminPin=()=>{
+  const entered=($('#posAdminPinInput')?.value||'').trim();
+  const validPin=String(posSettings.adminPin||'7050').trim();
+  if(entered!==validPin){
+    $('#posAdminPinErr').textContent='Falscher Admin-PIN! (Standard-PIN ist 7050)';
+    return;
+  }
+  posAdminPinVerifiedSession=true;
+  $('#posAdminPinErr').textContent='';
+  $('#posAdminPinGateBox').hidden=true;
+  $('#posAdminUnlockedBox').hidden=false;
+  renderPosAdminRecentTransactions();
+};
+
+window.executePosAdminTableAction=actionType=>{
+  const tab=getCurrentTableTab(posActiveTableNum);
+  if(!tab.items.length){
+    alert(`Auf Tisch ${posActiveTableNum} sind aktuell keine Positionen gebucht.`);
+    return;
+  }
+  const totals=calcPosTabTotals(tab);
+  const receiptNo=Number(posSettings.nextReceiptNo||1001);
+  posSettings.nextReceiptNo=receiptNo+1;
+  savePosSettingsStore();
+
+  const labelMap={storno:'STORNO',offeriert:'OFFERIERT (Einladung)',bruch:'BRUCH / KORK'};
+  const tx={
+    id:'tx-'+Date.now(),
+    receiptNo,
+    date:selectedDate||todayStr(),
+    time:new Date().toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}),
+    tableNum:posActiveTableNum,
+    paymentMethod:labelMap[actionType]||actionType,
+    rawSub:totals.rawSub,
+    discountPct:actionType==='offeriert'?100:0,
+    discountLabel:labelMap[actionType],
+    discountAmt:totals.rawSub,
+    total:0,
+    vatRate:totals.vatRate,
+    vatAmt:0,
+    status:actionType,
+    isTraining:posIsTrainingMode,
+    items:JSON.parse(JSON.stringify(tab.items))
+  };
+  posTransactions.unshift(tx);
+  savePosTransactions();
+
+  posOpenTabs[posActiveTableNum]={items:[],discountPct:0,discountLabel:'Standardpreis'};
+  savePosOpenTabs();
+  $('#dlgPosAdmin').close();
+  renderAll();
+  showCompletedReceiptTicketModal(tx);
+};
+
+window.togglePosTrainingMode=enable=>{
+  posIsTrainingMode=Boolean(enable);
+  renderPosView();
+};
+
+function renderPosAdminRecentTransactions(){
+  const wrap=$('#posAdminRecentTransactionsWrap');
+  if(!wrap)return;
+  const list=(posTransactions||[]).slice(0,25);
+  if(!list.length){
+    wrap.innerHTML='<div style="padding:12px;color:var(--mute)">Noch keine abgeschlossenen Transaktionen vorhanden.</div>';
+    return;
+  }
+  wrap.innerHTML=`<table>
+    <tr><th>Beleg #</th><th>Zeit</th><th>Tisch</th><th>Betrag</th><th>Zahlungsart</th><th>Admin-Aktion</th></tr>
+    ${list.map(tx=>`<tr>
+      <td class="num"><b>#${tx.receiptNo}</b></td>
+      <td class="num">${fmt(tx.date)} ${esc(tx.time)}</td>
+      <td><b>Tisch ${esc(tx.tableNum)}</b></td>
+      <td class="num"><b>CHF ${Number(tx.total||0).toFixed(2)}</b></td>
+      <td>${esc(tx.paymentMethod)} ${tx.status!=='completed'?`<span class="badge badge-blacklist">${esc(tx.status)}</span>`:''}</td>
+      <td style="display:flex;gap:4px;flex-wrap:wrap">
+        <button type="button" class="gold" style="padding:3px 7px;font-size:11px" onclick="recallPosTransactionToTable('${esc(tx.id)}')">Zurückrufen auf Tisch</button>
+        <button type="button" style="padding:3px 7px;font-size:11px" onclick="changePosTransactionPayment('${esc(tx.id)}')">Zahlungsart ändern</button>
+        <button type="button" class="danger" style="padding:3px 7px;font-size:11px" onclick="stornoCompletedPosTransaction('${esc(tx.id)}')">Stornieren</button>
+      </td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+// ABGESCHLOSSENE TRANSAKTION ZURÜCKRUFEN AUF DEN TISCH (ZUM KORRIGIEREN)
+window.recallPosTransactionToTable=txId=>{
+  const idx=posTransactions.findIndex(x=>x.id===txId);
+  if(idx<0)return;
+  const tx=posTransactions[idx];
+  if(!confirm(`Rechnung #${tx.receiptNo} (Tisch ${tx.tableNum}, CHF ${Number(tx.total).toFixed(2)}) wieder öffnen und auf Tisch ${tx.tableNum} zurückrufen?`))return;
+  posActiveTableNum=String(tx.tableNum);
+  posOpenTabs[posActiveTableNum]={
+    items:JSON.parse(JSON.stringify(tx.items||[])),
+    discountPct:tx.discountPct||0,
+    discountLabel:tx.discountLabel||'Standardpreis'
+  };
+  posTransactions.splice(idx,1);
+  posRoomCharges=posRoomCharges.filter(rc=>rc.receiptNo!==tx.receiptNo);
+  savePosOpenTabs();
+  savePosTransactions();
+  savePosRoomCharges();
+  $('#dlgPosAdmin').close();
+  renderAll();
+};
+
+window.changePosTransactionPayment=txId=>{
+  const tx=posTransactions.find(x=>x.id===txId);
+  if(!tx)return;
+  const nextMethod=prompt(`Neue Zahlungsart für Rechnung #${tx.receiptNo} (Aktuell: ${tx.paymentMethod}) eingeben (Bar, Kreditkarte, Gutschein, Rechnung):`,tx.paymentMethod==='Bar'?'Kreditkarte':'Bar');
+  if(!nextMethod)return;
+  tx.paymentMethod=nextMethod.trim();
+  savePosTransactions();
+  renderPosAdminRecentTransactions();
+  renderPosView();
+};
+
+window.stornoCompletedPosTransaction=txId=>{
+  const tx=posTransactions.find(x=>x.id===txId);
+  if(!tx)return;
+  if(!confirm(`Abgeschlossene Rechnung #${tx.receiptNo} wirklich als STORNO markieren?`))return;
+  tx.status='storno';
+  tx.paymentMethod='STORNO';
+  tx.total=0;
+  posRoomCharges=posRoomCharges.filter(rc=>rc.receiptNo!==tx.receiptNo);
+  savePosTransactions();
+  savePosRoomCharges();
+  renderPosAdminRecentTransactions();
+  renderAll();
+};
+
+// DIALOG I: SUCHE RECHNUNG & LETZTE RECHNUNG
+let posSearchDate=todayStr();
+
+window.openPosLastReceiptModal=()=>{
+  if(!posTransactions.length){
+    alert('Es wurde noch keine Rechnung abgeschlossen.');
+    return;
+  }
+  showCompletedReceiptTicketModal(posTransactions[0]);
+};
+
+window.openPosReceiptSearchModal=()=>{
+  posSearchDate=selectedDate||todayStr();
+  if($('#posSearchDateInput'))$('#posSearchDateInput').value=posSearchDate;
+  if($('#posSearchReceiptNoInput'))$('#posSearchReceiptNoInput').value='';
+  renderPosReceiptSearchList();
+  $('#dlgPosReceiptSearch').showModal();
+};
+
+window.shiftPosSearchDate=delta=>{
+  posSearchDate=add(posSearchDate||todayStr(),delta);
+  if($('#posSearchDateInput'))$('#posSearchDateInput').value=posSearchDate;
+  renderPosReceiptSearchList();
+};
+
+window.setPosSearchDateToday=()=>{
+  posSearchDate=todayStr();
+  if($('#posSearchDateInput'))$('#posSearchDateInput').value=posSearchDate;
+  renderPosReceiptSearchList();
+};
+
+window.renderPosReceiptSearchList=()=>{
+  const wrap=$('#posReceiptSearchTableWrap');
+  if(!wrap)return;
+  const d=$('#posSearchDateInput')?.value||posSearchDate||todayStr();
+  posSearchDate=d;
+  const q=($('#posSearchReceiptNoInput')?.value||'').trim().toLowerCase();
+
+  const list=(posTransactions||[]).filter(tx=>{
+    if(q){
+      return String(tx.receiptNo).includes(q)||String(tx.tableNum).toLowerCase().includes(q)||(tx.roomGuestName||'').toLowerCase().includes(q);
+    }
+    return tx.date===d;
+  });
+
+  if(!list.length){
+    wrap.innerHTML=`<div style="padding:18px;color:var(--mute);font-weight:700">Keine Rechnungen am ${fmt(d)} ${q?`für Suche „${esc(q)}“ `:''}gefunden.</div>`;
+    return;
+  }
+
+  wrap.innerHTML=`<table>
+    <tr><th>Rechnungs-Nr.</th><th>Datum & Zeit</th><th>Tisch</th><th>Zahlungsart</th><th>Total CHF</th><th>Aktion</th></tr>
+    ${list.map(tx=>`<tr>
+      <td class="num"><b>#${tx.receiptNo}</b></td>
+      <td class="num">${fmt(tx.date)} · ${esc(tx.time)}</td>
+      <td><b>Tisch ${esc(tx.tableNum)}</b></td>
+      <td>${esc(tx.paymentMethod)}${tx.roomId?` (Zi. ${tx.roomId})`:''} ${tx.isTraining?'<span class="badge badge-vip">Training</span>':''}</td>
+      <td class="num"><b>CHF ${Number(tx.total||0).toFixed(2)}</b></td>
+      <td><button type="button" class="primary" style="padding:4px 9px;font-size:11.5px" onclick="openPosReceiptById('${esc(tx.id)}')">Quittung anzeigen</button></td>
+    </tr>`).join('')}
+  </table>`;
+};
+
+window.openPosReceiptById=txId=>{
+  const tx=posTransactions.find(x=>x.id===txId);
+  if(tx)showCompletedReceiptTicketModal(tx);
+};
+
+// ============================================================================
+// SUB-VIEW B: COMPUTER POS-EDITOR (NUR IM MANAGER-MODUS — MIT LIVE iPAD-VORSCHAU)
+// ============================================================================
+function renderPosEditorView(){
+  if(currentRole!=='manager')return;
+  if($('#posEdGlobalTileSize'))$('#posEdGlobalTileSize').value=posSettings.tileSize||'md';
+  if($('#posPrinterKitchenName'))$('#posPrinterKitchenName').value=posSettings.printerKitchen||'';
+  if($('#posPrinterBarName'))$('#posPrinterBarName').value=posSettings.printerBar||'';
+
+  // 1. Kategorien-Tabelle
+  const catWrap=$('#posEditorCategoriesTableWrap');
+  if(catWrap){
+    const sorted=[...(posCatalog.categories||[])].sort((a,b)=>(a.sort||0)-(b.sort||0));
+    catWrap.innerHTML=`<table>
+      <tr><th>Kategorie-Name</th><th>Bon-Drucker (Auto-Cut)</th><th>Tastenfarbe</th><th>Schrift</th><th>Aktion</th></tr>
+      ${sorted.map(c=>`<tr>
+        <td><input value="${esc(c.name)}" onchange="updatePosCategoryField('${esc(c.id)}','name',this.value)" style="margin:0;padding:4px 7px;font-weight:800"></td>
+        <td>
+          <select onchange="updatePosCategoryField('${esc(c.id)}','station',this.value)" style="margin:0;padding:4px 7px;width:auto;font-weight:700">
+            <option value="kitchen" ${c.station!=='bar'?'selected':''}>Küchendrucker (Essen)</option>
+            <option value="bar" ${c.station==='bar'?'selected':''}>Bardrucker (Getränke)</option>
+          </select>
+        </td>
+        <td><input type="color" value="${esc(c.bg||'#0284c7')}" onchange="updatePosCategoryField('${esc(c.id)}','bg',this.value)" style="width:42px;height:28px;padding:1px;margin:0"></td>
+        <td><input type="color" value="${esc(c.fg||'#ffffff')}" onchange="updatePosCategoryField('${esc(c.id)}','fg',this.value)" style="width:42px;height:28px;padding:1px;margin:0"></td>
+        <td><button type="button" class="danger" style="padding:3px 8px;font-size:11px" onclick="deletePosCategory('${esc(c.id)}')">✕</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // Filter-Dropdown für Produkte
+  const fltSel=$('#posEdFilterCat');
+  const curFlt=fltSel?.value||'ALL';
+  if(fltSel){
+    fltSel.innerHTML=`<option value="ALL" ${curFlt==='ALL'?'selected':''}>Alle Kategorien (${posCatalog.products.length} Artikel)</option>`
+      +posCatalog.categories.map(c=>`<option value="${esc(c.id)}" ${curFlt===c.id?'selected':''}>${esc(c.name)}</option>`).join('');
+  }
+
+  // 2. Produkte-Tabelle
+  const prodWrap=$('#posEditorProductsTableWrap');
+  if(prodWrap){
+    const filtered=curFlt==='ALL'?posCatalog.products:posCatalog.products.filter(p=>p.catId===curFlt);
+    prodWrap.innerHTML=`<table>
+      <tr><th>Artikel / Gericht / Wein</th><th>Kategorie</th><th>Preis (CHF)</th><th>PLU-Nr.</th><th>Taste</th><th>Schrift</th><th>Aktion</th></tr>
+      ${filtered.map(p=>`<tr>
+        <td><input value="${esc(p.name)}" onchange="updatePosProductField('${esc(p.id)}','name',this.value)" style="margin:0;padding:4px 7px;font-weight:700"></td>
+        <td>
+          <select onchange="updatePosProductField('${esc(p.id)}','catId',this.value)" style="margin:0;padding:4px 7px;width:auto;font-size:11.5px">
+            ${posCatalog.categories.map(c=>`<option value="${esc(c.id)}" ${p.catId===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}
+          </select>
+        </td>
+        <td><input type="number" step="0.05" value="${Number(p.price||0).toFixed(2)}" onchange="updatePosProductField('${esc(p.id)}','price',parseFloat(this.value)||0)" style="margin:0;padding:4px 7px;width:82px;font-weight:800"></td>
+        <td><input value="${esc(p.plu||'')}" onchange="updatePosProductField('${esc(p.id)}','plu',this.value)" placeholder="PLU" style="margin:0;padding:4px 7px;width:64px;font-weight:800"></td>
+        <td><input type="color" value="${esc(p.bg||'#ffffff')}" onchange="updatePosProductField('${esc(p.id)}','bg',this.value)" style="width:36px;height:26px;padding:1px;margin:0"></td>
+        <td><input type="color" value="${esc(p.fg||'#0f172a')}" onchange="updatePosProductField('${esc(p.id)}','fg',this.value)" style="width:36px;height:26px;padding:1px;margin:0"></td>
+        <td>
+          <button type="button" onclick="openPosProductEditModal('${esc(p.id)}')" style="padding:3px 7px;font-size:11px">✎</button>
+          <button type="button" class="danger" onclick="deletePosProductDirect('${esc(p.id)}')" style="padding:3px 7px;font-size:11px">✕</button>
+        </td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // 3. Tischnummern-Liste
+  if($('#posEdTableNumbersList')){
+    $('#posEdTableNumbersList').textContent=getAlpFatschelTableNumbers().join(', ');
+  }
+
+  // 4. Live iPad-Masken-Vorschau rechts im Editor
+  const prevBox=$('#posEditorLivePreviewBox');
+  if(prevBox){
+    const previewCatId=(curFlt!=='ALL'&&curFlt)?curFlt:posActiveCatId;
+    const previewProds=posCatalog.products.filter(p=>p.catId===previewCatId);
+    prevBox.innerHTML=`
+      <div class="pos-cat-grid" style="margin-bottom:10px">
+        ${posCatalog.categories.map(c=>`
+          <div class="pos-cat-tile ${c.id===previewCatId?'active':''}"
+            style="background:${esc(c.bg)};color:${esc(c.fg)};min-height:42px;font-size:11px"
+            onclick="$('#posEdFilterCat').value='${esc(c.id)}';posActiveCatId='${esc(c.id)}';renderPosEditorView()">
+            <span>${esc(c.name)}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="pos-prod-grid size-${posSettings.tileSize||'md'}" style="max-height:290px">
+        ${previewProds.map(p=>`
+          <div class="pos-prod-tile"
+            style="background:${esc(p.bg||'#ffffff')};color:${esc(p.fg||'#0f172a')}"
+            onclick="openPosProductEditModal('${esc(p.id)}')"
+            title="Klicken zum Bearbeiten von Taste, Farbe, Preis & PLU">
+            <div class="pos-prod-name">${esc(p.name)}</div>
+            <div class="pos-prod-meta">
+              <span>CHF ${Number(p.price).toFixed(2)}</span>
+              ${p.plu?`<span class="pos-plu-pill">PLU ${esc(p.plu)}</span>`:''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+}
+
+window.updatePosGlobalTileSize=sz=>{
+  posSettings.tileSize=sz||'md';
+  savePosSettingsStore();
+  renderPosView();
+};
+
+window.savePosSettingsFromUI=()=>{
+  posSettings.printerKitchen=($('#posPrinterKitchenName')?.value||'').trim()||posSettings.printerKitchen;
+  posSettings.printerBar=($('#posPrinterBarName')?.value||'').trim()||posSettings.printerBar;
+  savePosSettingsStore();
+};
+
+window.updatePosCategoryField=(catId,field,val)=>{
+  const c=posCatalog.categories.find(x=>x.id===catId);
+  if(!c)return;
+  c[field]=val;
+  savePosCatalog();
+  renderPosView();
+};
+
+window.addNewPosCategoryPrompt=()=>{
+  const name=prompt('Name der neuen Kategorie (z. B. Sommer-Specials / Flaschenweine):');
+  if(!name||!name.trim())return;
+  const station=confirm('Soll diese Kategorie auf dem KÜCHENDRUCKER gedruckt werden?\n(OK = Küchendrucker / Abbrechen = Bardrucker)')?'kitchen':'bar';
+  const id='cat_'+Date.now();
+  posCatalog.categories.push({
+    id,
+    name:name.trim(),
+    bg:station==='bar'?'#2563eb':'#059669',
+    fg:'#ffffff',
+    station,
+    sort:posCatalog.categories.length+1
+  });
+  posActiveCatId=id;
+  savePosCatalog();
+  renderPosView();
+};
+
+window.deletePosCategory=catId=>{
+  const c=posCatalog.categories.find(x=>x.id===catId);
+  if(!c)return;
+  if(!confirm(`Kategorie „${c.name}“ und ihre Zuordnung wirklich löschen?`))return;
+  posCatalog.categories=posCatalog.categories.filter(x=>x.id!==catId);
+  if(posActiveCatId===catId)posActiveCatId=posCatalog.categories[0]?.id||'';
+  savePosCatalog();
+  renderPosView();
+};
+
+window.updatePosProductField=(prodId,field,val)=>{
+  const p=posCatalog.products.find(x=>x.id===prodId);
+  if(!p)return;
+  p[field]=val;
+  savePosCatalog();
+  renderPosView();
+};
+
+window.deletePosProductDirect=prodId=>{
+  const p=posCatalog.products.find(x=>x.id===prodId);
+  if(!p)return;
+  if(!confirm(`Artikel „${p.name}“ wirklich löschen?`))return;
+  posCatalog.products=posCatalog.products.filter(x=>x.id!==prodId);
+  savePosCatalog();
+  renderPosView();
+};
+
+window.openPosProductEditModal=prodId=>{
+  const p=prodId?posCatalog.products.find(x=>x.id===prodId):null;
+  $('#posProdEditModalTitle').textContent=p?`Artikel bearbeiten: ${p.name}`:'Neues Produkt / Wein (mit PLU) anlegen';
+  $('#posProdEditId').value=p?p.id:'';
+  $('#posProdEditName').value=p?p.name:'';
+  $('#posProdEditCat').innerHTML=posCatalog.categories.map(c=>`<option value="${esc(c.id)}" ${(p?p.catId:posActiveCatId)===c.id?'selected':''}>${esc(c.name)} (${c.station==='bar'?'Bar':'Küche'})</option>`).join('');
+  $('#posProdEditPrice').value=p?Number(p.price).toFixed(2):'18.90';
+  $('#posProdEditPlu').value=p?(p.plu||''):'';
+  $('#posProdEditBg').value=p?(p.bg||'#ffffff'):'#ffffff';
+  $('#posProdEditFg').value=p?(p.fg||'#0f172a'):'#0f172a';
+  $('#btnPosProdDelete').hidden=!p;
+  $('#dlgPosProductEdit').showModal();
+};
+
+window.savePosProductFromModal=()=>{
+  const id=$('#posProdEditId').value;
+  const name=($('#posProdEditName').value||'').trim();
+  if(!name){
+    alert('Bitte einen Produktnamen eingeben.');
+    return;
+  }
+  const catId=$('#posProdEditCat').value||posActiveCatId;
+  const price=parseFloat($('#posProdEditPrice').value)||0;
+  const plu=($('#posProdEditPlu').value||'').trim();
+  const bg=$('#posProdEditBg').value||'#ffffff';
+  const fg=$('#posProdEditFg').value||'#0f172a';
+
+  if(id){
+    const p=posCatalog.products.find(x=>x.id===id);
+    if(p){
+      p.name=name;p.catId=catId;p.price=price;p.plu=plu;p.bg=bg;p.fg=fg;
+    }
+  }else{
+    posCatalog.products.push({
+      id:'p_'+Date.now(),
+      catId,
+      name,
+      price,
+      plu,
+      bg,
+      fg
+    });
+  }
+  savePosCatalog();
+  $('#dlgPosProductEdit').close();
+  renderPosView();
+};
+
+window.deletePosProductFromModal=()=>{
+  const id=$('#posProdEditId').value;
+  if(!id)return;
+  posCatalog.products=posCatalog.products.filter(x=>x.id!==id);
+  savePosCatalog();
+  $('#dlgPosProductEdit').close();
+  renderPosView();
+};
+
+window.addPosTableNumberFromEditor=()=>{
+  const num=($('#posEdNewTableNum')?.value||'').trim();
+  if(!num)return;
+  if(!hallLayouts)loadHallLayoutsAndReservations();
+  const tables=hallLayouts.alp_fatschel.tables;
+  if(tables.some(t=>String(t.num)===num)){
+    alert(`Tisch ${num} existiert bereits.`);
+    return;
+  }
+  tables.push({
+    id:'t-pos-'+Date.now(),
+    num,
+    cap:4,
+    shape:'rect',
+    x:420,
+    y:240,
+    w:44,
+    h:44,
+    bgColor:'#e5e7eb',
+    borderColor:'#cbd5e1'
+  });
+  saveHallLayouts();
+  $('#posEdNewTableNum').value='';
+  renderAll();
+};
+
+// ============================================================================
+// SUB-VIEW C: 3 BERICHTE MIT FREIEM ZEITRAUM (VON / BIS):
+//             1. TAGES-/FINANZBERICHT, 2. ARTIKEL-BESTSELLER, 3. TISCHBERICHT
+// ============================================================================
+window.setPosReportPresetRange=preset=>{
+  const t=todayStr();
+  if(preset==='today'){
+    $('#posRepDateFrom').value=t;
+    $('#posRepDateTo').value=t;
+  }else if(preset==='month'){
+    const m=getMonthStartAndDays(t);
+    $('#posRepDateFrom').value=m.firstIso;
+    $('#posRepDateTo').value=add(m.firstIso,m.daysInMonth-1);
+  }else if(preset==='year'){
+    const y=t.slice(0,4);
+    $('#posRepDateFrom').value=`${y}-01-01`;
+    $('#posRepDateTo').value=`${y}-12-31`;
+  }
+  renderPosReportsView();
+};
+
+function renderPosReportsView(){
+  if(currentRole!=='manager')return;
+  const t=todayStr();
+  if(!$('#posRepDateFrom').value)$('#posRepDateFrom').value=t.slice(0,7)+'-01';
+  if(!$('#posRepDateTo').value)$('#posRepDateTo').value=t;
+  const from=$('#posRepDateFrom').value;
+  const to=$('#posRepDateTo').value;
+
+  const validTx=(posTransactions||[]).filter(tx=>!tx.isTraining&&tx.date>=from&&tx.date<=to);
+  const completedTx=validTx.filter(tx=>tx.status==='completed');
+  const stornoTx=validTx.filter(tx=>tx.status==='storno');
+  const offeriertTx=validTx.filter(tx=>tx.status==='offeriert');
+  const bruchTx=validTx.filter(tx=>tx.status==='bruch');
+
+  const totalRev=completedTx.reduce((s,tx)=>s+Number(tx.total||0),0);
+  const totalVat=completedTx.reduce((s,tx)=>s+Number(tx.vatAmt||0),0);
+  const totalDisc=completedTx.reduce((s,tx)=>s+Number(tx.discountAmt||0),0);
+  const totalOfferiert=offeriertTx.reduce((s,tx)=>s+Number(tx.rawSub||0),0);
+  const totalStornoBruch=[...stornoTx,...bruchTx].reduce((s,tx)=>s+Number(tx.rawSub||0),0);
+
+  if($('#posReportKpiGrid')){
+    $('#posReportKpiGrid').innerHTML=`
+      <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#10b981,#059669)">
+        <span class="kpi-label">Gesamtumsatz (${fmt(from)} – ${fmt(to)})</span>
+        <span class="kpi-val num">CHF ${totalRev.toFixed(2)}</span>
+        <span class="kpi-sub">${completedTx.length} bezahlte Rechnungen · MwSt.: CHF ${totalVat.toFixed(2)}</span>
+      </div>
+      <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#0ea5e9,#6366f1)">
+        <span class="kpi-label">Aufs Zimmer gebucht</span>
+        <span class="kpi-val num">CHF ${completedTx.filter(x=>x.paymentMethod==='Aufs Zimmer').reduce((s,x)=>s+Number(x.total||0),0).toFixed(2)}</span>
+        <span class="kpi-sub">Aktuell noch offen beim Checkout: CHF ${(posRoomCharges||[]).filter(r=>!r.paidAtCheckout&&!r.isTraining).reduce((s,r)=>s+Number(r.amount||0),0).toFixed(2)}</span>
+      </div>
+      <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#f59e0b,#d97706)">
+        <span class="kpi-label">Rabatte (20% Hotel / 50% Personal) & Offeriert</span>
+        <span class="kpi-val num">CHF ${(totalDisc+totalOfferiert).toFixed(2)}</span>
+        <span class="kpi-sub">Rabatte: CHF ${totalDisc.toFixed(2)} · Offeriert: CHF ${totalOfferiert.toFixed(2)}</span>
+      </div>
+      <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#f43f5e,#e11d48)">
+        <span class="kpi-label">Stornos & Bruch / Kork</span>
+        <span class="kpi-val num">CHF ${totalStornoBruch.toFixed(2)}</span>
+        <span class="kpi-sub">${stornoTx.length} Stornos · ${bruchTx.length}× Bruch / Kork</span>
+      </div>
+    `;
+  }
+
+  // 1. Zahlungsarten-Tabelle
+  const byPayment={};
+  for(const m of ['Bar','Kreditkarte','Aufs Zimmer','Gutschein','Rechnung']){
+    byPayment[m]={count:0,sum:0};
+  }
+  for(const tx of completedTx){
+    const m=tx.paymentMethod||'Bar';
+    if(!byPayment[m])byPayment[m]={count:0,sum:0};
+    byPayment[m].count+=1;
+    byPayment[m].sum+=Number(tx.total||0);
+  }
+  if($('#posReportPaymentsWrap')){
+    $('#posReportPaymentsWrap').innerHTML=`<table>
+      <tr><th>Zahlungsart</th><th>Anzahl Belege</th><th>Umsatz (CHF)</th><th>Anteil</th></tr>
+      ${Object.entries(byPayment).map(([m,obj])=>`<tr>
+        <td><b>${esc(m)}</b></td>
+        <td class="num">${obj.count}</td>
+        <td class="num"><b>CHF ${obj.sum.toFixed(2)}</b></td>
+        <td class="num">${totalRev>0?((obj.sum/totalRev)*100).toFixed(1)+'%':'0.0%'}</td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // 2. Artikelbericht (Meistverkaufte Artikel)
+  const artMap={};
+  for(const tx of completedTx){
+    for(const it of (tx.items||[])){
+      const k=it.name;
+      if(!artMap[k])artMap[k]={name:it.name,plu:it.plu||'',station:it.station||'kitchen',qty:0,rev:0};
+      artMap[k].qty+=Number(it.qty||1);
+      artMap[k].rev+=Number(it.qty||1)*Number(it.price||0);
+    }
+  }
+  const sortedArts=Object.values(artMap).sort((a,b)=>b.qty-a.qty||b.rev-a.rev);
+  if($('#posReportArticlesWrap')){
+    $('#posReportArticlesWrap').innerHTML=sortedArts.length
+      ?`<table>
+        <tr><th>Rang</th><th>Artikel</th><th>Bereich</th><th>Verkaufte Menge</th><th>Brutto-Umsatz</th></tr>
+        ${sortedArts.map((a,i)=>`<tr>
+          <td class="num"><b>#${i+1}</b></td>
+          <td><b>${esc(a.name)}</b> ${a.plu?`<small style="color:var(--mute)">(PLU ${esc(a.plu)})</small>`:''}</td>
+          <td>${a.station==='bar'?'<span class="badge badge-kid">Bar</span>':'<span class="badge badge-stamm">Küche</span>'}</td>
+          <td class="num"><b>${a.qty}×</b></td>
+          <td class="num"><b>CHF ${a.rev.toFixed(2)}</b></td>
+        </tr>`).join('')}
+      </table>`
+      :'<div style="padding:14px;color:var(--mute)">Noch keine verkauften Artikel im gewählten Zeitraum.</div>';
+  }
+
+  // 3. Tischbericht pro Tisch (Von / Bis)
+  const tableMap={};
+  for(const tx of completedTx){
+    const t=String(tx.tableNum||'1');
+    if(!tableMap[t])tableMap[t]={tableNum:t,count:0,rev:0};
+    tableMap[t].count+=1;
+    tableMap[t].rev+=Number(tx.total||0);
+  }
+  const sortedTables=Object.values(tableMap).sort((a,b)=>b.rev-a.rev);
+  if($('#posReportTablesWrap')){
+    $('#posReportTablesWrap').innerHTML=sortedTables.length
+      ?`<table>
+        <tr><th>Tischnummer</th><th>Anzahl Rechnungen</th><th>Umsatz im Zeitraum (CHF)</th><th>Ø pro Rechnung</th></tr>
+        ${sortedTables.map(tb=>`<tr>
+          <td><b>Tisch ${esc(tb.tableNum)}</b></td>
+          <td class="num">${tb.count}</td>
+          <td class="num"><b>CHF ${tb.rev.toFixed(2)}</b></td>
+          <td class="num">CHF ${(tb.rev/Math.max(1,tb.count)).toFixed(2)}</td>
+        </tr>`).join('')}
+      </table>`
+      :'<div style="padding:14px;color:var(--mute)">Noch keine Tisch-Umsätze im gewählten Zeitraum.</div>';
+  }
+}
+
+// ============================================================================
+// SUB-VIEW D: PIN-CODES (7050) & OFFENE ZIMMER-RECHNUNGEN VERWALTEN
+// ============================================================================
+function renderPosSettingsView(){
+  if(currentRole!=='manager')return;
+  if($('#posSetAdminPin'))$('#posSetAdminPin').value=posSettings.adminPin||'7050';
+  if($('#posSetManagerPin'))$('#posSetManagerPin').value=posSettings.managerPin||'7050';
+  if($('#posSetVatRate'))$('#posSetVatRate').value=posSettings.vatRate||8.1;
+  if($('#posSetNextReceiptNo'))$('#posSetNextReceiptNo').value=posSettings.nextReceiptNo||1001;
+
+  const wrap=$('#posOpenRoomChargesSettingsWrap');
+  if(!wrap)return;
+  const openList=(posRoomCharges||[]).filter(rc=>!rc.paidAtCheckout);
+  if(!openList.length){
+    wrap.innerHTML='<div style="padding:12px;color:var(--emerald);font-weight:700">✓ Aktuell haben alle Hotelzimmer ihre Restaurant-Rechnungen beglichen.</div>';
+  }else{
+    wrap.innerHTML=`<table>
+      <tr><th>Zimmer</th><th>Gast</th><th>Beleg / Tisch</th><th>Datum</th><th>Betrag</th><th>Status</th></tr>
+      ${openList.map(rc=>`<tr>
+        <td><b>Zimmer ${rc.roomId}</b></td>
+        <td>${esc(rc.guestName)}</td>
+        <td>#${rc.receiptNo} (Tisch ${esc(rc.tableNum)})</td>
+        <td class="num">${fmt(rc.date)} ${esc(rc.time)}</td>
+        <td class="num"><b style="color:var(--danger)">CHF ${Number(rc.amount).toFixed(2)}</b></td>
+        <td><button type="button" class="emerald-btn" style="padding:4px 8px;font-size:11px" onclick="markRoomPosChargesPaidAtCheckout(${rc.roomId})">Als bezahlt markieren ✓</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+}
+
+window.savePosPinAndSettings=()=>{
+  const newAdmin=($('#posSetAdminPin')?.value||'').trim()||'7050';
+  const newMgr=($('#posSetManagerPin')?.value||'').trim()||'7050';
+  posSettings.adminPin=newAdmin;
+  posSettings.managerPin=newMgr;
+  posSettings.vatRate=parseFloat($('#posSetVatRate')?.value||'8.1')||8.1;
+  posSettings.nextReceiptNo=Math.max(1,parseInt($('#posSetNextReceiptNo')?.value||'1001',10)||1001);
+  if($('#inpManagerPin'))$('#inpManagerPin').value=newMgr;
+  savePosSettingsStore();
+  if($('#posPinSavedNotice')){
+    $('#posPinSavedNotice').hidden=false;
+    setTimeout(()=>{if($('#posPinSavedNotice'))$('#posPinSavedNotice').hidden=true;},3000);
+  }
+};
+
+loadPosStore();
 boot();
 </script>
 </body>
