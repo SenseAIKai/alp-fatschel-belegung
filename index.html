@@ -2817,114 +2817,291 @@ let currentLang=localStorage.getItem('af_pms_lang_v3')||'de';
 if(!I18N[currentLang])currentLang='de';
 const tr=k=>(I18N[currentLang]&&I18N[currentLang][k])||I18N.de[k]||k;
 
-// NULL-LATENZ ÜBERSETZER FÜR STANDARD-WÜNSCHE, DEMO-TEXTE, ROLLEN & NOTIZEN (OHNE EXTERNE API!)
-const FREE_TEXT_DICT={
-  en:[
-    ['1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer','1 bottle of Dom Pérignon Vintage Champagne chilled in room upon arrival'],
-    ['Frische Erdbeeren & Kinder-Überraschung für Janik','Fresh strawberries & kids surprise for Janik'],
-    ['Hafermilch für den Morgen-Cappuccino besorgen','Get oat milk for morning cappuccino'],
-    ['Allergikerbettwäsche bereitstellen','Provide hypoallergenic bedding'],
-    ['Allergikerbettwäsche','Hypoallergenic bedding'],
-    ['Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen','Order chocolate birthday cake for daughter Sofia upon arrival'],
-    ['Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).','Parents: Thomas & Julia Berger. Son Janik (7 yrs, loves dragons & fries), daughter Mia (5 yrs, loves pancakes).'],
-    ['Sohn heisst Janik (7 J.) — Janik','Son named Janik (7 yrs)'],
-    ['Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)','Golden Retriever "Bello" (very well-behaved, place large water bowl in room)'],
-    ['Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.','Parents enjoy Bündner Pinot Noir & love truffle fondue.'],
-    ['Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).','Prefer Room 5 (Family Room) with mountain view. Enjoy playing chess in the restaurant (place chessboard on Table 5).'],
-    ['Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.','Enjoy 1 bottle of Dom Pérignon Champagne on arrival (chill 5 days ahead!). Gluten-free bread at breakfast.'],
-    ['Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.','Quiet double room (Room 2 or Room 7), second neck pillow.'],
-    ['Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).','Marco & Chiara Rossi with children Matteo (11 yrs) and Sofia (9 yrs).'],
-    ['Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.','Love Bündner Pizzoccheri, double espresso & Amarone.'],
-    ['Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).','Enjoy playing cards after dinner (prepare card deck at Table 10).'],
-    ['Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes','Late arrival 18:00 · Son Janik (7 yrs) loves fries'],
-    ['Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück','Anniversary weekend · Gluten-free bread at breakfast'],
-    ['Einzelnutzung CHF 110/Nacht','Single occupancy CHF 110/night'],
-    ['Option bis Freitag','Option until Friday'],
-    ['Geschäftsführung','Management'],
-    ['Reinigung','Cleaning'],
-    ['Küche','Kitchen'],
-    ['Babybett','Baby cot'],
-    ['Extrabett / Zustellbett','Extra bed'],
-    ['Überdachter Parkplatz','Covered parking'],
-    ['Prosecco aufs Zimmer','Prosecco to room'],
-    ['Frühstück aufs Zimmer','Breakfast to room']
-  ],
-  it:[
-    ['1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer','1 bottiglia di Champagne Dom Pérignon Vintage fresca in camera all\'arrivo'],
-    ['Frische Erdbeeren & Kinder-Überraschung für Janik','Fragole fresche e sorpresa per bambini per Janik'],
-    ['Hafermilch für den Morgen-Cappuccino besorgen','Procurare latte d\'avena per il cappuccino del mattino'],
-    ['Allergikerbettwäsche bereitstellen','Preparare biancheria anallergica'],
-    ['Allergikerbettwäsche','Biancheria anallergica'],
-    ['Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen','Ordinare torta di compleanno al cioccolato per la figlia Sofia all\'arrivo'],
-    ['Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).','Genitori: Thomas e Julia Berger. Figlio Janik (7 anni, ama i draghi e le patatine), figlia Mia (5 anni, ama i pancake).'],
-    ['Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)','Golden Retriever "Bello" (molto bravo, preparare grande ciotola d\'acqua in camera)'],
-    ['Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.','I genitori amano il Pinot Nero dei Grigioni e la fonduta al tartufo.'],
-    ['Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).','Preferiscono la Camera 5 (Familiare) con vista montagne. La sera giocano a scacchi al ristorante (preparare scacchiera al Tavolo 5).'],
-    ['Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.','Amano 1 bottiglia di Champagne Dom Pérignon all\'arrivo (raffreddare 5 giorni prima!). Pane senza glutine a colazione.'],
-    ['Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.','Camera doppia tranquilla (Camera 2 o 7), secondo cuscino cervicale.'],
-    ['Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).','Marco e Chiara Rossi con i figli Matteo (11 anni) e Sofia (9 anni).'],
-    ['Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.','Amano i Pizzoccheri dei Grigioni, espresso doppio e Amarone.'],
-    ['Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).','Giocano volentieri a carte dopo cena (preparare mazzo di carte al Tavolo 10).'],
-    ['Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes','Arrivo tardivo ore 18:00 · Il figlio Janik (7 anni) ama le patatine'],
-    ['Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück','Weekend anniversario · Pane senza glutine a colazione'],
-    ['Einzelnutzung CHF 110/Nacht','Uso singolo CHF 110/notte'],
-    ['Option bis Freitag','Opzione fino a venerdì'],
-    ['Geschäftsführung','Direzione'],
-    ['Office','Ufficio'],
-    ['Reinigung','Pulizie'],
-    ['Küche','Cucina'],
-    ['Service','Sala'],
-    ['Babybett','Culla / Lettino bebè'],
-    ['Extrabett / Zustellbett','Letto aggiuntivo'],
-    ['Überdachter Parkplatz','Parcheggio coperto'],
-    ['Prosecco aufs Zimmer','Prosecco in camera'],
-    ['Frühstück aufs Zimmer','Colazione in camera']
-  ],
-  el:[
-    ['1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer','1 φιάλη σαμπάνια Dom Pérignon Vintage παγωμένη στο δωμάτιο κατά την άφιξη'],
-    ['Frische Erdbeeren & Kinder-Überraschung für Janik','Φρέσκες φράουλες & παιδική έκπληξη για τον Janik'],
-    ['Hafermilch für den Morgen-Cappuccino besorgen','Προμήθεια γάλακτος βρώμης για τον πρωινό καπουτσίνο'],
-    ['Allergikerbettwäsche bereitstellen','Προετοιμασία υποαλλεργικών κλινοσκεπασμάτων'],
-    ['Allergikerbettwäsche','Υποαλλεργικά κλινοσκεπάσματα'],
-    ['Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen','Παραγγελία τούρτας γενεθλίων (σοκολάτα) για την κόρη Sofia κατά την άφιξη'],
-    ['Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).','Γονείς: Thomas & Julia Berger. Γιος Janik (7 ετών, αγαπά τους δράκους & τις τηγανητές πατάτες), κόρη Mia (5 ετών, αγαπά τις τηγανίτες).'],
-    ['Sohn heisst Janik (7 J.) — Janik','Γιος Janik (7 ετών)'],
-    ['Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)','Golden Retriever «Bello» (πολύ ήσυχος, μεγάλο μπολ νερού στο δωμάτιο)'],
-    ['Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.','Οι γονείς προτιμούν κρασί Pinot Noir & φοντύ τρούφας.'],
-    ['Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).','Προτιμούν το Δωμάτιο 5 (Οικογενειακό) με θέα στο βουνό. Παίζουν σκάκι το βράδυ στο εστιατόριο (σκακιέρα στο Τραπέζι 5).'],
-    ['Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.','Επιθυμούν 1 φιάλη σαμπάνια Dom Pérignon κατά την άφιξη (ψύξη 5 ημέρες πριν!). Ψωμί χωρίς γλουτένη στο πρωινό.'],
-    ['Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.','Ήσυχο δίκλινο δωμάτιο (Δωμάτιο 2 ή 7), δεύτερο μαξιλάρι αυχένα.'],
-    ['Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).','Marco & Chiara Rossi με τα παιδιά Matteo (11 ετών) και Sofia (9 ετών).'],
-    ['Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.','Αγαπούν τα Pizzoccheri, διπλό εσπρέσο & κρασί Amarone.'],
-    ['Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).','Παίζουν χαρτιά μετά το φαγητό (τράπουλα στο Τραπέζι 10).'],
-    ['Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes','Αργή άφιξη 18:00 · Ο γιος Janik (7 ετών) αγαπά τις τηγανητές πατάτες'],
-    ['Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück','Σαββατοκύριακο επετείου γάμου · Ψωμί χωρίς γλουτένη στο πρωινό'],
-    ['Einzelnutzung CHF 110/Nacht','Μονόκλινη χρήση CHF 110/διανυκτέρευση'],
-    ['Option bis Freitag','Κράτηση σε αναμονή έως Παρασκευή'],
-    ['2 Kinder (9 & 11 J.)','2 Παιδιά (9 & 11 ετών)'],
-    ['Geschäftsführung','Διεύθυνση'],
-    ['Office','Γραφείο'],
-    ['Reinigung','Καθαριότητα'],
-    ['Küche','Κουζίνα'],
-    ['Service','Σέρβις'],
-    ['Babybett','Βρεφικό κρεβατάκι'],
-    ['Extrabett / Zustellbett','Επιπλέον κρεβάτι'],
-    ['Überdachter Parkplatz','Σκεπαστός χώρος στάθμευσης'],
-    ['Prosecco aufs Zimmer','Prosecco στο δωμάτιο'],
-    ['Frühstück aufs Zimmer','Πρωινό στο δωμάτιο']
-  ]
-};
+// ============================================================================
+// 4-WEGE-ECHTZEIT-ÜBERSETZUNGS-ENGINE (DE ↔ EN ↔ IT ↔ EL IN ALLE RICHTUNGEN!)
+// 1) Bidirektionales 4-Sprachen-Hotel/Gastro-Wörterbuch (0 ms Offline in alle 12 Richtungen)
+// 2) Automatische 4-Wege-Hintergrund-Übersetzung für freie Sätze beim Speichern + lokaler Cache
+// ============================================================================
+const AUTO_TRANS_CACHE_KEY='alp_fatschel_4way_trans_v5';
+let autoTransCache={};
+try{
+  autoTransCache=JSON.parse(localStorage.getItem(AUTO_TRANS_CACHE_KEY)||'{}')||{};
+}catch(e){autoTransCache={};}
 
-function translateFreeText(txt){
-  if(!txt||currentLang==='de')return String(txt||'');
-  let out=String(txt);
-  const pairs=FREE_TEXT_DICT[currentLang]||[];
-  for(const [deStr,targetStr] of pairs){
-    if(out.includes(deStr)){
-      out=out.split(deStr).join(targetStr);
+function saveAutoTransCache(){
+  try{localStorage.setItem(AUTO_TRANS_CACHE_KEY,JSON.stringify(autoTransCache));}catch(e){}
+}
+
+const MULTI_WAY_PHRASES=[
+  {
+    de:'1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer',
+    en:'1 bottle of Dom Pérignon Vintage Champagne chilled in room upon arrival',
+    it:'1 bottiglia di Champagne Dom Pérignon Vintage fresca in camera all\'arrivo',
+    el:'1 φιάλη σαμπάνια Dom Pérignon Vintage παγωμένη στο δωμάτιο κατά την άφιξη'
+  },
+  {
+    de:'Frische Erdbeeren & Kinder-Überraschung für Janik',
+    en:'Fresh strawberries & kids surprise for Janik',
+    it:'Fragole fresche e sorpresa per bambini per Janik',
+    el:'Φρέσκες φράουλες & παιδική έκπληξη για τον Janik'
+  },
+  {
+    de:'Hafermilch für den Morgen-Cappuccino besorgen',
+    en:'Get oat milk for morning cappuccino',
+    it:'Procurare latte d\'avena per il cappuccino del mattino',
+    el:'Προμήθεια γάλακτος βρώμης για τον πρωινό καπουτσίνο'
+  },
+  {
+    de:'Allergikerbettwäsche bereitstellen',
+    en:'Provide hypoallergenic bedding',
+    it:'Preparare biancheria anallergica',
+    el:'Προετοιμασία υποαλλεργικών κλινοσκεπασμάτων'
+  },
+  {
+    de:'Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen',
+    en:'Order chocolate birthday cake for daughter Sofia upon arrival',
+    it:'Ordinare torta di compleanno al cioccolato per la figlia Sofia all\'arrivo',
+    el:'Παραγγελία τούρτας γενεθλίων (σοκολάτα) για την κόρη Sofia κατά την άφιξη'
+  },
+  {
+    de:'Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).',
+    en:'Parents: Thomas & Julia Berger. Son Janik (7 yrs, loves dragons & fries), daughter Mia (5 yrs, loves pancakes).',
+    it:'Genitori: Thomas e Julia Berger. Figlio Janik (7 anni, ama i draghi e le patatine), figlia Mia (5 anni, ama i pancake).',
+    el:'Γονείς: Thomas & Julia Berger. Γιος Janik (7 ετών, αγαπά τους δράκους & τις τηγανητές πατάτες), κόρη Mia (5 ετών, αγαπά τις τηγανίτες).'
+  },
+  {
+    de:'Sohn heisst Janik (7 J.) — Janik',
+    en:'Son named Janik (7 yrs)',
+    it:'Figlio Janik (7 anni)',
+    el:'Γιος Janik (7 ετών)'
+  },
+  {
+    de:'Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)',
+    en:'Golden Retriever "Bello" (very well-behaved, place large water bowl in room)',
+    it:'Golden Retriever "Bello" (molto bravo, preparare grande ciotola d\'acqua in camera)',
+    el:'Golden Retriever «Bello» (πολύ ήσυχος, μεγάλο μπολ νερού στο δωμάτιο)'
+  },
+  {
+    de:'Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.',
+    en:'Parents enjoy Bündner Pinot Noir & love truffle fondue.',
+    it:'I genitori amano il Pinot Nero dei Grigioni e la fonduta al tartufo.',
+    el:'Οι γονείς προτιμούν κρασί Pinot Noir & φοντύ τρούφας.'
+  },
+  {
+    de:'Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).',
+    en:'Prefer Room 5 (Family Room) with mountain view. Enjoy playing chess in the restaurant (place chessboard on Table 5).',
+    it:'Preferiscono la Camera 5 (Familiare) con vista montagne. La sera giocano a scacchi al ristorante (preparare scacchiera al Tavolo 5).',
+    el:'Προτιμούν το Δωμάτιο 5 (Οικογενειακό) με θέα στο βουνό. Παίζουν σκάκι το βράδυ στο εστιατόριο (σκακιέρα στο Τραπέζι 5).'
+  },
+  {
+    de:'Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.',
+    en:'Enjoy 1 bottle of Dom Pérignon Champagne on arrival (chill 5 days ahead!). Gluten-free bread at breakfast.',
+    it:'Amano 1 bottiglia di Champagne Dom Pérignon all\'arrivo (raffreddare 5 giorni prima!). Pane senza glutine a colazione.',
+    el:'Επιθυμούν 1 φιάλη σαμπάνια Dom Pérignon κατά την άφιξη (ψύξη 5 ημέρες πριν!). Ψωμί χωρίς γλουτένη στο πρωινό.'
+  },
+  {
+    de:'Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.',
+    en:'Quiet double room (Room 2 or Room 7), second neck pillow.',
+    it:'Camera doppia tranquilla (Camera 2 o 7), secondo cuscino cervicale.',
+    el:'Ήσυχο δίκλινο δωμάτιο (Δωμάτιο 2 ή 7), δεύτερο μαξιλάρι αυχένα.'
+  },
+  {
+    de:'Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).',
+    en:'Marco & Chiara Rossi with children Matteo (11 yrs) and Sofia (9 yrs).',
+    it:'Marco e Chiara Rossi con i figli Matteo (11 anni) e Sofia (9 anni).',
+    el:'Marco & Chiara Rossi με τα παιδιά Matteo (11 ετών) και Sofia (9 ετών).'
+  },
+  {
+    de:'Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.',
+    en:'Love Bündner Pizzoccheri, double espresso & Amarone.',
+    it:'Amano i Pizzoccheri dei Grigioni, espresso doppio e Amarone.',
+    el:'Αγαπούν τα Pizzoccheri, διπλό εσπρέσο & κρασί Amarone.'
+  },
+  {
+    de:'Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).',
+    en:'Enjoy playing cards after dinner (prepare card deck at Table 10).',
+    it:'Giocano volentieri a carte dopo cena (preparare mazzo di carte al Tavolo 10).',
+    el:'Παίζουν χαρτιά μετά το φαγητό (τράπουλα στο Τραπέζι 10).'
+  },
+  {
+    de:'Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes',
+    en:'Late arrival 18:00 · Son Janik (7 yrs) loves fries',
+    it:'Arrivo tardivo ore 18:00 · Il figlio Janik (7 anni) ama le patatine',
+    el:'Αργή άφιξη 18:00 · Ο γιος Janik (7 ετών) αγαπά τις τηγανητές πατάτες'
+  },
+  {
+    de:'Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück',
+    en:'Anniversary weekend · Gluten-free bread at breakfast',
+    it:'Weekend anniversario · Pane senza glutine a colazione',
+    el:'Σαββατοκύριακο επετείου γάμου · Ψωμί χωρίς γλουτένη στο πρωινό'
+  },
+  {
+    de:'Spielt gerne Schach → Schachbrett auf den Tisch',
+    en:'Likes playing chess → place chessboard on table',
+    it:'Ama giocare a scacchi → preparare scacchiera sul tavolo',
+    el:'Του αρέσει το σκάκι → σκακιέρα στο τραπέζι'
+  },
+  {
+    de:'Spielen gerne Karten → Kartenspiel an den Tisch bringen',
+    en:'Like playing cards → bring card deck to table',
+    it:'Amano giocare a carte → portare carte al tavolo',
+    el:'Τους αρέσουν τα χαρτιά → τράπουλα στο τραπέζι'
+  },
+  {de:'Einzelnutzung CHF 110/Nacht',en:'Single occupancy CHF 110/night',it:'Uso singolo CHF 110/notte',el:'Μονόκλινη χρήση CHF 110/διανυκτέρευση'},
+  {de:'Option bis Freitag',en:'Option until Friday',it:'Opzione fino a venerdì',el:'Κράτηση σε αναμονή έως Παρασκευή'},
+  {de:'2 Kinder (9 & 11 J.)',en:'2 Children (9 & 11 yrs)',it:'2 Bambini (9 e 11 anni)',el:'2 Παιδιά (9 & 11 ετών)'},
+  {de:'Allergikerbettwäsche',en:'Hypoallergenic bedding',it:'Biancheria anallergica',el:'Υποαλλεργικά κλινοσκεπάσματα'},
+  {de:'Babybett',en:'Baby cot',it:'Culla / Lettino bebè',el:'Βρεφικό κρεβατάκι'},
+  {de:'Extrabett / Zustellbett',en:'Extra bed',it:'Letto aggiuntivo',el:'Επιπλέον κρεβάτι'},
+  {de:'Überdachter Parkplatz',en:'Covered parking',it:'Parcheggio coperto',el:'Σκεπαστός χώρος στάθμευσης'},
+  {de:'Prosecco aufs Zimmer',en:'Prosecco to room',it:'Prosecco in camera',el:'Prosecco στο δωμάτιο'},
+  {de:'Frühstück aufs Zimmer',en:'Breakfast to room',it:'Colazione in camera',el:'Πρωινό στο δωμάτιο'},
+  {de:'Schachbrett',en:'Chessboard',it:'Scacchiera',el:'Σκακιέρα'},
+  {de:'Kartenspiel',en:'Card deck',it:'Mazzo di carte',el:'Τράπουλα'},
+  {de:'Kinderstuhl',en:'High chair',it:'Seggiolone',el:'Παιδικό καρεκλάκι'},
+  {de:'Glutenfrei',en:'Gluten-free',it:'Senza glutine',el:'Χωρίς γλουτένη'},
+  {de:'Laktosefrei',en:'Lactose-free',it:'Senza lattosio',el:'Χωρίς λακτόζη'},
+  {de:'Nussallergie',en:'Nut allergy',it:'Allergia alle noci',el:'Αλλεργία στους ξηρούς καρπούς'},
+  {de:'Tisch am Fenster',en:'Table by the window',it:'Tavolo alla finestra',el:'Τραπέζι στο παράθυρο'},
+  {de:'Wassernapf für Hund',en:'Water bowl for dog',it:'Ciotola acqua per cane',el:'Μπολ νερού για σκύλο'},
+  {de:'Geschäftsführung',en:'Management',it:'Direzione',el:'Διεύθυνση'},
+  {de:'Reinigung',en:'Cleaning',it:'Pulizie',el:'Καθαριότητα'},
+  {de:'Küche',en:'Kitchen',it:'Cucina',el:'Κουζίνα'},
+  {de:'Service',en:'Service',it:'Sala',el:'Σέρβις'}
+];
+
+const pendingTransSet=new Set();
+let transRerenderTimer=null;
+
+function scheduleTransRerender(){
+  if(transRerenderTimer)clearTimeout(transRerenderTimer);
+  transRerenderTimer=setTimeout(()=>{
+    transRerenderTimer=null;
+    if(typeof renderAll==='function')renderAll();
+  },180);
+}
+
+// Prüft, ob ein Text nur aus Zahlen, Namen, Telefonnummern oder Symbolen besteht (muss nicht übersetzt werden)
+function isNonTranslatableToken(s){
+  const t=String(s||'').trim();
+  if(t.length<3)return true;
+  if(/^[0-9+\-().,:\/\s★✓⛔•]+$/.test(t))return true;
+  if(/^CHF\s*[0-9.,]+$/i.test(t))return true;
+  return false;
+}
+
+// Übersetzt einen einzelnen freien Satz über Google GTX (sl=auto erkennt Griechisch, Italienisch, Englisch & Deutsch automatisch!)
+async function fetchSingleLangTranslation(text,targetLang){
+  try{
+    const url=`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+    const res=await fetch(url);
+    if(res.ok){
+      const data=await res.json();
+      if(Array.isArray(data)&&Array.isArray(data[0])){
+        const combined=data[0].map(part=>part&&part[0]?part[0]:'').join('').trim();
+        if(combined)return combined;
+      }
+    }
+  }catch(e){}
+  return text;
+}
+
+// Übersetzt einen freien Mitarbeitereintrag (egal ob auf Griechisch, Deutsch, Italienisch oder Englisch getippt!)
+// im Hintergrund einmalig in alle 4 Sprachen (DE, EN, IT, EL) und speichert ihn dauerhaft im lokalen Cache
+async function queueAutoTranslate4Way(rawText){
+  const clean=String(rawText||'').trim();
+  if(!clean||isNonTranslatableToken(clean))return;
+  if(autoTransCache[clean]&&autoTransCache[clean].de&&autoTransCache[clean].el&&autoTransCache[clean].it&&autoTransCache[clean].en)return;
+  if(pendingTransSet.has(clean))return;
+
+  // Prüfe, ob der Satz bereits exakt im 4-Wege-Offline-Wörterbuch steht
+  const exactDict=MULTI_WAY_PHRASES.find(item=>item.de===clean||item.en===clean||item.it===clean||item.el===clean);
+  if(exactDict){
+    autoTransCache[clean]={...exactDict};
+    saveAutoTransCache();
+    return;
+  }
+
+  pendingTransSet.add(clean);
+  try{
+    const [de,en,it,el]=await Promise.all([
+      fetchSingleLangTranslation(clean,'de'),
+      fetchSingleLangTranslation(clean,'en'),
+      fetchSingleLangTranslation(clean,'it'),
+      fetchSingleLangTranslation(clean,'el')
+    ]);
+    const entry={de:de||clean,en:en||clean,it:it||clean,el:el||clean};
+    autoTransCache[clean]=entry;
+    // Auch unter den übersetzten Varianten selbst verlinken, damit in jede Richtung sofort 0ms-Treffer entstehen
+    autoTransCache[entry.de]=entry;
+    autoTransCache[entry.en]=entry;
+    autoTransCache[entry.it]=entry;
+    autoTransCache[entry.el]=entry;
+    saveAutoTransCache();
+    scheduleTransRerender();
+  }catch(e){}finally{
+    pendingTransSet.delete(clean);
+  }
+}
+
+// Wird beim Klick auf "Speichern" (Buchung, Tischreservierung, Gästekartei, Tages-Info) aufgerufen
+function translateFieldsOnSave(textList){
+  if(!Array.isArray(textList))return;
+  for(const t of textList){
+    const s=String(t||'').trim();
+    if(!s)continue;
+    s.split(/\s*·\s*/).forEach(part=>{
+      if(part.trim())queueAutoTranslate4Way(part.trim());
+    });
+    queueAutoTranslate4Way(s);
+  }
+}
+
+function translateSingleSegmentSync(seg){
+  const s=String(seg||'').trim();
+  if(!s)return '';
+  // 1. Sofort-Treffer im 4-Wege-Cache (0,00 ms)
+  if(autoTransCache[s]&&autoTransCache[s][currentLang]){
+    return autoTransCache[s][currentLang];
+  }
+  // 2. Exakter Treffer im 4-Wege-Offline-Wörterbuch (egal in welcher der 4 Sprachen eingetippt!)
+  const exact=MULTI_WAY_PHRASES.find(item=>item.de===s||item.en===s||item.it===s||item.el===s);
+  if(exact&&exact[currentLang])return exact[currentLang];
+
+  // 3. Teilstring-Ersetzung in alle 4 Richtungen (DE/EN/IT/EL -> currentLang)
+  let out=s;
+  let matchedPart=false;
+  for(const item of MULTI_WAY_PHRASES){
+    const targetStr=item[currentLang];
+    if(!targetStr)continue;
+    for(const srcLang of ['de','en','it','el']){
+      if(srcLang===currentLang)continue;
+      const srcStr=item[srcLang];
+      if(srcStr&&srcStr.length>=4&&out.includes(srcStr)){
+        out=out.split(srcStr).join(targetStr);
+        matchedPart=true;
+      }
     }
   }
+  // 4. Wenn es ein neuer freier Satz ist (z. B. auf Griechisch oder Deutsch getippt), im Hintergrund für alle 4 Sprachen übersetzen!
+  if(!isNonTranslatableToken(s)&&!autoTransCache[s]){
+    queueAutoTranslate4Way(s);
+  }
   return out;
+}
+
+function translateFreeText(txt){
+  if(!txt)return '';
+  const raw=String(txt);
+  // Ganze Zeichenkette zuerst im Cache prüfen
+  if(autoTransCache[raw]&&autoTransCache[raw][currentLang]){
+    return autoTransCache[raw][currentLang];
+  }
+  // Falls mit " · " zusammengesetzt, jedes Segment einzeln in 4 Richtungen übersetzen
+  if(raw.includes(' · ')){
+    return raw.split(' · ').map(part=>translateSingleSegmentSync(part)).join(' · ');
+  }
+  return translateSingleSegmentSync(raw);
 }
 function trChannel(k){
   return tr('ch_'+k)||(QUELLE[k]||k);
@@ -4020,14 +4197,18 @@ window.saveDailyNotesAndRoomTasks=()=>{
   if(evTxt)dailyImportantInfos[d]=evTxt;
   else delete dailyImportantInfos[d];
 
+  const toTranslate=[evTxt];
   if(!roomCustomTasks[d])roomCustomTasks[d]={};
   $$('[data-dn-room]').forEach(inp=>{
     const rId=inp.getAttribute('data-dn-room');
     const val=(inp.value||'').trim();
-    if(val)roomCustomTasks[d][rId]=val;
-    else delete roomCustomTasks[d][rId];
+    if(val){
+      roomCustomTasks[d][rId]=val;
+      toTranslate.push(val);
+    }else delete roomCustomTasks[d][rId];
   });
   saveDailyNotesStore();
+  translateFieldsOnSave(toTranslate);
   $('#dlgDailyNotes').close();
   renderAll();
 };
@@ -4240,6 +4421,10 @@ function renderCalendar(){
     if(b.special_wish){
       const trWish=translateFreeText(b.special_wish);
       memBadges.push(`<span class="badge badge-vip" title="${esc(trWish)}">${esc(tr('wishWord'))}: ${esc(trWish.slice(0,32))}</span>`);
+    }
+    if(b.notiz&&!b.special_wish){
+      const trNotiz=translateFreeText(b.notiz);
+      memBadges.push(`<span class="badge badge-vip" title="${esc(trNotiz)}">${esc(tr('wishWord'))}: ${esc(trNotiz.slice(0,32))}</span>`);
     }
     if(g?.kids_notes){
       const trKids=translateFreeText(g.kids_notes);
@@ -4564,7 +4749,7 @@ function renderBriefing(){
       <div style="padding:10px 14px;border-radius:12px;background:var(--gold-soft);border:1.5px solid rgba(245,158,11,0.45);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px" onclick="openDailyImportantInfoEditor()" title="Klicken, um Tages-Events oder Zimmer-Aufgaben für den ${fmt(d)} zu bearbeiten">
         <div>
           <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:#b45309">Wichtige Tages-Infos & Events am ${fmt(d)} (Hochzeit, Geburtstag, Feier, Ruhetag)</div>
-          <div style="font-size:13.5px;font-weight:700;color:var(--ink);margin-top:2px">${evTxt?esc(evTxt):'<span style="color:var(--mute);font-weight:600">Keine besonderen Events eingetragen — hier klicken zum Eintragen…</span>'}</div>
+          <div style="font-size:13.5px;font-weight:700;color:var(--ink);margin-top:2px">${evTxt?esc(translateFreeText(evTxt)):'<span style="color:var(--mute);font-weight:600">Keine besonderen Events eingetragen — hier klicken zum Eintragen…</span>'}</div>
         </div>
         <button type="button" class="gold" style="font-size:11.5px;padding:6px 12px;white-space:nowrap">✎ Tages-Info & Zimmer-Aufgaben bearbeiten</button>
       </div>
@@ -4798,8 +4983,8 @@ window.openGuestDetail=guestId=>{
           <td class="num"><b>${fmt(v.date)}</b> (${esc(v.time||'18:30')})</td>
           <td><b>Tisch ${esc(v.table)}</b> <small>(${esc(v.hall||'Alp Fatschél')})</small></td>
           <td class="num">${v.pax||2}P</td>
-          <td>${esc(v.drinksFood||'—')}</td>
-          <td>${v.status==='noshow'?'<span class="badge badge-blacklist">⛔ Nicht erschienen (No-Show)</span>':esc(v.notes||'Erschienen')}</td>
+          <td>${esc(translateFreeText(v.drinksFood||'—'))}</td>
+          <td>${v.status==='noshow'?'<span class="badge badge-blacklist">⛔ Nicht erschienen (No-Show)</span>':esc(translateFreeText(v.notes||'Erschienen'))}</td>
         </tr>`).join('')}
       </table>`
     :'<div style="color:var(--mute);font-size:12px">Noch keine Restaurant-Tischreservierungen gespeichert.</div>';
@@ -5152,7 +5337,7 @@ function renderHousekeeping(){
   if($('#hkTopKpis')&&!isCleanerOnly){
     const roomTasks=getRoomTasksForDate(d);
     const tasksHtml=roomTasks.length
-      ?roomTasks.slice(0,3).map(t=>`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><b>Zi. ${t.room_id}:</b> ${esc(t.text)}</div>`).join('')
+      ?roomTasks.slice(0,3).map(t=>`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><b>Zi. ${t.room_id}:</b> ${esc(translateFreeText(t.text))}</div>`).join('')
       :'<div style="color:var(--mute)">Keine speziellen Sonderwünsche · Klicken zum Eintragen (z. B. Prosecco, Babybett, Allergiker)…</div>';
 
     $('#hkTopKpis').innerHTML=`
@@ -5217,7 +5402,7 @@ function renderHousekeeping(){
         const st=entry.status;
         const inH=act.find(b=>b.room_id==r.id&&b.anreise<=d&&b.abreise>d);
         const dep=act.find(b=>b.room_id==r.id&&b.abreise===d);
-        const customTask=(roomCustomTasks[d]&&roomCustomTasks[d][r.id])?` · <b style="color:var(--brand)">Aufgabe: ${esc(roomCustomTasks[d][r.id])}</b>`:'';
+        const customTask=(roomCustomTasks[d]&&roomCustomTasks[d][r.id])?` · <b style="color:var(--brand)">Aufgabe: ${esc(translateFreeText(roomCustomTasks[d][r.id]))}</b>`:'';
         const occText=inH
           ?`<span style="color:var(--danger);font-weight:700">● Belegt (zu reinigen): ${esc(inH.gast)} (${(+inH.erwachsene||1)+(+inH.kinder||0)}P)</span>${customTask}`
           :dep
@@ -5320,7 +5505,7 @@ function renderHousekeeping(){
             <div style="font-size:12px;margin-bottom:6px;color:${inH?'var(--danger)':dep?'var(--warn)':'var(--emerald)'};font-weight:700">
               ${inH?`● Belegt (${esc(inH.gast)}) — Zu reinigen`:dep?`● Check-out (${esc(dep.gast)}) — Zu reinigen`:'● Frei (0 zu reinigen)'}
             </div>
-            ${customTask?`<div style="margin-bottom:6px;padding:6px 8px;border-radius:8px;background:var(--gold-soft);font-size:12px;font-weight:700;color:#b45309">Sonderaufgabe Zimmer ${r.id}: ${esc(customTask)}</div>`:''}
+            ${customTask?`<div style="margin-bottom:6px;padding:6px 8px;border-radius:8px;background:var(--gold-soft);font-size:12px;font-weight:700;color:#b45309">Sonderaufgabe Zimmer ${r.id}: ${esc(translateFreeText(customTask))}</div>`:''}
             <div>
               ${chkLabels.map((lbl,idx)=>`
                 <label class="chk-list-item">
@@ -6229,8 +6414,8 @@ window.checkTableResGuestMemory=()=>{
   banner.className='guest-memory-banner'+(g.tier==='blacklist'?' blacklist':'');
   banner.innerHTML=`
     <div style="font-weight:800;margin-bottom:3px">${g.tier==='blacklist'?'⛔ WARNUNG SCHWARZE LISTE / NO-SHOW: ':'★ Bekannter Gast aus Gästekartei: '}${esc(g.name)} (${visits.length}× im Restaurant${tablesList?' · '+esc(tablesList):''})</div>
-    ${g.food_notes?`<div><b>Getränke / Lieblingsessen:</b> ${esc(g.food_notes)}</div>`:''}
-    ${g.general_notes?`<div><b>Spiele / Tisch-Wünsche:</b> ${esc(g.general_notes)}</div>`:''}
+    ${g.food_notes?`<div><b>Getränke / Lieblingsessen:</b> ${esc(translateFreeText(g.food_notes))}</div>`:''}
+    ${g.general_notes?`<div><b>Spiele / Tisch-Wünsche:</b> ${esc(translateFreeText(g.general_notes))}</div>`:''}
   `;
   if(g.phone&&!$('#trPhone').value)$('#trPhone').value=g.phone;
   if(g.food_notes&&!$('#trDrinksFood').value)$('#trDrinksFood').value=g.food_notes;
@@ -6421,6 +6606,7 @@ window.saveTableModalAction=()=>{
     saveLocalCRM();
   }
 
+  translateFieldsOnSave([drinksFood,notes]);
   $('#dlgTableRes').close();
   renderAll();
 };
@@ -6523,7 +6709,7 @@ function renderKitchenCockpit(){
           <tr><th>Zimmer</th><th>Gast</th><th>Pers.</th><th>Vorlieben / Allergien / Kinder-Wünsche</th></tr>
           ${list.map(b=>{
             const g=findGuestByName(b.gast);
-            const info=[b.special_wish,g?.food_notes,g?.kids_notes,b.notiz].filter(Boolean).join(' · ')||'Standard-Frühstück';
+            const info=translateFreeText([b.special_wish,g?.food_notes,g?.kids_notes,b.notiz].filter(Boolean).join(' · ')||'Standard-Frühstück');
             return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
               <td><b>Zi. ${b.room_id}</b></td>
               <td><b>${esc(b.gast)}</b></td>
@@ -6551,7 +6737,7 @@ function renderKitchenCockpit(){
           <td><b>Tisch ${esc(r.tableNum)}</b> <small style="color:var(--mute)">(max. ${r.tableCap})</small></td>
           <td><b>${esc(r.guestName)}</b> ${r.isHotelGuest?'<span class="badge badge-stamm">Hausgast -20%</span>':'<span class="badge badge-kid">Extern</span>'}</td>
           <td class="num"><b>${r.pax}P</b></td>
-          <td>${esc([r.drinksFood,r.notes].filter(Boolean).join(' · ')||'—')}</td>
+          <td>${esc(translateFreeText([r.drinksFood,r.notes].filter(Boolean).join(' · '))||'—')}</td>
         </tr>`).join('')}
       </table>`;
     }
@@ -6644,7 +6830,7 @@ function renderTablePlanView(){
           <td><b>${esc(r.guestName)}</b> ${r.isHotelGuest?'<span class="badge badge-stamm" style="background:#10b981;color:#fff">★ Hausgast -20%</span>':'<span class="badge badge-kid">Externer Gast</span>'}</td>
           <td class="num"><b>${r.pax} / ${r.tableCap}</b></td>
           <td>${r.status==='noshow'?'<span class="badge badge-blacklist">⛔ Nicht erschienen</span>':r.status==='seated'?'<span class="badge badge-blacklist" style="background:#e11d48;color:#fff">Am Tisch</span>':'<span class="badge badge-kid">Reserviert</span>'}</td>
-          <td>${esc([r.drinksFood,r.notes].filter(Boolean).join(' · ')||'—')}</td>
+          <td>${esc(translateFreeText([r.drinksFood,r.notes].filter(Boolean).join(' · '))||'—')}</td>
         </tr>`).join('')}
       </table>`;
     }
@@ -6771,10 +6957,10 @@ function checkGuestMemoryInDialog(){
     <div style="font-size:12px;color:var(--emerald);font-weight:700;margin-bottom:4px">
       Tipp für deine Bestätigungs-Mail: „Schön, dass du wieder bei uns anfragst! Sollen wir dir wieder (${esc(wishHint.slice(0,55))}) bereitstellen?“ (Wird automatisch im E-Mail-Generator eingefügt!)
     </div>
-    ${g.kids_notes?`<div><b>Familie & Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
-    ${g.dog_notes?`<div><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
-    ${g.food_notes?`<div><b>Kulinarik / Wein / Flasche:</b> ${esc(g.food_notes)}</div>`:''}
-    ${g.general_notes?`<div><b>Zimmer-Wunsch / Notiz:</b> ${esc(g.general_notes)}</div>`:''}
+    ${g.kids_notes?`<div><b>Familie & Kinder:</b> ${esc(translateFreeText(g.kids_notes))}</div>`:''}
+    ${g.dog_notes?`<div><b>Hund:</b> ${esc(translateFreeText(g.dog_notes))}</div>`:''}
+    ${g.food_notes?`<div><b>Kulinarik / Wein / Flasche:</b> ${esc(translateFreeText(g.food_notes))}</div>`:''}
+    ${g.general_notes?`<div><b>Zimmer-Wunsch / Notiz:</b> ${esc(translateFreeText(g.general_notes))}</div>`:''}
   `;
   if(!editing){
     if(g.phone&&!$('#inpTel').value)$('#inpTel').value=g.phone;
@@ -6809,6 +6995,7 @@ $('#cal').addEventListener('mousemove',e=>{
     <div style="margin-top:4px">${b.erwachsene} ${esc(tr('adultsShort'))}${b.kinder?', '+b.kinder+' '+esc(tr('kidsShort')):''}${b.kleinkinder?', +'+b.kleinkinder+' '+esc(tr('babyWord')):''} ${showPrice&&b.preis?'· <b>CHF '+Number(b.preis).toFixed(2)+'</b>':''}</div>
     <div style="margin-top:3px;font-size:11.5px;color:var(--mute)">${esc(tr('enteredByShort'))}: <b>${esc(translateFreeText(b.created_by_staff||'Arthur'))}</b></div>
     ${b.special_wish?`<div style="margin-top:5px;color:var(--gold)"><b>${esc(tr('wishWord'))}:</b> ${esc(translateFreeText(b.special_wish))}</div>`:''}
+    ${b.notiz?`<div style="margin-top:4px;color:var(--ink-soft)">${esc(translateFreeText(b.notiz))}</div>`:''}
     ${g?.kids_notes?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--line);color:var(--brand)"><b>${esc(tr('kidsShort'))}:</b> ${esc(translateFreeText(g.kids_notes))}</div>`:''}
     ${g?.dog_notes?`<div style="margin-top:3px"><b>${esc(tr('dogWord'))}:</b> ${esc(translateFreeText(g.dog_notes))}</div>`:''}
     ${g?.food_notes?`<div style="margin-top:3px"><b>★:</b> ${esc(translateFreeText(g.food_notes))}</div>`:''}
@@ -7057,6 +7244,8 @@ $('#frm').addEventListener('submit',async e=>{
     wish_lead_days:localLeadDays
   };
 
+  translateFieldsOnSave([row.notiz,localWish]);
+
   if(row.gast){
     const match=findMatchingExistingGuest({gast:row.gast,telefon:row.telefon||'',email:row.email||'',notiz:row.notiz||'',special_wish:localWish});
     let ex=match?match.guest:guests.find(g=>normName(g.name)===normName(row.gast));
@@ -7229,6 +7418,7 @@ $('#frmGuest').addEventListener('submit',e=>{
     guests.unshift(obj);
   }
   saveLocalCRM();
+  translateFieldsOnSave([obj.kids_notes,obj.dog_notes,obj.food_notes,obj.general_notes,obj.city]);
   $('#dlgGuest').close();
   renderAll();
 });
