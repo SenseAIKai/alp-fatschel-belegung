@@ -144,15 +144,15 @@ html[data-theme="dark"] .logo-dark-only { display: block !important; }
 
 #app[hidden], #loginWrap[hidden] { display: none !important; }
 
-/* TOP COMMAND HUD HEADER (Starr in der Breite, 2 übersichtliche Zeilen, nichts ragt rechts heraus!) */
+/* TOP COMMAND HUD HEADER (Starr in der Breite, 2 übersichtliche Zeilen, oben luftig, nichts ragt rechts heraus!) */
 header.hud-header {
   position: sticky;
   top: 0;
   z-index: 50;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 6px 16px;
+  gap: 6px;
+  padding: 14px 16px 7px 16px;
   width: 100%;
   max-width: 100vw;
   background: var(--glass);
@@ -165,9 +165,9 @@ header.hud-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .hud-row-bottom {
   display: flex;
@@ -176,7 +176,7 @@ header.hud-header {
   gap: 8px;
   width: 100%;
   flex-wrap: wrap;
-  padding-top: 2px;
+  padding-top: 4px;
   border-top: 1px solid var(--line);
 }
 
@@ -184,10 +184,11 @@ header.hud-header {
 .brand-corner {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 .brand-corner img {
-  height: 34px;
+  height: 32px;
   width: auto;
   object-fit: contain;
 }
@@ -197,25 +198,28 @@ nav.hud-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   background: var(--glass-soft);
   border: 1px solid var(--glass-border);
   padding: 3px;
   border-radius: 999px;
   box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 18px rgba(14, 165, 233, 0.08);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+nav.hud-nav::-webkit-scrollbar { display: none; }
 .nav-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
+  gap: 4px;
+  padding: 4px 9px;
   border-radius: 999px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--ink-soft);
   font-weight: 700;
-  font-size: 11.8px;
+  font-size: 11.4px;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1426,11 +1430,11 @@ html[data-theme="dark"] .fp-res-label {
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <span id="activeRoleBadgeLabel" class="badge badge-stamm" style="font-size:11px;padding:3px 9px">Aktiver Zugang: Manager</span>
         <div class="seg-group" id="roleQuickGroup" title="Bereich wechseln">
-          <button type="button" id="btnRoleOffice" onclick="switchUserRole('office')" style="padding:3px 8px;font-size:11px">Office</button>
-          <button type="button" id="btnRoleManager" onclick="switchUserRole('manager')" style="padding:3px 8px;font-size:11px">Manager</button>
-          <button type="button" id="btnRoleCleaner" onclick="switchUserRole('cleaner')" style="padding:3px 8px;font-size:11px">Reinigung</button>
-          <button type="button" id="btnRoleKitchen" onclick="switchUserRole('kitchen')" style="padding:3px 8px;font-size:11px">Küche</button>
-          <button type="button" id="btnRoleService" onclick="switchUserRole('service')" style="padding:3px 8px;font-size:11px">Service</button>
+          <button type="button" id="btnRoleOffice" data-i18n="roleOffice" onclick="switchUserRole('office')" style="padding:3px 8px;font-size:11px">Office</button>
+          <button type="button" id="btnRoleManager" data-i18n="roleManager" onclick="switchUserRole('manager')" style="padding:3px 8px;font-size:11px">Manager</button>
+          <button type="button" id="btnRoleCleaner" data-i18n="roleCleaner" onclick="switchUserRole('cleaner')" style="padding:3px 8px;font-size:11px">Reinigung</button>
+          <button type="button" id="btnRoleKitchen" data-i18n="roleKitchen" onclick="switchUserRole('kitchen')" style="padding:3px 8px;font-size:11px">Küche</button>
+          <button type="button" id="btnRoleService" data-i18n="roleService" onclick="switchUserRole('service')" style="padding:3px 8px;font-size:11px">Service</button>
         </div>
       </div>
 
@@ -1444,7 +1448,7 @@ html[data-theme="dark"] .fp-res-label {
           <option value="el">EL · Ελληνικά</option>
         </select>
         <button id="btnTheme" class="icon-btn" title="Tag- / Nacht-Modus umschalten" style="padding:4px 8px;font-size:13px">🌙</button>
-        <button type="button" id="btnHeaderLogout" onclick="performLogoutToLoginScreen()" style="padding:4px 10px;font-size:11px;font-weight:800">Abmelden / Login wechseln</button>
+        <button type="button" id="btnHeaderLogout" data-i18n="btnLogout" onclick="performLogoutToLoginScreen()" style="padding:4px 10px;font-size:11px;font-weight:800">Abmelden / Login wechseln</button>
       </div>
     </div>
   </header>
@@ -1472,12 +1476,12 @@ html[data-theme="dark"] .fp-res-label {
           <span class="spacer"></span>
           <select id="channelFilter" style="width:auto;margin:0;padding:5px 10px">
             <option value="all" data-i18n="allChannels">Alle Kanäle</option>
-            <option value="manuell">Direkt</option>
-            <option value="booking">Booking.com</option>
-            <option value="deskline">Arosa / Feratel</option>
-            <option value="hrs">HRS</option>
-            <option value="homepage">Homepage</option>
-            <option value="telefon">Telefon</option>
+            <option value="manuell" data-i18n="ch_manuell">Direkt</option>
+            <option value="booking" data-i18n="ch_booking">Booking.com</option>
+            <option value="deskline" data-i18n="ch_deskline">Arosa / Feratel</option>
+            <option value="hrs" data-i18n="ch_hrs">HRS</option>
+            <option value="homepage" data-i18n="ch_homepage">Homepage</option>
+            <option value="telefon" data-i18n="ch_telefon">Telefon</option>
           </select>
         </div>
 
@@ -1490,7 +1494,7 @@ html[data-theme="dark"] .fp-res-label {
               <span class="sync-dot" id="syncDot"></span>
               <span id="sync">Auto-Sync aktiv</span>
             </div>
-            <button id="syncNow" title="Manuellen Sofort-Abgleich mit Feratel Deskline anstossen" style="padding:4px 9px;font-size:11px">Mit Deskline abgleichen</button>
+            <button id="syncNow" data-i18n="btnSync" title="Manuellen Sofort-Abgleich mit Feratel Deskline anstossen" style="padding:4px 9px;font-size:11px">Mit Deskline abgleichen</button>
             <button id="logout" data-i18n="btnLogout" style="padding:4px 9px;font-size:11px">Abmelden</button>
           </div>
         </div>
@@ -1507,7 +1511,7 @@ html[data-theme="dark"] .fp-res-label {
         </div>
       </div>
 
-      <h2 class="sec-title"><span>Feratel Deskline Synchronisations-Protokoll</span></h2>
+      <h2 class="sec-title"><span data-i18n="desklineLogTitle">Feratel Deskline Synchronisations-Protokoll</span></h2>
       <div class="card"><table id="tSync"></table></div>
     </section>
 
@@ -2405,7 +2409,7 @@ const COMMISSION_RATES={
   hrs:18       // HRS: 18 %
 };
 
-// 4-SPRACHEN WÖRTERBUCH (DEUTSCH, ENGLISCH, ITALIENISCH, GRIECHISCH) — ALLE I18N-KEYS VOLLSTÄNDIG!
+// 4-SPRACHEN WÖRTERBUCH (DEUTSCH, ENGLISCH, ITALIENISCH, GRIECHISCH) — ALLE I18N-KEYS & STANDARD-WÜNSCHE VOLLSTÄNDIG!
 const I18N={
   de:{
     weekdays:['So','Mo','Di','Mi','Do','Fr','Sa'],
@@ -2430,6 +2434,15 @@ const I18N={
     searchPh:'Gast, Kind, Hund suchen…',
     calHint:'Klicke oben auf einen Tag (1–31) für Tages-Kennzahlen & Dienstplan · Balken ziehen zum Verschieben',
     allChannels:'Alle Kanäle',
+    ch_manuell:'Direkt',
+    ch_telefon:'Telefon',
+    ch_homepage:'Homepage',
+    ch_deskline:'Arosa / Feratel',
+    ch_booking:'Booking.com',
+    ch_hrs:'HRS',
+    legOccupiedRed:'Am gewählten Tag belegt (Rot)',
+    legFreeGreen:'Am gewählten Tag frei (Grün)',
+    legSuperVip:'Super-VIP',
     testOn:'Testmodus: AN',
     testOff:'Testmodus: AUS',
     roleOffice:'Office',
@@ -2437,9 +2450,51 @@ const I18N={
     roleCleaner:'Reinigung',
     roleKitchen:'Küche',
     roleService:'Service',
+    activeAccess:'Aktiver Zugang',
+    simActiveAccess:'Simulation (Übungsmodus)',
     roomWord:'Zimmer',
+    statusWord:'Status',
+    daysWord:'Tage',
+    todayCaps:'HEUTE',
+    roomsShort:'Zi.',
+    persShort:'Pers.',
+    tablesShort:'Ti.',
+    pBadgeLetter:'P',
+    nightLetter:'N',
+    arrivalWord:'Anreise',
+    departureWord:'Abreise',
+    adultsShort:'Erw.',
+    kidsShort:'Ki.',
+    babyWord:'Baby',
+    dogWord:'Hund',
+    wishWord:'Wunsch',
+    enteredByShort:'Eingetr.',
+    testWord:'Test',
+    testBadgeCaps:'TEST',
+    stammgastWord:'Stammgast',
+    blacklistCaps:'SPERRE',
+    kpiOccTitle:'Belegung',
+    kpiBfTitle:'Frühstück & Dienst-Team',
+    personsWord:'Personen',
+    withBreakfast:'mit Frühstück',
+    onDutyLabel:'Eingeteilt',
+    kpiRevTitle:'Tagesumsatz',
+    occupiedRoomsWord:'belegte Zimmer',
+    perRoomWord:'pro Zimmer',
+    kpiInfoTitle:'Wichtige Infos',
+    editWord:'Bearbeiten',
+    kpiInfoPlaceholder:'Klicken, um Tages-Event / Info einzutragen (z. B. Hochzeitsfeier, 40. Geburtstag, Weihnachtsfeier, Ruhetag)…',
+    toCleanOf:'zu reinigen',
+    cleanedOf:'gereinigt',
+    ofWord:'von',
+    allRoomsFree:'Alle Zimmer frei',
+    roomsInCleaningPlan:'Zimmer heute im Reinigungsplan',
     arrivals14:'Anreisen (nächste 14 Tage)',
     departures14:'Abreisen (nächste 14 Tage)',
+    noArrivals14:'Keine Anreisen in den nächsten 14 Tagen ab gewähltem Datum.',
+    noDepartures14:'Keine Abreisen in den nächsten 14 Tagen ab gewähltem Datum.',
+    desklineLogTitle:'Feratel Deskline Synchronisations-Protokoll',
+    desklineAllSynced:'✓ Alle echten Buchungen sind zu 100 % mit Feratel Deskline synchronisiert.',
     briefingAdvanceTitle:'Vorab-Besorgungen & Sonderwünsche (Vorlauf-Erinnerung)',
     briefingAdvanceSub:'Sonderwünsche (z. B. Dom Pérignon, Geburtstagstorte, Allergiker-Brot) erscheinen automatisch mit frei wählbarer Vorlaufzeit vor Anreise.',
     briefingBreakfastTitle:'Frühstücks- & Küchen-Liste (07:00 – 10:00 Uhr)',
@@ -2479,6 +2534,15 @@ const I18N={
     searchPh:'Search guest, child, dog…',
     calHint:'Click any day number (1–31) to inspect daily metrics & staff on duty · Drag bars to move/resize',
     allChannels:'All Channels',
+    ch_manuell:'Direct',
+    ch_telefon:'Phone',
+    ch_homepage:'Website',
+    ch_deskline:'Arosa / Feratel',
+    ch_booking:'Booking.com',
+    ch_hrs:'HRS',
+    legOccupiedRed:'Occupied on selected day (Red)',
+    legFreeGreen:'Free on selected day (Green)',
+    legSuperVip:'Super-VIP',
     testOn:'Test Mode: ON',
     testOff:'Test Mode: OFF',
     roleOffice:'Office',
@@ -2486,9 +2550,51 @@ const I18N={
     roleCleaner:'Cleaning',
     roleKitchen:'Kitchen',
     roleService:'Service',
+    activeAccess:'Active Access',
+    simActiveAccess:'Simulation (Training Mode)',
     roomWord:'Room',
+    statusWord:'Status',
+    daysWord:'Days',
+    todayCaps:'TODAY',
+    roomsShort:'Rm.',
+    persShort:'Pers.',
+    tablesShort:'Tbl.',
+    pBadgeLetter:'P',
+    nightLetter:'N',
+    arrivalWord:'Arrival',
+    departureWord:'Departure',
+    adultsShort:'Ad.',
+    kidsShort:'Ch.',
+    babyWord:'Baby',
+    dogWord:'Dog',
+    wishWord:'Wish',
+    enteredByShort:'Entered by',
+    testWord:'Test',
+    testBadgeCaps:'TEST',
+    stammgastWord:'Regular Guest',
+    blacklistCaps:'BLOCKED',
+    kpiOccTitle:'Occupancy',
+    kpiBfTitle:'Breakfast & Shift Team',
+    personsWord:'Guests',
+    withBreakfast:'with breakfast',
+    onDutyLabel:'On duty',
+    kpiRevTitle:'Daily Revenue',
+    occupiedRoomsWord:'occupied rooms',
+    perRoomWord:'per room',
+    kpiInfoTitle:'Important Info',
+    editWord:'Edit',
+    kpiInfoPlaceholder:'Click to enter daily event / info (e.g. wedding party, 40th birthday, Christmas dinner, closed day)…',
+    toCleanOf:'to clean',
+    cleanedOf:'cleaned',
+    ofWord:'of',
+    allRoomsFree:'All rooms free',
+    roomsInCleaningPlan:'rooms in cleaning plan today',
     arrivals14:'Arrivals (next 14 days)',
     departures14:'Departures (next 14 days)',
+    noArrivals14:'No arrivals in the next 14 days from selected date.',
+    noDepartures14:'No departures in the next 14 days from selected date.',
+    desklineLogTitle:'Feratel Deskline Synchronization Log',
+    desklineAllSynced:'✓ All real bookings are 100% synchronized with Feratel Deskline.',
     briefingAdvanceTitle:'Advance Procurement & Special Wishes (Lead-Time Alert)',
     briefingAdvanceSub:'Special wishes appear automatically ahead of arrival based on your lead-time setting.',
     briefingBreakfastTitle:'Breakfast & Kitchen List (07:00 – 10:00)',
@@ -2517,7 +2623,7 @@ const I18N={
     navGaeste:'Schede Ospiti',
     navZimmer:'Housekeeping',
     navStatistik:'Finanze & Statistiche',
-    navDienstplan:'Turni & Piano Pulizie',
+    navDienstplan:'Turni & Pulizie',
     btnNewBooking:'+ Prenotazione',
     btnNewGuest:'+ Nuovo Ospite',
     btnPrev:'‹ Indietro',
@@ -2528,6 +2634,15 @@ const I18N={
     searchPh:'Cerca ospite, bambino, cane…',
     calHint:'Clicca su un giorno (1–31) per vedere dati giornalieri e turni · Trascina barre per spostare',
     allChannels:'Tutti i canali',
+    ch_manuell:'Diretto',
+    ch_telefon:'Telefono',
+    ch_homepage:'Sito Web',
+    ch_deskline:'Arosa / Feratel',
+    ch_booking:'Booking.com',
+    ch_hrs:'HRS',
+    legOccupiedRed:'Occupata nel giorno scelto (Rosso)',
+    legFreeGreen:'Libera nel giorno scelto (Verde)',
+    legSuperVip:'Super-VIP',
     testOn:'Modalità Test: ON',
     testOff:'Modalità Test: OFF',
     roleOffice:'Ufficio',
@@ -2535,9 +2650,51 @@ const I18N={
     roleCleaner:'Pulizie',
     roleKitchen:'Cucina',
     roleService:'Sala',
+    activeAccess:'Accesso attivo',
+    simActiveAccess:'Simulazione (Allenamento)',
     roomWord:'Camera',
+    statusWord:'Stato',
+    daysWord:'Giorni',
+    todayCaps:'OGGI',
+    roomsShort:'Cam.',
+    persShort:'Pers.',
+    tablesShort:'Tav.',
+    pBadgeLetter:'P',
+    nightLetter:'N',
+    arrivalWord:'Arrivo',
+    departureWord:'Partenza',
+    adultsShort:'Ad.',
+    kidsShort:'Bamb.',
+    babyWord:'Bebè',
+    dogWord:'Cane',
+    wishWord:'Desiderio',
+    enteredByShort:'Inserito da',
+    testWord:'Test',
+    testBadgeCaps:'TEST',
+    stammgastWord:'Ospite Abituale',
+    blacklistCaps:'BLOCCATO',
+    kpiOccTitle:'Occupazione',
+    kpiBfTitle:'Colazione & Turni',
+    personsWord:'Ospiti',
+    withBreakfast:'con colazione',
+    onDutyLabel:'In turno',
+    kpiRevTitle:'Fatturato Giornaliero',
+    occupiedRoomsWord:'camere occupate',
+    perRoomWord:'per camera',
+    kpiInfoTitle:'Info Importanti',
+    editWord:'Modifica',
+    kpiInfoPlaceholder:'Clicca per inserire eventi o info del giorno (es. matrimonio, compleanno, cena di Natale, giorno di chiusura)…',
+    toCleanOf:'da pulire',
+    cleanedOf:'pulite',
+    ofWord:'di',
+    allRoomsFree:'Tutte le camere libere',
+    roomsInCleaningPlan:'camere da pulire oggi',
     arrivals14:'Arrivi (prossimi 14 giorni)',
     departures14:'Partenze (prossimi 14 giorni)',
+    noArrivals14:'Nessun arrivo nei prossimi 14 giorni dalla data selezionata.',
+    noDepartures14:'Nessuna partenza nei prossimi 14 giorni dalla data selezionata.',
+    desklineLogTitle:'Registro Sincronizzazione Feratel Deskline',
+    desklineAllSynced:'✓ Tutte le prenotazioni reali sono sincronizzate al 100% con Feratel Deskline.',
     briefingAdvanceTitle:'Ordini in Anticipo & Desideri Speciali (Preavviso)',
     briefingAdvanceSub:'I desideri speciali compaiono automaticamente con i giorni di preavviso impostati.',
     briefingBreakfastTitle:'Lista Colazione & Cucina (07:00 – 10:00)',
@@ -2565,8 +2722,8 @@ const I18N={
     navTischplanMgr:'Επεξεργαστής Τραπεζιών',
     navGaeste:'Πελατολόγιο',
     navZimmer:'Καθαριότητα',
-    navStatistik:'Οικονομικά & Στατιστικά',
-    navDienstplan:'Βάρδιες & Πλάνο Καθαρισμού',
+    navStatistik:'Οικονομικά',
+    navDienstplan:'Βάρδιες & Πλάνο',
     btnNewBooking:'+ Κράτηση',
     btnNewGuest:'+ Νέος Πελάτης',
     btnPrev:'‹ Πίσω',
@@ -2577,6 +2734,15 @@ const I18N={
     searchPh:'Αναζήτηση πελάτη, παιδιού…',
     calHint:'Κάντε κλικ σε μια ημέρα (1–31) για στοιχεία ημέρας & βάρδιες',
     allChannels:'Όλα τα κανάλια',
+    ch_manuell:'Απευθείας',
+    ch_telefon:'Τηλέφωνο',
+    ch_homepage:'Ιστοσελίδα',
+    ch_deskline:'Arosa / Feratel',
+    ch_booking:'Booking.com',
+    ch_hrs:'HRS',
+    legOccupiedRed:'Κατειλημμένο την επιλεγμένη ημέρα (Κόκκινο)',
+    legFreeGreen:'Ελεύθερο την επιλεγμένη ημέρα (Πράσινο)',
+    legSuperVip:'Super-VIP',
     testOn:'Δοκιμή: ΕΝΕΡΓΗ',
     testOff:'Δοκιμή: ΑΝΕΝΕΡΓΗ',
     roleOffice:'Γραφείο',
@@ -2584,9 +2750,51 @@ const I18N={
     roleCleaner:'Καθαριότητα',
     roleKitchen:'Κουζίνα',
     roleService:'Σέρβις',
+    activeAccess:'Ενεργή Πρόσβαση',
+    simActiveAccess:'Προσομοίωση (Εκπαίδευση)',
     roomWord:'Δωμάτιο',
+    statusWord:'Κατάσταση',
+    daysWord:'Ημέρες',
+    todayCaps:'ΣΗΜΕΡΑ',
+    roomsShort:'Δωμ.',
+    persShort:'Άτ.',
+    tablesShort:'Τρ.',
+    pBadgeLetter:'Α',
+    nightLetter:'Δ',
+    arrivalWord:'Άφιξη',
+    departureWord:'Αναχώρηση',
+    adultsShort:'Ενήλ.',
+    kidsShort:'Παιδ.',
+    babyWord:'Μωρό',
+    dogWord:'Σκύλος',
+    wishWord:'Επιθυμία',
+    enteredByShort:'Καταχ.',
+    testWord:'Δοκιμή',
+    testBadgeCaps:'ΔΟΚΙΜΗ',
+    stammgastWord:'Τακτικός Πελάτης',
+    blacklistCaps:'ΦΡΑΓΗ',
+    kpiOccTitle:'Πληρότητα',
+    kpiBfTitle:'Πρωινό & Ομάδα Βάρδιας',
+    personsWord:'Άτομα',
+    withBreakfast:'με πρωινό',
+    onDutyLabel:'Σε βάρδια',
+    kpiRevTitle:'Ημερήσιος Τζίρος',
+    occupiedRoomsWord:'κατειλημμένα δωμάτια',
+    perRoomWord:'ανά δωμάτιο',
+    kpiInfoTitle:'Σημαντικές Πληροφορίες',
+    editWord:'Επεξεργασία',
+    kpiInfoPlaceholder:'Κάντε κλικ για καταχώριση εκδήλωσης / πληροφορίας ημέρας (π.χ. γάμος, γενέθλια, χριστουγεννιάτικο δείπνο, ρεπό)…',
+    toCleanOf:'προς καθαρισμό',
+    cleanedOf:'καθαρίστηκαν',
+    ofWord:'από',
+    allRoomsFree:'Όλα τα δωμάτια ελεύθερα',
+    roomsInCleaningPlan:'δωμάτια στο πλάνο καθαρισμού σήμερα',
     arrivals14:'Αφίξεις (επόμενες 14 ημέρες)',
     departures14:'Αναχωρήσεις (επόμενες 14 ημέρες)',
+    noArrivals14:'Δεν υπάρχουν αφίξεις τις επόμενες 14 ημέρες από την επιλεγμένη ημερομηνία.',
+    noDepartures14:'Δεν υπάρχουν αναχωρήσεις τις επόμενες 14 ημέρες από την επιλεγμένη ημερομηνία.',
+    desklineLogTitle:'Αρχείο Συγχρονισμού Feratel Deskline',
+    desklineAllSynced:'✓ Όλες οι πραγματικές κρατήσεις είναι 100% συγχρονισμένες με το Feratel Deskline.',
     briefingAdvanceTitle:'Έγκαιρες Παραγγελίες & Ειδικές Επιθυμίες Πελατών',
     briefingAdvanceSub:'Οι ειδικές επιθυμίες εμφανίζονται αυτόματα πριν την άφιξη.',
     briefingBreakfastTitle:'Λίστα Πρωινού & Κουζίνας (07:00 – 10:00)',
@@ -2608,6 +2816,119 @@ const I18N={
 let currentLang=localStorage.getItem('af_pms_lang_v3')||'de';
 if(!I18N[currentLang])currentLang='de';
 const tr=k=>(I18N[currentLang]&&I18N[currentLang][k])||I18N.de[k]||k;
+
+// NULL-LATENZ ÜBERSETZER FÜR STANDARD-WÜNSCHE, DEMO-TEXTE, ROLLEN & NOTIZEN (OHNE EXTERNE API!)
+const FREE_TEXT_DICT={
+  en:[
+    ['1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer','1 bottle of Dom Pérignon Vintage Champagne chilled in room upon arrival'],
+    ['Frische Erdbeeren & Kinder-Überraschung für Janik','Fresh strawberries & kids surprise for Janik'],
+    ['Hafermilch für den Morgen-Cappuccino besorgen','Get oat milk for morning cappuccino'],
+    ['Allergikerbettwäsche bereitstellen','Provide hypoallergenic bedding'],
+    ['Allergikerbettwäsche','Hypoallergenic bedding'],
+    ['Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen','Order chocolate birthday cake for daughter Sofia upon arrival'],
+    ['Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).','Parents: Thomas & Julia Berger. Son Janik (7 yrs, loves dragons & fries), daughter Mia (5 yrs, loves pancakes).'],
+    ['Sohn heisst Janik (7 J.) — Janik','Son named Janik (7 yrs)'],
+    ['Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)','Golden Retriever "Bello" (very well-behaved, place large water bowl in room)'],
+    ['Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.','Parents enjoy Bündner Pinot Noir & love truffle fondue.'],
+    ['Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).','Prefer Room 5 (Family Room) with mountain view. Enjoy playing chess in the restaurant (place chessboard on Table 5).'],
+    ['Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.','Enjoy 1 bottle of Dom Pérignon Champagne on arrival (chill 5 days ahead!). Gluten-free bread at breakfast.'],
+    ['Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.','Quiet double room (Room 2 or Room 7), second neck pillow.'],
+    ['Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).','Marco & Chiara Rossi with children Matteo (11 yrs) and Sofia (9 yrs).'],
+    ['Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.','Love Bündner Pizzoccheri, double espresso & Amarone.'],
+    ['Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).','Enjoy playing cards after dinner (prepare card deck at Table 10).'],
+    ['Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes','Late arrival 18:00 · Son Janik (7 yrs) loves fries'],
+    ['Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück','Anniversary weekend · Gluten-free bread at breakfast'],
+    ['Einzelnutzung CHF 110/Nacht','Single occupancy CHF 110/night'],
+    ['Option bis Freitag','Option until Friday'],
+    ['Geschäftsführung','Management'],
+    ['Reinigung','Cleaning'],
+    ['Küche','Kitchen'],
+    ['Babybett','Baby cot'],
+    ['Extrabett / Zustellbett','Extra bed'],
+    ['Überdachter Parkplatz','Covered parking'],
+    ['Prosecco aufs Zimmer','Prosecco to room'],
+    ['Frühstück aufs Zimmer','Breakfast to room']
+  ],
+  it:[
+    ['1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer','1 bottiglia di Champagne Dom Pérignon Vintage fresca in camera all\'arrivo'],
+    ['Frische Erdbeeren & Kinder-Überraschung für Janik','Fragole fresche e sorpresa per bambini per Janik'],
+    ['Hafermilch für den Morgen-Cappuccino besorgen','Procurare latte d\'avena per il cappuccino del mattino'],
+    ['Allergikerbettwäsche bereitstellen','Preparare biancheria anallergica'],
+    ['Allergikerbettwäsche','Biancheria anallergica'],
+    ['Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen','Ordinare torta di compleanno al cioccolato per la figlia Sofia all\'arrivo'],
+    ['Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).','Genitori: Thomas e Julia Berger. Figlio Janik (7 anni, ama i draghi e le patatine), figlia Mia (5 anni, ama i pancake).'],
+    ['Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)','Golden Retriever "Bello" (molto bravo, preparare grande ciotola d\'acqua in camera)'],
+    ['Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.','I genitori amano il Pinot Nero dei Grigioni e la fonduta al tartufo.'],
+    ['Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).','Preferiscono la Camera 5 (Familiare) con vista montagne. La sera giocano a scacchi al ristorante (preparare scacchiera al Tavolo 5).'],
+    ['Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.','Amano 1 bottiglia di Champagne Dom Pérignon all\'arrivo (raffreddare 5 giorni prima!). Pane senza glutine a colazione.'],
+    ['Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.','Camera doppia tranquilla (Camera 2 o 7), secondo cuscino cervicale.'],
+    ['Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).','Marco e Chiara Rossi con i figli Matteo (11 anni) e Sofia (9 anni).'],
+    ['Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.','Amano i Pizzoccheri dei Grigioni, espresso doppio e Amarone.'],
+    ['Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).','Giocano volentieri a carte dopo cena (preparare mazzo di carte al Tavolo 10).'],
+    ['Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes','Arrivo tardivo ore 18:00 · Il figlio Janik (7 anni) ama le patatine'],
+    ['Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück','Weekend anniversario · Pane senza glutine a colazione'],
+    ['Einzelnutzung CHF 110/Nacht','Uso singolo CHF 110/notte'],
+    ['Option bis Freitag','Opzione fino a venerdì'],
+    ['Geschäftsführung','Direzione'],
+    ['Office','Ufficio'],
+    ['Reinigung','Pulizie'],
+    ['Küche','Cucina'],
+    ['Service','Sala'],
+    ['Babybett','Culla / Lettino bebè'],
+    ['Extrabett / Zustellbett','Letto aggiuntivo'],
+    ['Überdachter Parkplatz','Parcheggio coperto'],
+    ['Prosecco aufs Zimmer','Prosecco in camera'],
+    ['Frühstück aufs Zimmer','Colazione in camera']
+  ],
+  el:[
+    ['1 Flasche Dom Pérignon Vintage Champagner gekühlt bei Anreise im Zimmer','1 φιάλη σαμπάνια Dom Pérignon Vintage παγωμένη στο δωμάτιο κατά την άφιξη'],
+    ['Frische Erdbeeren & Kinder-Überraschung für Janik','Φρέσκες φράουλες & παιδική έκπληξη για τον Janik'],
+    ['Hafermilch für den Morgen-Cappuccino besorgen','Προμήθεια γάλακτος βρώμης για τον πρωινό καπουτσίνο'],
+    ['Allergikerbettwäsche bereitstellen','Προετοιμασία υποαλλεργικών κλινοσκεπασμάτων'],
+    ['Allergikerbettwäsche','Υποαλλεργικά κλινοσκεπάσματα'],
+    ['Geburtstagstorte (Schokolade) für Tochter Sofia zur Anreise bestellen','Παραγγελία τούρτας γενεθλίων (σοκολάτα) για την κόρη Sofia κατά την άφιξη'],
+    ['Eltern: Thomas & Julia Berger. Sohn Janik (7 J., liebt Drachen & Pommes mit Ketchup), Tochter Mia (5 J., liebt Pfannkuchen).','Γονείς: Thomas & Julia Berger. Γιος Janik (7 ετών, αγαπά τους δράκους & τις τηγανητές πατάτες), κόρη Mia (5 ετών, αγαπά τις τηγανίτες).'],
+    ['Sohn heisst Janik (7 J.) — Janik','Γιος Janik (7 ετών)'],
+    ['Golden Retriever „Bello“ (sehr brav, grossen Wassernapf im Zimmer bereitstellen)','Golden Retriever «Bello» (πολύ ήσυχος, μεγάλο μπολ νερού στο δωμάτιο)'],
+    ['Eltern trinken gerne Bündner Pinot Noir & lieben das Trüffel-Fondue.','Οι γονείς προτιμούν κρασί Pinot Noir & φοντύ τρούφας.'],
+    ['Schlafen am liebsten in Zimmer 5 (FZ) mit Bergblick. Spielen abends im Restaurant gerne Schach (Schachbrett auf Tisch 5 bereitstellen).','Προτιμούν το Δωμάτιο 5 (Οικογενειακό) με θέα στο βουνό. Παίζουν σκάκι το βράδυ στο εστιατόριο (σκακιέρα στο Τραπέζι 5).'],
+    ['Trinken bei Anreise gerne 1 Flasche Dom Pérignon Champagner (5 Tage vorher kaltstellen!). Glutenfreies Brot beim Frühstück.','Επιθυμούν 1 φιάλη σαμπάνια Dom Pérignon κατά την άφιξη (ψύξη 5 ημέρες πριν!). Ψωμί χωρίς γλουτένη στο πρωινό.'],
+    ['Ruhiges Doppelzimmer (Zimmer 2 oder Zimmer 7), zweites Nackenkissen.','Ήσυχο δίκλινο δωμάτιο (Δωμάτιο 2 ή 7), δεύτερο μαξιλάρι αυχένα.'],
+    ['Marco & Chiara Rossi mit den Kindern Matteo (11 J.) und Sofia (9 J.).','Marco & Chiara Rossi με τα παιδιά Matteo (11 ετών) και Sofia (9 ετών).'],
+    ['Lieben Bündner Pizzoccheri, Espresso doppi & Amarone.','Αγαπούν τα Pizzoccheri, διπλό εσπρέσο & κρασί Amarone.'],
+    ['Spielen nach dem Essen gerne Karten (Kartenspiel an Tisch 10 bereitlegen).','Παίζουν χαρτιά μετά το φαγητό (τράπουλα στο Τραπέζι 10).'],
+    ['Spätanreise 18 Uhr · Sohn Janik (7 J.) liebt Pommes','Αργή άφιξη 18:00 · Ο γιος Janik (7 ετών) αγαπά τις τηγανητές πατάτες'],
+    ['Hochzeitstags-Wochenende · Glutenfreies Brot beim Frühstück','Σαββατοκύριακο επετείου γάμου · Ψωμί χωρίς γλουτένη στο πρωινό'],
+    ['Einzelnutzung CHF 110/Nacht','Μονόκλινη χρήση CHF 110/διανυκτέρευση'],
+    ['Option bis Freitag','Κράτηση σε αναμονή έως Παρασκευή'],
+    ['2 Kinder (9 & 11 J.)','2 Παιδιά (9 & 11 ετών)'],
+    ['Geschäftsführung','Διεύθυνση'],
+    ['Office','Γραφείο'],
+    ['Reinigung','Καθαριότητα'],
+    ['Küche','Κουζίνα'],
+    ['Service','Σέρβις'],
+    ['Babybett','Βρεφικό κρεβατάκι'],
+    ['Extrabett / Zustellbett','Επιπλέον κρεβάτι'],
+    ['Überdachter Parkplatz','Σκεπαστός χώρος στάθμευσης'],
+    ['Prosecco aufs Zimmer','Prosecco στο δωμάτιο'],
+    ['Frühstück aufs Zimmer','Πρωινό στο δωμάτιο']
+  ]
+};
+
+function translateFreeText(txt){
+  if(!txt||currentLang==='de')return String(txt||'');
+  let out=String(txt);
+  const pairs=FREE_TEXT_DICT[currentLang]||[];
+  for(const [deStr,targetStr] of pairs){
+    if(out.includes(deStr)){
+      out=out.split(deStr).join(targetStr);
+    }
+  }
+  return out;
+}
+function trChannel(k){
+  return tr('ch_'+k)||(QUELLE[k]||k);
+}
 
 const $=s=>document.querySelector(s);
 const $$=s=>[...document.querySelectorAll(s)];
@@ -2999,13 +3320,21 @@ function updateRoleUI(){
   if($('#navBtnKueche'))$('#navBtnKueche').hidden=!allowed.includes('kueche');
   if($('#navBtnTischplan')){
     $('#navBtnTischplan').hidden=!allowed.includes('tischplan');
-    const lbl=$('#navTischplanLabel');
+    const lbl=$('#navLabelTischplan')||$('#navTischplanLabel');
     if(lbl)lbl.textContent=isMgr?tr('navTischplanMgr'):tr('navTischplan');
   }
   if($('#navBtnGaeste'))$('#navBtnGaeste').hidden=!allowed.includes('gaeste');
   if($('#navBtnZimmer'))$('#navBtnZimmer').hidden=!allowed.includes('zimmer');
   if($('#navBtnStatistik'))$('#navBtnStatistik').hidden=!allowed.includes('statistik');
   if($('#navBtnDienstplan'))$('#navBtnDienstplan').hidden=!allowed.includes('dienstplan');
+
+  // Aktiver Zugang Badge oben links in der zweiten Zeile sprachabhängig aktualisieren
+  if($('#activeRoleBadgeLabel')){
+    const roleKey=currentRole==='manager'?'roleManager':currentRole==='cleaner'?'roleCleaner':currentRole==='kitchen'?'roleKitchen':currentRole==='service'?'roleService':'roleOffice';
+    $('#activeRoleBadgeLabel').textContent=isSimulationMode
+      ?`${tr('simActiveAccess')}: ${tr(roleKey)}`
+      :`${tr('activeAccess')}: ${tr(roleKey)}`;
+  }
 
   // Testmodus-Button NUR im Manager-Bereich sichtbar!
   if($('#btnToggleDemo'))$('#btnToggleDemo').hidden=!isMgr;
@@ -3703,11 +4032,11 @@ window.saveDailyNotesAndRoomTasks=()=>{
   renderAll();
 };
 
-// ---- TOP 4 KPIS IM BELEGUNGSPLAN (NUR IM BELEGUNGSPLAN SICHTBAR!) ----
+// ---- TOP 4 KPIS IM BELEGUNGSPLAN (NUR IM BELEGUNGSPLAN SICHTBAR & VOLLSTÄNDIG 4-SPRACHIG!) ----
 function renderTopKPIs(){
   const d=selectedDate||todayStr();
   const isToday=(d===todayStr());
-  const dayLabel=isToday?`HEUTE (${fmt(d)})`:fmt(d);
+  const dayLabel=isToday?`${tr('todayCaps')} (${fmt(d)})`:fmt(d);
   const act=allActiveBookings().filter(b=>b.status!=='storniert');
   if($('#navCountBookings'))$('#navCountBookings').textContent=act.length;
 
@@ -3729,7 +4058,7 @@ function renderTopKPIs(){
   // Dienstplan am gewählten Tag d: ANZAHL DER EINGETEILTEN MITARBEITER STATT NAMEN!
   const duty=getDutyStaffForDate(d);
 
-  // Housekeeping-Badge oben im Menü aktualisieren
+  // Housekeeping-Badge oben im Menü aktualisieren (4-sprachig)
   const hkEntries=rooms.map(r=>getRoomHKEntry(r.id,d));
   const taskEntries=hkEntries.filter(e=>e.needsCleaning);
   const totalTasks=taskEntries.length;
@@ -3740,13 +4069,13 @@ function renderTopKPIs(){
   if(navCleanEl){
     navCleanEl.classList.remove('badge-red','badge-green');
     if(totalTasks===0){
-      navCleanEl.textContent=`0/${rooms.length||8} zu reinigen`;
+      navCleanEl.textContent=`0/${rooms.length||8} ${tr('toCleanOf')}`;
       navCleanEl.classList.add('badge-green');
     }else if(allRoomsDone){
-      navCleanEl.textContent=`${doneTasks} von ${totalTasks} gereinigt ✓`;
+      navCleanEl.textContent=`${doneTasks} ${tr('ofWord')} ${totalTasks} ${tr('cleanedOf')} ✓`;
       navCleanEl.classList.add('badge-green');
     }else{
-      navCleanEl.textContent=`${doneTasks} von ${totalTasks} gereinigt`;
+      navCleanEl.textContent=`${doneTasks} ${tr('ofWord')} ${totalTasks} ${tr('cleanedOf')}`;
       navCleanEl.classList.add('badge-red');
     }
   }
@@ -3760,55 +4089,55 @@ function renderTopKPIs(){
   const avgRoomRate=inHouse.length?(dayRevenue/inHouse.length):0;
 
   const hkDisplayLine=totalTasks===0
-    ?`<span style="color:var(--ink)">0 von ${rooms.length||8} zu reinigen</span>`
-    :`<span style="color:${allRoomsDone?'var(--emerald)':'var(--danger)'}">${doneTasks} von ${totalTasks} gereinigt</span>`;
+    ?`<span style="color:var(--ink)">0 ${tr('ofWord')} ${rooms.length||8} ${tr('toCleanOf')}</span>`
+    :`<span style="color:${allRoomsDone?'var(--emerald)':'var(--danger)'}">${doneTasks} ${tr('ofWord')} ${totalTasks} ${tr('cleanedOf')}</span>`;
 
   const thirdCard = currentRole==='manager'
     ? `<div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#8b5cf6,#6366f1)">
-        <span class="kpi-label">Tagesumsatz · ${esc(dayLabel)}</span>
+        <span class="kpi-label">${esc(tr('kpiRevTitle'))} · ${esc(dayLabel)}</span>
         <span class="kpi-val num">CHF ${dayRevenue.toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2})}</span>
-        <span class="kpi-sub">${inHouse.length} belegte Zimmer · Ø CHF ${avgRoomRate.toFixed(2)} pro Zimmer</span>
+        <span class="kpi-sub">${inHouse.length} ${esc(tr('occupiedRoomsWord'))} · Ø CHF ${avgRoomRate.toFixed(2)} ${esc(tr('perRoomWord'))}</span>
       </div>`
     : `<div class="kpi-card" style="--kpi-accent:${(totalTasks===0||allRoomsDone)?'linear-gradient(90deg,#10b981,#059669)':'linear-gradient(90deg,#f43f5e,#e11d48)'};cursor:pointer" onclick="switchView('zimmer')">
-        <span class="kpi-label">Housekeeping · ${esc(dayLabel)}</span>
+        <span class="kpi-label">${esc(tr('navZimmer'))} · ${esc(dayLabel)}</span>
         <span class="kpi-val num">${hkDisplayLine}</span>
-        <span class="kpi-sub">${totalTasks===0?`Alle ${rooms.length||8} Zimmer frei`:`${totalTasks} Zimmer heute im Reinigungsplan`}</span>
+        <span class="kpi-sub">${totalTasks===0?esc(tr('allRoomsFree')):`${totalTasks} ${esc(tr('roomsInCleaningPlan'))}`}</span>
       </div>`;
 
   // Karte 4 im Belegungsplan: "Wichtige Infos" (Events wie Hochzeit, Geburtstag, Weihnachtsfeier, Ruhetag — direkt anklickbar & editierbar!)
   const dailyEventText=dailyImportantInfos[d]||'';
   const eventHtml=dailyEventText
-    ?`<div style="font-weight:700;color:var(--ink);font-size:12.5px;line-height:1.35">${esc(dailyEventText)}</div>`
-    :`<div style="color:var(--mute);font-size:11.5px;line-height:1.35">Klicken, um Tages-Event / Info einzutragen (z. B. Hochzeitsfeier, 40. Geburtstag, Weihnachtsfeier, Ruhetag)…</div>`;
+    ?`<div style="font-weight:700;color:var(--ink);font-size:12.5px;line-height:1.35">${esc(translateFreeText(dailyEventText))}</div>`
+    :`<div style="color:var(--mute);font-size:11.5px;line-height:1.35">${esc(tr('kpiInfoPlaceholder'))}</div>`;
 
   const accessoriesParts=[];
-  if(infantsCount>0)accessoriesParts.push(`${infantsCount} Baby (0–2J.)`);
-  if(dogsCount>0)accessoriesParts.push(`${dogsCount} Hund`);
+  if(infantsCount>0)accessoriesParts.push(`${infantsCount} ${tr('babyWord')}`);
+  if(dogsCount>0)accessoriesParts.push(`${dogsCount} ${tr('dogWord')}`);
   const accText=accessoriesParts.length?` · + ${accessoriesParts.join(', ')}`:'';
 
   $('#topKpis').innerHTML=`
     <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#0ea5e9,#38bdf8)">
-      <span class="kpi-label">Belegung · ${esc(dayLabel)}</span>
-      <span class="kpi-val num">${inHouse.length}<span style="font-size:14px;color:var(--mute);font-weight:600">/${rooms.length||8} Zi.</span> · ${totalPersons} Pers.</span>
-      <span class="kpi-sub">${arrivalsOnDay.length} Anreise · ${departuresOnDay.length} Abreise · ${erwCount} Erw., ${kidsCount} Ki.${esc(accText)}</span>
+      <span class="kpi-label">${esc(tr('kpiOccTitle'))} · ${esc(dayLabel)}</span>
+      <span class="kpi-val num">${inHouse.length}<span style="font-size:14px;color:var(--mute);font-weight:600">/${rooms.length||8} ${esc(tr('roomsShort'))}</span> · ${totalPersons} ${esc(tr('persShort'))}</span>
+      <span class="kpi-sub">${arrivalsOnDay.length} ${esc(tr('arrivalWord'))} · ${departuresOnDay.length} ${esc(tr('departureWord'))} · ${erwCount} ${esc(tr('adultsShort'))}, ${kidsCount} ${esc(tr('kidsShort'))}${esc(accText)}</span>
     </div>
     <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#10b981,#34d399)">
-      <span class="kpi-label">Frühstück & Dienst-Team · ${esc(dayLabel)}</span>
-      <span class="kpi-val num">${totalPersons} Personen <span style="font-size:12px;color:var(--mute);font-weight:600">mit Frühstück</span></span>
-      <span class="kpi-sub">Eingeteilt: Küche: <b>${duty.kitchenCount}</b> · Service: <b>${duty.serviceCount}</b> · Reinigung: <b>${duty.cleanerCount}</b></span>
+      <span class="kpi-label">${esc(tr('kpiBfTitle'))} · ${esc(dayLabel)}</span>
+      <span class="kpi-val num">${totalPersons} ${esc(tr('personsWord'))} <span style="font-size:12px;color:var(--mute);font-weight:600">${esc(tr('withBreakfast'))}</span></span>
+      <span class="kpi-sub">${esc(tr('onDutyLabel'))}: ${esc(tr('roleKitchen'))}: <b>${duty.kitchenCount}</b> · ${esc(tr('roleService'))}: <b>${duty.serviceCount}</b> · ${esc(tr('roleCleaner'))}: <b>${duty.cleanerCount}</b></span>
     </div>
     ${thirdCard}
-    <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#f59e0b,#fbbf24);cursor:pointer" onclick="openDailyImportantInfoEditor()" title="Klicken, um wichtige Tages-Infos oder Events (Hochzeit, Geburtstag, Betriebsfeier) für diesen Tag einzutragen">
+    <div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#f59e0b,#fbbf24);cursor:pointer" onclick="openDailyImportantInfoEditor()" title="${esc(tr('kpiInfoPlaceholder'))}">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <span class="kpi-label">Wichtige Infos · ${esc(dayLabel)}</span>
-        <span style="font-size:10.5px;font-weight:800;color:var(--brand)">✎ Bearbeiten</span>
+        <span class="kpi-label">${esc(tr('kpiInfoTitle'))} · ${esc(dayLabel)}</span>
+        <span style="font-size:10.5px;font-weight:800;color:var(--brand)">✎ ${esc(tr('editWord'))}</span>
       </div>
       <div style="margin-top:2px">${eventHtml}</div>
     </div>
   `;
 }
 
-// ---- 1. INTERAKTIVES TAPE-CHART (IMMER EXAKT DIE TAGE DES GEWÄHLTEN MONATS 1-30/31 & PERSONENANZAHL "3P" AUF BALKEN) ----
+// ---- 1. INTERAKTIVES TAPE-CHART (IMMER EXAKT DIE TAGE DES GEWÄHLTEN MONATS 1-30/31 & VOLLSTÄNDIG 4-SPRACHIG) ----
 function renderCalendar(){
   const cw=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cw'));
   const nameW=$('.rname')?$('.rname').offsetWidth:(innerWidth<=1180?130:176);
@@ -3819,19 +4148,29 @@ function renderCalendar(){
   const mShort=tr('monthsShort');
   const mFull=tr('monthsFull');
   const roomWord=tr('roomWord');
+  const pLetter=tr('pBadgeLetter');
+  const nLetter=tr('nightLetter');
+
+  // Farb-Legende unten sprachabhängig aktualisieren
+  if($('#legend')){
+    $('#legend').innerHTML=Object.keys(QUELLE).map(k=>`<span><i style="background:var(--${k}-solid)"></i>${esc(trChannel(k))}</span>`).join('')
+      +`<span><i style="background:var(--danger);border-radius:50%"></i>${esc(tr('legOccupiedRed'))}</span>`
+      +`<span><i style="background:var(--emerald);border-radius:50%"></i>${esc(tr('legFreeGreen'))}</span>`
+      +`<span><i style="background:var(--gold);border-radius:50%"></i>${esc(tr('legSuperVip'))}</span>`;
+  }
 
   // Monats-Label & Fokus-Banner aktualisieren
   const focusDate=D(start);
-  $('#currentMonthLabel').textContent=`${mFull[focusDate.getUTCMonth()]} ${focusDate.getUTCFullYear()} (${DAYS} Tage)`;
+  $('#currentMonthLabel').textContent=`${mFull[focusDate.getUTCMonth()]} ${focusDate.getUTCFullYear()} (${DAYS} ${tr('daysWord')})`;
   const duty=getDutyStaffForDate(selD);
   if($('#selectedDateBannerLabel')){
-    $('#selectedDateBannerLabel').textContent=`${selD===t?'HEUTE · ':''}${fmtLongDate(selD)} (Reinigung: ${duty.cleanerCount} · Küche: ${duty.kitchenCount} · Service: ${duty.serviceCount})`;
+    $('#selectedDateBannerLabel').textContent=`${selD===t?tr('todayCaps')+' · ':''}${fmtLongDate(selD)} (${tr('roleCleaner')}: ${duty.cleanerCount} · ${tr('roleKitchen')}: ${duty.kitchenCount} · ${tr('roleService')}: ${duty.serviceCount})`;
   }
 
-  let h=`<div class="row head"><div class="rname">${roomWord} · Status</div>`+days.map(d=>{
+  let h=`<div class="row head"><div class="rname">${esc(roomWord)} · ${esc(tr('statusWord'))}</div>`+days.map(d=>{
     const x=D(d),w=x.getUTCDay();
     const isSel=(d===selD);
-    return `<div class="cell day-clickable${w==0||w==6?' we':''}${d==t?' today':''}${isSel?' selected-day':''}${x.getUTCDate()==1?' m1':''}" onclick="setSelectedDate('${d}')" title="Klicken für Tages-Kennzahlen, Dienstplan & Aufgaben am ${fmt(d)}">${x.getUTCDate()==1||d==start?mShort[x.getUTCMonth()]:wds[w]}<b>${x.getUTCDate()}</b></div>`;
+    return `<div class="cell day-clickable${w==0||w==6?' we':''}${d==t?' today':''}${isSel?' selected-day':''}${x.getUTCDate()==1?' m1':''}" onclick="setSelectedDate('${d}')" title="${fmt(d)}">${x.getUTCDate()==1||d==start?mShort[x.getUTCMonth()]:wds[w]}<b>${x.getUTCDate()}</b></div>`;
   }).join('')+'</div>';
 
   for(const r of rooms){
@@ -3839,11 +4178,11 @@ function renderCalendar(){
     const dotCls=inHouseOnSelected?'hk-dirty':'hk-clean';
     const cleaner=getRoomCleaner(r.id,selD);
     const dotTitle=inHouseOnSelected
-      ?`Am ${fmt(selD)} belegt: ${inHouseOnSelected.gast} (Reinigung: ${cleaner})`
-      :`Am ${fmt(selD)} frei & bezugsbereit`;
+      ?`${fmt(selD)}: ${inHouseOnSelected.gast} (${tr('roleCleaner')}: ${cleaner})`
+      :`${fmt(selD)}: ✓`;
     h+=`<div class="row" data-room="${r.id}">
       <div class="rname">
-        <span>${roomWord} ${r.id}</span>
+        <span>${esc(roomWord)} ${r.id}</span>
         <span class="rname-meta"><span class="hk-dot ${dotCls}" title="${esc(dotTitle)}"></span><small>${r.typ}</small></span>
       </div>`
       +days.map(d=>{
@@ -3873,52 +4212,62 @@ function renderCalendar(){
       const kndCount=+(b.kinder||0);
       const infantCount=+(b.kleinkinder||0);
       const personCount=erwCount+kndCount;
-      const badgeTxt=`${personCount}P`;
+      const badgeTxt=`${personCount}${pLetter}`;
       const hasDog=(g&&g.dog_notes)||/hund/i.test(b.notiz||'');
-      const extraTags=(b._isDemo?'<span class="bar-tag">TEST</span>':'')+(isVip?'<span class="bar-tag">★ VIP</span>':'')+(isBlk?'<span class="bar-tag" style="background:#b71c1c">SPERRE</span>':'')+(infantCount>0?'<span class="bar-tag">+Baby</span>':'')+(hasDog?'<span class="bar-tag">+Hund</span>':'');
+      const extraTags=(b._isDemo?`<span class="bar-tag">${esc(tr('testBadgeCaps'))}</span>`:'')+(isVip?'<span class="bar-tag">★ VIP</span>':'')+(isBlk?`<span class="bar-tag" style="background:#b71c1c">${esc(tr('blacklistCaps'))}</span>`:'')+(infantCount>0?`<span class="bar-tag">+${esc(tr('babyWord'))}</span>`:'')+(hasDog?`<span class="bar-tag">+${esc(tr('dogWord'))}</span>`:'');
       h+=`<div class="bar${b.status=='option'?' option':''}${b._isDemo?' demo-bar':''}${isVip?' vip-bar':''}${isBlk?' blacklist-bar':''}" data-id="${b.id}" style="left:${nameW+left}px;width:${Math.max(right-left-2,32)}px;background:var(--${b.quelle})">
-        <div class="bar-handle left" data-handle="left" title="Anreise vorziehen / verkürzen"></div>
-        <span class="ch-badge" title="${personCount} Personen (${erwCount} Erw.${kndCount?', '+kndCount+' Ki. 3–15J.':''}${infantCount?', +'+infantCount+' Kleinkind 0–2J. gratis':''}) · Kanal: ${esc(QUELLE[b.quelle]||b.quelle)}">${badgeTxt}</span>
+        <div class="bar-handle left" data-handle="left"></div>
+        <span class="ch-badge" title="${personCount} ${esc(tr('personsWord'))} (${erwCount} ${esc(tr('adultsShort'))}${kndCount?', '+kndCount+' '+esc(tr('kidsShort')):''}${infantCount?', +'+infantCount+' '+esc(tr('babyWord')):''}) · ${esc(trChannel(b.quelle))}">${esc(badgeTxt)}</span>
         ${b.sync_state!='erledigt'?`<span class="dot ${b.sync_state=='fehler'?'fehler':''}"></span>`:''}
-        <span>${esc(b.gast)} (${n}N)</span>
+        <span>${esc(b.gast)} (${n}${esc(nLetter)})</span>
         ${extraTags}
-        <div class="bar-handle right" data-handle="right" title="Aufenthalt verlängern / verkürzen"></div>
+        <div class="bar-handle right" data-handle="right"></div>
       </div>`;
     }
     h+='</div>';
   }
   $('#cal').innerHTML=h;
 
-  // An- und Abreiselisten ab dem gewählten Tag (Im Office-Modus ohne CHF-Umsatzanzeige)
+  // An- und Abreiselisten ab dem gewählten Tag (mit automatischer Übersetzung von Standard-Wünschen, Rollen & Kinder-/Hunde-Infos!)
   const soon=add(selD,14);
   const showPrice=currentRole==='manager';
   const row=b=>{
     const g=findGuestByName(b.gast);
     const memBadges=[];
-    if(b._isDemo)memBadges.push('<span class="badge" style="background:var(--brand-soft);color:var(--brand)">Test</span>');
+    if(b._isDemo)memBadges.push(`<span class="badge" style="background:var(--brand-soft);color:var(--brand)">${esc(tr('testWord'))}</span>`);
     if(g?.tier==='vip')memBadges.push('<span class="badge badge-vip">Super-VIP</span>');
-    if(g?.tier==='stammgast')memBadges.push('<span class="badge badge-stamm">Stammgast</span>');
-    if(b.special_wish)memBadges.push(`<span class="badge badge-vip" title="${esc(b.special_wish)}">Wunsch: ${esc(b.special_wish.slice(0,28))}</span>`);
-    if(g?.kids_notes)memBadges.push(`<span class="badge badge-kid" title="${esc(g.kids_notes)}">${esc(g.kids_notes.slice(0,32))}</span>`);
-    if(g?.dog_notes)memBadges.push(`<span class="badge badge-dog">${esc(g.dog_notes.slice(0,24))}</span>`);
+    if(g?.tier==='stammgast')memBadges.push(`<span class="badge badge-stamm">${esc(tr('stammgastWord'))}</span>`);
+    if(b.special_wish){
+      const trWish=translateFreeText(b.special_wish);
+      memBadges.push(`<span class="badge badge-vip" title="${esc(trWish)}">${esc(tr('wishWord'))}: ${esc(trWish.slice(0,32))}</span>`);
+    }
+    if(g?.kids_notes){
+      const trKids=translateFreeText(g.kids_notes);
+      memBadges.push(`<span class="badge badge-kid" title="${esc(trKids)}">${esc(trKids.slice(0,34))}</span>`);
+    }
+    if(g?.dog_notes){
+      const trDog=translateFreeText(g.dog_notes);
+      memBadges.push(`<span class="badge badge-dog" title="${esc(trDog)}">${esc(trDog.slice(0,26))}</span>`);
+    }
     const pCount=(+b.erwachsene||1)+(+b.kinder||0);
+    const trStaff=b.created_by_staff?translateFreeText(b.created_by_staff):'';
     return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
       <td class="num"><b>${fmt(b._d)}</b></td>
       <td>
-        <b>${esc(b.gast)}</b> <span class="badge badge-stamm">${pCount}P</span> ${memBadges.join(' ')}<br>
-        <span style="color:var(--mute);font-size:12px">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Ki.':''}${b.kleinkinder?', +'+b.kleinkinder+' Baby (0-2J.)':''}${b.created_by_staff?' · Eingetr.: '+esc(b.created_by_staff):''}${showPrice&&b.preis?' · CHF '+Number(b.preis).toFixed(2):''}</span>
+        <b>${esc(b.gast)}</b> <span class="badge badge-stamm">${pCount}${esc(pLetter)}</span> ${memBadges.join(' ')}<br>
+        <span style="color:var(--mute);font-size:12px">${b.erwachsene} ${esc(tr('adultsShort'))}${b.kinder?', '+b.kinder+' '+esc(tr('kidsShort')):''}${b.kleinkinder?', +'+b.kleinkinder+' '+esc(tr('babyWord')):''}${trStaff?' · '+esc(tr('enteredByShort'))+': '+esc(trStaff):''}${showPrice&&b.preis?' · CHF '+Number(b.preis).toFixed(2):''}</span>
       </td>
-      <td><b>Zimmer ${b.room_id}</b><br><span style="font-size:11.5px;color:var(--mute)">${QUELLE[b.quelle]||b.quelle}</span></td>
+      <td><b>${esc(roomWord)} ${b.room_id}</b><br><span style="font-size:11.5px;color:var(--mute)">${esc(trChannel(b.quelle))}</span></td>
     </tr>`;
   };
   const act=allB.filter(b=>b.status!='storniert');
   const an=act.filter(b=>b.anreise>=selD&&b.anreise<=soon).map(b=>({...b,_d:b.anreise}));
   const ab=act.filter(b=>b.abreise>=selD&&b.abreise<=soon).map(b=>({...b,_d:b.abreise})).sort((a,b)=>a._d<b._d?-1:1);
-  $('#tAn').innerHTML=an.length?an.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Anreisen in den nächsten 14 Tagen ab gewähltem Datum.</td></tr>';
-  $('#tAb').innerHTML=ab.length?ab.map(row).join(''):'<tr><td style="color:var(--mute)">Keine Abreisen in den nächsten 14 Tagen ab gewähltem Datum.</td></tr>';
+  $('#tAn').innerHTML=an.length?an.map(row).join(''):`<tr><td style="color:var(--mute)">${esc(tr('noArrivals14'))}</td></tr>`;
+  $('#tAb').innerHTML=ab.length?ab.map(row).join(''):`<tr><td style="color:var(--mute)">${esc(tr('noDepartures14'))}</td></tr>`;
 
   const op=dbBookings.filter(b=>b.sync_state!='erledigt');
-  $('#tSync').innerHTML=op.length?'<tr><th>Gast</th><th>Zimmer</th><th>Zeitraum</th><th>Deskline-Status</th></tr>'+op.map(b=>`<tr><td><b>${esc(b.gast)}</b>${b.status=='storniert'?' (storniert)':''}</td><td>Zimmer ${b.room_id}</td><td>${fmt(b.anreise)} bis ${fmt(b.abreise)}</td><td>${b.sync_state=='fehler'?'<span style="color:var(--danger)">Fehler: '+esc(b.sync_note||'')+'</span>':'<span style="color:var(--warn)">wartet auf Abgleich</span>'}</td></tr>`).join(''):'<tr><td style="color:var(--emerald);font-weight:700">✓ Alle echten Buchungen sind zu 100 % mit Feratel Deskline synchronisiert.</td></tr>';
+  $('#tSync').innerHTML=op.length?`<tr><th>Gast</th><th>${esc(roomWord)}</th><th>Zeitraum</th><th>Deskline-Status</th></tr>`+op.map(b=>`<tr><td><b>${esc(b.gast)}</b>${b.status=='storniert'?' (storniert)':''}</td><td>${esc(roomWord)} ${b.room_id}</td><td>${fmt(b.anreise)} – ${fmt(b.abreise)}</td><td>${b.sync_state=='fehler'?'<span style="color:var(--danger)">'+esc(b.sync_note||'')+'</span>':'<span style="color:var(--warn)">…</span>'}</td></tr>`).join(''):`<tr><td style="color:var(--emerald);font-weight:700">${esc(tr('desklineAllSynced'))}</td></tr>`;
 }
 
 window.openBookingById=id=>{
@@ -4234,8 +4583,8 @@ function renderBriefing(){
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px">
             ${roomTasks.map(t=>`<div style="background:var(--glass-strong);padding:6px 10px;border-radius:8px;border-left:3px solid var(--gold);cursor:pointer;font-size:12.5px" onclick="${t.booking_id?`openBookingById('${t.booking_id}')`:`openDailyImportantInfoEditor()`}">
-              <b>Zimmer ${t.room_id} (${esc(t.gast)}):</b> ${esc(t.text)}
-              <div style="font-size:11px;color:var(--mute);margin-top:2px">Eingetragen von: <b>${esc(t.created_by)}</b></div>
+              <b>${esc(tr('roomWord'))} ${t.room_id} (${esc(t.gast)}):</b> ${esc(translateFreeText(t.text))}
+              <div style="font-size:11px;color:var(--mute);margin-top:2px">${esc(tr('enteredByShort'))}: <b>${esc(translateFreeText(t.created_by))}</b></div>
             </div>`).join('')}
           </div>
         </div>`
@@ -4277,11 +4626,11 @@ function renderBriefing(){
         :`<span class="badge badge-stamm">In ${daysUntil} Tagen (Erinnerung ab ${lead} Tagen vorher)</span>`;
       return `<div class="memory-callout" style="margin-bottom:8px;border-left-color:${isUrgent?'var(--gold)':'var(--emerald)'};cursor:pointer" onclick="openBookingById('${b.id}')">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
-          <b>Zimmer ${b.room_id} · ${esc(b.gast)} (Anreise: ${fmt(b.anreise)})</b>
+          <b>${esc(tr('roomWord'))} ${b.room_id} · ${esc(b.gast)} (${esc(tr('arrivalWord'))}: ${fmt(b.anreise)})</b>
           ${urgencyBadge}
         </div>
-        <div style="margin-top:4px;font-size:13.5px;color:var(--ink)"><b>Zu besorgen / Sonderwunsch:</b> ${esc(b.special_wish)}</div>
-        <div style="margin-top:2px;font-size:11.5px;color:var(--mute)">Buchung eingetragen von: <b>${esc(b.created_by_staff||'Arthur')}</b> (bei Rückfragen ansprechen)</div>
+        <div style="margin-top:4px;font-size:13.5px;color:var(--ink)"><b>${esc(tr('wishWord'))}:</b> ${esc(translateFreeText(b.special_wish))}</div>
+        <div style="margin-top:2px;font-size:11.5px;color:var(--mute)">${esc(tr('enteredByShort'))}: <b>${esc(translateFreeText(b.created_by_staff||'Arthur'))}</b></div>
       </div>`;
     }).join('');
   }
@@ -4301,11 +4650,11 @@ function renderBriefing(){
       const g=findGuestByName(b.gast);
       const ex=Array.isArray(b.extras_list)?b.extras_list:[];
       const exTxt=[ex.includes('baby')?'Babybett':'',ex.includes('zustell')?'Extrabett':'',ex.includes('park')?'Parkplatz':''].filter(Boolean).join(', ');
-      const notes=[b.special_wish,exTxt,g?.kids_notes,g?.food_notes,g?.dog_notes,b.notiz].filter(Boolean).join(' · ')||'Keine besonderen Vermerke';
+      const notes=translateFreeText([b.special_wish,exTxt,g?.kids_notes,g?.food_notes,g?.dog_notes,b.notiz].filter(Boolean).join(' · ')||'—');
       return `<tr style="cursor:pointer" onclick="openBookingById('${b.id}')">
-        <td><b>Zimmer ${b.room_id}</b></td>
-        <td><b>${esc(b.gast)}</b><br><span style="font-size:11px;color:var(--mute)">Eingetr.: ${esc(b.created_by_staff||'Arthur')}</span></td>
-        <td class="num"><b>${(+b.erwachsene||1)+(+b.kinder||0)}P</b> (${b.erwachsene} Erw. / ${b.kinder||0} Ki.${b.kleinkinder?` / +${b.kleinkinder} Baby`:''})</td>
+        <td><b>${esc(tr('roomWord'))} ${b.room_id}</b></td>
+        <td><b>${esc(b.gast)}</b><br><span style="font-size:11px;color:var(--mute)">${esc(tr('enteredByShort'))}: ${esc(translateFreeText(b.created_by_staff||'Arthur'))}</span></td>
+        <td class="num"><b>${(+b.erwachsene||1)+(+b.kinder||0)}${esc(tr('pBadgeLetter'))}</b> (${b.erwachsene} ${esc(tr('adultsShort'))} / ${b.kinder||0} ${esc(tr('kidsShort'))}${b.kleinkinder?` / +${b.kleinkinder} ${esc(tr('babyWord'))}`:''})</td>
         <td>${esc(notes)}</td>
       </tr>`;
     }).join('')+'</table>';
@@ -4336,12 +4685,12 @@ function renderBriefing(){
           <b>${esc(b.gast)} ${b.anreise?'(Anreise '+fmt(b.anreise)+' · Zimmer '+b.room_id+')':'(Gespeicherte Gästekartei)'}</b>
           ${g?.tier==='vip'?'<span class="badge badge-vip">Super-VIP</span>':g?.tier==='stammgast'?'<span class="badge badge-stamm">Stammgast</span>':''}
         </div>
-        ${b.special_wish?`<div style="margin-top:4px;color:var(--brand)"><b>Sonderwunsch zur Anreise (${b.wish_lead_days||3} Tage Vorlauf):</b> ${esc(b.special_wish)}</div>`:''}
-        ${b.created_by_staff?`<div style="margin-top:3px;font-size:11.5px;color:var(--mute)"><b>Eingetragen von:</b> ${esc(b.created_by_staff)}</div>`:''}
-        ${g?.kids_notes?`<div style="margin-top:4px"><b>Familie & Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
-        ${g?.food_notes?`<div style="margin-top:3px"><b>Lieblingsessen / Wein:</b> ${esc(g.food_notes)}</div>`:''}
-        ${g?.dog_notes?`<div style="margin-top:3px"><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
-        ${g?.general_notes?`<div style="margin-top:3px;color:var(--ink-soft)">${esc(g.general_notes)}</div>`:''}
+        ${b.special_wish?`<div style="margin-top:4px;color:var(--brand)"><b>${esc(tr('wishWord'))}:</b> ${esc(translateFreeText(b.special_wish))}</div>`:''}
+        ${b.created_by_staff?`<div style="margin-top:3px;font-size:11.5px;color:var(--mute)"><b>${esc(tr('enteredByShort'))}:</b> ${esc(translateFreeText(b.created_by_staff))}</div>`:''}
+        ${g?.kids_notes?`<div style="margin-top:4px"><b>${esc(tr('kidsShort'))}:</b> ${esc(translateFreeText(g.kids_notes))}</div>`:''}
+        ${g?.food_notes?`<div style="margin-top:3px"><b>★:</b> ${esc(translateFreeText(g.food_notes))}</div>`:''}
+        ${g?.dog_notes?`<div style="margin-top:3px"><b>${esc(tr('dogWord'))}:</b> ${esc(translateFreeText(g.dog_notes))}</div>`:''}
+        ${g?.general_notes?`<div style="margin-top:3px;color:var(--ink-soft)">${esc(translateFreeText(g.general_notes))}</div>`:''}
       </div>`;
     }).join('');
   }
@@ -4408,8 +4757,8 @@ function renderCRM(){
       <div style="font-size:11.5px;color:var(--ink-soft);display:flex;flex-direction:column;gap:2px">
         ${g.phone?`<div>Tel.: <b>${esc(g.phone)}</b></div>`:''}
         ${tableInfo?`<div style="color:var(--emerald);font-weight:700">${esc(tableInfo)} · ${visits.length}× im Restaurant</div>`:''}
-        ${g.food_notes?`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Kulinarik: ${esc(g.food_notes)}</div>`:''}
-        ${g.general_notes?`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Wunsch/Spiele: ${esc(g.general_notes)}</div>`:''}
+        ${g.food_notes?`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">★ ${esc(translateFreeText(g.food_notes))}</div>`:''}
+        ${g.general_notes?`<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(translateFreeText(g.general_notes))}</div>`:''}
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mute);margin-top:2px">
         <span>${g._isDemo?'[Test-Profil] · ':''}${g.kids_notes?'Familie/Kinder ':''}${g.dog_notes?'· Hund':''}</span>
@@ -4468,22 +4817,22 @@ window.openGuestDetail=guestId=>{
 
     <div class="memory-callout" style="margin-bottom:10px">
       <div style="font-weight:800;margin-bottom:4px;color:var(--brand)">Familienmitglieder, Kinder & Lieblingsessen</div>
-      <div>${esc(g.kids_notes||'Keine speziellen Kinder-Einträge hinterlegt.')}</div>
+      <div>${esc(translateFreeText(g.kids_notes||'—'))}</div>
     </div>
 
     <div class="memory-callout" style="margin-bottom:10px;border-left-color:var(--gold)">
       <div style="font-weight:800;margin-bottom:4px;color:#b45309">Kulinarik, Getränke, Lieblingswein & Allergien</div>
-      <div>${esc(g.food_notes||'Keine kulinarischen Sonderwünsche hinterlegt.')}</div>
+      <div>${esc(translateFreeText(g.food_notes||'—'))}</div>
     </div>
 
     ${g.dog_notes?`<div class="memory-callout" style="margin-bottom:10px;border-left-color:var(--warn)">
-      <div style="font-weight:800;margin-bottom:4px">Hund(e) & Hinweise</div>
-      <div>${esc(g.dog_notes)}</div>
+      <div style="font-weight:800;margin-bottom:4px">${esc(tr('dogWord'))}</div>
+      <div>${esc(translateFreeText(g.dog_notes))}</div>
     </div>`:''}
 
     <div class="memory-callout" style="margin-bottom:12px;border-left-color:var(--brand-2)">
       <div style="font-weight:800;margin-bottom:4px">Spiele (Schachbrett / Kartenspiel), Zimmer-Vorlieben & Notizen</div>
-      <div>${esc(g.general_notes||'Keine weiteren Notizen.')}</div>
+      <div>${esc(translateFreeText(g.general_notes||'—'))}</div>
     </div>
 
     <div class="grid" style="font-size:12.5px;background:var(--glass-soft);padding:11px 14px;border-radius:12px">
@@ -6135,7 +6484,7 @@ function renderKitchenCockpit(){
   const lunchPax=lunchRes.reduce((s,r)=>s+(+r.pax||0),0);
   const dinnerPax=dinnerRes.reduce((s,r)=>s+(+r.pax||0),0);
 
-  if($('#navCountKitchen'))$('#navCountKitchen').textContent=`${bfTodayPax+lunchPax+dinnerPax} P.`;
+  if($('#navCountKitchen'))$('#navCountKitchen').textContent=`${bfTodayPax+lunchPax+dinnerPax} ${tr('pBadgeLetter')}.`;
 
   if($('#kitchenKpiGrid')){
     $('#kitchenKpiGrid').innerHTML=`
@@ -6222,10 +6571,10 @@ function renderTablePlanView(){
   const resList=getAllHallReservationsForDate(d,currentHallKey);
   const totalResPax=resList.filter(r=>r.status!=='noshow').reduce((s,r)=>s+(+r.pax||0),0);
 
-  if($('#tpTitleDateLabel'))$('#tpTitleDateLabel').textContent=isToday?`HEUTE · ${fmtLongDate(d)}`:fmtLongDate(d);
+  if($('#tpTitleDateLabel'))$('#tpTitleDateLabel').textContent=isToday?`${tr('todayCaps')} · ${fmtLongDate(d)}`:fmtLongDate(d);
   if($('#tpDatePicker'))$('#tpDatePicker').value=d;
   if($('#tpListDateLabel'))$('#tpListDateLabel').textContent=fmt(d);
-  if($('#navCountTables'))$('#navCountTables').textContent=resList.length?`${resList.length}/${layout.tables.length} Ti.`:`${layout.tables.length} Ti.`;
+  if($('#navCountTables'))$('#navCountTables').textContent=resList.length?`${resList.length}/${layout.tables.length} ${tr('tablesShort')}`:`${layout.tables.length} ${tr('tablesShort')}`;
 
   // Im Manager-Modus rechts neben dem Saalplan den visuellen Saalplan-Baukasten einblenden, im Service/Office ausblenden!
   if($('#managerVisualEditorSidebar')){
@@ -6436,7 +6785,7 @@ function checkGuestMemoryInDialog(){
   $('#'+id)?.addEventListener('input',checkGuestMemoryInDialog);
 });
 
-// ---- HOVER-TOOLTIP AUF KALENDER-BALKEN ----
+// ---- HOVER-TOOLTIP AUF KALENDER-BALKEN (4-SPRACHIG INKL. STANDARD-WÜNSCHE) ----
 $('#cal').addEventListener('mousemove',e=>{
   if(dragContext)return;
   const bar=e.target.closest('.bar');
@@ -6453,16 +6802,16 @@ $('#cal').addEventListener('mousemove',e=>{
   hc.style.top=Math.min(e.clientY+16,innerHeight-240)+'px';
   hc.innerHTML=`
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <b style="font-size:14px">${esc(b.gast)} (${pCount}P)</b>
-      <span class="badge" style="background:var(--${b.quelle});color:#fff">${QUELLE[b.quelle]||b.quelle}</span>
+      <b style="font-size:14px">${esc(b.gast)} (${pCount}${esc(tr('pBadgeLetter'))})</b>
+      <span class="badge" style="background:var(--${b.quelle});color:#fff">${esc(trChannel(b.quelle))}</span>
     </div>
-    <div class="num" style="color:var(--ink-soft)">Zimmer ${b.room_id} · ${fmt(b.anreise)} bis ${fmt(b.abreise)} (${n} ${n===1?'Nacht':'Nächte'})</div>
-    <div style="margin-top:4px">${b.erwachsene} Erw.${b.kinder?', '+b.kinder+' Kinder (3–15J.)':''}${b.kleinkinder?', +'+b.kleinkinder+' Kleinkind (0–2J. gratis)':''} ${showPrice&&b.preis?'· <b>CHF '+Number(b.preis).toFixed(2)+'</b>':''}</div>
-    <div style="margin-top:3px;font-size:11.5px;color:var(--mute)">Buchung eingetragen von: <b>${esc(b.created_by_staff||'Arthur')}</b></div>
-    ${b.special_wish?`<div style="margin-top:5px;color:var(--gold)"><b>Sonderwunsch (${b.wish_lead_days||3}T Vorlauf):</b> ${esc(b.special_wish)}</div>`:''}
-    ${g?.kids_notes?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--line);color:var(--brand)"><b>Kinder:</b> ${esc(g.kids_notes)}</div>`:''}
-    ${g?.dog_notes?`<div style="margin-top:3px"><b>Hund:</b> ${esc(g.dog_notes)}</div>`:''}
-    ${g?.food_notes?`<div style="margin-top:3px"><b>Vorlieben:</b> ${esc(g.food_notes)}</div>`:''}
+    <div class="num" style="color:var(--ink-soft)">${esc(tr('roomWord'))} ${b.room_id} · ${fmt(b.anreise)} – ${fmt(b.abreise)} (${n}${esc(tr('nightLetter'))})</div>
+    <div style="margin-top:4px">${b.erwachsene} ${esc(tr('adultsShort'))}${b.kinder?', '+b.kinder+' '+esc(tr('kidsShort')):''}${b.kleinkinder?', +'+b.kleinkinder+' '+esc(tr('babyWord')):''} ${showPrice&&b.preis?'· <b>CHF '+Number(b.preis).toFixed(2)+'</b>':''}</div>
+    <div style="margin-top:3px;font-size:11.5px;color:var(--mute)">${esc(tr('enteredByShort'))}: <b>${esc(translateFreeText(b.created_by_staff||'Arthur'))}</b></div>
+    ${b.special_wish?`<div style="margin-top:5px;color:var(--gold)"><b>${esc(tr('wishWord'))}:</b> ${esc(translateFreeText(b.special_wish))}</div>`:''}
+    ${g?.kids_notes?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--line);color:var(--brand)"><b>${esc(tr('kidsShort'))}:</b> ${esc(translateFreeText(g.kids_notes))}</div>`:''}
+    ${g?.dog_notes?`<div style="margin-top:3px"><b>${esc(tr('dogWord'))}:</b> ${esc(translateFreeText(g.dog_notes))}</div>`:''}
+    ${g?.food_notes?`<div style="margin-top:3px"><b>★:</b> ${esc(translateFreeText(g.food_notes))}</div>`:''}
   `;
 });
 $('#cal').addEventListener('mouseleave',()=>{$('#hoverCard').hidden=true;});
