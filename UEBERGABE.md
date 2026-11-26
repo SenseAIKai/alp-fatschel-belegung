@@ -151,3 +151,16 @@ Das Postfach gehört zur Mac-App «Alp Fatschél PMS», nicht zur Web-Version. Q
 - Löschen und Verschieben gehen nur am Mac mit laufendem Server; die Web-Version zeigt einen Hinweis.
 - Bekannter Fehler (nicht behoben): `currentView` ist im Skript nirgends definiert, dadurch bricht der stille 60-Sekunden-Abruf in `refreshSmartMailboxFromServer(false)` vor dem Neuzeichnen ab. Neue Mails erscheinen erst nach «Postfach jetzt abrufen».
 - Offen und wichtig: Im öffentlichen Repo liegen Gästedaten (`smart_mailbox.json`, `bookings_vault.json`, Beispieldaten in `index.html`); die lokale `smart_mailbox.json` enthält zusätzlich den Telegram-Bot-Token. Nicht pushen, bevor das bereinigt ist. Der Server lauscht ohne Anmeldung auf 0.0.0.0:8798.
+
+## 10. Öffentliches Repo: keine Gästedaten (Stand 26.11.2026)
+
+Das Repo `SenseAIKai/alp-fatschel-belegung` und die Seite unter senseaikai.github.io sind **für jeden lesbar**. Vom 23. bis 26.11.2026 lud das Cockpit alle paar Minuten das ganze Postfach (`smart_mailbox.json`), die Buchungen (`bookings_vault.json`) und eine `index.html` mit fest eingebauten Gästedaten und dem Telegram-Bot-Schlüssel dorthin hoch. Das ist bereinigt, der alte Verlauf wurde durch einen einzigen sauberen Commit ersetzt.
+
+Seither gilt:
+
+- **Datendateien gehen nie ins Repo:** `smart_mailbox.json`, `bookings_vault.json`, `mail_cache.json`, `feedback_vault.json`, `feedback_notify_config.json`, `manager_appointments_vault.json`, `sent_replies_vault.json` (stehen in `.gitignore`).
+- **`index.html` wird nur gefiltert veröffentlicht.** `cockpit/alp_fatschel_public_filter.py` leert die Arrays `SEED_CONFIRMED_BOOKINGS`, `smartMailboxItems`, `SEED_MANAGER_APPOINTMENTS` und den Telegram-Schlüssel. Die Mac-App bekommt weiter die ungefilterte Fassung (lokal, Port 8798).
+- **Schlussprüfung vor jedem Hochladen:** `sync_external_alp_fatschel_repo()` in `cockpit/nightly_code_guardian.py` prüft jede Datei gegen die echten E-Mail-Adressen, Telefonnummern und Gästenamen aus den lokalen Datendateien. Bei einem Treffer wird nicht hochgeladen (Rückgabe `ok: false`, „Upload gestoppt“). Dieselbe Prüfung läuft als `pre-commit`-Hook im lokalen Repo `~/Documents/Claude Code/alp-fatschel-belegung`.
+- Wer neue echte Daten fest in die Seite einbaut, trägt den Array-Namen in `PRIVATE_JS_ARRAYS` ein. Besser: echte Daten gar nicht in die Seite schreiben, sondern in Supabase (mit Anmeldung) oder in die lokalen Datendateien.
+- **Folge für Büro-PC und Handy:** Die Web-Fassung zeigt Buchungen nur noch aus Supabase (Anmeldung nötig) und kein Postfach mehr. Das Postfach gibt es nur in der Mac-App.
+- Offen: Der Telegram-Bot-Schlüssel war öffentlich und muss bei BotFather erneuert werden. Alte Commits sind bei GitHub über ihre Kennung noch abrufbar, bis GitHub sie löscht oder das Repo gelöscht und neu angelegt wird.
