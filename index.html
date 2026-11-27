@@ -13187,7 +13187,7 @@ window.saveManagerAppointmentFromModal=async(e)=>{
 
   await persistManagerAppointmentToServer(appt,sendPushNow);
   if(sendPushNow){
-    await triggerManagerAppointmentPush(appt.id,true);
+    showInAppPushBannerToast(appt);
   }
 };
 
@@ -13467,7 +13467,7 @@ window.saveSmartMailSuggestedAppointment=async(apptId,mailId)=>{
   mgrCalCurrentMonthIso=appt.date.slice(0,7)+'-01';
 
   await persistManagerAppointmentToServer(appt,true);
-  await triggerManagerAppointmentPush(appt.id,false);
+  showInAppPushBannerToast(appt);
 
   renderAll();
   const fb=$('#smApptSavedFeedback');
